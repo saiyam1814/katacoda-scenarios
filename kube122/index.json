@@ -1,8 +1,9 @@
 {
-  "title": "Kubernetes 1.22",
-  "description": "This is the Kubernetes 1.22 with containerd setup",
+
+  "title": "Kubernetes1.22",
+  "description": "Kubernetess 1.22 playground with containerd as the container runtime",
   "difficulty": "Beginner",
-  "time": "5",
+  "time": "10",
   "details": {
     "steps": [
       {
@@ -11,15 +12,14 @@
       }
     ],
     "intro": {
-      "text": "intro.md"
+      "text": "intro.md",
+      "code": "foreground.sh"
     },
     "finish": {
       "text": "finish.md"
     }
   },
-  "environment": {
-    "uilayout": "terminal"
-  },
+  "environment": {"uilayout": "terminal"},
   "backend": {
     "imageid": "ubuntu:2004"
   }
