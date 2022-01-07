@@ -3,3 +3,4 @@ wget https://github.com/armosec/kubescape/releases/download/v1.0.138/kubescape-u
 chmod +x kubescape-ubuntu-latest 
 mv kubescape-ubuntu-latest kubescape
 mv kubescape /usr/local/bin/
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
