@@ -1,0 +1,25 @@
+{
+  "title": "Multi node kubernetes 1.20 + CRIO cluster",
+  "description": " Multi node kubernetes 1.20 + CRIO cluster",
+  "difficulty": "Intermediate",
+  "time": "10",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {    "uilayout": "terminal-terminal"
+},
+  "backend": {
+    "imageid": "ubuntu:2004"
+  }
+}
