@@ -1,21 +1,21 @@
 {
-  "title": "Multi node kubernetes 1.20 + CRIO cluster",
-  "description": " Multi node kubernetes 1.20 + CRIO cluster",
-  "difficulty": "Intermediate",
-  "time": "10",
-  "details": {
-    "steps": [
-      {
-        "title": "Step 1",
-        "text": "step1.md"
-      }
-    ],
-  "environment": {         
-	"hideintro": true,
-        "hidefinish": true,   
-	"uilayout": "terminal-terminal"
-},
-  "backend": {
-    "imageid": "ubuntu:2004"
-  }
+    "noindex": true,
+    "title": "Scenario with Terminal Terminal UI",
+    "description": "Katacoda Scenario Example",
+    "details": {
+        "steps": [
+            {
+                "title": "",
+                "text": "step1.md"
+            }
+        ]
+    },
+    "environment": {
+        "hideintro": true,
+        "hidefinish": true,
+        "uilayout": "terminal-terminal"
+    },
+    "backend": {
+        "imageid": "ubuntu:2004"
+    }
 }
