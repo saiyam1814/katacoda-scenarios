@@ -1,0 +1,80 @@
+{
+  "pathwayTitle": "chaos-mesh",
+  "title": "Kubernetes Chaos: Chaos Mesh",
+  "description": "Applying cloud native chaos engineering to your applications using Chaos Mesh",
+  "difficulty":	"Beginner",
+  "time":	"15 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Your Kubernetes Cluster",
+        "text": "step1-k8s.md",
+        "code": "clear.sh"
+      },
+      {
+        "title": "Install Chaos Mesh",
+        "text": "step2-install.md",
+        "code": "clear.sh"
+      },
+      {
+        "title": "Chaos Mesh Dashboard",
+        "text": "step3-dashboard.md",
+        "code": "clear.sh"
+      },
+      {
+        "title": "Chaos Mesh Experiment Types",
+        "text": "step4-experiment-types.md",
+        "code": "clear.sh"
+      },
+      {
+        "title": "Network Delay Experiment",
+        "text": "step5-experiment-network-delay.md",
+        "code": "clear.sh"
+      },
+      {
+        "title": "Scheduled Experiment",
+        "text": "step6-scheduled-expriment.md",
+        "code": "clear.sh"
+      },
+      {
+        "title": "Pod Removal Experiment",
+        "text": "step7-experiment-pod-removal.md",
+        "code": "clear.sh"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "init-background.sh",
+      "code": "init-foreground.sh",
+      "credits": "[Jonathan Johnson](http://www.dijure.com)"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "nginx.yaml", "target": "/root"},
+        {"file": "web-show-deployment.yaml", "target": "/root"},
+        {"file": "web-show-service.yaml", "target": "/root"},
+        {"file": "network-delay-experiment.yaml", "target": "/root"},
+        {"file": "scheduled-network-delay-experiment.yaml", "target": "/root"},
+        {"file": "pod-removal-experiment.yaml", "target": "/root"},
+        {"file": "token.sh", "target": "/usr/local/bin", "chmod": "+x"}
+      ]
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+    "uilayout": "terminal",
+    "uimessage1": "\u001b[32mYour interactive Bash terminal.\u001b[m\r\n",
+    "icon": "fa-kubernetes",
+    "dashboards": [
+      {"name": "Kubernetes Dashboard", "port": 30000},
+      {"name": "Chaos Mesh", "port": 31111},
+      {"name": "Web Show", "port": 30081}
+    ]
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster-running:1.18"
+  }
+}
