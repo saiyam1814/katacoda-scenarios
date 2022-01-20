@@ -13,9 +13,9 @@
     "environment": {
         "hideintro": true,
         "hidefinish": true,
-        "uilayout": "terminal"
+        "uilayout": "terminal-terminal"
     },
     "backend": {
-    	"imageid": "kubernetes-cluster-running:1.18"
+    	"imageid": "ubuntu:2004"
     }
 }
