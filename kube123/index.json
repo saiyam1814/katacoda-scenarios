@@ -1,6 +1,6 @@
 {
 
-  "title": "Kubernetes1.23",
+  "title": "Kubernetes1.23 Containerd",
   "description": "Kubernetess 1.23 playground with containerd as the container runtime",
   "difficulty": "Beginner",
   "time": "10",
