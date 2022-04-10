@@ -1,4 +1,4 @@
-This Katacoda scenario is a single node Kubernetes 1.22 cluster with containerd as a runtime. Sit back and relax while the cluster is getting set up. 
+This Katacoda scenario is a single node Kubernetes 1.23 cluster with containerd as a runtime. Sit back and relax while the cluster is getting set up. 
 
 ## Task
 
