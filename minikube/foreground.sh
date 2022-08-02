@@ -3,6 +3,6 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt update -y
-sudo apt -y install vim git curl wget kubectl=1.24.3-0
+sudo apt -y install vim git curl wget kubectl=1.24.3-00
 minikube start --extra-config=kubeadm.ignore-preflight-errors=NumCPU --force --cpus=1
 
