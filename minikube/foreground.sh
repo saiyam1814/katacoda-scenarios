@@ -5,4 +5,4 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt
 minikube start --extra-config=kubeadm.ignore-preflight-errors=NumCPU --force --cpus=1
 sudo apt update -y
 sudo apt -y install vim git curl wget kubectl=1.24.3-00
-
+alias k='kubectl'
