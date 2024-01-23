@@ -1,1 +1,1 @@
-This is the buildsafe playground.
+This is the nix playground.
