@@ -1,0 +1,26 @@
+{
+
+  "title": "nix playground",
+  "description": "A nix playground",
+  "difficulty": "Beginner",
+  "time": "10",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {"uilayout": "terminal"},
+  "backend": {
+    "imageid": "ubuntu:2004"
+  }
+}
