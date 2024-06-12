@@ -1,6 +1,6 @@
 # Congratulations!
 
-You have successfully completed the Kubernetes 2-node Multi-step Verification scenario. You have learned how to:
+You have successfully completed the vCluster scenario. You have learned how to:
 
 1. Install the vCluster CLI.
 2. Create and manage a virtual cluster within a namespace.
