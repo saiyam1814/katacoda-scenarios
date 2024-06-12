@@ -2,12 +2,13 @@
 
 Expose the nginx pod using a NodePort service:
 
-`kubectl expose deployment nginx --type=NodePort --name=nginx-service` {{exec}}
+`kubectl expose deployment nginx --type=NodePort --name=nginx-service` {{iiexec}}
 
 Verify the service creation and get the NodePort URL:
 
 `kubectl get services` {{exec}}
 
-Find the NodePort URL and visit it in your browser:
+Get the NodePort value and create a link to access the nginx service:
+`NODE_PORT=$(kubectl get svc nginx-service -o jsonpath='{.spec.ports[0].nodePort}')`{{exec}}
+`sed "s/PORT/$NODE_PORT/g" /etc/killercoda/host | sed "s/{{TRAFFIC_HOST1_PORT}}/{{TRAFFIC_HOST1_$NODE_PORT}}/g"`{{exec}}
 
-`echo "http://$(hostname -I | awk '{print $1}'):$(kubectl get svc nginx-service -o jsonpath='{.spec.ports[0].nodePort}')"` {{exec}}

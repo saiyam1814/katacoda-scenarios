@@ -1,6 +1,6 @@
 {
-  "title": "Kubernetes 2-node Multi-step Verification",
-  "description": "Uses a two-node Kubernetes cluster and performs user input verification in all steps",
+  "title": "Let's try vCluster",
+  "description": "Virtual clusters are fully functional Kubernetes clusters nested inside a physical host cluster providing better isolation and flexibility to support multi-tenancy.",
   "details": {
     "intro": {
       "text": "intro.md"
