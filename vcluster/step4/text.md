@@ -8,8 +8,10 @@ Verify the service creation and get the NodePort URL:
 
 `kubectl get services`{{exec}}
 
-Get the NodePort value and create a link to access the nginx service:
+Get the NodePort:
+
 `NODE_PORT=$(kubectl get svc nginx-service -o jsonpath='{.spec.ports[0].nodePort}')`{{exec}}
 
-`sed "s/PORT/$NODE_PORT/g" /etc/killercoda/host | sed "s/{{TRAFFIC_HOST1_PORT}}/{{TRAFFIC_HOST1_$NODE_PORT}}/g"`{{exec}}
+Create a link to access the nginx service:
 
+`sed "s/PORT/$NODE_PORT/g" /etc/killercoda/host | sed "s#{{TRAFFIC_HOST1_PORT}}#{{TRAFFIC_HOST1_$NODE_PORT}}#g"`{{exec}}

@@ -12,5 +12,7 @@ Verify the vCluster creation by listing the vClusters:
 
 `vcluster list --namespace team-x`{{exec}}
 
+Wait till the Status goes to Running!
+
 This should show `awesome-demo` in the list of vClusters.
 

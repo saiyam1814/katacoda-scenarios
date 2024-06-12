@@ -6,7 +6,7 @@ To install vCluster CLI, run the following command:
 
 Verify the installation by checking the vCluster version:
 
-`vcluster --version`{{exec}
+`vcluster --version`{{exec}}
 
 This should output the installed version of vCluster.
 
