@@ -17,7 +17,7 @@ Start by setting up BuildSafe on a remote machine:
 
 4. Verify the installation by checking the bsf version:
 
-`bsf version`{{exec}}
+`bsf -h`{{exec}}
 
 
 

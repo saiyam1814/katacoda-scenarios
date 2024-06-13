@@ -1,3 +1,3 @@
 #!/bin/bash
-bsf version &> /dev/null && echo "done"
+bsf -h &> /dev/null && echo "done"
 
