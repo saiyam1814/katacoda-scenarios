@@ -1,3 +1,7 @@
 #!/bin/bash
-[ -f bsf-result/result/bin/go-server-example ] && echo "done"
+if [ -f bsf-result/result/bin/go-server-example ]; then
+  echo "done"
+else
+  echo "not done"
+fi
 
