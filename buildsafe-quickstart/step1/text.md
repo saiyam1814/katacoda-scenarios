@@ -15,9 +15,9 @@ Start by setting up BuildSafe on a remote machine:
 `nix profile install "github:buildsafedev/bsf"`{{exec}}
 
 
-4. Verify the installation by checking the bsf version:
+4. Verify the installation by checking the nix profile:
 
-`bsf -h`{{exec}}
+`nix profile list |  grep buildsafedev`{{exec}}
 
 
 
