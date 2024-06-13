@@ -1,3 +1,3 @@
 #!/bin/bash
-nix profile list | grep -q 'buildsafedev/bsf' && echo "done"
+nix profile list | grep -q 'github:buildsafedev/bsf' && echo "done"
 
