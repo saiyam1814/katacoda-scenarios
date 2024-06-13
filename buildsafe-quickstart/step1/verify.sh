@@ -1,2 +1,3 @@
 #!/bin/bash
-nix profile list |  grep buildsafedev && echo "done"
+nix profile list | grep -q 'buildsafedev/bsf' && echo "done"
+
