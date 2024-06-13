@@ -1,3 +1,7 @@
 #!/bin/bash
-[ -f bsf.hcl ] && echo "done"
+if [ -f bsf.hcl ]; then
+  echo "done"
+else
+  echo "not done"
+fi
 
