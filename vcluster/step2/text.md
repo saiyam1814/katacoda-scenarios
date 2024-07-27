@@ -6,7 +6,7 @@ Create a vCluster named `awesome-demo` in the `team-x` namespace with the follow
 
 Connect to the newly created vCluster and run the connection in the background:
 
-`nohup vcluster connect awesome-demo --namespace team-x &>/dev/null &`{{exec}}
+`vcluster connect awesome-demo --namespace team-x`{{exec}}
 
 Verify the vCluster creation by listing the vClusters:
 
