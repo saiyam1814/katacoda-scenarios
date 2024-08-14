@@ -1,7 +1,7 @@
 {
 
-  "title": "Kubernetes 1.30",
-  "description": "Kubernetess 1.30 playground with containerd as the container runtime",
+  "title": "Kubernetes 1.31",
+  "description": "Kubernetess 1.31 playground with containerd as the container runtime",
   "difficulty": "Beginner",
   "time": "10",
   "details": {
