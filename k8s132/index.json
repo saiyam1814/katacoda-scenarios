@@ -1,0 +1,26 @@
+{
+
+  "title": "Kubernetes 1.32",
+  "description": "Kubernetess 1.32 playground with containerd as the container runtime",
+  "difficulty": "Beginner",
+  "time": "10",
+  "details": {
+    "steps": [
+      {
+        "title": "Step 1",
+        "text": "step1.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {"uilayout": "terminal"},
+  "backend": {
+    "imageid": "ubuntu:2004"
+  }
+}
