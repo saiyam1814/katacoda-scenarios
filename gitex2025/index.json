@@ -10,37 +10,37 @@
       "steps": [
         {
           "title": "Fork and Clone the Repository",
-          "text": "step1/index.md",
+          "text": "step1/step1.md",
           "verify": "step1/verify.sh"
         },
         {
           "title": "Install NGINX Ingress Controller (NodePort)",
-          "text": "step2/index.md",
+          "text": "step2/step2.md",
           "verify": "step2/verify.sh"
         },
         {
           "title": "Install ArgoCD (NodePort Service)",
-          "text": "step3/index.md",
+          "text": "step3/step3.md",
           "verify": "step3/verify.sh"
         },
         {
           "title": "Create a GitOps Application in ArgoCD",
-          "text": "step4/index.md",
+          "text": "step4/step4.md",
           "verify": "step4/verify.sh"
         },
         {
           "title": "Patch Ingress for External Access",
-          "text": "step5/index.md",
+          "text": "step5/step5.md",
           "verify": "step5/verify.sh"
         },
         {
           "title": "Validate Application Access via Ingress",
-          "text": "step6/index.md",
+          "text": "step6/step6.md",
           "verify": "step6/verify.sh"
         },
         {
           "title": "Modify Git and Observe ArgoCD Sync",
-          "text": "step7/index.md",
+          "text": "step7/step7.md",
           "verify": "step7/verify.sh"
         }
       ],
