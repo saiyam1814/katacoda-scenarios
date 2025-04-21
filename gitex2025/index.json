@@ -1,0 +1,55 @@
+{
+    "title": "GitOps Workshop – Gitex Singapore 2025 (Kubernetes GitOps with ArgoCD)",
+    "description": "Learn GitOps on Kubernetes v1.32 by deploying an application with ArgoCD. This workshop uses NodePort Services for NGINX Ingress and ArgoCD access.",
+    "details": {
+      "intro": {
+        "text": "intro.md",
+        "code": "foreground.sh",
+        "courseData": "background.sh"
+      },
+      "steps": [
+        {
+          "title": "Fork and Clone the Repository",
+          "text": "step1/index.md",
+          "verify": "step1/verify.sh"
+        },
+        {
+          "title": "Install NGINX Ingress Controller (NodePort)",
+          "text": "step2/index.md",
+          "verify": "step2/verify.sh"
+        },
+        {
+          "title": "Install ArgoCD (NodePort Service)",
+          "text": "step3/index.md",
+          "verify": "step3/verify.sh"
+        },
+        {
+          "title": "Create a GitOps Application in ArgoCD",
+          "text": "step4/index.md",
+          "verify": "step4/verify.sh"
+        },
+        {
+          "title": "Patch Ingress for External Access",
+          "text": "step5/index.md",
+          "verify": "step5/verify.sh"
+        },
+        {
+          "title": "Validate Application Access via Ingress",
+          "text": "step6/index.md",
+          "verify": "step6/verify.sh"
+        },
+        {
+          "title": "Modify Git and Observe ArgoCD Sync",
+          "text": "step7/index.md",
+          "verify": "step7/verify.sh"
+        }
+      ],
+      "finish": {
+        "text": "finish.md"
+      }
+    },
+    "backend": {
+      "imageid": "kubernetes-kubeadm-2nodes"
+    }
+  }
+  
