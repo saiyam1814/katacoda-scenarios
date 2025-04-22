@@ -44,6 +44,20 @@
           "verify": "step7/verify.sh"
         }
       ],
+      "assets": {
+      "host01": [
+        {
+          "file": "argocdinstall.yaml",
+          "target": "/home",
+          "chmod": "+w"
+        },
+        {
+          "file": "application.yaml",
+          "target": "/home",
+          "chmod": "+w"
+        }
+      ]
+    },
       "finish": {
         "text": "finish.md"
       }
