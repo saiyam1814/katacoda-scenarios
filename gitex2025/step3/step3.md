@@ -4,7 +4,7 @@ Now install **ArgoCD**, the GitOps continuous delivery tool, into the cluster. W
 
 1. **Install ArgoCD:** Apply the ArgoCD installation manifest.
 
-`kubectl apply -f files/argocdinstall.yaml{{exec}}`
+`kubectl apply -f /home/argocdinstall.yaml'{{exec}}
 
 This deploys ArgoCD components (API server, repository server, controller, UI) in the argocd namespace. The argocd-server Service (ArgoCD API/UI) is created as NodePort.
 
