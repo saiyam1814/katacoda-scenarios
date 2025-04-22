@@ -10,8 +10,16 @@ This creates the Ingress controller (in the ingress-nginx namespace) with a Serv
 
 2. Expose via NodePort: Patch the Ingress controller Service to NodePort on a known port. We'll use 30080 for HTTP (and 30081 for HTTPS) so we can reach it in this environment:
 ```
-kubectl -n ingress-nginx patch svc ingress-nginx-controller \
-  -p '{"spec":{"type":"NodePort","ports":[{"name":"http","nodePort":30080},{"name":"https","nodePort":30081}]}}'
+kubectl -n ingress-nginx patch svc ingress-nginx-controller --type=merge -p '{
+  "spec": {
+    "type": "NodePort",
+    "ports": [
+      { "port": 80,  "name": "http",  "nodePort": 30080 },
+      { "port": 443, "name": "https", "nodePort": 30081 }
+    ]
+  }
+}'
+
 
 ```
 This changes the service to NodePort type on ports 30080/30081. These NodePorts will be accessible externally through the Killercoda host.
