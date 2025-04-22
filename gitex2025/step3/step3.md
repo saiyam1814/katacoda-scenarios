@@ -14,7 +14,7 @@ Initial admin password is stored as a secret in argocd namespace:
 In this environment we exposed Argo CD server externally using node port.
 2. Get ArgoCD admin password: ArgoCD generates a default admin password on install. Retrieve it with:
 
-`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo`{{exec}}
+`kubectl  get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo`{{exec}}
 
 Copy this password for later. The username is admin.
 
