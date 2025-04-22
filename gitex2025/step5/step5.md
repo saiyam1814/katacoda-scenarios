@@ -12,16 +12,35 @@ You should see an Ingress in the new application namespace (created by ArgoCD). 
 ssh node01
 `ssh node01`{{exec}}
 export the host to be used
-`export INGRESS_HOST=$(sed 's/PORT/30525/g' /etc/killercoda/host)`{{exec}}
-```
-INGRESS_NS=$(kubectl get ingress -A -o jsonpath='{.items[0].metadata.namespace}')
-INGRESS_NAME=$(kubectl get ingress -A -o jsonpath='{.items[0].metadata.name}')
-HOST_DOMAIN="[[HOST_SUBDOMAIN]]-30080-[[KATACODA_HOST]].environments.katacoda.com"
-kubectl -n $INGRESS_NS patch ingress $INGRESS_NAME --type=json -p "[{\"op\": \"replace\", \"path\": \"/spec/rules/0/host\", \"value\": \"${HOST_DOMAIN}\"}]"
+`export RAW_URL=$(sed 's/PORT/30080/g' /etc/killercoda/host)`{{exec}}
+`export INGRESS_HOST=${RAW_URL#*://}`{{exec}}
+
+Example output
 
 ```
-
-This sets the Ingress host to the correct subdomain for port 30080. Now, any requests to http://$HOST_DOMAIN will be routed to your application service inside the cluster.
+echo $INGRESS_HOST
+37e083f13c97-10-244-4-10-30080.papa.r.killercoda.com
+```
+```
+cat <<EOF | kubectl apply -f -
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gitex-app
+spec:
+  rules:
+  - host: "${INGRESS_HOST}"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: gitex-service      # adjust to your Service name
+            port:
+              number: 80
+EOF
+```
 
 3. Note on ArgoCD sync: This manual patch changes the live cluster state. ArgoCD will show the application as OutOfSync because the cluster's Ingress host no longer matches what’s in Git. In a real scenario, you would update the Git manifest and let ArgoCD sync it. For this workshop, patching directly is fine to enable external access.
 Your application’s Ingress is now configured with the correct host. In the next step, you will access the application through this Ingress URL to verify everything is working.
