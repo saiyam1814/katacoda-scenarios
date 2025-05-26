@@ -1,1 +1,1 @@
-curl -sL https://gist.githubusercontent.com/saiyam1814/c641cb0449396d21cc72e9b1d4b0de11/raw/0a82d902c16fe60a3dc31470028a99f57e36bcca/kubesolo.sh | bash
+curl -sL https://gist.githubusercontent.com/saiyam1814/c641cb0449396d21cc72e9b1d4b0de11/raw/0cd07b9ecec50cd434c8123b3cb914fb6ffb97dc/kubesolo.sh | bash
