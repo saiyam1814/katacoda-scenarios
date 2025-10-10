@@ -3,35 +3,35 @@
 # Verify step 4 - LLM model testing
 echo "🔍 Verifying LLM model functionality..."
 
-# Check if vLLM API is responding
-if curl -s http://localhost:8000/health > /dev/null 2>&1; then
-    echo "✅ vLLM API is responding"
+# Check if Ollama pod is running
+if kubectl get pods -l app=ollama-server -n llm-workshop | grep -q "Running"; then
+    echo "✅ Ollama pod is running"
 else
-    echo "❌ vLLM API is not responding"
+    echo "❌ Ollama pod is not running"
     exit 1
 fi
 
-# Check if models endpoint works
-if curl -s http://localhost:8000/v1/models | jq -e '.data' > /dev/null 2>&1; then
-    echo "✅ Models endpoint is working"
+# Check if TinyLlama model is available
+if kubectl exec deployment/ollama-server -n llm-workshop -- ollama list 2>/dev/null | grep -q "tinyllama"; then
+    echo "✅ TinyLlama model is available"
 else
-    echo "❌ Models endpoint is not working"
+    echo "❌ TinyLlama model not found"
     exit 1
 fi
 
-# Test a simple completion
-response=$(curl -s -X POST http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Hello",
-    "max_tokens": 10
-  }')
-
-if echo "$response" | jq -e '.choices[0].text' > /dev/null 2>&1; then
-    echo "✅ Model completion is working"
+# Check if test script exists
+if [ -f "/root/workspace/llm-workshop/test-ollama.sh" ]; then
+    echo "✅ Test script created"
 else
-    echo "❌ Model completion is not working"
+    echo "❌ Test script not found"
+    exit 1
+fi
+
+# Check if test script is executable
+if [ -x "/root/workspace/llm-workshop/test-ollama.sh" ]; then
+    echo "✅ Test script is executable"
+else
+    echo "❌ Test script is not executable"
     exit 1
 fi
 

@@ -107,11 +107,11 @@ kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama pull tinylla
 
 ## Test Ollama API
 
-Let's test the Ollama API:
+Let's test the Ollama API with a non-interactive approach:
 
 ```bash
-# Test a simple completion
-kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run tinyllama "Hello! Can you tell me about Kubernetes?"
+# Test a simple completion (non-interactive)
+echo "Hello! Can you tell me about Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 ```{{exec}}
 
 ## Ollama Deployment Summary

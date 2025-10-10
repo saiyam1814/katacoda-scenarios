@@ -16,14 +16,14 @@ We're using **TinyLlama**, which is:
 Let's test our model with various prompts:
 
 ```bash
-# Test 1: Basic question
-kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run tinyllama "What is Kubernetes?"
+# Test 1: Basic question (non-interactive)
+echo "What is Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 
-# Test 2: Technical question
-kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run tinyllama "Explain container orchestration in simple terms"
+# Test 2: Technical question (non-interactive)
+echo "Explain container orchestration in simple terms" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 
-# Test 3: Creative task
-kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run tinyllama "Write a short poem about cloud computing"
+# Test 3: Creative task (non-interactive)
+echo "Write a short poem about cloud computing" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 ```{{exec}}
 
 ## Create a Simple Test Script
@@ -39,7 +39,7 @@ echo "Available models:"
 kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama list
 
 echo -e "\nTesting model inference:"
-kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run tinyllama "What is Kubernetes?"
+echo "What is Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 EOF
 
 chmod +x /root/workspace/llm-workshop/test-ollama.sh
