@@ -99,10 +99,10 @@ kubectl port-forward svc/ollama-service 11434:11434 -n llm-workshop &
 
 ## Install a Lightweight Model
 
-Let's install a lightweight model suitable for our CPU environment:
+Let's install a very lightweight model suitable for our memory-constrained environment:
 
 ```bash
-kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama pull llama3.2:1b
+kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama pull tinyllama
 ```{{exec}}
 
 ## Test Ollama API
@@ -111,7 +111,7 @@ Let's test the Ollama API:
 
 ```bash
 # Test a simple completion
-kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run llama3.2:1b "Hello! Can you tell me about Kubernetes?"
+kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run tinyllama "Hello! Can you tell me about Kubernetes?"
 ```{{exec}}
 
 ## Ollama Deployment Summary
@@ -119,7 +119,7 @@ kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run llama3.2
 We've successfully:
 - ✅ Deployed Ollama on Kubernetes with minimal resource requirements
 - ✅ Created a service to expose Ollama
-- ✅ Installed a lightweight 1B parameter model
+- ✅ Installed a lightweight TinyLlama model (1.1B parameters, ~637MB)
 - ✅ Tested the Ollama API
 - ✅ Set up port forwarding for easy access
 
