@@ -23,9 +23,59 @@ Kubernetes provides several ways to scale LLM workloads:
 
 ## Deploy HPA
 
-Let's deploy the Horizontal Pod Autoscaler using the provided manifest:
+Let's create and deploy the Horizontal Pod Autoscaler:
 
 ```bash
+# Create the HPA manifest
+cat <<EOF > /home/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: vllm-hpa
+  namespace: llm-workshop
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: vllm-server
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: rag-app-hpa
+  namespace: llm-workshop
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: rag-app
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
+EOF
+
+# Deploy HPA
 kubectl apply -f /home/hpa.yaml
 ```{{exec}}
 

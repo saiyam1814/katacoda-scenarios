@@ -49,35 +49,6 @@
         "verify": "step8/verify.sh"
       }
     ],
-    "assets": {
-      "host01": [
-        {
-          "file": "vllm-deployment.yaml",
-          "target": "/home",
-          "chmod": "+w"
-        },
-        {
-          "file": "rag-app-deployment.yaml",
-          "target": "/home",
-          "chmod": "+w"
-        },
-        {
-          "file": "hpa.yaml",
-          "target": "/home",
-          "chmod": "+w"
-        },
-        {
-          "file": "setup-workshop.sh",
-          "target": "/home",
-          "chmod": "+x"
-        },
-        {
-          "file": "cleanup.sh",
-          "target": "/home",
-          "chmod": "+x"
-        }
-      ]
-    },
     "finish": {
       "text": "finish.md"
     }

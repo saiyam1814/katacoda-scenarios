@@ -60,9 +60,92 @@ EOF
 
 ## Deploy RAG Application
 
-Let's deploy the RAG application using the provided manifest:
+Let's create and deploy the RAG application:
 
 ```bash
+# Create the RAG app deployment manifest
+cat <<EOF > /home/rag-app-deployment.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rag-documents
+  namespace: llm-workshop
+data:
+  kubernetes-basics.txt: |
+    Kubernetes Basics
+
+    Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally designed by Google and is now maintained by the Cloud Native Computing Foundation.
+
+    Key Concepts:
+    - Pods: The smallest deployable units in Kubernetes
+    - Services: Stable network endpoints for pods
+    - Deployments: Manage replica sets and rolling updates
+    - Namespaces: Virtual clusters within a physical cluster
+    - ConfigMaps: Store configuration data
+    - Secrets: Store sensitive data
+
+    Kubernetes provides features like:
+    - Automatic scaling
+    - Self-healing
+    - Service discovery
+    - Load balancing
+    - Rolling updates
+    - Resource management
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-app
+  namespace: llm-workshop
+  labels:
+    app: rag-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rag-app
+  template:
+    metadata:
+      labels:
+        app: rag-app
+    spec:
+      containers:
+      - name: rag-app
+        image: python:3.9-slim
+        ports:
+        - containerPort: 5001
+        command: ["/bin/bash"]
+        args: ["-c", "pip install flask requests && python /app/rag_app.py"]
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "200m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        volumeMounts:
+        - name: documents
+          mountPath: /app/documents
+      volumes:
+      - name: documents
+        configMap:
+          name: rag-documents
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rag-app-service
+  namespace: llm-workshop
+spec:
+  selector:
+    app: rag-app
+  ports:
+  - port: 5001
+    targetPort: 5001
+  type: ClusterIP
+EOF
+
+# Deploy RAG application
 kubectl apply -f /home/rag-app-deployment.yaml
 ```{{exec}}
 
