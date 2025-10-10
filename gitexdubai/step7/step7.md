@@ -21,9 +21,17 @@ Kubernetes provides several ways to scale LLM workloads:
 - Cost optimization
 - Multi-zone scaling
 
-## Create HPA for vLLM
+## Deploy HPA
 
-Let's create a Horizontal Pod Autoscaler for our vLLM service:
+Let's deploy the Horizontal Pod Autoscaler using the provided manifest:
+
+```bash
+kubectl apply -f /home/hpa.yaml
+```{{exec}}
+
+## Create Additional HPA for vLLM
+
+Let's also create a custom HPA for our vLLM service:
 
 ```bash
 cat <<EOF | kubectl apply -f -

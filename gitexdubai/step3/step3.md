@@ -13,9 +13,15 @@ vLLM is a high-throughput and memory-efficient inference and serving engine for 
 
 ## Deploy vLLM
 
-Let's deploy vLLM using the provided manifest:
+First, let's copy the manifest files to the home directory and then deploy vLLM:
 
 ```bash
+# Copy the manifest files to /home
+cp /tmp/repo/git/gitexdubai/vllm-deployment.yaml /home/
+cp /tmp/repo/git/gitexdubai/rag-app-deployment.yaml /home/
+cp /tmp/repo/git/gitexdubai/hpa.yaml /home/
+
+# Deploy vLLM
 kubectl apply -f /home/vllm-deployment.yaml
 ```{{exec}}
 

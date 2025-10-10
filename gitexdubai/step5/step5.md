@@ -58,9 +58,23 @@ Kubernetes provides features like:
 EOF
 ```
 
+## Deploy RAG Application
+
+Let's deploy the RAG application using the provided manifest:
+
+```bash
+kubectl apply -f /home/rag-app-deployment.yaml
+```{{exec}}
+
+## Wait for RAG App to be Ready
+
+```bash
+kubectl wait --for=condition=ready pod -l app=rag-app -n llm-workshop --timeout=120s
+```{{exec}}
+
 ## Create a Simple RAG Application
 
-Let's create a basic RAG application:
+Let's also create a basic RAG application for testing:
 
 ```bash
 cat <<'EOF' > /root/workspace/llm-workshop/rag-app/simple-rag.py
