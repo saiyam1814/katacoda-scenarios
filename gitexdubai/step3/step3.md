@@ -1,116 +1,88 @@
-# Deploying vLLM on Kubernetes
+# Deploying Ollama on Kubernetes
 
-Now let's deploy vLLM on our Kubernetes cluster. vLLM is perfect for our CPU-based environment as it's specifically optimized for high-performance LLM inference.
+Now let's deploy Ollama on our Kubernetes cluster. Ollama is perfect for our CPU-based environment as it's lightweight and works reliably without special instruction sets.
 
-## Understanding vLLM
+## Understanding Ollama
 
-vLLM is a high-throughput and memory-efficient inference and serving engine for LLMs. It:
-- **High Performance**: Optimized for both GPU and CPU inference
-- **Memory Efficient**: Advanced memory management and caching
-- **OpenAI Compatible**: Drop-in replacement for OpenAI API
-- **CPU Optimized**: Excellent support for CPU-based inference
-- **Production Ready**: Used by many companies in production
+Ollama is a tool that makes it easy to run large language models locally. It:
+- **Lightweight**: Works on any CPU without special instruction sets
+- **Easy to Use**: Simple command-line interface
+- **Model Variety**: Supports many open-source models
+- **Local First**: Runs models locally without external dependencies
+- **CPU Optimized**: Designed to work well on CPU-only environments
 
-## Deploy vLLM
+## Deploy Ollama
 
-Let's create the vLLM deployment manifest and deploy it:
+Let's create the Ollama deployment manifest and deploy it:
 
 ```bash
-# Create the vLLM deployment manifest
-cat <<EOF > /home/vllm-deployment.yaml
+# Create the Ollama deployment manifest
+cat <<EOF > /home/ollama-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vllm-server
+  name: ollama-server
   namespace: llm-workshop
   labels:
-    app: vllm-server
+    app: ollama-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vllm-server
+      app: ollama-server
   template:
     metadata:
       labels:
-        app: vllm-server
+        app: ollama-server
     spec:
       containers:
-      - name: vllm-server
-        image: public.ecr.aws/q9t5s3a7/vllm-cpu-release-repo:v0.10.2
+      - name: ollama-server
+        image: ollama/ollama:latest
         ports:
-        - containerPort: 8000
-        env:
-        - name: VLLM_CPU_KVCACHE_SPACE
-          value: "2"
-        - name: VLLM_CPU_OMP_THREADS_BIND
-          value: "auto"
-        - name: VLLM_CPU_NUM_OF_RESERVED_CPU
-          value: "1"
-        command: ["python", "-m", "vllm.entrypoints.openai.api_server"]
-        args: [
-          "--model", "facebook/opt-125m",
-          "--dtype", "bfloat16",
-          "--host", "0.0.0.0",
-          "--port", "8000",
-          "--max-num-seqs", "32",
-          "--max-num-batched-tokens", "2048"
-        ]
+        - containerPort: 11434
         resources:
           requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
             memory: "2Gi"
             cpu: "1000m"
-          limits:
-            memory: "4Gi"
-            cpu: "2000m"
-        securityContext:
-          seccompProfile:
-            type: Unconfined
-          capabilities:
-            add:
-            - SYS_NICE
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8000
-          initialDelaySeconds: 60
-          periodSeconds: 30
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8000
-          initialDelaySeconds: 30
-          periodSeconds: 10
+        volumeMounts:
+        - name: ollama-data
+          mountPath: /root/.ollama
+      volumes:
+      - name: ollama-data
+        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: vllm-service
+  name: ollama-service
   namespace: llm-workshop
 spec:
   selector:
-    app: vllm-server
+    app: ollama-server
   ports:
-  - port: 8000
-    targetPort: 8000
+  - port: 11434
+    targetPort: 11434
   type: ClusterIP
 EOF
 
-# Deploy vLLM
-kubectl apply -f /home/vllm-deployment.yaml
+# Deploy Ollama
+kubectl apply -f /home/ollama-deployment.yaml
 ```{{exec}}
 
 ## Wait for Deployment
 
-Let's wait for the vLLM pod to be ready:
+Let's wait for the Ollama pod to be ready:
 
 ```bash
-kubectl wait --for=condition=ready pod -l app=vllm-server -n llm-workshop --timeout=300s
+kubectl wait --for=condition=ready pod -l app=ollama-server -n llm-workshop --timeout=300s
 ```{{exec}}
 
-## Verify vLLM is Running
+## Verify Ollama is Running
 
-Check that vLLM is running correctly:
+Check that Ollama is running correctly:
 
 ```bash
 kubectl get pods -n llm-workshop
@@ -122,43 +94,39 @@ kubectl get svc -n llm-workshop
 For easier access, let's create a port forward:
 
 ```bash
-kubectl port-forward svc/vllm-service 8000:8000 -n llm-workshop &
+kubectl port-forward svc/ollama-service 11434:11434 -n llm-workshop &
 ```{{exec}}
 
-## Test vLLM API
+## Install a Lightweight Model
 
-Let's test the vLLM API (OpenAI compatible):
+Let's install a lightweight model suitable for our CPU environment:
 
 ```bash
-# Test the health endpoint
-curl http://localhost:8000/health
+kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama pull llama3.2:1b
+```{{exec}}
 
-# Test the models endpoint
-curl http://localhost:8000/v1/models
+## Test Ollama API
 
+Let's test the Ollama API:
+
+```bash
 # Test a simple completion
-curl -X POST http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Hello! Can you tell me about Kubernetes?",
-    "max_tokens": 100
-  }'
-```
+kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run llama3.2:1b "Hello! Can you tell me about Kubernetes?"
+```{{exec}}
 
-## vLLM Deployment Summary
+## Ollama Deployment Summary
 
 We've successfully:
-- ✅ Deployed vLLM on Kubernetes with CPU optimization
-- ✅ Created a service to expose vLLM
-- ✅ Configured vLLM for CPU inference with proper settings
-- ✅ Tested the OpenAI-compatible API
+- ✅ Deployed Ollama on Kubernetes with minimal resource requirements
+- ✅ Created a service to expose Ollama
+- ✅ Installed a lightweight 1B parameter model
+- ✅ Tested the Ollama API
 - ✅ Set up port forwarding for easy access
 
 ## What's Next?
 
-In the next step, we'll explore more advanced features of our LLM deployment and create a simple web interface!
+In the next step, we'll create a simple web interface to interact with our Ollama model!
 
 ---
 
-**vLLM running?** Let's build something amazing! 🚀
+**Ollama running?** Let's build something amazing! 🚀

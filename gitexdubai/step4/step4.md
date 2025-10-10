@@ -1,15 +1,15 @@
 # Running a Lightweight LLM Model
 
-Now let's explore advanced features of our LLM deployment and create a simple web interface for easier interaction.
+Now let's explore our Ollama deployment and create a simple web interface for easier interaction.
 
 ## Understanding Our Model
 
-We're using **Facebook OPT-125M**, which is:
-- **Lightweight**: Perfect for CPU-based environments (125M parameters)
-- **Fast**: Quick inference times with vLLM optimization
+We're using **Meta Llama 3.2 1B**, which is:
+- **Lightweight**: Perfect for CPU-based environments (1B parameters)
+- **Fast**: Quick inference times with Ollama optimization
 - **Capable**: Good performance for many tasks
 - **Open Source**: Free to use and modify
-- **vLLM Optimized**: Takes full advantage of vLLM's CPU optimizations
+- **Ollama Optimized**: Takes full advantage of Ollama's CPU optimizations
 
 ## Test the Model
 
@@ -17,32 +17,14 @@ Let's test our model with various prompts:
 
 ```bash
 # Test 1: Basic question
-curl -X POST http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "What is Kubernetes?",
-    "max_tokens": 50
-  }'
+kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run llama3.2:1b "What is Kubernetes?"
 
 # Test 2: Technical question
-curl -X POST http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Explain container orchestration in simple terms",
-    "max_tokens": 50
-  }'
+kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run llama3.2:1b "Explain container orchestration in simple terms"
 
 # Test 3: Creative task
-curl -X POST http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Write a short poem about cloud computing",
-    "max_tokens": 50
-  }'
-```
+kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama run llama3.2:1b "Write a short poem about cloud computing"
+```{{exec}}
 
 ## Create a Simple Test Script
 
