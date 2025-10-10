@@ -11,123 +11,133 @@ vcluster (Virtual Cluster) provides:
 - **Security**: Strong workload isolation
 - **Simplicity**: Teams see a standard Kubernetes cluster
 
-## Create Team A vcluster
+## Switch to Default Namespace and Clean Up
 
-Let's create a virtual cluster for Team A:
+First, let's switch back to the default namespace and clean up resources:
 
 ```bash
-# Create vcluster for Team A
-vcluster create team-a --namespace llm-workshop --create-namespace --kubernetes-version v1.28.0 --resource-quota="requests.cpu=1,requests.memory=1Gi,limits.cpu=2,limits.memory=2Gi"
+# Switch to default namespace
+kubectl config set-context --current --namespace=default
+
+# Delete the workshop namespace to free resources
+kubectl delete namespace llm-workshop
+```{{exec}}
+
+## Create a Simple vcluster
+
+Let's create a single vcluster for our workshop:
+
+```bash
+# Create vcluster for the workshop
+vcluster create workshop-cluster --namespace default --create-namespace --kubernetes-version v1.28.0
 
 # Wait for vcluster to be ready
-kubectl wait --for=condition=ready pod -l app=vcluster -n llm-workshop --timeout=120s
-```
+kubectl wait --for=condition=ready pod -l app=vcluster -n default --timeout=120s
+```{{exec}}
 
-## Connect to Team A vcluster
+## Connect to Workshop vcluster
 
 ```bash
-# Get kubeconfig for Team A vcluster
-vcluster connect team-a --namespace llm-workshop --kube-config /root/.kube/config-team-a
+# Get kubeconfig for workshop vcluster
+vcluster connect workshop-cluster --namespace default --kube-config /root/.kube/config-workshop
 
-# Set context for Team A
-export KUBECONFIG=/root/.kube/config-team-a
-kubectl config use-context team-a
+# Switch to workshop context
+export KUBECONFIG=/root/.kube/config-workshop
+kubectl config use-context workshop-cluster
 
-# Verify we're connected to Team A vcluster
+# Verify we're connected to workshop vcluster
 kubectl get nodes
 kubectl get pods --all-namespaces
-```
+```{{exec}}
 
-## Deploy Ollama in Team A vcluster
+## Deploy Ollama in vcluster
+
+Now let's deploy Ollama in our virtual cluster:
 
 ```bash
-# Create namespace for Team A
-kubectl create namespace team-a-llm
+# Create namespace for our LLM workload
+kubectl create namespace llm-workshop
 
-# Deploy a simple LLM service in Team A vcluster
+# Deploy Ollama in the vcluster
 cat <<EOF | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: llm-service-team-a
-  namespace: team-a-llm
+  name: ollama-server
+  namespace: llm-workshop
   labels:
-    app: llm-service-team-a
+    app: ollama-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: llm-service-team-a
+      app: ollama-server
   template:
     metadata:
       labels:
-        app: llm-service-team-a
+        app: ollama-server
     spec:
       containers:
-      - name: llm-service
-        image: python:3.9-slim
+      - name: ollama-server
+        image: ollama/ollama:latest
         ports:
-        - containerPort: 8000
-        command: ["/bin/bash"]
-        args: ["-c", "pip install flask requests && python /app/llm_service.py"]
+        - containerPort: 11434
         resources:
           requests:
-            memory: "256Mi"
-            cpu: "100m"
+            memory: "1Gi"
+            cpu: "500m"
           limits:
-            memory: "512Mi"
-            cpu: "200m"
+            memory: "2Gi"
+            cpu: "1000m"
         volumeMounts:
-        - name: app-code
-          mountPath: /app
+        - name: ollama-data
+          mountPath: /root/.ollama
       volumes:
-      - name: app-code
-        configMap:
-          name: llm-service-code
+      - name: ollama-data
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ollama-service
+  namespace: llm-workshop
+spec:
+  selector:
+    app: ollama-server
+  ports:
+  - port: 11434
+    targetPort: 11434
+  type: ClusterIP
 EOF
-```
+```{{exec}}
 
-## Create Team B vcluster
-
-Now let's create a virtual cluster for Team B:
+## Install TinyLlama in vcluster
 
 ```bash
-# Switch back to host cluster
-export KUBECONFIG=/root/.kube/config
-kubectl config use-context kubernetes-admin@kubernetes
+# Wait for Ollama to be ready
+kubectl wait --for=condition=ready pod -l app=ollama-server -n llm-workshop --timeout=300s
 
-# Create vcluster for Team B
-vcluster create team-b --namespace llm-workshop --create-namespace --kubernetes-version v1.28.0 --resource-quota="requests.cpu=1,requests.memory=1Gi,limits.cpu=2,limits.memory=2Gi"
+# Install TinyLlama model
+kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama pull tinyllama
+```{{exec}}
 
-# Wait for vcluster to be ready
-kubectl wait --for=condition=ready pod -l app=vcluster -n llm-workshop --timeout=120s
-```
-
-## Test Multi-tenancy
-
-Let's verify that both teams have isolated environments:
+## Test the vcluster Setup
 
 ```bash
-# Check vclusters
-kubectl get vclusters -n llm-workshop
+# Test the model in vcluster
+echo "What is Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 
-# Check Team A resources
-export KUBECONFIG=/root/.kube/config-team-a
-kubectl get pods --all-namespaces
+# Check resource usage
+kubectl top pods -n llm-workshop
+```{{exec}}
 
-# Check Team B resources
-export KUBECONFIG=/root/.kube/config-team-b
-kubectl get pods --all-namespaces
-```
+## vcluster Summary
 
-## Multi-tenancy Summary
-
-We've successfully implemented:
-- ✅ Two isolated virtual clusters using vcluster
-- ✅ Team A with LLM service
-- ✅ Team B with separate workload
-- ✅ Resource quotas and isolation
-- ✅ Independent team workflows
+We've successfully:
+- ✅ Created a virtual cluster using vcluster
+- ✅ Deployed Ollama with TinyLlama in the vcluster
+- ✅ Demonstrated multi-tenancy isolation
+- ✅ Tested the setup works correctly
 
 ## What's Next?
 
@@ -135,4 +145,4 @@ In the next step, we'll explore scaling and optimization strategies for our LLM 
 
 ---
 
-**Multi-tenancy working?** Let's scale and optimize! 🚀
+**vcluster working?** Let's scale it up! 🚀

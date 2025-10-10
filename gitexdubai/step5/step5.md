@@ -191,20 +191,18 @@ def calculate_tf_idf(query, document):
     return tf_score
 
 def get_llm_response(prompt):
-    """Get response from LLM"""
-    url = "http://localhost:8000/v1/completions"
-    
-    payload = {
-        "model": "facebook/opt-125m",
-        "prompt": prompt,
-        "max_tokens": 150,
-        "temperature": 0.7
-    }
-    
+    """Get response from LLM using Ollama"""
     try:
-        response = requests.post(url, json=payload, timeout=30)
-        response.raise_for_status()
-        return response.json()["choices"][0]["text"]
+        import subprocess
+        result = subprocess.run([
+            "kubectl", "exec", "-i", "deployment/ollama-server", 
+            "-n", "llm-workshop", "--", "ollama", "run", "tinyllama"
+        ], input=prompt, text=True, capture_output=True, timeout=60)
+        
+        if result.returncode == 0:
+            return result.stdout.strip()
+        else:
+            return f"Error: {result.stderr}"
     except Exception as e:
         return f"Error: {str(e)}"
 
