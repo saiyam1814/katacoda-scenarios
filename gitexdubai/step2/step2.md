@@ -63,10 +63,10 @@ metadata:
   namespace: llm-workshop
 spec:
   hard:
-    requests.cpu: "2"
-    requests.memory: 2Gi
-    limits.cpu: "4"
-    limits.memory: 4Gi
+    requests.cpu: "4"
+    requests.memory: 6Gi
+    limits.cpu: "6"
+    limits.memory: 8Gi
     pods: "10"
 EOF
 ```

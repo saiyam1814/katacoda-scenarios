@@ -58,11 +58,11 @@ spec:
         ]
         resources:
           requests:
-            memory: "1Gi"
-            cpu: "500m"
-          limits:
             memory: "2Gi"
             cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
         securityContext:
           seccompProfile:
             type: Unconfined
