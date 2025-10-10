@@ -1,0 +1,88 @@
+{
+  "title": "Running LLM Workloads on Kubernetes - GITEX Dubai 2025",
+  "description": "Learn how to deploy and manage Large Language Models (LLMs) on Kubernetes using vLLM, build RAG applications, and implement multi-tenancy with vcluster. This workshop uses CPU-optimized models perfect for Killercoda's environment.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh",
+      "courseData": "background.sh"
+    },
+    "steps": [
+      {
+        "title": "Introduction to LLMs and Kubernetes",
+        "text": "step1/step1.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Setting up the Environment",
+        "text": "step2/step2.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Deploying vLLM on Kubernetes",
+        "text": "step3/step3.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Running a Lightweight LLM Model",
+        "text": "step4/step4.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Building a Simple RAG Application",
+        "text": "step5/step5.md",
+        "verify": "step5/verify.sh"
+      },
+      {
+        "title": "Multi-tenancy with vcluster",
+        "text": "step6/step6.md",
+        "verify": "step6/verify.sh"
+      },
+      {
+        "title": "Scaling and Optimization",
+        "text": "step7/step7.md",
+        "verify": "step7/verify.sh"
+      },
+      {
+        "title": "Cleanup and Next Steps",
+        "text": "step8/step8.md",
+        "verify": "step8/verify.sh"
+      }
+    ],
+    "assets": {
+      "host01": [
+        {
+          "file": "vllm-deployment.yaml",
+          "target": "/home",
+          "chmod": "+w"
+        },
+        {
+          "file": "rag-app-deployment.yaml",
+          "target": "/home",
+          "chmod": "+w"
+        },
+        {
+          "file": "hpa.yaml",
+          "target": "/home",
+          "chmod": "+w"
+        },
+        {
+          "file": "setup-workshop.sh",
+          "target": "/home",
+          "chmod": "+x"
+        },
+        {
+          "file": "cleanup.sh",
+          "target": "/home",
+          "chmod": "+x"
+        }
+      ]
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
