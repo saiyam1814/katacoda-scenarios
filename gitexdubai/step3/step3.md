@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
       - name: vllm-server
-        image: vllm/vllm-cpu:latest
+        image: public.ecr.aws/q9t5s3a7/vllm-cpu-release-repo:v0.10.2
         ports:
         - containerPort: 8000
         env:
