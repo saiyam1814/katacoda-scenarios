@@ -1,0 +1,370 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rag-app-code
+  namespace: llm-workshop
+data:
+  rag_app.py: |
+    #!/usr/bin/env python3
+    import os
+    import json
+    import requests
+    from flask import Flask, render_template, request, jsonify
+    import re
+    from collections import Counter
+    import math
+
+    app = Flask(__name__)
+
+    class SimpleRAG:
+        def __init__(self, documents_dir):
+            self.documents_dir = documents_dir
+            self.documents = {}
+            self.load_documents()
+        
+        def load_documents(self):
+            """Load all documents from the documents directory"""
+            for filename in os.listdir(self.documents_dir):
+                if filename.endswith('.txt'):
+                    filepath = os.path.join(self.documents_dir, filename)
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                        self.documents[filename] = content
+                        print(f"Loaded document: {filename}")
+        
+        def simple_tokenize(self, text):
+            """Simple tokenization"""
+            return re.findall(r'\b\w+\b', text.lower())
+        
+        def calculate_tf_idf(self, query, document):
+            """Calculate TF-IDF score for query against document"""
+            query_tokens = self.simple_tokenize(query)
+            doc_tokens = self.simple_tokenize(document)
+            
+            if not query_tokens or not doc_tokens:
+                return 0
+            
+            # Calculate term frequency for query terms in document
+            doc_token_count = Counter(doc_tokens)
+            query_token_count = Counter(query_tokens)
+            
+            tf_score = 0
+            for term in query_tokens:
+                if term in doc_tokens:
+                    tf = doc_token_count[term] / len(doc_tokens)
+                    tf_score += tf
+            
+            # Simple IDF calculation
+            idf_score = math.log(len(self.documents) / (1 + sum(1 for doc in self.documents.values() if any(term in doc.lower() for term in query_tokens))))
+            
+            return tf_score * idf_score
+        
+        def retrieve_relevant_docs(self, query, top_k=2):
+            """Retrieve most relevant documents for the query"""
+            scores = {}
+            for filename, content in self.documents.items():
+                score = self.calculate_tf_idf(query, content)
+                scores[filename] = score
+            
+            # Sort by score and return top_k documents
+            sorted_docs = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+            return sorted_docs[:top_k]
+        
+        def get_llm_response(self, prompt):
+            """Get response from LLM"""
+            url = "http://vllm-service.llm-workshop.svc.cluster.local:8000/v1/completions"
+            
+            payload = {
+                "model": "facebook/opt-125m",
+                "prompt": prompt,
+                "max_tokens": 150,
+                "temperature": 0.7
+            }
+            
+            try:
+                response = requests.post(url, json=payload, timeout=30)
+                response.raise_for_status()
+                return response.json()["choices"][0]["text"]
+            except Exception as e:
+                return f"Error: {str(e)}"
+        
+        def answer_question(self, question):
+            """Answer a question using RAG"""
+            # Retrieve relevant documents
+            relevant_docs = self.retrieve_relevant_docs(question)
+            
+            # Build context from relevant documents
+            context = ""
+            for filename, score in relevant_docs:
+                if score > 0:  # Only include documents with positive scores
+                    context += f"\n--- {filename} (relevance: {score:.3f}) ---\n"
+                    context += self.documents[filename]
+                    context += "\n"
+            
+            # Create prompt with context
+            prompt = f"""Based on the following context about Kubernetes, answer the question: {question}
+
+    Context:
+    {context}
+
+    Answer the question based on the provided context. If the context doesn't contain enough information, say so."""
+
+            # Get LLM response
+            response = self.get_llm_response(prompt)
+            
+            return {
+                "answer": response,
+                "relevant_docs": [{"filename": filename, "score": score} for filename, score in relevant_docs],
+                "context_used": context
+            }
+
+    # Initialize RAG system
+    rag = SimpleRAG("/app/documents")
+
+    @app.route('/')
+    def index():
+        return '''
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Kubernetes RAG Assistant</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5; }
+                .container { max-width: 900px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+                .chat-box { border: 1px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 5px; background-color: #f9f9f9; }
+                .input-group { display: flex; margin: 20px 0; }
+                input[type="text"] { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px 0 0 5px; }
+                button { padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 0 5px 5px 0; cursor: pointer; }
+                button:hover { background-color: #218838; }
+                .response { background-color: #e7f3ff; padding: 15px; border-radius: 5px; margin-top: 10px; }
+                .sources { background-color: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 0.9em; }
+                h1 { color: #333; text-align: center; }
+                .example-questions { background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; }
+                .example-questions h3 { margin-top: 0; }
+                .example-questions button { background-color: #6c757d; margin: 5px; padding: 5px 10px; border-radius: 3px; font-size: 0.9em; }
+                .example-questions button:hover { background-color: #5a6268; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>🤖 Kubernetes RAG Assistant</h1>
+                <p>Ask questions about Kubernetes and get answers based on our knowledge base!</p>
+                
+                <div class="example-questions">
+                    <h3>Try these example questions:</h3>
+                    <button onclick="askQuestion('What is a Kubernetes pod?')">What is a Kubernetes pod?</button>
+                    <button onclick="askQuestion('How do I scale applications in Kubernetes?')">How do I scale applications?</button>
+                    <button onclick="askQuestion('What are Kubernetes security best practices?')">Security best practices?</button>
+                    <button onclick="askQuestion('How does HPA work?')">How does HPA work?</button>
+                </div>
+                
+                <div class="chat-box">
+                    <h3>Ask your question:</h3>
+                    <form id="chatForm">
+                        <div class="input-group">
+                            <input type="text" id="question" placeholder="Enter your Kubernetes question..." required>
+                            <button type="submit">Ask</button>
+                        </div>
+                    </form>
+                    <div id="response" class="response" style="display: none;"></div>
+                    <div id="sources" class="sources" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <script>
+                document.getElementById('chatForm').addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const question = document.getElementById('question').value;
+                    await askQuestion(question);
+                });
+                
+                async function askQuestion(question) {
+                    document.getElementById('question').value = question;
+                    const responseDiv = document.getElementById('response');
+                    const sourcesDiv = document.getElementById('sources');
+                    
+                    responseDiv.style.display = 'block';
+                    sourcesDiv.style.display = 'block';
+                    responseDiv.innerHTML = 'Thinking...';
+                    sourcesDiv.innerHTML = '';
+                    
+                    try {
+                        const response = await fetch('/ask', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ question: question })
+                        });
+                        
+                        const data = await response.json();
+                        responseDiv.innerHTML = data.answer;
+                        
+                        if (data.relevant_docs && data.relevant_docs.length > 0) {
+                            sourcesDiv.innerHTML = '<strong>Sources used:</strong><br>' + 
+                                data.relevant_docs.map(doc => `${doc.filename} (relevance: ${doc.score.toFixed(3)})`).join('<br>');
+                        }
+                    } catch (error) {
+                        responseDiv.innerHTML = 'Error: ' + error.message;
+                    }
+                }
+            </script>
+        </body>
+        </html>
+        '''
+
+    @app.route('/ask', methods=['POST'])
+    def ask():
+        data = request.get_json()
+        question = data.get('question', '')
+        result = rag.answer_question(question)
+        return jsonify(result)
+
+    if __name__ == '__main__':
+        app.run(host='0.0.0.0', port=5001, debug=True)
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rag-documents
+  namespace: llm-workshop
+data:
+  kubernetes-basics.txt: |
+    Kubernetes Basics
+
+    Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally designed by Google and is now maintained by the Cloud Native Computing Foundation.
+
+    Key Concepts:
+    - Pods: The smallest deployable units in Kubernetes
+    - Services: Stable network endpoints for pods
+    - Deployments: Manage replica sets and rolling updates
+    - Namespaces: Virtual clusters within a physical cluster
+    - ConfigMaps: Store configuration data
+    - Secrets: Store sensitive data
+
+    Kubernetes provides features like:
+    - Automatic scaling
+    - Self-healing
+    - Service discovery
+    - Load balancing
+    - Rolling updates
+    - Resource management
+  kubernetes-security.txt: |
+    Kubernetes Security Best Practices
+
+    Security is crucial in Kubernetes environments. Here are key security practices:
+
+    1. RBAC (Role-Based Access Control)
+       - Define roles and permissions
+       - Use least privilege principle
+       - Regular access reviews
+
+    2. Network Policies
+       - Control traffic between pods
+       - Implement network segmentation
+       - Use service mesh for advanced networking
+
+    3. Pod Security
+       - Run containers as non-root
+       - Use read-only root filesystems
+       - Drop unnecessary capabilities
+
+    4. Image Security
+       - Scan images for vulnerabilities
+       - Use trusted base images
+       - Implement image signing
+
+    5. Secrets Management
+       - Use Kubernetes secrets or external secret managers
+       - Encrypt secrets at rest
+       - Rotate secrets regularly
+
+    6. Monitoring and Auditing
+       - Enable audit logging
+       - Monitor for suspicious activities
+       - Use security scanning tools
+  kubernetes-scaling.txt: |
+    Kubernetes Scaling Strategies
+
+    Kubernetes provides multiple ways to scale applications:
+
+    1. Horizontal Pod Autoscaler (HPA)
+       - Scale based on CPU/memory usage
+       - Custom metrics scaling
+       - Scheduled scaling
+
+    2. Vertical Pod Autoscaler (VPA)
+       - Adjust resource requests/limits
+       - Right-size containers
+       - Reduce resource waste
+
+    3. Cluster Autoscaler
+       - Add/remove nodes based on demand
+       - Cost optimization
+       - Multi-zone scaling
+
+    4. Manual Scaling
+       - kubectl scale command
+       - Update deployment replicas
+       - Immediate scaling
+
+    Best Practices:
+    - Set appropriate resource requests and limits
+    - Use multiple metrics for scaling decisions
+    - Test scaling behavior under load
+    - Monitor scaling events and performance
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-app
+  namespace: llm-workshop
+  labels:
+    app: rag-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rag-app
+  template:
+    metadata:
+      labels:
+        app: rag-app
+    spec:
+      containers:
+      - name: rag-app
+        image: python:3.9-slim
+        ports:
+        - containerPort: 5001
+        command: ["/bin/bash"]
+        args: ["-c", "pip install flask requests && python /app/rag_app.py"]
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "200m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        volumeMounts:
+        - name: app-code
+          mountPath: /app
+        - name: documents
+          mountPath: /app/documents
+      volumes:
+      - name: app-code
+        configMap:
+          name: rag-app-code
+      - name: documents
+        configMap:
+          name: rag-documents
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rag-app-service
+  namespace: llm-workshop
+spec:
+  selector:
+    app: rag-app
+  ports:
+  - port: 5001
+    targetPort: 5001
+  type: ClusterIP

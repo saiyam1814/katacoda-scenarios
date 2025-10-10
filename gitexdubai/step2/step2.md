@@ -9,7 +9,7 @@ First, let's verify our Kubernetes cluster is running:
 ```bash
 kubectl get nodes
 kubectl get pods --all-namespaces
-```
+```{{exec}}
 
 ## Create Workshop Namespace
 
@@ -18,7 +18,7 @@ Let's create a dedicated namespace for our workshop:
 ```bash
 kubectl create namespace llm-workshop
 kubectl config set-context --current --namespace=llm-workshop
-```
+```{{exec}}
 
 ## Install Required Tools
 

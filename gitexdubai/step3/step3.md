@@ -17,7 +17,7 @@ Let's deploy vLLM using the provided manifest:
 
 ```bash
 kubectl apply -f /home/vllm-deployment.yaml
-```
+```{{exec}}
 
 ## Wait for Deployment
 
@@ -25,7 +25,7 @@ Let's wait for the vLLM pod to be ready:
 
 ```bash
 kubectl wait --for=condition=ready pod -l app=vllm-server -n llm-workshop --timeout=300s
-```
+```{{exec}}
 
 ## Verify vLLM is Running
 
@@ -34,7 +34,7 @@ Check that vLLM is running correctly:
 ```bash
 kubectl get pods -n llm-workshop
 kubectl get svc -n llm-workshop
-```
+```{{exec}}
 
 ## Create a Port Forward
 
@@ -42,7 +42,7 @@ For easier access, let's create a port forward:
 
 ```bash
 kubectl port-forward svc/vllm-service 8000:8000 -n llm-workshop &
-```
+```{{exec}}
 
 ## Test vLLM API
 
