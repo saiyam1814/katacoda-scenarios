@@ -39,14 +39,9 @@
         "verify": "step6/verify.sh"
       },
       {
-        "title": "Scaling and Optimization",
+        "title": "Cleanup and Next Steps",
         "text": "step7/step7.md",
         "verify": "step7/verify.sh"
-      },
-      {
-        "title": "Cleanup and Next Steps",
-        "text": "step8/step8.md",
-        "verify": "step8/verify.sh"
       }
     ],
     "finish": {

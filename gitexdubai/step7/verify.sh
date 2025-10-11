@@ -1,38 +1,24 @@
 #!/bin/bash
 
-# Verify step 7 - Scaling and optimization
-echo "🔍 Verifying scaling setup..."
+# Verify step 7 - Cleanup and next steps
+echo "🔍 Verifying cleanup and next steps..."
 
-# Check if HPA exists
-if kubectl get hpa vllm-hpa -n llm-workshop > /dev/null 2>&1; then
-    echo "✅ HPA created for vLLM"
+# This is a completion step, so we just verify the workshop was successful
+echo "✅ Workshop completed successfully!"
+
+# Check if cleanup commands were run (optional)
+if [ ! -d "/root/workspace/llm-workshop" ]; then
+    echo "✅ Workshop files cleaned up"
 else
-    echo "❌ HPA not found"
-    exit 1
+    echo "⚠️  Workshop files still exist (optional cleanup)"
 fi
 
-# Check if load test script exists
-if [ -f "/root/workspace/llm-workshop/load-test.sh" ]; then
-    echo "✅ Load test script created"
+# Check if vcluster was deleted
+if ! kubectl get pods -l app=vcluster -n default > /dev/null 2>&1; then
+    echo "✅ vcluster cleaned up"
 else
-    echo "❌ Load test script not found"
-    exit 1
-fi
-
-# Check if monitor script exists
-if [ -f "/root/workspace/llm-workshop/monitor.sh" ]; then
-    echo "✅ Monitor script created"
-else
-    echo "❌ Monitor script not found"
-    exit 1
-fi
-
-# Check if scripts are executable
-if [ -x "/root/workspace/llm-workshop/load-test.sh" ] && [ -x "/root/workspace/llm-workshop/monitor.sh" ]; then
-    echo "✅ Scripts are executable"
-else
-    echo "❌ Scripts are not executable"
-    exit 1
+    echo "⚠️  vcluster still exists (may be in cleanup process)"
 fi
 
 echo "✅ Step 7 verification completed successfully!"
+echo "🎉 Congratulations on completing the LLM on Kubernetes workshop!"
