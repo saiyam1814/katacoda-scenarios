@@ -11,7 +11,9 @@ vLLM is a high-performance LLM inference and serving engine that:
 - **Production Ready**: Used by llm-d and other production systems
 - **Flexible**: Supports various model sizes and data types (FP32, FP16, BF16)
 
-**Note**: llm-d is a Kubernetes-native framework built on top of vLLM. For this workshop, we'll use vLLM directly with CPU mode, which is what llm-d uses under the hood, but with resource constraints suitable for our environment.
+**Note**: llm-d is a Kubernetes-native framework built on top of vLLM. For this workshop, we'll use vLLM directly with CPU mode, which is what llm-d uses under the hood.
+
+**Important**: The official `vllm/vllm-cpu` image doesn't exist on Docker Hub. We use the community-maintained `ghcr.io/stackhpc/vllm-cpu` image from StackHPC, which provides a working vLLM CPU build.
 
 ## Deploy vLLM with CPU Mode
 
@@ -39,7 +41,8 @@ spec:
     spec:
       containers:
       - name: vllm-server
-        image: vllm/vllm-cpu:latest
+        # Using StackHPC's vLLM CPU image (official vllm/vllm-cpu doesn't exist)
+        image: ghcr.io/stackhpc/vllm-cpu:v0.10.2
         ports:
         - containerPort: 8000
         env:
@@ -47,41 +50,33 @@ spec:
           value: "2"
         - name: VLLM_CPU_OMP_THREADS_BIND
           value: "auto"
-        - name: VLLM_CPU_NUM_OF_RESERVED_CPU
-          value: "1"
         command: ["python", "-m", "vllm.entrypoints.openai.api_server"]
         args: [
           "--model", "facebook/opt-125m",
-          "--dtype", "bfloat16",
+          "--dtype", "float32",
           "--host", "0.0.0.0",
           "--port", "8000",
-          "--max-num-seqs", "32",
-          "--max-num-batched-tokens", "2048"
+          "--max-num-seqs", "8",
+          "--max-model-len", "512"
         ]
         resources:
           requests:
-            memory: "1Gi"
-            cpu: "500m"
-          limits:
             memory: "2Gi"
             cpu: "1000m"
-        securityContext:
-          seccompProfile:
-            type: Unconfined
-          capabilities:
-            add:
-            - SYS_NICE
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
         livenessProbe:
           httpGet:
             path: /health
             port: 8000
-          initialDelaySeconds: 60
+          initialDelaySeconds: 120
           periodSeconds: 30
         readinessProbe:
           httpGet:
             path: /health
             port: 8000
-          initialDelaySeconds: 30
+          initialDelaySeconds: 60
           periodSeconds: 10
 ---
 apiVersion: v1
