@@ -1,0 +1,49 @@
+{
+  "title": "LLM on Kubernetes Workshop",
+  "description": "Learn how to deploy and manage Large Language Models (LLMs) on Kubernetes using Ollama. Build a RAG application and understand how to run AI workloads in a cloud-native environment. Perfect for a 60-minute hands-on workshop.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh",
+      "courseData": "background.sh"
+    },
+    "steps": [
+      {
+        "title": "Introduction and Kubernetes Cluster Setup",
+        "text": "step1/step1.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Deploy Ollama and Verify CPU Operation",
+        "text": "step2/step2.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Run the Smallest LLM Model",
+        "text": "step3/step3.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Expose the LLM Service",
+        "text": "step4/step4.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Interact with the LLM",
+        "text": "step5/step5.md",
+        "verify": "step5/verify.sh"
+      },
+      {
+        "title": "Build a RAG Application",
+        "text": "step6/step6.md",
+        "verify": "step6/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}

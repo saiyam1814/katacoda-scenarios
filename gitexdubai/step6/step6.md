@@ -29,7 +29,7 @@ Let's create a single vcluster for our workshop:
 
 ```bash
 # Create vcluster for the workshop
-vcluster create workshop-cluster --namespace default --create-namespace --kubernetes-version v1.28.0
+vcluster create workshop-cluster --namespace default --create-namespace
 
 # Wait for vcluster to be ready
 kubectl wait --for=condition=ready pod -l app=vcluster -n default --timeout=120s
