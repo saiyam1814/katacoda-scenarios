@@ -167,12 +167,13 @@ Now let's build a **proper RAG** using:
 # Create a virtual environment for Python packages
 python3 -m venv /root/workspace/llm-workshop/rag-venv
 
-# Activate and install dependencies
-source /root/workspace/llm-workshop/rag-venv/bin/activate
-pip install chromadb sentence-transformers --quiet
+# Install dependencies using the venv pip directly (avoids PEP 668 issues)
+/root/workspace/llm-workshop/rag-venv/bin/pip install --upgrade pip --quiet
+/root/workspace/llm-workshop/rag-venv/bin/pip install chromadb sentence-transformers --quiet
 
 echo "✅ Vector database dependencies installed"
 echo "📍 Virtual environment: /root/workspace/llm-workshop/rag-venv"
+echo "📍 Use: /root/workspace/llm-workshop/rag-venv/bin/python to run scripts"
 ```{{exec}}
 
 ### Create Vector RAG Application
@@ -309,36 +310,29 @@ echo "✅ Vector RAG application created"
 ## Test Vector RAG - See the Magic! ✨
 
 ```bash
-# Make sure venv is activated
-source /root/workspace/llm-workshop/rag-venv/bin/activate
-
 # Test 1: This works with SEMANTIC understanding
-python /root/workspace/llm-workshop/rag-app/vector-rag.py "What is HPA?"
+/root/workspace/llm-workshop/rag-venv/bin/python /root/workspace/llm-workshop/rag-app/vector-rag.py "What is HPA?"
 ```{{exec}}
 
 ```bash
 # Test 2: Semantic search finds related concepts!
-source /root/workspace/llm-workshop/rag-venv/bin/activate
-python /root/workspace/llm-workshop/rag-app/vector-rag.py "How do I automatically scale my application?"
+/root/workspace/llm-workshop/rag-venv/bin/python /root/workspace/llm-workshop/rag-app/vector-rag.py "How do I automatically scale my application?"
 ```{{exec}}
 
 ```bash
 # Test 3: Even vague questions work!
-source /root/workspace/llm-workshop/rag-venv/bin/activate
-python /root/workspace/llm-workshop/rag-app/vector-rag.py "How to secure my cluster?"
+/root/workspace/llm-workshop/rag-venv/bin/python /root/workspace/llm-workshop/rag-app/vector-rag.py "How to secure my cluster?"
 ```{{exec}}
 
 ## Compare: Simple RAG vs Vector RAG
 
 ```bash
-source /root/workspace/llm-workshop/rag-venv/bin/activate
-
 echo "=== SIMPLE RAG (Keyword) ==="
 /root/workspace/llm-workshop/rag-app/simple-rag.sh "auto scaling apps"
 
 echo ""
 echo "=== VECTOR RAG (Semantic) ==="
-python /root/workspace/llm-workshop/rag-app/vector-rag.py "auto scaling apps"
+/root/workspace/llm-workshop/rag-venv/bin/python /root/workspace/llm-workshop/rag-app/vector-rag.py "auto scaling apps"
 ```{{exec}}
 
 ## How Vector RAG Works
