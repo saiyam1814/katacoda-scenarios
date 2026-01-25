@@ -164,6 +164,9 @@ Now let's build a **proper RAG** using:
 ### Install Dependencies
 
 ```bash
+# Install python3-venv package (required for virtual environments)
+apt update && apt install -y python3.12-venv python3-pip
+
 # Create a virtual environment for Python packages
 python3 -m venv /root/workspace/llm-workshop/rag-venv
 
@@ -173,7 +176,6 @@ python3 -m venv /root/workspace/llm-workshop/rag-venv
 
 echo "✅ Vector database dependencies installed"
 echo "📍 Virtual environment: /root/workspace/llm-workshop/rag-venv"
-echo "📍 Use: /root/workspace/llm-workshop/rag-venv/bin/python to run scripts"
 ```{{exec}}
 
 ### Create Vector RAG Application
