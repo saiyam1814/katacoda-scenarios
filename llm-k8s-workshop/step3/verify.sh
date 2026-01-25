@@ -3,27 +3,19 @@
 # Verify step 3 - Model testing
 echo "🔍 Verifying model functionality..."
 
-# Check if vLLM pod is running
-if kubectl get pods -l app=vllm-server -n llm-workshop 2>/dev/null | grep -q "Running"; then
-    echo "✅ vLLM pod is running"
+# Check if Ollama pod is running
+if kubectl get pods -l app=ollama-server -n llm-workshop 2>/dev/null | grep -q "Running"; then
+    echo "✅ Ollama pod is running"
 else
-    echo "❌ vLLM pod is not running"
+    echo "❌ Ollama pod is not running"
     exit 1
 fi
 
-# Check if vLLM service is accessible
-VLLM_IP=$(kubectl get svc vllm-service -n llm-workshop -o jsonpath='{.spec.clusterIP}' 2>/dev/null)
-if [ -n "$VLLM_IP" ]; then
-    echo "✅ vLLM service is accessible"
-    
-    # Try to get models list
-    if curl -s http://${VLLM_IP}:8000/v1/models > /dev/null 2>&1; then
-        echo "✅ vLLM API is responding"
-    else
-        echo "⚠️  vLLM API may still be starting"
-    fi
+# Check if TinyLlama model is available
+if kubectl exec deployment/ollama-server -n llm-workshop -- ollama list 2>/dev/null | grep -q "tinyllama"; then
+    echo "✅ TinyLlama model is available"
 else
-    echo "❌ vLLM service not found"
+    echo "❌ TinyLlama model not found"
     exit 1
 fi
 

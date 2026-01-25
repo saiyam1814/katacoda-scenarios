@@ -1,6 +1,6 @@
 # Expose the LLM Service
 
-Now that we have vLLM running with OPT-125M, let's expose the service so we can interact with it from outside the cluster. We'll use port forwarding to make the service accessible.
+Now that we have Ollama running with TinyLlama, let's expose the service so we can interact with it more easily using port forwarding.
 
 ## Understanding Service Exposure
 
@@ -18,17 +18,17 @@ For this workshop, we'll use **port forwarding** for easy access.
 Let's see our current service configuration:
 
 ```bash
-kubectl get svc vllm-service -n llm-workshop
-kubectl describe svc vllm-service -n llm-workshop
+kubectl get svc ollama-service -n llm-workshop
+kubectl describe svc ollama-service -n llm-workshop
 ```{{exec}}
 
 ## Create Port Forward
 
-Let's create a port forward to access vLLM from our local machine:
+Let's create a port forward to access Ollama:
 
 ```bash
 # Start port forward in the background
-kubectl port-forward svc/vllm-service 8000:8000 -n llm-workshop &
+kubectl port-forward svc/ollama-service 11434:11434 -n llm-workshop &
 sleep 2
 
 # Verify port forward is running
@@ -37,48 +37,18 @@ ps aux | grep "kubectl port-forward" | grep -v grep
 
 ## Test Direct Access
 
-Now let's test accessing vLLM directly via the port forward using the OpenAI-compatible API:
+Now let's test accessing Ollama directly via the port forward:
 
 ```bash
-# Test vLLM health endpoint
-curl http://localhost:8000/health
+# Test Ollama API endpoint - list models
+curl http://localhost:11434/api/tags
 
-# Test models endpoint
-curl http://localhost:8000/v1/models | python3 -m json.tool || curl http://localhost:8000/v1/models
-
-# Test with a simple prompt using OpenAI-compatible API
-curl http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "What is Kubernetes?",
-    "max_tokens": 100,
-    "temperature": 0.7
-  }' | python3 -m json.tool || curl http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "What is Kubernetes?",
-    "max_tokens": 100,
-    "temperature": 0.7
-  }'
-```{{exec}}
-
-## Alternative: Use NodePort (Optional)
-
-If you want to expose the service using NodePort instead, you can update the service:
-
-```bash
-# Update service to NodePort type
-kubectl patch svc vllm-service -n llm-workshop -p '{"spec":{"type":"NodePort"}}'
-
-# Get the NodePort
-kubectl get svc vllm-service -n llm-workshop -o jsonpath='{.spec.ports[0].nodePort}'
-echo
-
-# Get node IP
-kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}'
-echo
+# Test with a simple prompt using the API
+curl http://localhost:11434/api/generate -d '{
+  "model": "tinyllama",
+  "prompt": "What is Kubernetes?",
+  "stream": false
+}'
 ```{{exec}}
 
 ## Understanding Port Forwarding
@@ -97,10 +67,10 @@ echo
 
 ## Create a Helper Script
 
-Let's create a script to easily interact with vLLM via the OpenAI-compatible API:
+Let's create a script to easily interact with Ollama via the API:
 
 ```bash
-cat <<'EOF' > /root/workspace/llm-workshop/ask-vllm.sh
+cat <<'EOF' > /root/workspace/llm-workshop/ask-ollama.sh
 #!/bin/bash
 
 if [ -z "$1" ]; then
@@ -110,38 +80,27 @@ fi
 
 QUESTION="$1"
 
-echo "🤖 Asking vLLM: $QUESTION"
-echo "=========================="
+echo "🤖 Asking Ollama: $QUESTION"
+echo "============================"
 echo
 
-curl -s http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d "{
-    \"model\": \"facebook/opt-125m\",
-    \"prompt\": \"$QUESTION\",
-    \"max_tokens\": 150,
-    \"temperature\": 0.7
-  }" | python3 -c "import sys, json; print(json.load(sys.stdin)['choices'][0]['text'])" 2>/dev/null || \
-curl -s http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d "{
-    \"model\": \"facebook/opt-125m\",
-    \"prompt\": \"$QUESTION\",
-    \"max_tokens\": 150,
-    \"temperature\": 0.7
-  }"
+curl -s http://localhost:11434/api/generate -d "{
+  \"model\": \"tinyllama\",
+  \"prompt\": \"$QUESTION\",
+  \"stream\": false
+}" | grep -o '"response":"[^"]*"' | sed 's/"response":"//;s/"$//' | sed 's/\\n/\n/g'
 
 echo
 EOF
 
-chmod +x /root/workspace/llm-workshop/ask-vllm.sh
+chmod +x /root/workspace/llm-workshop/ask-ollama.sh
 ```{{exec}}
 
 ## Test the Helper Script
 
 ```bash
 # Test the helper script
-/root/workspace/llm-workshop/ask-vllm.sh "What is container orchestration?"
+/root/workspace/llm-workshop/ask-ollama.sh "What is container orchestration?"
 ```{{exec}}
 
 ## Verify Service Accessibility
@@ -150,18 +109,17 @@ Let's verify everything is working:
 
 ```bash
 # Check if port forward is still running
-pgrep -f "kubectl port-forward.*vllm-service"
+pgrep -f "kubectl port-forward.*ollama-service"
 
 # Test connectivity
-curl -s http://localhost:8000/health
-curl -s http://localhost:8000/v1/models | python3 -m json.tool 2>/dev/null || curl -s http://localhost:8000/v1/models
+curl -s http://localhost:11434/api/tags
 ```{{exec}}
 
 ## Service Exposure Summary
 
 We've successfully:
-- ✅ Created port forwarding to access vLLM
-- ✅ Tested direct API access using OpenAI-compatible endpoints
+- ✅ Created port forwarding to access Ollama
+- ✅ Tested direct API access
 - ✅ Created helper scripts for easier interaction
 - ✅ Verified the service is accessible
 
@@ -173,11 +131,10 @@ We've successfully:
 - **Service discovery** - Find services by name
 - **Abstraction** - Hide pod details from consumers
 
-Our `vllm-service`:
+Our `ollama-service`:
 - Type: ClusterIP (internal access)
-- Port: 8000 (vLLM's default port)
-- Selector: `app=vllm-server` (routes to our vLLM pods)
-- API: OpenAI-compatible REST API
+- Port: 11434 (Ollama's default port)
+- Selector: `app=ollama-server` (routes to our Ollama pods)
 
 ## What's Next?
 

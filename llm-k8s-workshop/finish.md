@@ -7,27 +7,27 @@ You've successfully completed the **"LLM on Kubernetes Workshop"**!
 In this workshop, you've learned how to:
 
 ### 🚀 **Deploy LLMs on Kubernetes**
-- Used vLLM with CPU mode for high-performance inference (what llm-d uses)
-- Configured proper resource limits and security contexts
+- Used Ollama for lightweight CPU inference
+- Configured proper resource limits
 - Created services for internal and external access
 - Verified CPU-based operation
 
 ### 🏗️ **Build RAG Applications**
 - Understood the RAG pattern (Retrieval + Augmentation + Generation)
 - Built a simple document-based knowledge system
-- Created a web interface for easy interaction
+- Created scripts for easy interaction
 - Learned how RAG improves LLM accuracy
 
 ### ⚡ **Cloud-Native AI Workloads**
 - Deployed AI workloads in Kubernetes namespaces
-- Exposed services using port forwarding and NodePort
+- Exposed services using port forwarding
 - Monitored resource usage and performance
 - Applied production-ready configurations
 
 ## Key Takeaways
 
 - **Kubernetes is the ideal platform** for LLM workloads
-- **vLLM provides excellent CPU performance** for inference (used by llm-d in production)
+- **Ollama provides excellent CPU compatibility** for inference
 - **RAG enables accurate, context-aware responses** by combining retrieval with generation
 - **Namespace isolation** helps organize and secure workloads
 - **Proper resource management** is essential for production
@@ -59,12 +59,20 @@ RAG is a powerful pattern that combines:
 - **Commercial**: GPT-4, Claude, Gemini
 - **Specialized**: Code models, domain-specific models
 
-### 3. **Implement Advanced RAG**
+### 3. **Consider GPU Acceleration**
+- For production with modern CPUs (AVX2+), consider:
+  - **llm-d** (`ghcr.io/llm-d/llm-d-cpu`) - Kubernetes-native framework
+  - **vLLM** - High-performance inference engine
+- For GPU acceleration:
+  - NVIDIA GPUs with CUDA
+  - AMD GPUs with ROCm
+
+### 4. **Implement Advanced RAG**
 - **Vector Databases**: Pinecone, Weaviate, Qdrant
 - **Embedding Models**: OpenAI, Sentence-BERT
 - **Chunking Strategies**: Semantic, hierarchical
 
-### 4. **Add Enterprise Features**
+### 5. **Add Enterprise Features**
 - **Authentication**: OAuth, SAML, LDAP
 - **Rate Limiting**: API Gateway, Istio
 - **Audit Logging**: Compliance, security
@@ -73,9 +81,9 @@ RAG is a powerful pattern that combines:
 ## Useful Resources
 
 ### 📚 **Documentation**
-- [vLLM Documentation](https://docs.vllm.ai/)
-- [llm-d Documentation](https://llm-d.ai/docs/) - Kubernetes-native LLM framework
+- [Ollama Documentation](https://ollama.ai/docs)
 - [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [llm-d Documentation](https://llm-d.ai/docs/) - Kubernetes-native LLM framework
 - [RAG Best Practices](https://www.pinecone.io/learn/retrieval-augmented-generation/)
 
 ### 🛠️ **Tools & Frameworks**

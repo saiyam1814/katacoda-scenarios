@@ -7,7 +7,7 @@ Welcome to the **"LLM on Kubernetes Workshop"**!
 In this 60-minute hands-on workshop, you'll discover how to:
 
 - 🚀 Deploy Large Language Models (LLMs) on Kubernetes
-- 🔧 Use vLLM with CPU mode for optimized inference (what llm-d uses under the hood)
+- 🔧 Use Ollama for CPU-optimized inference
 - 🏗️ Build a Retrieval-Augmented Generation (RAG) application
 - ⚡ Understand how to run AI workloads in a cloud-native environment
 
@@ -48,16 +48,16 @@ Kubernetes provides the perfect platform for running LLM workloads because of:
 ## Workshop Environment
 
 We're using **Killercoda** with:
-- **CPU-based environment** (4GB RAM)
+- **CPU-based environment** (limited resources)
 - **Kubernetes playground** ready to use
 - **Lightweight models** optimized for CPU inference
-- **vLLM with CPU mode** - High-performance LLM inference engine (used by llm-d)
+- **Ollama** - Universal CPU-compatible LLM runtime
 
 ## Workshop Structure
 
 1. **Step 1**: Set up Kubernetes cluster and namespace
-2. **Step 2**: Deploy vLLM with CPU mode and verify it runs on CPU
-3. **Step 3**: Run the smallest model (OPT-125M)
+2. **Step 2**: Deploy Ollama and verify CPU operation
+3. **Step 3**: Pull and run the TinyLlama model
 4. **Step 4**: Expose the service for external access
 5. **Step 5**: Ask questions and interact with the model
 6. **Step 6**: Build a RAG application with document knowledge

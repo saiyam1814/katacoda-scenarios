@@ -1,50 +1,41 @@
 # Run the Smallest LLM Model
 
-Now let's test our vLLM deployment with the smallest model - OPT-125M. This model is already loaded in our deployment and is perfect for our CPU-based environment as it's lightweight and fast.
+Now let's pull and run the smallest LLM model - TinyLlama. This model is perfect for our CPU-based environment as it's lightweight and fast.
 
-## Understanding OPT-125M
+## Understanding TinyLlama
 
-**OPT-125M** (Open Pre-trained Transformer) is:
-- **Ultra Lightweight**: Only 125 million parameters (~250MB)
-- **Fast**: Quick inference times with vLLM optimization
+**TinyLlama** is:
+- **Ultra Lightweight**: Only 1.1B parameters (~637MB)
+- **Fast**: Quick inference times even on CPU
 - **Capable**: Good performance for many tasks despite small size
-- **Open Source**: Released by Meta (Facebook)
+- **Open Source**: Free to use and modify
 - **Memory Efficient**: Designed to work in low-memory environments
-- **CPU Optimized**: Works well with vLLM's CPU backend
 
-## Verify Model is Loaded
+## Pull TinyLlama Model
 
-Let's check that the model is loaded and ready:
+Let's pull the TinyLlama model into our Ollama deployment:
 
 ```bash
-# Get the service IP
-VLLM_IP=$(kubectl get svc vllm-service -n llm-workshop -o jsonpath='{.spec.clusterIP}')
+# Pull TinyLlama model (this may take a few minutes)
+kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama pull tinyllama
+```{{exec}}
 
-# List available models
-curl -s http://${VLLM_IP}:8000/v1/models | python3 -m json.tool || curl -s http://${VLLM_IP}:8000/v1/models
+## Verify Model Installation
+
+Let's check that the model is installed:
+
+```bash
+# List installed models
+kubectl exec deployment/ollama-server -n llm-workshop -- ollama list
 ```{{exec}}
 
 ## Test the Model
 
-Let's test our model with a simple prompt using the OpenAI-compatible API:
+Let's test our model with a simple prompt:
 
 ```bash
-# Test 1: Basic question
-curl -s http://${VLLM_IP}:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "What is Kubernetes?",
-    "max_tokens": 100,
-    "temperature": 0.7
-  }' | python3 -m json.tool || curl -s http://${VLLM_IP}:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "What is Kubernetes?",
-    "max_tokens": 100,
-    "temperature": 0.7
-  }'
+# Test with a basic question
+echo "What is Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 ```{{exec}}
 
 ## Run More Tests
@@ -53,42 +44,12 @@ Let's try a few more prompts to see how the model performs:
 
 ```bash
 # Test 2: Technical question
-curl -s http://${VLLM_IP}:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Explain container orchestration in simple terms",
-    "max_tokens": 100,
-    "temperature": 0.7
-  }' | python3 -c "import sys, json; print(json.load(sys.stdin)['choices'][0]['text'])" 2>/dev/null || \
-curl -s http://${VLLM_IP}:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Explain container orchestration in simple terms",
-    "max_tokens": 100,
-    "temperature": 0.7
-  }'
+echo "Explain container orchestration in simple terms" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 ```{{exec}}
 
 ```bash
 # Test 3: Creative task
-curl -s http://${VLLM_IP}:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Write a short haiku about cloud computing",
-    "max_tokens": 50,
-    "temperature": 0.8
-  }' | python3 -c "import sys, json; print(json.load(sys.stdin)['choices'][0]['text'])" 2>/dev/null || \
-curl -s http://${VLLM_IP}:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Write a short haiku about cloud computing",
-    "max_tokens": 50,
-    "temperature": 0.8
-  }'
+echo "Write a short haiku about cloud computing" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 ```{{exec}}
 
 ## Monitor Resource Usage
@@ -96,14 +57,11 @@ curl -s http://${VLLM_IP}:8000/v1/completions \
 Let's check how our resources are being used:
 
 ```bash
-# Check pod resource usage
-kubectl top pod -l app=vllm-server -n llm-workshop 2>/dev/null || kubectl describe pod -l app=vllm-server -n llm-workshop | grep -A 10 "Limits\|Requests"
-
 # Check pod status
 kubectl get pods -n llm-workshop -o wide
 
-# Check pod logs for any issues
-kubectl logs -l app=vllm-server -n llm-workshop --tail=10
+# Check pod logs
+kubectl logs -l app=ollama-server -n llm-workshop --tail=10
 ```{{exec}}
 
 ## Understanding Model Sizes
@@ -112,17 +70,16 @@ LLM models come in various sizes:
 
 | Model Size | Parameters | Memory | Use Case |
 |------------|-----------|--------|----------|
-| Tiny (OPT-125M) | 125M | ~250MB | Learning, testing, simple tasks |
-| Small | 1B-3B | 500MB-2GB | General purpose, good balance |
-| Medium | 7B-13B | 4-8GB | Better quality, more capable |
-| Large | 30B-70B+ | 16GB-40GB+ | Production, high quality |
+| Tiny (TinyLlama) | 1.1B | ~637MB | Learning, testing, simple tasks |
+| Small (Phi-2) | 2.7B | ~1.5GB | General purpose, good balance |
+| Medium (Llama 7B) | 7B | ~4GB | Better quality, more capable |
+| Large (Llama 70B) | 70B | ~40GB | Production, high quality |
 
-For this workshop, **OPT-125M** is perfect because:
+For this workshop, **TinyLlama (1.1B)** is perfect because:
 - Fits in our memory constraints
-- Fast inference on CPU with vLLM
+- Fast inference on CPU
 - Good enough for learning and demonstrations
-- Quick to load and deploy
-- Demonstrates CPU-based inference effectively
+- Quick to download and deploy
 
 ## Create a Test Script
 
@@ -132,35 +89,15 @@ Let's create a helper script for easier interaction:
 cat <<'EOF' > /root/workspace/llm-workshop/test-model.sh
 #!/bin/bash
 
-VLLM_IP=$(kubectl get svc vllm-service -n llm-workshop -o jsonpath='{.spec.clusterIP}')
-
-echo "🤖 Testing vLLM with OPT-125M Model"
-echo "===================================="
-echo
-echo "Service IP: ${VLLM_IP}"
+echo "🤖 Testing TinyLlama Model"
+echo "=========================="
 echo
 echo "Available models:"
-curl -s http://${VLLM_IP}:8000/v1/models | python3 -m json.tool 2>/dev/null || curl -s http://${VLLM_IP}:8000/v1/models
+kubectl exec deployment/ollama-server -n llm-workshop -- ollama list
 echo
 echo "Testing with question: What is Kubernetes?"
 echo "-------------------------------------------"
-curl -s http://${VLLM_IP}:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "What is Kubernetes?",
-    "max_tokens": 100,
-    "temperature": 0.7
-  }' | python3 -c "import sys, json; print(json.load(sys.stdin)['choices'][0]['text'])" 2>/dev/null || \
-curl -s http://${VLLM_IP}:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "What is Kubernetes?",
-    "max_tokens": 100,
-    "temperature": 0.7
-  }'
-echo
+echo "What is Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 EOF
 
 chmod +x /root/workspace/llm-workshop/test-model.sh
@@ -175,15 +112,14 @@ chmod +x /root/workspace/llm-workshop/test-model.sh
 ## Model Deployment Summary
 
 We've successfully:
-- ✅ Verified OPT-125M model is loaded and ready
-- ✅ Tested the model with various prompts using OpenAI-compatible API
-- ✅ Monitored resource usage
+- ✅ Pulled TinyLlama model (1.1B parameters)
+- ✅ Verified the model is available
+- ✅ Tested the model with various prompts
 - ✅ Created helper scripts for easier interaction
-- ✅ Confirmed vLLM CPU mode is working correctly
 
 ## What's Next?
 
-In the next step, we'll expose the vLLM service so we can interact with it from outside the cluster!
+In the next step, we'll expose the Ollama service so we can interact with it more easily!
 
 ---
 

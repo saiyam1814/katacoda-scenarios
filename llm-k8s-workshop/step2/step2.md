@@ -1,62 +1,51 @@
-# Deploy vLLM with CPU Mode and Verify Operation
+# Deploy Ollama and Verify CPU Operation
 
-Now let's deploy vLLM with CPU mode on our Kubernetes cluster. vLLM is a high-performance LLM inference engine that supports CPU-only inference, which is perfect for our environment. Note that llm-d uses vLLM under the hood for CPU inference.
+Now let's deploy Ollama on our Kubernetes cluster. Ollama is perfect for our environment because it works on any CPU without requiring special instruction sets like AVX2 or AVX-512.
 
-## Understanding vLLM CPU Mode
+## Understanding Ollama
 
-vLLM is a high-performance LLM inference and serving engine that:
-- **CPU Support**: Has a dedicated CPU backend for CPU-only inference
-- **High Performance**: Optimized inference engine with efficient memory management
-- **OpenAI-Compatible API**: Provides OpenAI-compatible REST API
-- **Production Ready**: Used by llm-d and other production systems
-- **Flexible**: Supports various model sizes and data types (FP32, FP16, BF16)
+Ollama is a lightweight tool for running large language models:
+- **Universal CPU Support**: Works on any CPU (no AVX2/AVX-512 required)
+- **Easy to Use**: Simple REST API and CLI
+- **Model Variety**: Supports many open-source models (Llama, Mistral, TinyLlama, etc.)
+- **Lightweight**: Optimized for resource-constrained environments
+- **Production Ready**: Used in many Kubernetes deployments
 
-**Note**: llm-d is a Kubernetes-native framework built on top of vLLM. For this workshop, we'll use the official **llm-d CPU image** (`ghcr.io/llm-d/llm-d-cpu`), which provides a production-ready vLLM CPU build optimized for Kubernetes deployments.
+**Note**: While llm-d uses vLLM (which requires AVX2+ CPUs), Ollama provides a more compatible solution for environments like Killercoda that may not have advanced CPU instruction sets.
 
-## Deploy vLLM with CPU Mode
+## Deploy Ollama
 
-Let's create the vLLM deployment manifest with CPU mode:
+Let's create the Ollama deployment manifest:
 
 ```bash
-# Create the vLLM deployment manifest with CPU mode
-cat <<EOF > /root/workspace/llm-workshop/vllm-deployment.yaml
+# Create the Ollama deployment manifest
+cat <<EOF > /root/workspace/llm-workshop/ollama-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vllm-server
+  name: ollama-server
   namespace: llm-workshop
   labels:
-    app: vllm-server
+    app: ollama-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vllm-server
+      app: ollama-server
   template:
     metadata:
       labels:
-        app: vllm-server
+        app: ollama-server
     spec:
       containers:
-      - name: llm-d-cpu
-        # Official llm-d CPU image from https://github.com/llm-d/llm-d/pkgs/container/llm-d-cpu
-        image: ghcr.io/llm-d/llm-d-cpu:latest
+      - name: ollama
+        image: ollama/ollama:latest
         ports:
-        - containerPort: 8000
+        - containerPort: 11434
         env:
-        - name: VLLM_CPU_KVCACHE_SPACE
-          value: "2"
-        - name: VLLM_CPU_OMP_THREADS_BIND
-          value: "auto"
-        command: ["python", "-m", "vllm.entrypoints.openai.api_server"]
-        args: [
-          "--model", "facebook/opt-125m",
-          "--dtype", "float32",
-          "--host", "0.0.0.0",
-          "--port", "8000",
-          "--max-num-seqs", "8",
-          "--max-model-len", "512"
-        ]
+        # Use basic CPU mode for maximum compatibility (no AVX2 required)
+        - name: OLLAMA_LLM_LIBRARY
+          value: "cpu"
         resources:
           requests:
             memory: "512Mi"
@@ -64,48 +53,42 @@ spec:
           limits:
             memory: "2Gi"
             cpu: "1000m"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8000
-          initialDelaySeconds: 120
-          periodSeconds: 30
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8000
-          initialDelaySeconds: 60
-          periodSeconds: 10
+        volumeMounts:
+        - name: ollama-data
+          mountPath: /root/.ollama
+      volumes:
+      - name: ollama-data
+        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: vllm-service
+  name: ollama-service
   namespace: llm-workshop
 spec:
   selector:
-    app: vllm-server
+    app: ollama-server
   ports:
-  - port: 8000
-    targetPort: 8000
+  - port: 11434
+    targetPort: 11434
   type: ClusterIP
 EOF
 
-# Deploy vLLM
-kubectl apply -f /root/workspace/llm-workshop/vllm-deployment.yaml
+# Deploy Ollama
+kubectl apply -f /root/workspace/llm-workshop/ollama-deployment.yaml
 ```{{exec}}
 
 ## Wait for Deployment
 
-Let's wait for the vLLM pod to be ready (this may take a few minutes as it downloads the model):
+Let's wait for the Ollama pod to be ready:
 
 ```bash
-kubectl wait --for=condition=ready pod -l app=vllm-server -n llm-workshop --timeout=600s
+kubectl wait --for=condition=ready pod -l app=ollama-server -n llm-workshop --timeout=300s
 ```{{exec}}
 
-## Verify vLLM is Running
+## Verify Ollama is Running
 
-Check that vLLM is running correctly:
+Check that Ollama is running correctly:
 
 ```bash
 kubectl get pods -n llm-workshop
@@ -114,73 +97,62 @@ kubectl get svc -n llm-workshop
 
 ## Verify CPU Operation
 
-Let's verify that vLLM is running on CPU (not GPU):
+Let's verify that Ollama is running on CPU:
 
 ```bash
-# Check the pod details to see it's using CPU
-kubectl describe pod -l app=vllm-server -n llm-workshop | grep -A 5 "Limits\|Requests"
+# Check the pod details
+kubectl describe pod -l app=ollama-server -n llm-workshop | grep -A 5 "Limits\|Requests"
 
-# Check if the pod is actually running (not waiting for GPU)
+# Check pod status
 kubectl get pods -n llm-workshop -o wide
 
-# Check pod logs to verify CPU mode
-kubectl logs -l app=vllm-server -n llm-workshop --tail=20 | grep -i cpu || echo "Checking logs..."
-
-# Verify CPU usage
-kubectl top pod -l app=vllm-server -n llm-workshop 2>/dev/null || echo "Metrics server not available"
+# Check pod logs
+kubectl logs -l app=ollama-server -n llm-workshop --tail=10
 ```{{exec}}
 
-## Test vLLM API
+## Test Ollama API
 
-Let's test that vLLM is responding:
+Let's test that Ollama is responding:
 
 ```bash
-# Check health endpoint
-curl -s http://$(kubectl get svc vllm-service -n llm-workshop -o jsonpath='{.spec.clusterIP}'):8000/health || echo "Waiting for service..."
+# Check Ollama version
+kubectl exec deployment/ollama-server -n llm-workshop -- ollama --version
 
-# List available models
-curl -s http://$(kubectl get svc vllm-service -n llm-workshop -o jsonpath='{.spec.clusterIP}'):8000/v1/models || echo "Service may still be starting..."
+# List available models (should be empty initially)
+kubectl exec deployment/ollama-server -n llm-workshop -- ollama list
 ```{{exec}}
 
-## Understanding vLLM CPU Mode vs GPU
+## Understanding CPU Modes
 
-**vLLM CPU Mode**:
-- Uses CPU for inference (no GPU required)
-- Optimized for CPU with efficient memory management
-- Supports FP32, FP16, and BF16 data types
-- Good for smaller models and learning environments
-- Lower resource requirements than full llm-d deployment
+**Ollama CPU Modes**:
+- `cpu` - Basic mode, works on ANY CPU (no AVX required)
+- `cpu_avx` - Faster, requires AVX instructions
+- `cpu_avx2` - Fastest CPU mode, requires AVX2 instructions
 
-**vLLM GPU Mode**:
-- Uses GPU for faster inference
-- Better for large models and production workloads
-- Requires GPU drivers and hardware
+We're using `OLLAMA_LLM_LIBRARY="cpu"` for maximum compatibility.
 
-**llm-d Framework**:
-- Built on top of vLLM
-- Adds Kubernetes-native features (scheduling, load balancing)
-- Production-ready with advanced features
-- Requires 64+ cores and 64GB+ RAM per replica for CPU mode
+**Why Ollama instead of vLLM/llm-d?**
+- llm-d CPU image requires AVX2 instruction sets
+- Killercoda's environment doesn't have AVX2
+- Ollama works on any CPU with its fallback mode
+- Same concepts apply: containerized LLM serving on Kubernetes
 
-For this workshop, we're using **vLLM CPU mode directly**, which:
-- Uses the same engine that llm-d uses
-- Works with our resource constraints
-- Perfect for learning and experimentation
-- Demonstrates CPU-based LLM inference
+**For production with modern CPUs**, consider:
+- **llm-d** (`ghcr.io/llm-d/llm-d-cpu`) - Kubernetes-native, requires AVX2+
+- **vLLM** - High performance, requires AVX512 for best results
 
-## vLLM Deployment Summary
+## Ollama Deployment Summary
 
 We've successfully:
-- ✅ Deployed vLLM with CPU mode on Kubernetes
-- ✅ Created a service to expose vLLM internally
-- ✅ Verified vLLM is running on CPU (not GPU)
+- ✅ Deployed Ollama on Kubernetes
+- ✅ Created a service to expose Ollama internally
+- ✅ Configured CPU-only mode for maximum compatibility
 - ✅ Confirmed the pod is ready and healthy
-- ✅ Tested the API endpoints
 
 ## What's Next?
 
-In the next step, we'll test the model and verify it's working correctly!
+In the next step, we'll pull a lightweight model and test it!
 
 ---
 
-**vLLM running on CPU?** Let's test the model! 🚀
+**Ollama running?** Let's load a model! 🚀

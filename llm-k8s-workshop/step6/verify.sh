@@ -19,41 +19,17 @@ else
     exit 1
 fi
 
-# Check if RAG app pod is running
-if kubectl get pods -l app=rag-app -n llm-workshop 2>/dev/null | grep -q "Running"; then
-    echo "✅ RAG application pod is running"
-else
-    echo "⚠️  RAG application pod may still be starting"
-fi
-
-# Check if RAG app service exists
-if kubectl get svc rag-app-service -n llm-workshop > /dev/null 2>&1; then
-    echo "✅ RAG application service created"
-else
-    echo "❌ RAG application service not found"
-    exit 1
-fi
-
-# Check if deployment file exists
-if [ -f "/root/workspace/llm-workshop/rag-app-deployment.yaml" ]; then
-    echo "✅ RAG deployment manifest created"
-else
-    echo "❌ RAG deployment manifest not found"
-    exit 1
-fi
-
-# Check if port forward is running (optional)
-if pgrep -f "kubectl port-forward.*rag-app" > /dev/null; then
-    echo "✅ RAG app port forward is active"
-    
-    # Test API access
-    if curl -s http://localhost:5001/ > /dev/null 2>&1; then
-        echo "✅ RAG application is accessible"
+# Check if RAG script exists
+if [ -f "/root/workspace/llm-workshop/rag-app/simple-rag.sh" ]; then
+    echo "✅ RAG application script created"
+    if [ -x "/root/workspace/llm-workshop/rag-app/simple-rag.sh" ]; then
+        echo "✅ RAG script is executable"
     else
-        echo "⚠️  RAG application may still be starting"
+        echo "⚠️  RAG script is not executable"
     fi
 else
-    echo "⚠️  RAG app port forward not detected (may need to be started)"
+    echo "❌ RAG application script not found"
+    exit 1
 fi
 
 echo "✅ Step 6 verification completed successfully!"

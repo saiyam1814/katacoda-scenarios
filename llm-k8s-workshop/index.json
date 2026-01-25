@@ -19,7 +19,7 @@
         "verify": "step2/verify.sh"
       },
       {
-        "title": "Run the Smallest LLM Model",
+        "title": "Pull and Run the TinyLlama Model",
         "text": "step3/step3.md",
         "verify": "step3/verify.sh"
       },

@@ -19,7 +19,7 @@ RAG (Retrieval-Augmented Generation) is a technique that combines:
 - The LLM receives: Question + Relevant Context
 
 ### 🤖 **Generation**
-- Uses an LLM (our vLLM service) to generate a response
+- Uses an LLM (our Ollama service) to generate a response
 - The LLM has access to both the question AND the relevant context
 - Produces more accurate and contextual answers
 - Reduces hallucinations by grounding answers in real documents
@@ -34,11 +34,27 @@ RAG (Retrieval-Augmented Generation) is a technique that combines:
 
 ## How Our RAG Application Works
 
-1. **User asks a question** → "What is a Kubernetes pod?"
-2. **Retrieval** → Search documents for relevant information about "pod"
-3. **Augmentation** → Combine question with retrieved context
-4. **Generation** → Send augmented prompt to vLLM
-5. **Response** → Return answer based on document knowledge
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    RAG Application Flow                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  1. User Question ──► "What is a Kubernetes pod?"           │
+│         │                                                    │
+│         ▼                                                    │
+│  2. Retrieval ──► Search documents for "pod" keywords       │
+│         │         (TF-IDF scoring)                          │
+│         ▼                                                    │
+│  3. Augmentation ──► Combine question + retrieved context   │
+│         │                                                    │
+│         ▼                                                    │
+│  4. Generation ──► Send to Ollama/TinyLlama                 │
+│         │                                                    │
+│         ▼                                                    │
+│  5. Response ──► Answer grounded in document knowledge      │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ## Create Sample Documents
 
@@ -57,8 +73,8 @@ Key Concepts:
 - Services: Stable network endpoints for pods. Services provide a way to access pods using a consistent IP address and DNS name.
 - Deployments: Manage replica sets and rolling updates. Deployments ensure a specified number of pod replicas are running.
 - Namespaces: Virtual clusters within a physical cluster. Namespaces help organize and isolate resources.
-- ConfigMaps: Store configuration data as key-value pairs. ConfigMaps can be mounted as files or environment variables.
-- Secrets: Store sensitive data like passwords and API keys. Secrets are base64 encoded and can be mounted similarly to ConfigMaps.
+- ConfigMaps: Store configuration data as key-value pairs.
+- Secrets: Store sensitive data like passwords and API keys.
 
 Kubernetes provides features like:
 - Automatic scaling based on CPU/memory usage
@@ -66,7 +82,6 @@ Kubernetes provides features like:
 - Service discovery through DNS
 - Load balancing across pod replicas
 - Rolling updates with zero downtime
-- Resource management and quotas
 EOF
 
 cat <<'EOF' > /root/workspace/llm-workshop/rag-app/documents/kubernetes-scaling.txt
@@ -77,32 +92,28 @@ Kubernetes provides multiple ways to scale applications:
 1. Horizontal Pod Autoscaler (HPA)
    - Scale based on CPU/memory usage
    - Custom metrics scaling
-   - Scheduled scaling
    - Automatically adjusts the number of pod replicas
+   - Example: kubectl autoscale deployment myapp --min=2 --max=10 --cpu-percent=50
 
 2. Vertical Pod Autoscaler (VPA)
    - Adjust resource requests/limits
-   - Right-size containers
+   - Right-size containers automatically
    - Reduce resource waste
-   - Automatically sets CPU and memory requests
 
 3. Cluster Autoscaler
    - Add/remove nodes based on demand
-   - Cost optimization
-   - Multi-zone scaling
    - Works with cloud providers
+   - Cost optimization through scaling
 
 4. Manual Scaling
    - kubectl scale command
-   - Update deployment replicas
-   - Immediate scaling
-   - kubectl scale deployment/myapp --replicas=5
+   - Update deployment replicas directly
+   - Example: kubectl scale deployment/myapp --replicas=5
 
 Best Practices:
 - Set appropriate resource requests and limits
 - Use multiple metrics for scaling decisions
 - Test scaling behavior under load
-- Monitor scaling events and performance
 EOF
 
 cat <<'EOF' > /root/workspace/llm-workshop/rag-app/documents/kubernetes-security.txt
@@ -114,514 +125,231 @@ Security is crucial in Kubernetes environments. Here are key security practices:
    - Define roles and permissions
    - Use least privilege principle
    - Regular access reviews
-   - Limit who can do what
 
 2. Network Policies
    - Control traffic between pods
    - Implement network segmentation
-   - Use service mesh for advanced networking
    - Restrict ingress and egress
 
 3. Pod Security
    - Run containers as non-root
    - Use read-only root filesystems
    - Drop unnecessary capabilities
-   - Apply security contexts
 
 4. Image Security
    - Scan images for vulnerabilities
    - Use trusted base images
    - Implement image signing
-   - Regular image updates
 
 5. Secrets Management
    - Use Kubernetes secrets or external secret managers
    - Encrypt secrets at rest
    - Rotate secrets regularly
    - Never commit secrets to git
-
-6. Monitoring and Auditing
-   - Enable audit logging
-   - Monitor for suspicious activities
-   - Use security scanning tools
-   - Regular security assessments
 EOF
+
+echo "✅ Created 3 knowledge base documents"
+ls -la /root/workspace/llm-workshop/rag-app/documents/
 ```{{exec}}
 
-## Deploy RAG Application
+## Create the RAG Application
 
-Let's create and deploy the RAG application that uses our vLLM service:
+Let's create a simple RAG application script:
 
 ```bash
-# Create the RAG app deployment manifest
-cat <<EOF > /root/workspace/llm-workshop/rag-app-deployment.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: rag-app-code
-  namespace: llm-workshop
-data:
-  rag_app.py: |
-    #!/usr/bin/env python3
-    import os
-    import json
-    import requests
-    from flask import Flask, request, jsonify
-    import re
-    from collections import Counter
-    import math
+cat <<'EOF' > /root/workspace/llm-workshop/rag-app/simple-rag.sh
+#!/bin/bash
 
-    app = Flask(__name__)
+# Simple RAG Application for Kubernetes Knowledge Base
+# Uses TF-IDF-like keyword matching and Ollama for generation
 
-    class SimpleRAG:
-        def __init__(self, documents_dir):
-            self.documents_dir = documents_dir
-            self.documents = {}
-            self.load_documents()
+DOCS_DIR="/root/workspace/llm-workshop/rag-app/documents"
+
+# Function to search documents for relevant content
+search_documents() {
+    local query="$1"
+    local best_doc=""
+    local best_score=0
+    
+    # Convert query to lowercase for matching
+    query_lower=$(echo "$query" | tr '[:upper:]' '[:lower:]')
+    
+    # Search each document
+    for doc in "$DOCS_DIR"/*.txt; do
+        if [ -f "$doc" ]; then
+            # Count keyword matches (simple TF-IDF approximation)
+            score=0
+            for word in $query_lower; do
+                if [ ${#word} -gt 3 ]; then  # Only count words > 3 chars
+                    matches=$(grep -oi "$word" "$doc" 2>/dev/null | wc -l)
+                    score=$((score + matches))
+                fi
+            done
+            
+            if [ $score -gt $best_score ]; then
+                best_score=$score
+                best_doc="$doc"
+            fi
+        fi
+    done
+    
+    if [ -n "$best_doc" ] && [ $best_score -gt 0 ]; then
+        echo "$best_doc"
+    else
+        echo ""
+    fi
+}
+
+# Main RAG function
+ask_rag() {
+    local question="$1"
+    
+    echo "🔍 Searching knowledge base..."
+    relevant_doc=$(search_documents "$question")
+    
+    if [ -n "$relevant_doc" ]; then
+        echo "📄 Found relevant document: $(basename "$relevant_doc")"
+        context=$(cat "$relevant_doc")
         
-        def load_documents(self):
-            """Load all documents from the documents directory"""
-            for filename in os.listdir(self.documents_dir):
-                if filename.endswith('.txt'):
-                    filepath = os.path.join(self.documents_dir, filename)
-                    with open(filepath, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                        self.documents[filename] = content
-                        print(f"Loaded document: {filename}")
-        
-        def simple_tokenize(self, text):
-            """Simple tokenization"""
-            return re.findall(r'\b\w+\b', text.lower())
-        
-        def calculate_tf_idf(self, query, document):
-            """Calculate TF-IDF score for query against document"""
-            query_tokens = self.simple_tokenize(query)
-            doc_tokens = self.simple_tokenize(document)
-            
-            if not query_tokens or not doc_tokens:
-                return 0
-            
-            # Calculate term frequency for query terms in document
-            doc_token_count = Counter(doc_tokens)
-            tf_score = 0
-            for term in query_tokens:
-                if term in doc_tokens:
-                    tf = doc_token_count[term] / len(doc_tokens)
-                    tf_score += tf
-            
-            # Simple IDF calculation
-            idf_score = math.log(len(self.documents) / (1 + sum(1 for doc in self.documents.values() if any(term in doc.lower() for term in query_tokens))))
-            
-            return tf_score * idf_score
-        
-        def retrieve_relevant_docs(self, query, top_k=2):
-            """Retrieve most relevant documents for the query"""
-            scores = {}
-            for filename, content in self.documents.items():
-                score = self.calculate_tf_idf(query, content)
-                scores[filename] = score
-            
-            # Sort by score and return top_k documents
-            sorted_docs = sorted(scores.items(), key=lambda x: x[1], reverse=True)
-            return sorted_docs[:top_k]
-        
-        def get_llm_response(self, prompt):
-            """Get response from vLLM using OpenAI-compatible API"""
-            url = "http://vllm-service.llm-workshop.svc.cluster.local:8000/v1/completions"
-            
-            payload = {
-                "model": "facebook/opt-125m",
-                "prompt": prompt,
-                "max_tokens": 200,
-                "temperature": 0.7
-            }
-            
-            try:
-                response = requests.post(url, json=payload, timeout=30)
-                response.raise_for_status()
-                return response.json()["choices"][0]["text"]
-            except Exception as e:
-                return f"Error: {str(e)}"
-        
-        def answer_question(self, question):
-            """Answer a question using RAG"""
-            # Retrieve relevant documents
-            relevant_docs = self.retrieve_relevant_docs(question)
-            
-            # Build context from relevant documents
-            context = ""
-            for filename, score in relevant_docs:
-                if score > 0:  # Only include documents with positive scores
-                    context += f"\n--- {filename} (relevance: {score:.3f}) ---\n"
-                    context += self.documents[filename]
-                    context += "\n"
-            
-            # Create prompt with context
-            prompt = f"""Based on the following context about Kubernetes, answer the question: {question}
+        # Create augmented prompt
+        prompt="Based on the following context about Kubernetes, answer this question: $question
 
 Context:
-{context}
+$context
 
-Answer the question based on the provided context. If the context doesn't contain enough information, say so."""
+Please provide a concise answer based on the context above."
+        
+        echo "🤖 Generating answer..."
+        echo "---"
+        echo "$prompt" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
+    else
+        echo "⚠️  No relevant documents found. Asking without context..."
+        echo "$question" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
+    fi
+}
 
-            # Get LLM response
-            response = self.get_llm_response(prompt)
-            
-            return {
-                "answer": response,
-                "relevant_docs": [{"filename": filename, "score": score} for filename, score in relevant_docs],
-                "context_used": context
-            }
+# Check if question provided
+if [ -z "$1" ]; then
+    echo "🤖 Kubernetes RAG Assistant"
+    echo "=========================="
+    echo "Usage: $0 'Your question about Kubernetes'"
+    echo ""
+    echo "Example questions:"
+    echo "  $0 'What is a Kubernetes pod?'"
+    echo "  $0 'How do I scale applications?'"
+    echo "  $0 'What are security best practices?'"
+    exit 0
+fi
 
-    # Initialize RAG system
-    rag = SimpleRAG("/app/documents")
-
-    @app.route('/')
-    def index():
-        return '''
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Kubernetes RAG Assistant</title>
-            <style>
-                body { font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5; }
-                .container { max-width: 900px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-                .chat-box { border: 1px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 5px; background-color: #f9f9f9; }
-                .input-group { display: flex; margin: 20px 0; }
-                input[type="text"] { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px 0 0 5px; }
-                button { padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 0 5px 5px 0; cursor: pointer; }
-                button:hover { background-color: #218838; }
-                .response { background-color: #e7f3ff; padding: 15px; border-radius: 5px; margin-top: 10px; }
-                .sources { background-color: #fff3cd; padding: 10px; border-radius: 5px; margin-top: 10px; font-size: 0.9em; }
-                h1 { color: #333; text-align: center; }
-                .example-questions { background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; }
-                .example-questions h3 { margin-top: 0; }
-                .example-questions button { background-color: #6c757d; margin: 5px; padding: 5px 10px; border-radius: 3px; font-size: 0.9em; }
-                .example-questions button:hover { background-color: #5a6268; }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <h1>🤖 Kubernetes RAG Assistant</h1>
-                <p>Ask questions about Kubernetes and get answers based on our knowledge base!</p>
-                
-                <div class="example-questions">
-                    <h3>Try these example questions:</h3>
-                    <button onclick="askQuestion('What is a Kubernetes pod?')">What is a Kubernetes pod?</button>
-                    <button onclick="askQuestion('How do I scale applications in Kubernetes?')">How do I scale applications?</button>
-                    <button onclick="askQuestion('What are Kubernetes security best practices?')">Security best practices?</button>
-                    <button onclick="askQuestion('How does HPA work?')">How does HPA work?</button>
-                </div>
-                
-                <div class="chat-box">
-                    <h3>Ask your question:</h3>
-                    <form id="chatForm">
-                        <div class="input-group">
-                            <input type="text" id="question" placeholder="Enter your Kubernetes question..." required>
-                            <button type="submit">Ask</button>
-                        </div>
-                    </form>
-                    <div id="response" class="response" style="display: none;"></div>
-                    <div id="sources" class="sources" style="display: none;"></div>
-                </div>
-            </div>
-            
-            <script>
-                document.getElementById('chatForm').addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    const question = document.getElementById('question').value;
-                    await askQuestion(question);
-                });
-                
-                async function askQuestion(question) {
-                    document.getElementById('question').value = question;
-                    const responseDiv = document.getElementById('response');
-                    const sourcesDiv = document.getElementById('sources');
-                    
-                    responseDiv.style.display = 'block';
-                    sourcesDiv.style.display = 'block';
-                    responseDiv.innerHTML = 'Thinking...';
-                    sourcesDiv.innerHTML = '';
-                    
-                    try {
-                        const response = await fetch('/ask', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ question: question })
-                        });
-                        
-                        const data = await response.json();
-                        responseDiv.innerHTML = data.answer;
-                        
-                        if (data.relevant_docs && data.relevant_docs.length > 0) {
-                            sourcesDiv.innerHTML = '<strong>Sources used:</strong><br>' + 
-                                data.relevant_docs.map(doc => \`\${doc.filename} (relevance: \${doc.score.toFixed(3)})\`).join('<br>');
-                        }
-                    } catch (error) {
-                        responseDiv.innerHTML = 'Error: ' + error.message;
-                    }
-                }
-            </script>
-        </body>
-        </html>
-        '''
-
-    @app.route('/ask', methods=['POST'])
-    def ask():
-        data = request.get_json()
-        question = data.get('question', '')
-        result = rag.answer_question(question)
-        return jsonify(result)
-
-    if __name__ == '__main__':
-        app.run(host='0.0.0.0', port=5001, debug=True)
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: rag-documents
-  namespace: llm-workshop
-data:
-  kubernetes-basics.txt: |
-    Kubernetes Basics
-
-    Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally designed by Google and is now maintained by the Cloud Native Computing Foundation.
-
-    Key Concepts:
-    - Pods: The smallest deployable units in Kubernetes. A pod can contain one or more containers that share storage and network resources.
-    - Services: Stable network endpoints for pods. Services provide a way to access pods using a consistent IP address and DNS name.
-    - Deployments: Manage replica sets and rolling updates. Deployments ensure a specified number of pod replicas are running.
-    - Namespaces: Virtual clusters within a physical cluster. Namespaces help organize and isolate resources.
-    - ConfigMaps: Store configuration data as key-value pairs. ConfigMaps can be mounted as files or environment variables.
-    - Secrets: Store sensitive data like passwords and API keys. Secrets are base64 encoded and can be mounted similarly to ConfigMaps.
-
-    Kubernetes provides features like:
-    - Automatic scaling based on CPU/memory usage
-    - Self-healing by restarting failed containers
-    - Service discovery through DNS
-    - Load balancing across pod replicas
-    - Rolling updates with zero downtime
-    - Resource management and quotas
-  kubernetes-scaling.txt: |
-    Kubernetes Scaling Strategies
-
-    Kubernetes provides multiple ways to scale applications:
-
-    1. Horizontal Pod Autoscaler (HPA)
-       - Scale based on CPU/memory usage
-       - Custom metrics scaling
-       - Scheduled scaling
-       - Automatically adjusts the number of pod replicas
-
-    2. Vertical Pod Autoscaler (VPA)
-       - Adjust resource requests/limits
-       - Right-size containers
-       - Reduce resource waste
-       - Automatically sets CPU and memory requests
-
-    3. Cluster Autoscaler
-       - Add/remove nodes based on demand
-       - Cost optimization
-       - Multi-zone scaling
-       - Works with cloud providers
-
-    4. Manual Scaling
-       - kubectl scale command
-       - Update deployment replicas
-       - Immediate scaling
-       - kubectl scale deployment/myapp --replicas=5
-
-    Best Practices:
-    - Set appropriate resource requests and limits
-    - Use multiple metrics for scaling decisions
-    - Test scaling behavior under load
-    - Monitor scaling events and performance
-  kubernetes-security.txt: |
-    Kubernetes Security Best Practices
-
-    Security is crucial in Kubernetes environments. Here are key security practices:
-
-    1. RBAC (Role-Based Access Control)
-       - Define roles and permissions
-       - Use least privilege principle
-       - Regular access reviews
-       - Limit who can do what
-
-    2. Network Policies
-       - Control traffic between pods
-       - Implement network segmentation
-       - Use service mesh for advanced networking
-       - Restrict ingress and egress
-
-    3. Pod Security
-       - Run containers as non-root
-       - Use read-only root filesystems
-       - Drop unnecessary capabilities
-       - Apply security contexts
-
-    4. Image Security
-       - Scan images for vulnerabilities
-       - Use trusted base images
-       - Implement image signing
-       - Regular image updates
-
-    5. Secrets Management
-       - Use Kubernetes secrets or external secret managers
-       - Encrypt secrets at rest
-       - Rotate secrets regularly
-       - Never commit secrets to git
-
-    6. Monitoring and Auditing
-       - Enable audit logging
-       - Monitor for suspicious activities
-       - Use security scanning tools
-       - Regular security assessments
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: rag-app
-  namespace: llm-workshop
-  labels:
-    app: rag-app
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: rag-app
-  template:
-    metadata:
-      labels:
-        app: rag-app
-    spec:
-      containers:
-      - name: rag-app
-        image: python:3.9-slim
-        ports:
-        - containerPort: 5001
-        command: ["/bin/bash"]
-        args: ["-c", "pip install flask requests && python /app/rag_app.py"]
-        resources:
-          requests:
-            memory: "512Mi"
-            cpu: "200m"
-          limits:
-            memory: "1Gi"
-            cpu: "500m"
-        volumeMounts:
-        - name: app-code
-          mountPath: /app
-        - name: documents
-          mountPath: /app/documents
-      volumes:
-      - name: app-code
-        configMap:
-          name: rag-app-code
-      - name: documents
-        configMap:
-          name: rag-documents
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: rag-app-service
-  namespace: llm-workshop
-spec:
-  selector:
-    app: rag-app
-  ports:
-  - port: 5001
-    targetPort: 5001
-  type: ClusterIP
+ask_rag "$1"
 EOF
 
-# Deploy RAG application
-kubectl apply -f /root/workspace/llm-workshop/rag-app-deployment.yaml
-```{{exec}}
-
-## Wait for RAG App to be Ready
-
-```bash
-kubectl wait --for=condition=ready pod -l app=rag-app -n llm-workshop --timeout=180s
-```{{exec}}
-
-## Expose RAG Application
-
-Let's create a port forward to access the RAG application:
-
-```bash
-# Start port forward for RAG app
-kubectl port-forward svc/rag-app-service 5001:5001 -n llm-workshop &
-sleep 2
-
-# Verify port forward is running
-ps aux | grep "kubectl port-forward.*rag-app" | grep -v grep
+chmod +x /root/workspace/llm-workshop/rag-app/simple-rag.sh
+echo "✅ RAG application created"
 ```{{exec}}
 
 ## Test the RAG Application
 
-Let's test the RAG application:
+Let's test our RAG application:
 
 ```bash
-# Test the RAG API
-curl -X POST http://localhost:5001/ask \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What is a Kubernetes pod?"}' | python3 -m json.tool || \
-curl -X POST http://localhost:5001/ask \
-  -H "Content-Type: application/json" \
-  -d '{"question": "What is a Kubernetes pod?"}'
+# Test 1: Question about pods (should find kubernetes-basics.txt)
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "What is a Kubernetes pod?"
 ```{{exec}}
 
-## Access the Web Interface
+```bash
+# Test 2: Question about scaling (should find kubernetes-scaling.txt)
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "How do I scale applications in Kubernetes?"
+```{{exec}}
 
-The RAG application includes a web interface! You can access it at:
+```bash
+# Test 3: Question about security (should find kubernetes-security.txt)
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "What are Kubernetes security best practices?"
+```{{exec}}
 
-```
-http://localhost:5001
-```
+## Compare RAG vs Direct Query
 
-Try asking questions like:
-- "What is a Kubernetes pod?"
-- "How do I scale applications in Kubernetes?"
-- "What are Kubernetes security best practices?"
-- "How does HPA work?"
+Let's see the difference between asking with and without RAG:
+
+```bash
+echo "=== WITHOUT RAG (Direct Question) ==="
+echo "What is HPA in Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
+
+echo ""
+echo "=== WITH RAG (Using Knowledge Base) ==="
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "What is HPA in Kubernetes?"
+```{{exec}}
 
 ## Understanding the RAG Application Architecture
 
 Our RAG application consists of:
 
-1. **Document Store** (ConfigMap)
-   - Contains Kubernetes knowledge base documents
-   - Loaded into the application at startup
+### 1. **Document Store** (Text Files)
+- Contains Kubernetes knowledge base documents
+- Easy to add, update, or remove documents
+- Located in `/root/workspace/llm-workshop/rag-app/documents/`
 
-2. **Retrieval System** (TF-IDF)
-   - Calculates relevance scores for documents
-   - Returns top-k most relevant documents
-   - Simple but effective for small document sets
+### 2. **Retrieval System** (Keyword Matching)
+- Searches documents for relevant keywords
+- Counts word frequency (simple TF-IDF)
+- Returns the most relevant document
 
-3. **Augmentation**
-   - Combines user question with retrieved context
-   - Creates a prompt that includes both question and relevant information
+### 3. **Augmentation** (Prompt Engineering)
+- Combines user question with retrieved context
+- Creates a structured prompt for the LLM
+- Instructs the model to use the provided context
 
-4. **Generation** (vLLM Service)
-   - Sends augmented prompt to vLLM
-   - Uses OpenAI-compatible API
-   - Returns answer based on context
+### 4. **Generation** (Ollama/TinyLlama)
+- Processes the augmented prompt
+- Generates answer based on context
+- Returns grounded response
 
-5. **Web Interface**
-   - Flask web application
-   - Simple HTML/CSS/JavaScript frontend
-   - Shows answer and source documents
+## Add Your Own Documents
+
+You can add your own documents to the knowledge base:
+
+```bash
+# Example: Add a document about networking
+cat <<'EOF' > /root/workspace/llm-workshop/rag-app/documents/kubernetes-networking.txt
+Kubernetes Networking
+
+Kubernetes networking enables communication between pods, services, and external clients.
+
+Key Concepts:
+- ClusterIP: Internal service accessible only within the cluster
+- NodePort: Exposes service on each node's IP at a static port
+- LoadBalancer: Exposes service externally using cloud load balancer
+- Ingress: HTTP/HTTPS routing to services based on rules
+
+Pod Networking:
+- Each pod gets its own IP address
+- Pods can communicate directly without NAT
+- Containers in the same pod share network namespace
+
+Service Discovery:
+- DNS-based service discovery
+- Services get DNS names like: service-name.namespace.svc.cluster.local
+EOF
+
+echo "✅ Added networking document"
+ls /root/workspace/llm-workshop/rag-app/documents/
+```{{exec}}
+
+## Test with New Document
+
+```bash
+# Test with the new networking document
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "What is a Kubernetes Ingress?"
+```{{exec}}
 
 ## RAG Application Summary
 
 We've successfully built:
-- ✅ A document-based knowledge base (3 Kubernetes documents)
-- ✅ A simple TF-IDF retrieval system
+- ✅ A document-based knowledge base (4 Kubernetes documents)
+- ✅ A simple keyword-based retrieval system
 - ✅ A RAG application that combines retrieval and generation
-- ✅ Integration with our vLLM service using OpenAI-compatible API
-- ✅ A web interface for easy interaction
-- ✅ Source attribution (shows which documents were used)
+- ✅ Integration with our Ollama/TinyLlama service
+- ✅ Source attribution (shows which document was used)
 
 ## Key Takeaways
 
@@ -633,19 +361,19 @@ We've successfully built:
 - Providing transparency (shows sources)
 
 **For production, consider:**
-- Vector databases (Pinecone, Weaviate, Qdrant) for better retrieval
-- Embedding models for semantic search
-- More sophisticated chunking strategies
-- Caching for frequently asked questions
-- Authentication and rate limiting
+- **Vector databases** (Pinecone, Weaviate, Qdrant) for better retrieval
+- **Embedding models** for semantic search
+- **More sophisticated chunking** strategies
+- **Caching** for frequently asked questions
+- **Web interface** for easier interaction
 
-## What's Next?
+## Congratulations!
 
-Congratulations! You've completed the workshop. You've learned how to:
-- Deploy vLLM with CPU mode on Kubernetes
-- Run LLM models in a cloud-native environment
-- Build RAG applications for accurate, context-aware responses
-- Understand how to scale and optimize LLM workloads
+You've completed the workshop! You've learned how to:
+- ✅ Deploy Ollama on Kubernetes
+- ✅ Run LLM models in a cloud-native environment
+- ✅ Build RAG applications for accurate, context-aware responses
+- ✅ Understand how to scale and optimize LLM workloads
 
 ---
 

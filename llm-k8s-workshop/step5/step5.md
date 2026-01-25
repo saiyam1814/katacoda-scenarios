@@ -1,6 +1,6 @@
 # Interact with the LLM
 
-Now that our vLLM service is exposed, let's interact with the OPT-125M model by asking various questions and exploring its capabilities using the OpenAI-compatible API.
+Now that our Ollama service is exposed, let's interact with the TinyLlama model by asking various questions and exploring its capabilities.
 
 ## Test Basic Questions
 
@@ -9,14 +9,14 @@ Let's start with some basic questions:
 ```bash
 # Question 1: About Kubernetes
 echo "Question: What is Kubernetes?"
-/root/workspace/llm-workshop/ask-vllm.sh "What is Kubernetes?"
+/root/workspace/llm-workshop/ask-ollama.sh "What is Kubernetes?"
 echo
 ```{{exec}}
 
 ```bash
 # Question 2: About containers
 echo "Question: What are containers?"
-/root/workspace/llm-workshop/ask-vllm.sh "What are containers?"
+/root/workspace/llm-workshop/ask-ollama.sh "What are containers?"
 echo
 ```{{exec}}
 
@@ -27,14 +27,14 @@ Let's try some more technical questions:
 ```bash
 # Question 3: About pods
 echo "Question: What is a Kubernetes pod?"
-/root/workspace/llm-workshop/ask-vllm.sh "What is a Kubernetes pod?"
+/root/workspace/llm-workshop/ask-ollama.sh "What is a Kubernetes pod?"
 echo
 ```{{exec}}
 
 ```bash
 # Question 4: About deployments
 echo "Question: How do Kubernetes deployments work?"
-/root/workspace/llm-workshop/ask-vllm.sh "How do Kubernetes deployments work?"
+/root/workspace/llm-workshop/ask-ollama.sh "How do Kubernetes deployments work?"
 echo
 ```{{exec}}
 
@@ -45,32 +45,17 @@ Let's see how the model handles creative tasks:
 ```bash
 # Question 5: Creative writing
 echo "Question: Write a haiku about cloud computing"
-/root/workspace/llm-workshop/ask-vllm.sh "Write a haiku about cloud computing"
+/root/workspace/llm-workshop/ask-ollama.sh "Write a haiku about cloud computing"
 echo
 ```{{exec}}
 
-## Direct API Interaction
+## Direct CLI Interaction
 
-You can also interact directly with the API using curl:
+You can also interact directly with the model using Ollama CLI:
 
 ```bash
-# Example: Ask a question directly via API
-curl http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Explain what a Kubernetes namespace is",
-    "max_tokens": 150,
-    "temperature": 0.7
-  }' | python3 -c "import sys, json; print(json.load(sys.stdin)['choices'][0]['text'])" 2>/dev/null || \
-curl http://localhost:8000/v1/completions \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "facebook/opt-125m",
-    "prompt": "Explain what a Kubernetes namespace is",
-    "max_tokens": 150,
-    "temperature": 0.7
-  }'
+# Ask a question directly
+echo "Explain microservices in one sentence" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 ```{{exec}}
 
 ## Understanding LLM Responses
@@ -102,7 +87,7 @@ Let's try a few more question types:
 ```bash
 # Question 6: Comparison
 echo "Question: Compare Docker and Kubernetes"
-/root/workspace/llm-workshop/ask-ollama.sh "Compare Docker and Kubernetes"
+/root/workspace/llm-workshop/ask-ollama.sh "Compare Docker and Kubernetes in brief"
 echo
 ```{{exec}}
 
@@ -118,32 +103,27 @@ echo
 Let's check how the model is performing:
 
 ```bash
-# Check resource usage
-kubectl top pod -l app=vllm-server -n llm-workshop 2>/dev/null || echo "Metrics not available"
+# Check pod status
+kubectl get pods -n llm-workshop
 
 # Check pod logs for any issues
-kubectl logs -l app=vllm-server -n llm-workshop --tail=20
-
-# Check service health
-curl -s http://localhost:8000/health
+kubectl logs -l app=ollama-server -n llm-workshop --tail=10
 ```{{exec}}
 
 ## Understanding Model Limitations
 
-**OPT-125M** is a very small model, so:
+**TinyLlama (1.1B)** is a small model, so:
 - ✅ Fast responses
 - ✅ Low memory usage
-- ✅ Good for learning and demonstrations
+- ✅ Good for learning
 - ⚠️ Limited knowledge
 - ⚠️ May produce less accurate answers
 - ⚠️ Shorter context window
-- ⚠️ Basic language understanding
 
 For production, you might want:
-- **Larger models** (1B, 3B, 7B, 13B, 70B) for better quality
+- **Larger models** (7B, 13B, 70B) for better quality
 - **Fine-tuned models** for specific domains
 - **RAG systems** to add domain knowledge (next step!)
-- **GPU acceleration** for faster inference with larger models
 
 ## Create a Question Bank
 
@@ -170,12 +150,11 @@ cat /root/workspace/llm-workshop/questions.txt
 ## Interaction Summary
 
 We've successfully:
-- ✅ Interacted with the OPT-125M model via OpenAI-compatible API
+- ✅ Interacted with the TinyLlama model
 - ✅ Tested various question types
 - ✅ Explored model capabilities and limitations
 - ✅ Created helper scripts for easier interaction
 - ✅ Monitored model performance
-- ✅ Used vLLM's CPU mode for inference
 
 ## What's Next?
 
