@@ -164,9 +164,15 @@ Now let's build a **proper RAG** using:
 ### Install Dependencies
 
 ```bash
-# Install ChromaDB and sentence-transformers
-pip3 install chromadb sentence-transformers --quiet
+# Create a virtual environment for Python packages
+python3 -m venv /root/workspace/llm-workshop/rag-venv
+
+# Activate and install dependencies
+source /root/workspace/llm-workshop/rag-venv/bin/activate
+pip install chromadb sentence-transformers --quiet
+
 echo "✅ Vector database dependencies installed"
+echo "📍 Virtual environment: /root/workspace/llm-workshop/rag-venv"
 ```{{exec}}
 
 ### Create Vector RAG Application
@@ -303,29 +309,36 @@ echo "✅ Vector RAG application created"
 ## Test Vector RAG - See the Magic! ✨
 
 ```bash
+# Make sure venv is activated
+source /root/workspace/llm-workshop/rag-venv/bin/activate
+
 # Test 1: This works with SEMANTIC understanding
-python3 /root/workspace/llm-workshop/rag-app/vector-rag.py "What is HPA?"
+python /root/workspace/llm-workshop/rag-app/vector-rag.py "What is HPA?"
 ```{{exec}}
 
 ```bash
 # Test 2: Semantic search finds related concepts!
-python3 /root/workspace/llm-workshop/rag-app/vector-rag.py "How do I automatically scale my application?"
+source /root/workspace/llm-workshop/rag-venv/bin/activate
+python /root/workspace/llm-workshop/rag-app/vector-rag.py "How do I automatically scale my application?"
 ```{{exec}}
 
 ```bash
 # Test 3: Even vague questions work!
-python3 /root/workspace/llm-workshop/rag-app/vector-rag.py "How to secure my cluster?"
+source /root/workspace/llm-workshop/rag-venv/bin/activate
+python /root/workspace/llm-workshop/rag-app/vector-rag.py "How to secure my cluster?"
 ```{{exec}}
 
 ## Compare: Simple RAG vs Vector RAG
 
 ```bash
+source /root/workspace/llm-workshop/rag-venv/bin/activate
+
 echo "=== SIMPLE RAG (Keyword) ==="
 /root/workspace/llm-workshop/rag-app/simple-rag.sh "auto scaling apps"
 
 echo ""
 echo "=== VECTOR RAG (Semantic) ==="
-python3 /root/workspace/llm-workshop/rag-app/vector-rag.py "auto scaling apps"
+python /root/workspace/llm-workshop/rag-app/vector-rag.py "auto scaling apps"
 ```{{exec}}
 
 ## How Vector RAG Works
