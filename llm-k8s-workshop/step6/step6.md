@@ -173,16 +173,20 @@ kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama pull all-min
 kubectl exec deployment/ollama-server -n llm-workshop -- ollama list
 ```{{exec}}
 
-### Test the Embedding API
+### Start Port-Forward for Embedding API
+
+We need to access Ollama's API from outside the container:
 
 ```bash
-# Quick test - should return a JSON with embeddings array
-kubectl exec -i deployment/ollama-server -n llm-workshop -- \
-  curl -s http://localhost:11434/api/embed \
-  -d '{"model": "all-minilm", "input": "Hello world"}' | head -c 200
+# Start port-forward in background (needed for embedding API)
+kubectl port-forward svc/ollama-service -n llm-workshop 11434:11434 &
+sleep 3
+echo "✅ Port-forward started on localhost:11434"
 
+# Test the embedding API
+curl -s http://localhost:11434/api/embed \
+  -d '{"model": "all-minilm", "input": "Hello world"}' | head -c 200
 echo "..."
-echo "✅ If you see 'embeddings' above, the API is working!"
 ```{{exec}}
 
 ### Install NumPy for Vector Math
@@ -217,41 +221,38 @@ cat <<'EOF' > /root/workspace/llm-workshop/rag-app/vector-rag.py
 #!/usr/bin/env python3
 """
 Vector RAG using Ollama Embeddings API
-No heavy dependencies - just numpy!
+No heavy dependencies - just numpy + urllib!
 """
 
 import json
 import os
 import subprocess
 import numpy as np
+from urllib.request import urlopen, Request
+from urllib.error import URLError
 
 DOCS_DIR = "/root/workspace/llm-workshop/rag-app/documents"
 EMBEDDINGS_FILE = "/root/workspace/llm-workshop/rag-app/embeddings.json"
+OLLAMA_URL = "http://localhost:11434"  # Via port-forward
 
 def get_embedding(text):
-    """Get embedding from Ollama API via kubectl"""
-    # Clean text for JSON
-    text = text.replace('"', '\\"').replace('\n', ' ')[:500]
-    
-    # Build the curl command
-    cmd = [
-        "kubectl", "exec", "-i", "deployment/ollama-server", "-n", "llm-workshop", "--",
-        "curl", "-s", "http://localhost:11434/api/embed",
-        "-d", json.dumps({"model": "all-minilm", "input": text})
-    ]
+    """Get embedding from Ollama API (requires port-forward running)"""
+    text = text[:500]  # Limit text length
     
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
-        if result.returncode != 0:
-            print(f"    ⚠️ curl error: {result.stderr[:100]}")
-            return []
-        response = json.loads(result.stdout)
-        embeddings = response.get("embeddings", [])
-        if embeddings and len(embeddings) > 0:
-            return embeddings[0]
+        data = json.dumps({"model": "all-minilm", "input": text}).encode('utf-8')
+        req = Request(f"{OLLAMA_URL}/api/embed", data=data, 
+                     headers={'Content-Type': 'application/json'})
+        
+        with urlopen(req, timeout=60) as response:
+            result = json.loads(response.read().decode('utf-8'))
+            embeddings = result.get("embeddings", [])
+            if embeddings and len(embeddings) > 0:
+                return embeddings[0]
         return []
-    except json.JSONDecodeError as e:
-        print(f"    ⚠️ JSON error: {str(e)[:50]}")
+    except URLError as e:
+        print(f"    ⚠️ Connection error - is port-forward running?")
+        print(f"       Run: kubectl port-forward svc/ollama-service -n llm-workshop 11434:11434 &")
         return []
     except Exception as e:
         print(f"    ⚠️ Error: {str(e)[:50]}")
