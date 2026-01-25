@@ -154,285 +154,115 @@ echo "✅ Simple RAG created"
 /root/workspace/llm-workshop/rag-app/simple-rag.sh "What is HPA?"
 ```{{exec}}
 
-## Part 3: Production RAG with Vector Database! 🚀
+## Part 3: Understanding Production RAG with Vector Databases
 
-Now let's build a **proper RAG** using:
-- **ChromaDB** - Lightweight vector database
-- **Sentence Transformers** - For text embeddings
-- **Semantic Search** - Finds related concepts, not just keywords!
+In production, RAG systems use **vector databases** for semantic search. Here's how they differ:
 
-### Install Dependencies
+### Keyword RAG (What We Built) vs Vector RAG (Production)
 
-```bash
-# Install python3-venv package (required for virtual environments)
-apt update && apt install -y python3.12-venv python3-pip
+| Aspect | Keyword RAG (Ours) | Vector RAG (Production) |
+|--------|-------------------|------------------------|
+| Search | Word matching | Semantic similarity |
+| "HPA" query | Needs exact keyword | Understands meaning |
+| Dependencies | None | ChromaDB/Pinecone + Embeddings |
+| Size | ~0 MB | ~500+ MB |
+| Best for | Learning, demos | Production systems |
 
-# Create a virtual environment for Python packages
-python3 -m venv /root/workspace/llm-workshop/rag-venv
-
-# Install dependencies using the venv pip directly (avoids PEP 668 issues)
-/root/workspace/llm-workshop/rag-venv/bin/pip install --upgrade pip --quiet
-/root/workspace/llm-workshop/rag-venv/bin/pip install chromadb sentence-transformers --quiet
-
-echo "✅ Vector database dependencies installed"
-echo "📍 Virtual environment: /root/workspace/llm-workshop/rag-venv"
-```{{exec}}
-
-### Create Vector RAG Application
-
-```bash
-cat <<'EOF' > /root/workspace/llm-workshop/rag-app/vector-rag.py
-#!/usr/bin/env python3
-"""
-Production-style RAG with Vector Database
-Uses ChromaDB for semantic search
-"""
-
-import chromadb
-from sentence_transformers import SentenceTransformer
-import subprocess
-import os
-import sys
-
-# Initialize embedding model (small and fast)
-print("🔄 Loading embedding model...")
-embedder = SentenceTransformer('all-MiniLM-L6-v2')
-
-# Initialize ChromaDB (in-memory for simplicity)
-client = chromadb.Client()
-
-# Create or get collection
-try:
-    collection = client.get_collection("kubernetes_docs")
-    print("📚 Using existing vector collection")
-except:
-    collection = client.create_collection(
-        name="kubernetes_docs",
-        metadata={"description": "Kubernetes knowledge base"}
-    )
-    print("📚 Created new vector collection")
-    
-    # Load and index documents
-    docs_dir = "/root/workspace/llm-workshop/rag-app/documents"
-    documents = []
-    metadatas = []
-    ids = []
-    
-    for filename in os.listdir(docs_dir):
-        if filename.endswith('.txt'):
-            filepath = os.path.join(docs_dir, filename)
-            with open(filepath, 'r') as f:
-                content = f.read()
-                documents.append(content)
-                metadatas.append({"source": filename})
-                ids.append(filename)
-                print(f"  📄 Indexed: {filename}")
-    
-    # Add documents to collection (ChromaDB auto-embeds with default)
-    collection.add(
-        documents=documents,
-        metadatas=metadatas,
-        ids=ids
-    )
-    print(f"✅ Indexed {len(documents)} documents")
-
-def semantic_search(query, n_results=2):
-    """Search using vector similarity"""
-    results = collection.query(
-        query_texts=[query],
-        n_results=n_results
-    )
-    return results
-
-def ask_ollama(prompt):
-    """Send prompt to Ollama"""
-    try:
-        result = subprocess.run(
-            ["kubectl", "exec", "-i", "deployment/ollama-server", 
-             "-n", "llm-workshop", "--", "ollama", "run", "tinyllama"],
-            input=prompt,
-            text=True,
-            capture_output=True,
-            timeout=60
-        )
-        return result.stdout.strip()
-    except Exception as e:
-        return f"Error: {e}"
-
-def rag_query(question):
-    """Full RAG pipeline"""
-    print(f"\n🔍 Semantic search for: '{question}'")
-    
-    # Semantic search
-    results = semantic_search(question)
-    
-    if results['documents'][0]:
-        # Get top result
-        top_doc = results['documents'][0][0]
-        source = results['metadatas'][0][0]['source']
-        
-        print(f"📄 Found relevant document: {source}")
-        print(f"   (Using vector similarity - understands meaning!)")
-        
-        # Create augmented prompt
-        prompt = f"""Based on this context about Kubernetes, answer the question.
-
-Context:
-{top_doc}
-
-Question: {question}
-
-Answer concisely based on the context:"""
-        
-        print("🤖 Generating answer...")
-        print("---")
-        answer = ask_ollama(prompt)
-        print(answer)
-    else:
-        print("⚠️ No relevant documents found")
-        answer = ask_ollama(question)
-        print(answer)
-
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("🤖 Vector RAG - Semantic Search")
-        print("Usage: python3 vector-rag.py 'your question'")
-        print("\nThis uses VECTOR SIMILARITY to find related documents,")
-        print("not just keyword matching!")
-        sys.exit(0)
-    
-    question = " ".join(sys.argv[1:])
-    rag_query(question)
-EOF
-
-chmod +x /root/workspace/llm-workshop/rag-app/vector-rag.py
-echo "✅ Vector RAG application created"
-```{{exec}}
-
-## Test Vector RAG - See the Magic! ✨
-
-```bash
-# Test 1: This works with SEMANTIC understanding
-/root/workspace/llm-workshop/rag-venv/bin/python /root/workspace/llm-workshop/rag-app/vector-rag.py "What is HPA?"
-```{{exec}}
-
-```bash
-# Test 2: Semantic search finds related concepts!
-/root/workspace/llm-workshop/rag-venv/bin/python /root/workspace/llm-workshop/rag-app/vector-rag.py "How do I automatically scale my application?"
-```{{exec}}
-
-```bash
-# Test 3: Even vague questions work!
-/root/workspace/llm-workshop/rag-venv/bin/python /root/workspace/llm-workshop/rag-app/vector-rag.py "How to secure my cluster?"
-```{{exec}}
-
-## Compare: Simple RAG vs Vector RAG
-
-```bash
-echo "=== SIMPLE RAG (Keyword) ==="
-/root/workspace/llm-workshop/rag-app/simple-rag.sh "auto scaling apps"
-
-echo ""
-echo "=== VECTOR RAG (Semantic) ==="
-/root/workspace/llm-workshop/rag-venv/bin/python /root/workspace/llm-workshop/rag-app/vector-rag.py "auto scaling apps"
-```{{exec}}
-
-## How Vector RAG Works
+### How Vector RAG Works
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Vector RAG Pipeline                       │
+│                 Vector RAG Architecture                      │
 ├─────────────────────────────────────────────────────────────┤
 │                                                              │
-│  1. Document Indexing (one-time):                           │
-│     Documents → Embedding Model → Vectors → ChromaDB        │
+│  INDEXING (one-time):                                       │
+│  Documents → Embedding Model → Vectors → Vector DB          │
+│              (all-MiniLM-L6-v2)        (ChromaDB/Pinecone) │
 │                                                              │
-│  2. Query Time:                                             │
-│     Question → Embedding Model → Query Vector               │
-│         ↓                                                    │
-│     ChromaDB → Cosine Similarity → Top-K Documents          │
-│         ↓                                                    │
-│     Context + Question → Ollama → Answer                    │
+│  QUERY TIME:                                                │
+│  Question → Embedding → Vector Search → Top-K Docs → LLM   │
+│                         (cosine similarity)                 │
 │                                                              │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## Why Vector Search is Better
+### Why Vector Search is Better
 
-| Query | Keyword RAG | Vector RAG |
-|-------|-------------|------------|
-| "HPA" | ❌ Needs exact match | ✅ Understands it's about scaling |
-| "auto scaling" | ❌ Partial match | ✅ Finds scaling docs |
-| "secure my pods" | ❌ May miss | ✅ Finds security docs |
-| "container orchestration" | ❌ May miss | ✅ Finds Kubernetes basics |
+**Example**: Query "HPA" with keyword search fails because:
+- Document says "Horizontal Pod Autoscaler"
+- No exact match for "HPA"
 
-## Key Components
+**Vector search succeeds** because:
+- "HPA" embedding is similar to "Horizontal Pod Autoscaler" embedding
+- Cosine similarity finds semantic relationship
 
-### 1. **Embedding Model** (all-MiniLM-L6-v2)
-- Converts text to 384-dimensional vectors
-- Small (80MB) and fast
-- Captures semantic meaning
+### Production Vector Databases
 
-### 2. **Vector Database** (ChromaDB)
-- Stores document embeddings
-- Fast similarity search
-- Lightweight, runs in-memory
+| Database | Type | Best For |
+|----------|------|----------|
+| **ChromaDB** | Embedded | Local dev, small scale |
+| **Pinecone** | Managed | Production, serverless |
+| **Weaviate** | Self-hosted | Hybrid search |
+| **Qdrant** | Self-hosted | High performance |
+| **Milvus** | Self-hosted | Large scale |
 
-### 3. **Similarity Search**
-- Cosine similarity between query and documents
-- Finds semantically related content
-- No exact keyword match needed!
+> **Note**: Vector RAG requires ~500MB+ for dependencies (ChromaDB + sentence-transformers), which exceeds Killercoda's disk space. In production environments with more resources, you would use these tools.
 
-## Production Enhancements
+## Test More RAG Queries
 
-For real production RAG, add:
+Let's test our keyword-based RAG with different questions:
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  Production RAG Architecture                             │
-├─────────────────────────────────────────────────────────┤
-│                                                          │
-│  📄 Document Processing                                  │
-│     • Chunking (split long docs)                        │
-│     • Metadata extraction                               │
-│     • Deduplication                                     │
-│                                                          │
-│  🗄️ Vector Database (choose one)                        │
-│     • Pinecone (managed, scalable)                      │
-│     • Weaviate (open source, hybrid search)            │
-│     • Qdrant (fast, filtering)                         │
-│     • Milvus (large scale)                             │
-│                                                          │
-│  🔍 Retrieval Enhancements                              │
-│     • Hybrid search (vector + keyword)                  │
-│     • Reranking (cross-encoder)                        │
-│     • Query expansion                                   │
-│                                                          │
-│  🤖 Generation                                          │
-│     • Larger models (Llama-7B, Mistral)               │
-│     • Streaming responses                               │
-│     • Citation/source tracking                         │
-│                                                          │
-└─────────────────────────────────────────────────────────┘
-```
+```bash
+# Test with scaling question
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "How does Kubernetes handle scaling?"
+```{{exec}}
 
-## Summary
+```bash
+# Test with security question
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "What are security best practices?"
+```{{exec}}
 
-We built TWO types of RAG:
+```bash
+# Test with pods question
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "What is a pod in Kubernetes?"
+```{{exec}}
 
-| Feature | Simple RAG | Vector RAG |
-|---------|------------|------------|
-| Search Method | Keyword matching | Semantic vectors |
-| Database | File system | ChromaDB |
-| Embeddings | None | all-MiniLM-L6-v2 |
-| Accuracy | Limited | Production-quality |
-| "HPA" query | Needs keyword | Understands meaning |
+## RAG vs No RAG - See the Difference!
 
-### Key Takeaways:
-- ✅ RAG prevents hallucinations by grounding answers in documents
-- ✅ Vector search understands **meaning**, not just keywords
-- ✅ ChromaDB is lightweight and perfect for learning
-- ✅ Same pattern scales to production with Pinecone/Weaviate
+Let's compare answers WITH and WITHOUT RAG:
+
+```bash
+echo "=== WITHOUT RAG (LLM may hallucinate) ==="
+echo "What is HPA in Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
+
+echo ""
+echo "=== WITH RAG (Grounded in documents) ==="
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "What is HPA in Kubernetes?"
+```{{exec}}
+
+Notice how RAG provides accurate information from our knowledge base!
+
+## Key Takeaways
+
+### What We Built:
+- ✅ **Document Knowledge Base** - 3 Kubernetes docs
+- ✅ **Keyword-based Retrieval** - TF-IDF-like search
+- ✅ **Prompt Augmentation** - Context + Question
+- ✅ **Grounded Generation** - Answers based on docs
+
+### RAG Benefits:
+- ✅ **Prevents hallucinations** - Answers grounded in real documents
+- ✅ **Domain-specific knowledge** - Your docs, your answers
+- ✅ **Easy to update** - Just add/modify documents
+- ✅ **Transparent** - Shows which document was used
+
+### For Production (Vector RAG):
+In production environments with more resources, you would add:
+- **Vector Database** (ChromaDB, Pinecone, Weaviate)
+- **Embedding Models** (all-MiniLM-L6-v2, OpenAI embeddings)
+- **Semantic Search** (understands meaning, not just keywords)
+
+This enables queries like "HPA" to find "Horizontal Pod Autoscaler" documents even without exact keyword matches!
 
 ---
 
