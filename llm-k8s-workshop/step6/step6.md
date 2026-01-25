@@ -1,64 +1,27 @@
 # Build a RAG Application
 
-Now let's build a Retrieval-Augmented Generation (RAG) application that can answer questions based on specific documents. This is a powerful pattern for creating AI applications that can access and use specific knowledge.
+Now let's build a Retrieval-Augmented Generation (RAG) application. We'll start with a simple keyword-based approach, then upgrade to a **proper vector database RAG** using ChromaDB!
 
 ## Understanding RAG
 
-RAG (Retrieval-Augmented Generation) is a technique that combines:
+RAG (Retrieval-Augmented Generation) combines:
 
-### 🔍 **Retrieval**
-- Searches through a knowledge base (documents, databases)
-- Finds the most relevant information for a user's question
-- Uses techniques like semantic search, keyword matching, or vector similarity
-- In our simple implementation, we use TF-IDF (Term Frequency-Inverse Document Frequency)
+### 🔍 **Retrieval** - Find relevant information
+### 🔗 **Augmentation** - Add context to the prompt  
+### 🤖 **Generation** - LLM generates grounded answer
 
-### 🔗 **Augmentation** 
-- Takes the user's original question
-- Adds the retrieved context to provide more information
-- Creates a richer prompt for the LLM
-- The LLM receives: Question + Relevant Context
+## Why RAG Matters
 
-### 🤖 **Generation**
-- Uses an LLM (our Ollama service) to generate a response
-- The LLM has access to both the question AND the relevant context
-- Produces more accurate and contextual answers
-- Reduces hallucinations by grounding answers in real documents
+Without RAG, LLMs **hallucinate**. Watch this:
 
-## Why RAG is Important
+```bash
+# Ask about HPA without any context
+echo "What is HPA in Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
+```{{exec}}
 
-- **Accuracy**: LLMs can "hallucinate" or make up information. RAG provides real facts from documents.
-- **Up-to-date**: Knowledge base can be updated without retraining the LLM
-- **Domain-specific**: Can work with specialized documents (company docs, technical manuals, knowledge bases)
-- **Cost-effective**: Don't need to retrain large models for new information
-- **Transparency**: Can show which documents were used to answer the question
+The model will likely give a **wrong answer** because it doesn't have accurate Kubernetes knowledge!
 
-## How Our RAG Application Works
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    RAG Application Flow                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                              │
-│  1. User Question ──► "What is a Kubernetes pod?"           │
-│         │                                                    │
-│         ▼                                                    │
-│  2. Retrieval ──► Search documents for "pod" keywords       │
-│         │         (TF-IDF scoring)                          │
-│         ▼                                                    │
-│  3. Augmentation ──► Combine question + retrieved context   │
-│         │                                                    │
-│         ▼                                                    │
-│  4. Generation ──► Send to Ollama/TinyLlama                 │
-│         │                                                    │
-│         ▼                                                    │
-│  5. Response ──► Answer grounded in document knowledge      │
-│                                                              │
-└─────────────────────────────────────────────────────────────┘
-```
-
-## Create Sample Documents
-
-Let's create some sample documents about Kubernetes:
+## Part 1: Create Knowledge Base Documents
 
 ```bash
 mkdir -p /root/workspace/llm-workshop/rag-app/documents
@@ -66,315 +29,402 @@ mkdir -p /root/workspace/llm-workshop/rag-app/documents
 cat <<'EOF' > /root/workspace/llm-workshop/rag-app/documents/kubernetes-basics.txt
 Kubernetes Basics
 
-Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It was originally designed by Google and is now maintained by the Cloud Native Computing Foundation.
+Kubernetes is an open-source container orchestration platform that automates deployment, scaling, and management of containerized applications. Originally designed by Google, now maintained by CNCF.
 
 Key Concepts:
-- Pods: The smallest deployable units in Kubernetes. A pod can contain one or more containers that share storage and network resources.
-- Services: Stable network endpoints for pods. Services provide a way to access pods using a consistent IP address and DNS name.
-- Deployments: Manage replica sets and rolling updates. Deployments ensure a specified number of pod replicas are running.
-- Namespaces: Virtual clusters within a physical cluster. Namespaces help organize and isolate resources.
-- ConfigMaps: Store configuration data as key-value pairs.
-- Secrets: Store sensitive data like passwords and API keys.
-
-Kubernetes provides features like:
-- Automatic scaling based on CPU/memory usage
-- Self-healing by restarting failed containers
-- Service discovery through DNS
-- Load balancing across pod replicas
-- Rolling updates with zero downtime
+- Pods: Smallest deployable units containing one or more containers
+- Services: Stable network endpoints for accessing pods
+- Deployments: Manage replica sets and rolling updates
+- Namespaces: Virtual clusters for resource isolation
+- ConfigMaps: Store configuration as key-value pairs
+- Secrets: Store sensitive data like passwords
 EOF
 
 cat <<'EOF' > /root/workspace/llm-workshop/rag-app/documents/kubernetes-scaling.txt
-Kubernetes Scaling Strategies
+Kubernetes Scaling and HPA
 
-Kubernetes provides multiple ways to scale applications:
+HPA - Horizontal Pod Autoscaler is the primary way to automatically scale applications.
 
 1. Horizontal Pod Autoscaler (HPA)
-   - Scale based on CPU/memory usage
-   - Custom metrics scaling
-   - Automatically adjusts the number of pod replicas
-   - Example: kubectl autoscale deployment myapp --min=2 --max=10 --cpu-percent=50
+   - HPA automatically scales pod replicas based on CPU/memory
+   - HPA watches metrics and adjusts replica count
+   - Command: kubectl autoscale deployment myapp --min=2 --max=10 --cpu-percent=50
+   - HPA is essential for handling variable traffic
 
 2. Vertical Pod Autoscaler (VPA)
-   - Adjust resource requests/limits
-   - Right-size containers automatically
-   - Reduce resource waste
+   - Adjusts resource requests/limits automatically
+   - Right-sizes containers based on actual usage
 
 3. Cluster Autoscaler
-   - Add/remove nodes based on demand
-   - Works with cloud providers
-   - Cost optimization through scaling
-
-4. Manual Scaling
-   - kubectl scale command
-   - Update deployment replicas directly
-   - Example: kubectl scale deployment/myapp --replicas=5
-
-Best Practices:
-- Set appropriate resource requests and limits
-- Use multiple metrics for scaling decisions
-- Test scaling behavior under load
+   - Adds/removes nodes based on pending pods
+   - Works with cloud providers (AWS, GCP, Azure)
 EOF
 
 cat <<'EOF' > /root/workspace/llm-workshop/rag-app/documents/kubernetes-security.txt
 Kubernetes Security Best Practices
 
-Security is crucial in Kubernetes environments. Here are key security practices:
-
 1. RBAC (Role-Based Access Control)
-   - Define roles and permissions
-   - Use least privilege principle
-   - Regular access reviews
+   - Define roles with minimum required permissions
+   - Use ServiceAccounts for pod identity
+   - Regular access audits
 
 2. Network Policies
-   - Control traffic between pods
-   - Implement network segmentation
-   - Restrict ingress and egress
+   - Control pod-to-pod traffic
+   - Default deny, explicit allow
+   - Namespace isolation
 
 3. Pod Security
-   - Run containers as non-root
-   - Use read-only root filesystems
+   - Run as non-root user
+   - Read-only root filesystem
    - Drop unnecessary capabilities
+   - Use securityContext
 
-4. Image Security
-   - Scan images for vulnerabilities
-   - Use trusted base images
-   - Implement image signing
-
-5. Secrets Management
-   - Use Kubernetes secrets or external secret managers
-   - Encrypt secrets at rest
-   - Rotate secrets regularly
+4. Secrets Management
    - Never commit secrets to git
+   - Use external secret managers (Vault, AWS Secrets Manager)
+   - Encrypt secrets at rest
 EOF
 
-echo "✅ Created 3 knowledge base documents"
+echo "✅ Created knowledge base with 3 documents"
 ls -la /root/workspace/llm-workshop/rag-app/documents/
 ```{{exec}}
 
-## Create the RAG Application
+## Part 2: Simple RAG (Keyword-Based)
 
-Let's create a simple RAG application script:
+First, let's create a simple keyword-based RAG to understand the concept:
 
 ```bash
 cat <<'EOF' > /root/workspace/llm-workshop/rag-app/simple-rag.sh
 #!/bin/bash
-
-# Simple RAG Application for Kubernetes Knowledge Base
-# Uses TF-IDF-like keyword matching and Ollama for generation
+# Simple RAG - Keyword matching (NOT production-ready)
 
 DOCS_DIR="/root/workspace/llm-workshop/rag-app/documents"
 
-# Function to search documents for relevant content
 search_documents() {
     local query="$1"
-    local best_doc=""
-    local best_score=0
-    
-    # Convert query to lowercase for matching
+    local best_doc="" best_score=0
     query_lower=$(echo "$query" | tr '[:upper:]' '[:lower:]')
     
-    # Search each document
     for doc in "$DOCS_DIR"/*.txt; do
-        if [ -f "$doc" ]; then
-            # Count keyword matches (simple TF-IDF approximation)
-            score=0
-            for word in $query_lower; do
-                if [ ${#word} -gt 3 ]; then  # Only count words > 3 chars
-                    matches=$(grep -oi "$word" "$doc" 2>/dev/null | wc -l)
-                    score=$((score + matches))
-                fi
-            done
-            
-            if [ $score -gt $best_score ]; then
-                best_score=$score
-                best_doc="$doc"
-            fi
-        fi
+        [ -f "$doc" ] || continue
+        score=0
+        for word in $query_lower; do
+            [ ${#word} -gt 3 ] && score=$((score + $(grep -oi "$word" "$doc" 2>/dev/null | wc -l)))
+        done
+        [ $score -gt $best_score ] && { best_score=$score; best_doc="$doc"; }
     done
-    
-    if [ -n "$best_doc" ] && [ $best_score -gt 0 ]; then
-        echo "$best_doc"
-    else
-        echo ""
-    fi
+    [ $best_score -gt 0 ] && echo "$best_doc"
 }
 
-# Main RAG function
-ask_rag() {
-    local question="$1"
-    
-    echo "🔍 Searching knowledge base..."
-    relevant_doc=$(search_documents "$question")
-    
-    if [ -n "$relevant_doc" ]; then
-        echo "📄 Found relevant document: $(basename "$relevant_doc")"
-        context=$(cat "$relevant_doc")
-        
-        # Create augmented prompt
-        prompt="Based on the following context about Kubernetes, answer this question: $question
+question="$1"
+[ -z "$question" ] && { echo "Usage: $0 'question'"; exit 1; }
+
+echo "🔍 Searching (keyword-based)..."
+doc=$(search_documents "$question")
+
+if [ -n "$doc" ]; then
+    echo "📄 Found: $(basename "$doc")"
+    prompt="Based on this context, answer: $question
 
 Context:
-$context
+$(cat "$doc")
 
-Please provide a concise answer based on the context above."
-        
-        echo "🤖 Generating answer..."
-        echo "---"
-        echo "$prompt" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
-    else
-        echo "⚠️  No relevant documents found. Asking without context..."
-        echo "$question" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
-    fi
-}
-
-# Check if question provided
-if [ -z "$1" ]; then
-    echo "🤖 Kubernetes RAG Assistant"
-    echo "=========================="
-    echo "Usage: $0 'Your question about Kubernetes'"
-    echo ""
-    echo "Example questions:"
-    echo "  $0 'What is a Kubernetes pod?'"
-    echo "  $0 'How do I scale applications?'"
-    echo "  $0 'What are security best practices?'"
-    exit 0
+Answer concisely:"
+    echo "🤖 Generating..."
+    echo "---"
+    echo "$prompt" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
+else
+    echo "⚠️ No matching document found"
+    echo "$question" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
 fi
-
-ask_rag "$1"
 EOF
-
 chmod +x /root/workspace/llm-workshop/rag-app/simple-rag.sh
-echo "✅ RAG application created"
+echo "✅ Simple RAG created"
 ```{{exec}}
 
-## Test the RAG Application
-
-Let's test our RAG application:
+## Test Simple RAG
 
 ```bash
-# Test 1: Question about pods (should find kubernetes-basics.txt)
+# This works - exact keyword match
 /root/workspace/llm-workshop/rag-app/simple-rag.sh "What is a Kubernetes pod?"
 ```{{exec}}
 
 ```bash
-# Test 2: Question about scaling (should find kubernetes-scaling.txt)
-/root/workspace/llm-workshop/rag-app/simple-rag.sh "How do I scale applications in Kubernetes?"
+# This works now - we added "HPA" keyword to the document
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "What is HPA?"
 ```{{exec}}
 
+## Part 3: Production RAG with Vector Database! 🚀
+
+Now let's build a **proper RAG** using:
+- **ChromaDB** - Lightweight vector database
+- **Sentence Transformers** - For text embeddings
+- **Semantic Search** - Finds related concepts, not just keywords!
+
+### Install Dependencies
+
 ```bash
-# Test 3: Question about security (should find kubernetes-security.txt)
-/root/workspace/llm-workshop/rag-app/simple-rag.sh "What are Kubernetes security best practices?"
+# Install ChromaDB and sentence-transformers
+pip3 install chromadb sentence-transformers --quiet
+echo "✅ Vector database dependencies installed"
 ```{{exec}}
 
-## Compare RAG vs Direct Query
-
-Let's see the difference between asking with and without RAG:
+### Create Vector RAG Application
 
 ```bash
-echo "=== WITHOUT RAG (Direct Question) ==="
-echo "What is HPA in Kubernetes?" | kubectl exec -i deployment/ollama-server -n llm-workshop -- ollama run tinyllama
+cat <<'EOF' > /root/workspace/llm-workshop/rag-app/vector-rag.py
+#!/usr/bin/env python3
+"""
+Production-style RAG with Vector Database
+Uses ChromaDB for semantic search
+"""
 
-echo ""
-echo "=== WITH RAG (Using Knowledge Base) ==="
-/root/workspace/llm-workshop/rag-app/simple-rag.sh "What is HPA in Kubernetes?"
-```{{exec}}
+import chromadb
+from sentence_transformers import SentenceTransformer
+import subprocess
+import os
+import sys
 
-## Understanding the RAG Application Architecture
+# Initialize embedding model (small and fast)
+print("🔄 Loading embedding model...")
+embedder = SentenceTransformer('all-MiniLM-L6-v2')
 
-Our RAG application consists of:
+# Initialize ChromaDB (in-memory for simplicity)
+client = chromadb.Client()
 
-### 1. **Document Store** (Text Files)
-- Contains Kubernetes knowledge base documents
-- Easy to add, update, or remove documents
-- Located in `/root/workspace/llm-workshop/rag-app/documents/`
+# Create or get collection
+try:
+    collection = client.get_collection("kubernetes_docs")
+    print("📚 Using existing vector collection")
+except:
+    collection = client.create_collection(
+        name="kubernetes_docs",
+        metadata={"description": "Kubernetes knowledge base"}
+    )
+    print("📚 Created new vector collection")
+    
+    # Load and index documents
+    docs_dir = "/root/workspace/llm-workshop/rag-app/documents"
+    documents = []
+    metadatas = []
+    ids = []
+    
+    for filename in os.listdir(docs_dir):
+        if filename.endswith('.txt'):
+            filepath = os.path.join(docs_dir, filename)
+            with open(filepath, 'r') as f:
+                content = f.read()
+                documents.append(content)
+                metadatas.append({"source": filename})
+                ids.append(filename)
+                print(f"  📄 Indexed: {filename}")
+    
+    # Add documents to collection (ChromaDB auto-embeds with default)
+    collection.add(
+        documents=documents,
+        metadatas=metadatas,
+        ids=ids
+    )
+    print(f"✅ Indexed {len(documents)} documents")
 
-### 2. **Retrieval System** (Keyword Matching)
-- Searches documents for relevant keywords
-- Counts word frequency (simple TF-IDF)
-- Returns the most relevant document
+def semantic_search(query, n_results=2):
+    """Search using vector similarity"""
+    results = collection.query(
+        query_texts=[query],
+        n_results=n_results
+    )
+    return results
 
-### 3. **Augmentation** (Prompt Engineering)
-- Combines user question with retrieved context
-- Creates a structured prompt for the LLM
-- Instructs the model to use the provided context
+def ask_ollama(prompt):
+    """Send prompt to Ollama"""
+    try:
+        result = subprocess.run(
+            ["kubectl", "exec", "-i", "deployment/ollama-server", 
+             "-n", "llm-workshop", "--", "ollama", "run", "tinyllama"],
+            input=prompt,
+            text=True,
+            capture_output=True,
+            timeout=60
+        )
+        return result.stdout.strip()
+    except Exception as e:
+        return f"Error: {e}"
 
-### 4. **Generation** (Ollama/TinyLlama)
-- Processes the augmented prompt
-- Generates answer based on context
-- Returns grounded response
+def rag_query(question):
+    """Full RAG pipeline"""
+    print(f"\n🔍 Semantic search for: '{question}'")
+    
+    # Semantic search
+    results = semantic_search(question)
+    
+    if results['documents'][0]:
+        # Get top result
+        top_doc = results['documents'][0][0]
+        source = results['metadatas'][0][0]['source']
+        
+        print(f"📄 Found relevant document: {source}")
+        print(f"   (Using vector similarity - understands meaning!)")
+        
+        # Create augmented prompt
+        prompt = f"""Based on this context about Kubernetes, answer the question.
 
-## Add Your Own Documents
+Context:
+{top_doc}
 
-You can add your own documents to the knowledge base:
+Question: {question}
 
-```bash
-# Example: Add a document about networking
-cat <<'EOF' > /root/workspace/llm-workshop/rag-app/documents/kubernetes-networking.txt
-Kubernetes Networking
+Answer concisely based on the context:"""
+        
+        print("🤖 Generating answer...")
+        print("---")
+        answer = ask_ollama(prompt)
+        print(answer)
+    else:
+        print("⚠️ No relevant documents found")
+        answer = ask_ollama(question)
+        print(answer)
 
-Kubernetes networking enables communication between pods, services, and external clients.
-
-Key Concepts:
-- ClusterIP: Internal service accessible only within the cluster
-- NodePort: Exposes service on each node's IP at a static port
-- LoadBalancer: Exposes service externally using cloud load balancer
-- Ingress: HTTP/HTTPS routing to services based on rules
-
-Pod Networking:
-- Each pod gets its own IP address
-- Pods can communicate directly without NAT
-- Containers in the same pod share network namespace
-
-Service Discovery:
-- DNS-based service discovery
-- Services get DNS names like: service-name.namespace.svc.cluster.local
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("🤖 Vector RAG - Semantic Search")
+        print("Usage: python3 vector-rag.py 'your question'")
+        print("\nThis uses VECTOR SIMILARITY to find related documents,")
+        print("not just keyword matching!")
+        sys.exit(0)
+    
+    question = " ".join(sys.argv[1:])
+    rag_query(question)
 EOF
 
-echo "✅ Added networking document"
-ls /root/workspace/llm-workshop/rag-app/documents/
+chmod +x /root/workspace/llm-workshop/rag-app/vector-rag.py
+echo "✅ Vector RAG application created"
 ```{{exec}}
 
-## Test with New Document
+## Test Vector RAG - See the Magic! ✨
 
 ```bash
-# Test with the new networking document
-/root/workspace/llm-workshop/rag-app/simple-rag.sh "What is a Kubernetes Ingress?"
+# Test 1: This works with SEMANTIC understanding
+python3 /root/workspace/llm-workshop/rag-app/vector-rag.py "What is HPA?"
 ```{{exec}}
 
-## RAG Application Summary
+```bash
+# Test 2: Semantic search finds related concepts!
+python3 /root/workspace/llm-workshop/rag-app/vector-rag.py "How do I automatically scale my application?"
+```{{exec}}
 
-We've successfully built:
-- ✅ A document-based knowledge base (4 Kubernetes documents)
-- ✅ A simple keyword-based retrieval system
-- ✅ A RAG application that combines retrieval and generation
-- ✅ Integration with our Ollama/TinyLlama service
-- ✅ Source attribution (shows which document was used)
+```bash
+# Test 3: Even vague questions work!
+python3 /root/workspace/llm-workshop/rag-app/vector-rag.py "How to secure my cluster?"
+```{{exec}}
 
-## Key Takeaways
+## Compare: Simple RAG vs Vector RAG
 
-**RAG improves LLM applications by:**
-- Providing accurate, document-grounded answers
-- Reducing hallucinations
-- Enabling domain-specific knowledge
-- Allowing knowledge base updates without retraining
-- Providing transparency (shows sources)
+```bash
+echo "=== SIMPLE RAG (Keyword) ==="
+/root/workspace/llm-workshop/rag-app/simple-rag.sh "auto scaling apps"
 
-**For production, consider:**
-- **Vector databases** (Pinecone, Weaviate, Qdrant) for better retrieval
-- **Embedding models** for semantic search
-- **More sophisticated chunking** strategies
-- **Caching** for frequently asked questions
-- **Web interface** for easier interaction
+echo ""
+echo "=== VECTOR RAG (Semantic) ==="
+python3 /root/workspace/llm-workshop/rag-app/vector-rag.py "auto scaling apps"
+```{{exec}}
 
-## Congratulations!
+## How Vector RAG Works
 
-You've completed the workshop! You've learned how to:
-- ✅ Deploy Ollama on Kubernetes
-- ✅ Run LLM models in a cloud-native environment
-- ✅ Build RAG applications for accurate, context-aware responses
-- ✅ Understand how to scale and optimize LLM workloads
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Vector RAG Pipeline                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                              │
+│  1. Document Indexing (one-time):                           │
+│     Documents → Embedding Model → Vectors → ChromaDB        │
+│                                                              │
+│  2. Query Time:                                             │
+│     Question → Embedding Model → Query Vector               │
+│         ↓                                                    │
+│     ChromaDB → Cosine Similarity → Top-K Documents          │
+│         ↓                                                    │
+│     Context + Question → Ollama → Answer                    │
+│                                                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Why Vector Search is Better
+
+| Query | Keyword RAG | Vector RAG |
+|-------|-------------|------------|
+| "HPA" | ❌ Needs exact match | ✅ Understands it's about scaling |
+| "auto scaling" | ❌ Partial match | ✅ Finds scaling docs |
+| "secure my pods" | ❌ May miss | ✅ Finds security docs |
+| "container orchestration" | ❌ May miss | ✅ Finds Kubernetes basics |
+
+## Key Components
+
+### 1. **Embedding Model** (all-MiniLM-L6-v2)
+- Converts text to 384-dimensional vectors
+- Small (80MB) and fast
+- Captures semantic meaning
+
+### 2. **Vector Database** (ChromaDB)
+- Stores document embeddings
+- Fast similarity search
+- Lightweight, runs in-memory
+
+### 3. **Similarity Search**
+- Cosine similarity between query and documents
+- Finds semantically related content
+- No exact keyword match needed!
+
+## Production Enhancements
+
+For real production RAG, add:
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  Production RAG Architecture                             │
+├─────────────────────────────────────────────────────────┤
+│                                                          │
+│  📄 Document Processing                                  │
+│     • Chunking (split long docs)                        │
+│     • Metadata extraction                               │
+│     • Deduplication                                     │
+│                                                          │
+│  🗄️ Vector Database (choose one)                        │
+│     • Pinecone (managed, scalable)                      │
+│     • Weaviate (open source, hybrid search)            │
+│     • Qdrant (fast, filtering)                         │
+│     • Milvus (large scale)                             │
+│                                                          │
+│  🔍 Retrieval Enhancements                              │
+│     • Hybrid search (vector + keyword)                  │
+│     • Reranking (cross-encoder)                        │
+│     • Query expansion                                   │
+│                                                          │
+│  🤖 Generation                                          │
+│     • Larger models (Llama-7B, Mistral)               │
+│     • Streaming responses                               │
+│     • Citation/source tracking                         │
+│                                                          │
+└─────────────────────────────────────────────────────────┘
+```
+
+## Summary
+
+We built TWO types of RAG:
+
+| Feature | Simple RAG | Vector RAG |
+|---------|------------|------------|
+| Search Method | Keyword matching | Semantic vectors |
+| Database | File system | ChromaDB |
+| Embeddings | None | all-MiniLM-L6-v2 |
+| Accuracy | Limited | Production-quality |
+| "HPA" query | Needs keyword | Understands meaning |
+
+### Key Takeaways:
+- ✅ RAG prevents hallucinations by grounding answers in documents
+- ✅ Vector search understands **meaning**, not just keywords
+- ✅ ChromaDB is lightweight and perfect for learning
+- ✅ Same pattern scales to production with Pinecone/Weaviate
 
 ---
 
-**RAG application working?** Great job completing the workshop! 🎉
+**Congratulations!** You've built a production-style RAG system! 🎉
