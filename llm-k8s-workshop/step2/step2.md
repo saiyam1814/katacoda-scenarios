@@ -11,9 +11,7 @@ vLLM is a high-performance LLM inference and serving engine that:
 - **Production Ready**: Used by llm-d and other production systems
 - **Flexible**: Supports various model sizes and data types (FP32, FP16, BF16)
 
-**Note**: llm-d is a Kubernetes-native framework built on top of vLLM. For this workshop, we'll use vLLM directly with CPU mode, which is what llm-d uses under the hood.
-
-**Important**: The official `vllm/vllm-cpu` image doesn't exist on Docker Hub. We use the community-maintained `ghcr.io/stackhpc/vllm-cpu` image from StackHPC, which provides a working vLLM CPU build.
+**Note**: llm-d is a Kubernetes-native framework built on top of vLLM. For this workshop, we'll use the official **llm-d CPU image** (`ghcr.io/llm-d/llm-d-cpu`), which provides a production-ready vLLM CPU build optimized for Kubernetes deployments.
 
 ## Deploy vLLM with CPU Mode
 
@@ -40,9 +38,9 @@ spec:
         app: vllm-server
     spec:
       containers:
-      - name: vllm-server
-        # Using StackHPC's vLLM CPU image (official vllm/vllm-cpu doesn't exist)
-        image: ghcr.io/stackhpc/vllm-cpu:v0.10.2
+      - name: llm-d-cpu
+        # Official llm-d CPU image from https://github.com/llm-d/llm-d/pkgs/container/llm-d-cpu
+        image: ghcr.io/llm-d/llm-d-cpu:latest
         ports:
         - containerPort: 8000
         env:
