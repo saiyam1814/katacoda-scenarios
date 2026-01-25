@@ -168,6 +168,21 @@ Now let's build a **proper vector database RAG** using:
 ```bash
 # Pull the smallest embedding model (all-minilm - only 45MB!)
 kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama pull all-minilm
+
+# Verify it's available
+kubectl exec deployment/ollama-server -n llm-workshop -- ollama list
+```{{exec}}
+
+### Test the Embedding API
+
+```bash
+# Quick test - should return a JSON with embeddings array
+kubectl exec -i deployment/ollama-server -n llm-workshop -- \
+  curl -s http://localhost:11434/api/embed \
+  -d '{"model": "all-minilm", "input": "Hello world"}' | head -c 200
+
+echo "..."
+echo "✅ If you see 'embeddings' above, the API is working!"
 ```{{exec}}
 
 ### Install NumPy for Vector Math
@@ -212,19 +227,34 @@ import numpy as np
 
 DOCS_DIR = "/root/workspace/llm-workshop/rag-app/documents"
 EMBEDDINGS_FILE = "/root/workspace/llm-workshop/rag-app/embeddings.json"
-OLLAMA_SERVICE = "ollama-service.llm-workshop.svc.cluster.local:11434"
 
 def get_embedding(text):
     """Get embedding from Ollama API via kubectl"""
-    # Use kubectl to call Ollama's embedding API
-    payload = json.dumps({"model": "all-minilm", "input": text})
-    cmd = f'''kubectl exec -i deployment/ollama-server -n llm-workshop -- \
-        curl -s http://localhost:11434/api/embed -d '{payload}' '''
-    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    # Clean text for JSON
+    text = text.replace('"', '\\"').replace('\n', ' ')[:500]
+    
+    # Build the curl command
+    cmd = [
+        "kubectl", "exec", "-i", "deployment/ollama-server", "-n", "llm-workshop", "--",
+        "curl", "-s", "http://localhost:11434/api/embed",
+        "-d", json.dumps({"model": "all-minilm", "input": text})
+    ]
+    
     try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+        if result.returncode != 0:
+            print(f"    ⚠️ curl error: {result.stderr[:100]}")
+            return []
         response = json.loads(result.stdout)
-        return response.get("embeddings", [[]])[0]
-    except:
+        embeddings = response.get("embeddings", [])
+        if embeddings and len(embeddings) > 0:
+            return embeddings[0]
+        return []
+    except json.JSONDecodeError as e:
+        print(f"    ⚠️ JSON error: {str(e)[:50]}")
+        return []
+    except Exception as e:
+        print(f"    ⚠️ Error: {str(e)[:50]}")
         return []
 
 def cosine_similarity(a, b):
@@ -235,28 +265,37 @@ def cosine_similarity(a, b):
 def index_documents():
     """Index all documents with embeddings"""
     print("📚 Indexing documents with Ollama embeddings...")
+    print("   (This may take a minute...)\n")
     embeddings = {}
     
-    for filename in os.listdir(DOCS_DIR):
+    for filename in sorted(os.listdir(DOCS_DIR)):
         if filename.endswith('.txt'):
             filepath = os.path.join(DOCS_DIR, filename)
             with open(filepath, 'r') as f:
                 content = f.read()
             
             print(f"  🔄 Embedding: {filename}")
-            embedding = get_embedding(content[:500])  # First 500 chars
+            embedding = get_embedding(content)
             
-            if embedding:
+            if embedding and len(embedding) > 0:
                 embeddings[filename] = {
                     "content": content,
                     "embedding": embedding
                 }
                 print(f"  ✅ {filename} ({len(embedding)} dimensions)")
+            else:
+                print(f"  ❌ Failed to embed {filename}")
     
-    with open(EMBEDDINGS_FILE, 'w') as f:
-        json.dump(embeddings, f)
+    if embeddings:
+        with open(EMBEDDINGS_FILE, 'w') as f:
+            json.dump(embeddings, f)
+        print(f"\n✅ Indexed {len(embeddings)} documents!")
+        print(f"   Saved to: {EMBEDDINGS_FILE}")
+    else:
+        print("\n❌ No documents were indexed!")
+        print("   Make sure 'all-minilm' model is pulled:")
+        print("   kubectl exec -it deployment/ollama-server -n llm-workshop -- ollama pull all-minilm")
     
-    print(f"\n✅ Indexed {len(embeddings)} documents!")
     return embeddings
 
 def load_embeddings():
