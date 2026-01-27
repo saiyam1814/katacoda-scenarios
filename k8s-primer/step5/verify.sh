@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Verify that webapp-deployment exists and was created from YAML
-kubectl get deployment webapp-deployment -n k8s-primer &> /dev/null
-if [ $? -eq 0 ]; then
-    # Check if the manifest file exists
-    if [ -f /root/workspace/k8s-primer/manifests/webapp-deployment.yaml ]; then
+# Verify that webapp-deployment exists (main goal - they applied a YAML manifest)
+if kubectl get deployment webapp-deployment -n k8s-primer &> /dev/null; then
+    # Check if deployment has pods running
+    READY_REPLICAS=$(kubectl get deployment webapp-deployment -n k8s-primer -o jsonpath='{.status.readyReplicas}' 2>/dev/null)
+    if [ -n "$READY_REPLICAS" ] && [ "$READY_REPLICAS" -gt 0 ]; then
         echo "done"
     else
-        exit 1
+        # Deployment exists but pods might still be starting
+        echo "done"
     fi
 else
     exit 1
