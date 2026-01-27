@@ -1,0 +1,52 @@
+{
+  "title": "Kubernetes Primer",
+  "description": "Learn the fundamentals of Kubernetes by deploying Pods, Deployments, Services, NodePort Services, working with YAML manifests, resource management, and debugging tools. Perfect comprehensive primer before diving into advanced Kubernetes workshops.",
+  "details": {
+    "intro": {
+      "text": "intro.md"
+    },
+    "steps": [
+      {
+        "title": "Deploy a Pod",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Deploy a Deployment",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Deploy a Service",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Deploy a NodePort Service",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Working with YAML Manifests",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      },
+      {
+        "title": "Resource Management - Requests and Limits",
+        "text": "step6/text.md",
+        "verify": "step6/verify.sh"
+      },
+      {
+        "title": "Port Forwarding and kubectl exec",
+        "text": "step7/text.md",
+        "verify": "step7/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
