@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 480" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <filter id="s4"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.1"/></filter>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#326CE5"/>
+    </marker>
+    <marker id="arr2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#76B900"/>
+    </marker>
+  </defs>
+
+  <rect width="850" height="480" rx="12" fill="#F8F9FA"/>
+  <text x="425" y="35" text-anchor="middle" font-size="22" font-weight="bold" fill="#1A202C">RAG Pipeline Architecture</text>
+  <text x="425" y="55" text-anchor="middle" font-size="13" fill="#718096">Retrieval-Augmented Generation: Making LLMs accurate with your data</text>
+
+  <!-- Phase 1: Indexing -->
+  <rect x="20" y="70" width="810" height="160" rx="10" fill="white" stroke="#326CE5" stroke-width="1.5" filter="url(#s4)"/>
+  <rect x="20" y="70" width="150" height="30" rx="8" fill="#326CE5"/>
+  <text x="95" y="90" text-anchor="middle" font-size="12" font-weight="bold" fill="white">INDEXING PHASE</text>
+  <text x="185" y="90" font-size="11" fill="#718096">(One-time setup)</text>
+
+  <!-- Documents -->
+  <rect x="45" y="115" width="140" height="95" rx="8" fill="#EBF4FF" stroke="#326CE5" stroke-width="1"/>
+  <text x="115" y="138" text-anchor="middle" font-size="11" font-weight="bold" fill="#326CE5">Documents</text>
+  <rect x="60" y="145" width="110" height="14" rx="2" fill="#DBEAFE"/>
+  <text x="115" y="155" text-anchor="middle" font-size="8" fill="#326CE5">kubernetes-basics.txt</text>
+  <rect x="60" y="162" width="110" height="14" rx="2" fill="#DBEAFE"/>
+  <text x="115" y="172" text-anchor="middle" font-size="8" fill="#326CE5">kubernetes-scaling.txt</text>
+  <rect x="60" y="179" width="110" height="14" rx="2" fill="#DBEAFE"/>
+  <text x="115" y="189" text-anchor="middle" font-size="8" fill="#326CE5">kubernetes-security.txt</text>
+
+  <path d="M185 162 L225 162" stroke="#326CE5" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Embedding Model -->
+  <rect x="230" y="120" width="160" height="85" rx="8" fill="#F3E8FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="310" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#7C3AED">Embedding Model</text>
+  <text x="310" y="165" text-anchor="middle" font-size="10" fill="#6B7280">all-minilm (23M params)</text>
+  <text x="310" y="180" text-anchor="middle" font-size="9" fill="#9CA3AF">text --&gt; [0.12, -0.34, ...]</text>
+  <text x="310" y="195" text-anchor="middle" font-size="9" fill="#9CA3AF">384-dimensional vectors</text>
+
+  <path d="M390 162 L430 162" stroke="#326CE5" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Vectors -->
+  <rect x="435" y="120" width="160" height="85" rx="8" fill="#FFF3E0" stroke="#FF9800" stroke-width="1"/>
+  <text x="515" y="148" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">Vector Embeddings</text>
+  <text x="515" y="168" text-anchor="middle" font-size="9" fill="#6B7280">[0.12, -0.34, 0.56, ...]</text>
+  <text x="515" y="183" text-anchor="middle" font-size="9" fill="#6B7280">[0.45, 0.23, -0.11, ...]</text>
+  <text x="515" y="198" text-anchor="middle" font-size="9" fill="#6B7280">[0.78, -0.15, 0.33, ...]</text>
+
+  <path d="M595 162 L635 162" stroke="#326CE5" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Vector Store -->
+  <rect x="640" y="115" width="165" height="95" rx="8" fill="#E8F5E9" stroke="#76B900" stroke-width="1.5"/>
+  <text x="722" y="143" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">Vector Store</text>
+  <text x="722" y="163" text-anchor="middle" font-size="10" fill="#6B7280">JSON file (workshop)</text>
+  <text x="722" y="180" text-anchor="middle" font-size="9" fill="#9CA3AF">Production: Qdrant,</text>
+  <text x="722" y="193" text-anchor="middle" font-size="9" fill="#9CA3AF">Pinecone, ChromaDB</text>
+
+  <!-- Phase 2: Query -->
+  <rect x="20" y="250" width="810" height="210" rx="10" fill="white" stroke="#76B900" stroke-width="1.5" filter="url(#s4)"/>
+  <rect x="20" y="250" width="140" height="30" rx="8" fill="#76B900"/>
+  <text x="90" y="270" text-anchor="middle" font-size="12" font-weight="bold" fill="white">QUERY PHASE</text>
+  <text x="175" y="270" font-size="11" fill="#718096">(Every question)</text>
+
+  <!-- User Question -->
+  <rect x="45" y="295" width="140" height="55" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+  <text x="115" y="318" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400E">User Question</text>
+  <text x="115" y="336" text-anchor="middle" font-size="9" fill="#6B7280">"How do I scale</text>
+  <text x="115" y="346" text-anchor="middle" font-size="9" fill="#6B7280">my application?"</text>
+
+  <path d="M185 322 L225 322" stroke="#76B900" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Embed Query -->
+  <rect x="230" y="295" width="130" height="55" rx="8" fill="#F3E8FF" stroke="#7C3AED" stroke-width="1"/>
+  <text x="295" y="318" text-anchor="middle" font-size="11" font-weight="bold" fill="#7C3AED">Embed Query</text>
+  <text x="295" y="336" text-anchor="middle" font-size="9" fill="#6B7280">Same model encodes</text>
+  <text x="295" y="346" text-anchor="middle" font-size="9" fill="#6B7280">question to vector</text>
+
+  <path d="M360 322 L400 322" stroke="#76B900" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Similarity Search -->
+  <rect x="405" y="290" width="145" height="65" rx="8" fill="#FFF3E0" stroke="#FF9800" stroke-width="1"/>
+  <text x="477" y="313" text-anchor="middle" font-size="11" font-weight="bold" fill="#E65100">Cosine Similarity</text>
+  <text x="477" y="330" text-anchor="middle" font-size="9" fill="#6B7280">Compare query vector</text>
+  <text x="477" y="342" text-anchor="middle" font-size="9" fill="#6B7280">vs all doc vectors</text>
+  <text x="477" y="352" text-anchor="middle" font-size="9" fill="#76B900" font-weight="bold">Top match: 0.89</text>
+
+  <path d="M550 322 L590 322" stroke="#76B900" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Context + Prompt -->
+  <rect x="595" y="290" width="105" height="65" rx="8" fill="#E8F5E9" stroke="#76B900" stroke-width="1"/>
+  <text x="647" y="313" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E7D32">Augment</text>
+  <text x="647" y="330" text-anchor="middle" font-size="9" fill="#6B7280">Add retrieved</text>
+  <text x="647" y="342" text-anchor="middle" font-size="9" fill="#6B7280">doc as context</text>
+  <text x="647" y="352" text-anchor="middle" font-size="9" fill="#6B7280">to the prompt</text>
+
+  <path d="M700 322 L730 322" stroke="#76B900" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- LLM Generation -->
+  <rect x="735" y="287" width="80" height="72" rx="8" fill="#326CE5"/>
+  <text x="775" y="313" text-anchor="middle" font-size="11" font-weight="bold" fill="white">LLM</text>
+  <text x="775" y="330" text-anchor="middle" font-size="9" fill="#DBEAFE">TinyLlama</text>
+  <text x="775" y="345" text-anchor="middle" font-size="9" fill="#DBEAFE">Generate</text>
+
+  <!-- Answer -->
+  <rect x="595" y="375" width="220" height="70" rx="8" fill="#F0FFF4" stroke="#38A169" stroke-width="2"/>
+  <text x="705" y="398" text-anchor="middle" font-size="11" font-weight="bold" fill="#276749">Grounded Answer</text>
+  <text x="705" y="416" text-anchor="middle" font-size="9" fill="#4A5568">"Use HPA to autoscale pods based</text>
+  <text x="705" y="428" text-anchor="middle" font-size="9" fill="#4A5568">on CPU/memory: kubectl autoscale</text>
+  <text x="705" y="440" text-anchor="middle" font-size="9" fill="#4A5568">deployment myapp --min=2 --max=10"</text>
+
+  <path d="M775 359 L775 375" stroke="#38A169" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Legend -->
+  <text x="45" y="390" font-size="11" font-weight="bold" fill="#2D3748">Without RAG:</text>
+  <rect x="45" y="398" width="200" height="44" rx="5" fill="#FEE2E2" stroke="#EF4444" stroke-width="1"/>
+  <text x="145" y="416" text-anchor="middle" font-size="9" fill="#991B1B">"HPA is Health Professional</text>
+  <text x="145" y="430" text-anchor="middle" font-size="9" fill="#991B1B">Association" (HALLUCINATION!)</text>
+
+  <text x="265" y="390" font-size="11" font-weight="bold" fill="#2D3748">With RAG:</text>
+  <rect x="265" y="398" width="200" height="44" rx="5" fill="#DCFCE7" stroke="#22C55E" stroke-width="1"/>
+  <text x="365" y="416" text-anchor="middle" font-size="9" fill="#166534">"HPA is Horizontal Pod Autoscaler</text>
+  <text x="365" y="430" text-anchor="middle" font-size="9" fill="#166534">that scales replicas" (CORRECT!)</text>
+</svg>

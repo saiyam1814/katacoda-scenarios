@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <filter id="s3"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.12"/></filter>
+  </defs>
+
+  <rect width="900" height="520" rx="12" fill="#F8F9FA"/>
+  <text x="450" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#1A202C">GPU Sharing Techniques on Kubernetes</text>
+  <text x="450" y="58" text-anchor="middle" font-size="13" fill="#718096">Time-Slicing vs MPS vs MIG - Choosing the right approach</text>
+
+  <!-- Time-Slicing -->
+  <rect x="20" y="75" width="270" height="420" rx="10" fill="white" stroke="#E2E8F0" stroke-width="2" filter="url(#s3)"/>
+  <rect x="20" y="75" width="270" height="42" rx="10" fill="#326CE5"/>
+  <rect x="20" y="107" width="270" height="10" fill="#326CE5"/>
+  <text x="155" y="103" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Time-Slicing</text>
+
+  <!-- Time-Slicing Visual -->
+  <rect x="45" y="128" width="220" height="100" rx="6" fill="#EBF4FF" stroke="#326CE5" stroke-width="1"/>
+  <text x="155" y="145" text-anchor="middle" font-size="10" font-weight="bold" fill="#326CE5">Single GPU</text>
+
+  <!-- Time slots -->
+  <rect x="55" y="155" width="200" height="18" rx="3" fill="#326CE5" opacity="0.8"/>
+  <text x="155" y="168" text-anchor="middle" font-size="9" fill="white">Pod A (t=0-33ms)</text>
+  <rect x="55" y="176" width="200" height="18" rx="3" fill="#FF6B35" opacity="0.8"/>
+  <text x="155" y="189" text-anchor="middle" font-size="9" fill="white">Pod B (t=33-66ms)</text>
+  <rect x="55" y="197" width="200" height="18" rx="3" fill="#7C3AED" opacity="0.8"/>
+  <text x="155" y="210" text-anchor="middle" font-size="9" fill="white">Pod C (t=66-100ms)</text>
+
+  <!-- Time-Slicing Details -->
+  <text x="45" y="248" font-size="11" font-weight="bold" fill="#2D3748">How it works:</text>
+  <text x="45" y="265" font-size="10" fill="#4A5568">Pods take turns using the GPU.</text>
+  <text x="45" y="280" font-size="10" fill="#4A5568">Context-switch between workloads.</text>
+  <text x="45" y="295" font-size="10" fill="#4A5568">Full GPU memory visible to each pod.</text>
+
+  <text x="45" y="320" font-size="11" font-weight="bold" fill="#38A169">Pros:</text>
+  <text x="45" y="337" font-size="10" fill="#4A5568">+ Simplest to configure</text>
+  <text x="45" y="352" font-size="10" fill="#4A5568">+ Works on all NVIDIA GPUs</text>
+  <text x="45" y="367" font-size="10" fill="#4A5568">+ No special hardware needed</text>
+
+  <text x="45" y="392" font-size="11" font-weight="bold" fill="#E53E3E">Cons:</text>
+  <text x="45" y="409" font-size="10" fill="#4A5568">- No memory isolation</text>
+  <text x="45" y="424" font-size="10" fill="#4A5568">- Context-switch overhead</text>
+  <text x="45" y="439" font-size="10" fill="#4A5568">- OOM can affect all pods</text>
+
+  <rect x="45" y="455" width="220" height="25" rx="12" fill="#EBF4FF" stroke="#326CE5" stroke-width="1"/>
+  <text x="155" y="472" text-anchor="middle" font-size="10" fill="#326CE5" font-weight="bold">Best for: Dev/Test, Inference</text>
+
+  <!-- MPS -->
+  <rect x="315" y="75" width="270" height="420" rx="10" fill="white" stroke="#E2E8F0" stroke-width="2" filter="url(#s3)"/>
+  <rect x="315" y="75" width="270" height="42" rx="10" fill="#FF6B35"/>
+  <rect x="315" y="107" width="270" height="10" fill="#FF6B35"/>
+  <text x="450" y="103" text-anchor="middle" font-size="16" font-weight="bold" fill="white">MPS (Multi-Process Service)</text>
+
+  <!-- MPS Visual -->
+  <rect x="340" y="128" width="220" height="100" rx="6" fill="#FFF3E0" stroke="#FF9800" stroke-width="1"/>
+  <text x="450" y="145" text-anchor="middle" font-size="10" font-weight="bold" fill="#E65100">Single GPU - Concurrent</text>
+
+  <!-- Simultaneous execution -->
+  <rect x="350" y="155" width="65" height="55" rx="3" fill="#326CE5" opacity="0.8"/>
+  <text x="382" y="178" text-anchor="middle" font-size="9" fill="white">Pod A</text>
+  <text x="382" y="191" text-anchor="middle" font-size="8" fill="#DBEAFE">33% SMs</text>
+
+  <rect x="420" y="155" width="65" height="55" rx="3" fill="#FF6B35" opacity="0.8"/>
+  <text x="452" y="178" text-anchor="middle" font-size="9" fill="white">Pod B</text>
+  <text x="452" y="191" text-anchor="middle" font-size="8" fill="#FFF3E0">33% SMs</text>
+
+  <rect x="490" y="155" width="65" height="55" rx="3" fill="#7C3AED" opacity="0.8"/>
+  <text x="522" y="178" text-anchor="middle" font-size="9" fill="white">Pod C</text>
+  <text x="522" y="191" text-anchor="middle" font-size="8" fill="#F3E8FF">33% SMs</text>
+
+  <!-- MPS Details -->
+  <text x="340" y="248" font-size="11" font-weight="bold" fill="#2D3748">How it works:</text>
+  <text x="340" y="265" font-size="10" fill="#4A5568">Pods run SIMULTANEOUSLY on GPU.</text>
+  <text x="340" y="280" font-size="10" fill="#4A5568">Shared CUDA context, split SMs.</text>
+  <text x="340" y="295" font-size="10" fill="#4A5568">Better utilization than time-slicing.</text>
+
+  <text x="340" y="320" font-size="11" font-weight="bold" fill="#38A169">Pros:</text>
+  <text x="340" y="337" font-size="10" fill="#4A5568">+ True concurrent execution</text>
+  <text x="340" y="352" font-size="10" fill="#4A5568">+ Higher GPU utilization</text>
+  <text x="340" y="367" font-size="10" fill="#4A5568">+ Lower latency than time-slicing</text>
+
+  <text x="340" y="392" font-size="11" font-weight="bold" fill="#E53E3E">Cons:</text>
+  <text x="340" y="409" font-size="10" fill="#4A5568">- Limited memory protection</text>
+  <text x="340" y="424" font-size="10" fill="#4A5568">- Error in one affects all</text>
+  <text x="340" y="439" font-size="10" fill="#4A5568">- Volta+ GPUs required</text>
+
+  <rect x="340" y="455" width="220" height="25" rx="12" fill="#FFF3E0" stroke="#FF9800" stroke-width="1"/>
+  <text x="450" y="472" text-anchor="middle" font-size="10" fill="#E65100" font-weight="bold">Best for: Multi-model inference</text>
+
+  <!-- MIG -->
+  <rect x="610" y="75" width="270" height="420" rx="10" fill="white" stroke="#E2E8F0" stroke-width="2" filter="url(#s3)"/>
+  <rect x="610" y="75" width="270" height="42" rx="10" fill="#76B900"/>
+  <rect x="610" y="107" width="270" height="10" fill="#76B900"/>
+  <text x="745" y="103" text-anchor="middle" font-size="16" font-weight="bold" fill="white">MIG (Multi-Instance GPU)</text>
+
+  <!-- MIG Visual -->
+  <rect x="635" y="128" width="220" height="100" rx="6" fill="#E8F5E9" stroke="#76B900" stroke-width="1"/>
+  <text x="745" y="145" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E7D32">Hardware Partitioned</text>
+
+  <!-- Separate instances -->
+  <rect x="645" y="155" width="65" height="55" rx="3" fill="#326CE5" opacity="0.9" stroke="#1A202C" stroke-width="1.5"/>
+  <text x="677" y="172" text-anchor="middle" font-size="8" fill="white" font-weight="bold">Instance 1</text>
+  <text x="677" y="185" text-anchor="middle" font-size="7" fill="#DBEAFE">10GB HBM</text>
+  <text x="677" y="196" text-anchor="middle" font-size="7" fill="#DBEAFE">Own SMs</text>
+
+  <rect x="715" y="155" width="65" height="55" rx="3" fill="#FF6B35" opacity="0.9" stroke="#1A202C" stroke-width="1.5"/>
+  <text x="747" y="172" text-anchor="middle" font-size="8" fill="white" font-weight="bold">Instance 2</text>
+  <text x="747" y="185" text-anchor="middle" font-size="7" fill="#FFF3E0">10GB HBM</text>
+  <text x="747" y="196" text-anchor="middle" font-size="7" fill="#FFF3E0">Own SMs</text>
+
+  <rect x="785" y="155" width="65" height="55" rx="3" fill="#7C3AED" opacity="0.9" stroke="#1A202C" stroke-width="1.5"/>
+  <text x="817" y="172" text-anchor="middle" font-size="8" fill="white" font-weight="bold">Instance 3</text>
+  <text x="817" y="185" text-anchor="middle" font-size="7" fill="#F3E8FF">10GB HBM</text>
+  <text x="817" y="196" text-anchor="middle" font-size="7" fill="#F3E8FF">Own SMs</text>
+
+  <!-- MIG Details -->
+  <text x="635" y="248" font-size="11" font-weight="bold" fill="#2D3748">How it works:</text>
+  <text x="635" y="265" font-size="10" fill="#4A5568">GPU split into hardware instances.</text>
+  <text x="635" y="280" font-size="10" fill="#4A5568">Each has own memory &amp; compute.</text>
+  <text x="635" y="295" font-size="10" fill="#4A5568">True hardware-level isolation.</text>
+
+  <text x="635" y="320" font-size="11" font-weight="bold" fill="#38A169">Pros:</text>
+  <text x="635" y="337" font-size="10" fill="#4A5568">+ Full memory isolation</text>
+  <text x="635" y="352" font-size="10" fill="#4A5568">+ Guaranteed compute</text>
+  <text x="635" y="367" font-size="10" fill="#4A5568">+ Fault isolation per instance</text>
+
+  <text x="635" y="392" font-size="11" font-weight="bold" fill="#E53E3E">Cons:</text>
+  <text x="635" y="409" font-size="10" fill="#4A5568">- Only A100/H100/H200</text>
+  <text x="635" y="424" font-size="10" fill="#4A5568">- Fixed partition sizes (1g-7g)</text>
+  <text x="635" y="439" font-size="10" fill="#4A5568">- Requires reconfiguration</text>
+
+  <rect x="635" y="455" width="220" height="25" rx="12" fill="#E8F5E9" stroke="#76B900" stroke-width="1"/>
+  <text x="745" y="472" text-anchor="middle" font-size="10" fill="#2E7D32" font-weight="bold">Best for: Production, multi-tenant</text>
+</svg>

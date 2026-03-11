@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="cpuGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#326CE5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gpuGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8BC34A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#76B900;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="500" rx="12" fill="#F8F9FA"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#1A202C">CPU vs GPU Architecture</text>
+  <text x="450" y="62" text-anchor="middle" font-size="13" fill="#718096">Why GPUs dominate AI/ML workloads</text>
+
+  <!-- CPU Section -->
+  <rect x="30" y="80" width="400" height="390" rx="10" fill="white" stroke="#E2E8F0" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="30" y="80" width="400" height="45" rx="10" fill="url(#cpuGrad)"/>
+  <rect x="30" y="115" width="400" height="10" fill="url(#cpuGrad)"/>
+  <text x="230" y="110" text-anchor="middle" font-size="18" font-weight="bold" fill="white">CPU - Central Processing Unit</text>
+
+  <!-- CPU Cores (4 large) -->
+  <text x="230" y="150" text-anchor="middle" font-size="12" fill="#718096">4-64 Powerful Cores (Sequential Processing)</text>
+
+  <rect x="60" y="165" width="80" height="80" rx="8" fill="#326CE5" opacity="0.9"/>
+  <text x="100" y="200" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Core 1</text>
+  <text x="100" y="218" text-anchor="middle" font-size="9" fill="#DBEAFE">ALU + Cache</text>
+  <text x="100" y="232" text-anchor="middle" font-size="9" fill="#DBEAFE">5 GHz</text>
+
+  <rect x="160" y="165" width="80" height="80" rx="8" fill="#326CE5" opacity="0.9"/>
+  <text x="200" y="200" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Core 2</text>
+  <text x="200" y="218" text-anchor="middle" font-size="9" fill="#DBEAFE">ALU + Cache</text>
+  <text x="200" y="232" text-anchor="middle" font-size="9" fill="#DBEAFE">5 GHz</text>
+
+  <rect x="260" y="165" width="80" height="80" rx="8" fill="#326CE5" opacity="0.9"/>
+  <text x="300" y="200" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Core 3</text>
+  <text x="300" y="218" text-anchor="middle" font-size="9" fill="#DBEAFE">ALU + Cache</text>
+  <text x="300" y="232" text-anchor="middle" font-size="9" fill="#DBEAFE">5 GHz</text>
+
+  <rect x="340" y="165" width="80" height="80" rx="8" fill="#326CE5" opacity="0.85"/>
+  <text x="380" y="200" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Core 4</text>
+  <text x="380" y="218" text-anchor="middle" font-size="9" fill="#DBEAFE">ALU + Cache</text>
+  <text x="380" y="232" text-anchor="middle" font-size="9" fill="#DBEAFE">5 GHz</text>
+
+  <!-- CPU L3 Cache -->
+  <rect x="60" y="260" width="360" height="30" rx="5" fill="#DBEAFE" stroke="#326CE5" stroke-width="1"/>
+  <text x="240" y="280" text-anchor="middle" font-size="12" fill="#326CE5" font-weight="bold">Large L3 Cache (32-128 MB)</text>
+
+  <!-- CPU Characteristics -->
+  <text x="60" y="315" font-size="12" fill="#2D3748" font-weight="bold">Strengths:</text>
+  <text x="60" y="335" font-size="11" fill="#4A5568">&#8226; Complex logic &amp; branching</text>
+  <text x="60" y="353" font-size="11" fill="#4A5568">&#8226; Low latency per-thread</text>
+  <text x="60" y="371" font-size="11" fill="#4A5568">&#8226; Operating system tasks</text>
+  <text x="60" y="389" font-size="11" fill="#4A5568">&#8226; General-purpose computing</text>
+
+  <text x="250" y="315" font-size="12" fill="#2D3748" font-weight="bold">AI Workloads:</text>
+  <text x="250" y="335" font-size="11" fill="#E53E3E">&#8226; Slow for matrix operations</text>
+  <text x="250" y="353" font-size="11" fill="#E53E3E">&#8226; Limited parallelism</text>
+  <text x="250" y="371" font-size="11" fill="#4A5568">&#8226; Good for: Inference (small)</text>
+  <text x="250" y="389" font-size="11" fill="#4A5568">&#8226; TinyLlama: ~5-10 tok/s</text>
+
+  <!-- CPU Bottom badge -->
+  <rect x="120" y="410" width="220" height="30" rx="15" fill="#EBF4FF" stroke="#326CE5" stroke-width="1"/>
+  <text x="230" y="430" text-anchor="middle" font-size="12" fill="#326CE5" font-weight="bold">Sequential: One task at a time</text>
+
+  <!-- GPU Section -->
+  <rect x="470" y="80" width="400" height="390" rx="10" fill="white" stroke="#E2E8F0" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="470" y="80" width="400" height="45" rx="10" fill="url(#gpuGrad)"/>
+  <rect x="470" y="115" width="400" height="10" fill="url(#gpuGrad)"/>
+  <text x="670" y="110" text-anchor="middle" font-size="18" font-weight="bold" fill="white">GPU - Graphics Processing Unit</text>
+
+  <!-- GPU Cores Grid (many small) -->
+  <text x="670" y="150" text-anchor="middle" font-size="12" fill="#718096">Thousands of Simple Cores (Parallel Processing)</text>
+
+  <!-- Draw a grid of small GPU cores -->
+  <g transform="translate(490, 163)">
+    <!-- Row 1 -->
+    <rect x="0" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="17" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="34" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="51" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="68" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="85" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="102" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="119" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="136" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="153" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="170" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="187" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="204" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="221" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="238" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="255" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="272" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="289" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="306" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="323" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="340" y="0" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <!-- Row 2 -->
+    <rect x="0" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="17" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="34" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="51" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="68" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="85" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="102" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="119" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="136" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="153" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="170" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="187" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="204" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="221" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="238" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="255" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="272" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="289" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="306" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="323" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="340" y="17" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <!-- Row 3 -->
+    <rect x="0" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="17" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="34" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="51" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="68" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="85" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="102" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="119" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="136" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="153" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="170" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="187" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="204" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="221" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="238" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="255" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="272" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="289" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="306" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="323" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="340" y="34" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <!-- Row 4 -->
+    <rect x="0" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="17" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="34" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="51" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="68" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="85" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="102" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="119" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="136" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="153" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="170" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="187" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="204" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="221" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="238" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="255" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="272" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="289" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="306" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="323" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <rect x="340" y="51" width="14" height="14" rx="2" fill="#76B900" opacity="0.85"/>
+    <!-- Row 5 -->
+    <rect x="0" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="17" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="34" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="51" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="68" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="85" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="102" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="119" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="136" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="153" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="170" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="187" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="204" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="221" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="238" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="255" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="272" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="289" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="306" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="323" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+    <rect x="340" y="68" width="14" height="14" rx="2" fill="#76B900" opacity="0.8"/>
+  </g>
+
+  <text x="670" y="255" text-anchor="middle" font-size="10" fill="#76B900" font-weight="bold">16,384 CUDA Cores (H100) | 1.5 GHz each</text>
+
+  <!-- GPU HBM -->
+  <rect x="500" y="265" width="360" height="30" rx="5" fill="#E8F5E9" stroke="#76B900" stroke-width="1"/>
+  <text x="680" y="285" text-anchor="middle" font-size="12" fill="#76B900" font-weight="bold">HBM3 Memory (80 GB, 3.35 TB/s bandwidth)</text>
+
+  <!-- GPU Tensor Cores -->
+  <rect x="500" y="300" width="175" height="25" rx="5" fill="#FFF3E0" stroke="#FF9800" stroke-width="1"/>
+  <text x="587" y="317" text-anchor="middle" font-size="11" fill="#E65100" font-weight="bold">528 Tensor Cores</text>
+
+  <rect x="685" y="300" width="175" height="25" rx="5" fill="#FFF3E0" stroke="#FF9800" stroke-width="1"/>
+  <text x="772" y="317" text-anchor="middle" font-size="11" fill="#E65100" font-weight="bold">NVLink Interconnect</text>
+
+  <!-- GPU Characteristics -->
+  <text x="500" y="350" font-size="12" fill="#2D3748" font-weight="bold">Strengths:</text>
+  <text x="500" y="370" font-size="11" fill="#4A5568">&#8226; Massive parallelism</text>
+  <text x="500" y="388" font-size="11" fill="#4A5568">&#8226; Matrix multiply (GEMM)</text>
+  <text x="500" y="406" font-size="11" fill="#4A5568">&#8226; High memory bandwidth</text>
+
+  <text x="690" y="350" font-size="12" fill="#2D3748" font-weight="bold">AI Workloads:</text>
+  <text x="690" y="370" font-size="11" fill="#38A169">&#8226; 100-1000x faster training</text>
+  <text x="690" y="388" font-size="11" fill="#38A169">&#8226; 50-100x faster inference</text>
+  <text x="690" y="406" font-size="11" fill="#4A5568">&#8226; Llama 70B: ~80 tok/s</text>
+
+  <!-- GPU Bottom badge -->
+  <rect x="560" y="420" width="220" height="30" rx="15" fill="#F0FFF4" stroke="#76B900" stroke-width="1"/>
+  <text x="670" y="440" text-anchor="middle" font-size="12" fill="#76B900" font-weight="bold">Parallel: Thousands at once</text>
+
+  <!-- VS Divider -->
+  <circle cx="450" cy="275" r="22" fill="#FF6B35" opacity="0.9"/>
+  <text x="450" y="281" text-anchor="middle" font-size="16" font-weight="bold" fill="white">VS</text>
+</svg>

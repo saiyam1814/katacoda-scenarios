@@ -1,0 +1,44 @@
+{
+  "title": "GPU, AI & Multi-Tenancy on Kubernetes - KubeCon EU 2026",
+  "description": "Hands-on workshop: Deploy LLMs on Kubernetes, build RAG pipelines with vector search, and implement multi-tenant AI infrastructure with vCluster. From GPU fundamentals to production patterns.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh",
+      "courseData": "background.sh"
+    },
+    "steps": [
+      {
+        "title": "Deploy Your AI Infrastructure on Kubernetes",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Run Your First LLM and Understand Inference",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Build an Intelligent RAG Pipeline",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Vector RAG with Semantic Search",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Multi-Tenant AI with vCluster",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
