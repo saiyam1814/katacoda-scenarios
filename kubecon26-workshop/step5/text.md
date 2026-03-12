@@ -4,6 +4,8 @@ You've built a complete AI pipeline. But in a real organization, **multiple team
 
 This is exactly what Artem showed with the **vCluster Platform Blueprint** - and now you'll build it yourself.
 
+![Multi-Tenant AI with vCluster](https://raw.githubusercontent.com/saiyam1814/katacoda-scenarios/main/kubecon26-workshop/images/vcluster-multi-tenant.png)
+
 ## The Multi-Tenancy Problem
 
 ```
@@ -100,109 +102,98 @@ echo "=== This is team-ml's own cluster! ==="
 echo "They have full admin access here without affecting other teams."
 ```{{exec}}
 
-## Deploy Ollama Inside the vCluster
+## Deploy a Workload Inside the vCluster
 
-Now deploy AI infrastructure inside the virtual cluster - team-ml gets their own isolated AI environment:
+Now deploy infrastructure inside the virtual cluster. We'll deploy a lightweight nginx web server to demonstrate isolation (Ollama + model would exceed the memory limits of this lab environment):
 
 ```bash
-# Create team-ml's AI namespace
+# Create team-ml's namespaces - they have FULL control
 kubectl create namespace ai-inference
+kubectl create namespace monitoring
 
-# Deploy Ollama inside the vCluster
+# Deploy a workload inside the vCluster
 cat <<'EOF' | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ollama
+  name: model-api
   namespace: ai-inference
   labels:
-    app: ollama
+    app: model-api
     team: ml
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: ollama
+      app: model-api
   template:
     metadata:
       labels:
-        app: ollama
+        app: model-api
         team: ml
     spec:
       containers:
-      - name: ollama
-        image: ollama/ollama:latest
+      - name: api
+        image: nginx:alpine
         ports:
-        - containerPort: 11434
-        env:
-        - name: OLLAMA_LLM_LIBRARY
-          value: "cpu"
+        - containerPort: 80
         resources:
           requests:
-            memory: "512Mi"
-            cpu: "250m"
+            memory: "32Mi"
+            cpu: "50m"
           limits:
-            memory: "2Gi"
-            cpu: "1000m"
-        volumeMounts:
-        - name: model-storage
-          mountPath: /root/.ollama
-      volumes:
-      - name: model-storage
-        emptyDir: {}
+            memory: "64Mi"
+            cpu: "100m"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ollama
+  name: model-api
   namespace: ai-inference
 spec:
   selector:
-    app: ollama
+    app: model-api
   ports:
-  - port: 11434
-    targetPort: 11434
+  - port: 80
+    targetPort: 80
   type: ClusterIP
 EOF
 
-echo "Deployed Ollama in team-ml's vCluster!"
+echo "Deployed workload in team-ml's vCluster!"
 ```{{exec}}
 
-## Wait for Ollama and Pull Model
+## Wait for Deployment
 
 ```bash
-echo "Waiting for Ollama in vCluster..."
-kubectl wait --for=condition=ready pod -l app=ollama -n ai-inference --timeout=180s
+echo "Waiting for pods in vCluster..."
+kubectl wait --for=condition=ready pod -l app=model-api -n ai-inference --timeout=120s
 
 echo ""
-echo "Pulling TinyLlama model..."
-kubectl exec -it deployment/ollama -n ai-inference -- ollama pull tinyllama
+echo "=== Pods running in team-ml's vCluster ==="
+kubectl get pods -n ai-inference -o wide
 ```{{exec}}
 
-## Test AI Inside the vCluster
-
-```bash
-# Team ML can use their isolated AI environment
-echo "What is a virtual cluster and why is it useful for AI workloads?" | \
-  kubectl exec -i deployment/ollama -n ai-inference -- ollama run tinyllama
-```{{exec}}
+> **Note**: In this lab we deployed nginx to demonstrate isolation without exhausting resources. In production with real GPUs, this is where you'd deploy Ollama/vLLM with `nvidia.com/gpu: 1` in the resource requests, and each team's vCluster would have access to their allocated MIG slices or dedicated GPUs via Auto Nodes.
 
 ## See the Isolation
 
-Let's look at what the **host cluster** sees vs what the **vCluster** sees:
+Let's look at what **team-ml sees** inside their vCluster:
 
 ```bash
 echo "=== Inside vCluster (team-ml's view) ==="
-echo "Namespaces:"
+echo ""
+echo "Namespaces (team created these themselves):"
 kubectl get namespaces
 echo ""
 echo "Pods in ai-inference:"
 kubectl get pods -n ai-inference -o wide
-
 echo ""
-echo "=== Team-ml thinks they have their own cluster! ==="
-echo "They can create namespaces, deploy anything, set RBAC -"
-echo "all without affecting other teams or the host cluster."
+echo "Services:"
+kubectl get svc -n ai-inference
+echo ""
+echo "Team-ml has FULL admin access here."
+echo "They can create namespaces, RBAC, CRDs - anything."
+echo "But they CANNOT see or affect other teams' vClusters."
 ```{{exec}}
 
 ## Disconnect and See Host View
@@ -216,43 +207,22 @@ vcluster disconnect
 # Now see what the HOST cluster sees
 echo "=== Host Cluster View ==="
 echo ""
-echo "Namespaces (host sees vCluster as a namespace):"
+echo "Namespaces on host (vCluster lives in team-ml namespace):"
 kubectl get namespaces
 echo ""
-echo "What's in the team-ml namespace (host perspective):"
+echo "What the host sees in team-ml namespace:"
 kubectl get pods -n team-ml
 echo ""
-echo "The host only sees vCluster infrastructure -"
-echo "NOT the team's internal namespaces or workloads directly."
+echo "Notice: The host sees vCluster infrastructure pods."
+echo "It does NOT see team-ml's internal 'ai-inference' namespace"
+echo "or their model-api pods directly. Full isolation!"
 ```{{exec}}
 
-## How This Maps to Artem's Platform Blueprint
-
-What you just built manually is what the **vCluster Platform** automates at scale:
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│  What Artem Showed (Platform)     What You Built (Manual)    │
-├──────────────────────────────────────────────────────────────┤
-│                                                               │
-│  vCluster Platform UI/CLI    →    vcluster create team-ml    │
-│  Self-service portal         →    kubectl inside vCluster    │
-│  Auto Nodes + Karpenter      →    (simulated with CPU)       │
-│  GPU Operator + MIG           →    (CPU mode)                │
-│  Sleep mode / cost control   →    (not configured here)      │
-│  Resource quotas per team    →    limits in pod spec         │
-│  RBAC templates               →    manual RBAC               │
-│                                                               │
-│  In production with GPU:                                     │
-│  - team-ml gets MIG 3g.40gb instances                       │
-│  - team-data gets dedicated A100 via Auto Nodes              │
-│  - dev-sandbox gets CPU-only with sleep after 30min         │
-│  - Platform team manages the host, teams manage vClusters   │
-│                                                               │
-└──────────────────────────────────────────────────────────────┘
-```
-
 ## The Production Pattern: vCluster + GPU Sharing
+
+![Production Architecture](https://raw.githubusercontent.com/saiyam1814/katacoda-scenarios/main/kubecon26-workshop/images/production-architecture.png)
+
+In production, the **vCluster Platform** automates everything you just did manually - self-service portals, RBAC templates, sleep mode, cost allocation, and Auto Nodes that dynamically provision GPU hardware.
 
 In a real deployment, vCluster pairs with GPU sharing like this:
 
@@ -281,9 +251,9 @@ The **vCluster Platform** enforces quotas so team-ml can't use more GPUs than al
 ## Step Summary
 
 - Created an isolated virtual Kubernetes cluster using vCluster
-- Deployed a complete AI stack (Ollama + TinyLlama) inside the vCluster
+- Deployed workloads inside the vCluster with full admin access
 - Demonstrated full isolation: team has their own API server, namespaces, RBAC
-- Connected the dots to Artem's Platform Blueprint and GPU sharing
-- Understood how vCluster + MIG/Auto Nodes = production multi-tenant AI
+- Host cluster only sees vCluster infrastructure, not internal resources
+- In production: each vCluster gets GPU access via MIG + Auto Nodes
 
-**You've built a complete AI platform on Kubernetes!**
+**You've built a complete AI platform on Kubernetes - from LLM deployment to RAG to multi-tenancy!**

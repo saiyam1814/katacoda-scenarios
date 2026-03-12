@@ -2,27 +2,21 @@
 
 In this step, you'll deploy **Ollama** - an LLM inference server - on Kubernetes. This is the exact same pattern used in production, just without the GPU (for now).
 
+## CPU vs GPU: Why GPUs for AI?
+
+Before we deploy, let's understand the hardware. A CPU has a few powerful cores optimized for sequential tasks. A GPU has **thousands of simpler cores** designed for parallel math - exactly what neural networks need (matrix multiplications).
+
+![CPU vs GPU Architecture](https://raw.githubusercontent.com/saiyam1814/katacoda-scenarios/main/kubecon26-workshop/images/gpu-vs-cpu.png)
+
+> **Key insight**: LLM inference is dominated by matrix operations. A CPU processes them sequentially (~5 tokens/sec). A GPU does thousands in parallel (~100-300 tokens/sec). That's why GPU infrastructure matters.
+
 ## The GPU Stack (What Happens in Production)
 
-In a production GPU environment, when you deploy an AI workload on Kubernetes, here's what happens under the hood:
+When you deploy an AI workload on Kubernetes with GPUs, multiple layers work together:
 
-```
-┌─────────────────────────────────────────────┐
-│  Your Pod (requests: nvidia.com/gpu: 1)     │  <-- You define this
-├─────────────────────────────────────────────┤
-│  Kubernetes Scheduler                        │  <-- Finds a GPU node
-├─────────────────────────────────────────────┤
-│  NVIDIA Device Plugin                        │  <-- Allocates GPU to pod
-├─────────────────────────────────────────────┤
-│  NVIDIA Container Toolkit                    │  <-- Mounts /dev/nvidia0
-├─────────────────────────────────────────────┤
-│  NVIDIA GPU Driver                           │  <-- Talks to hardware
-├─────────────────────────────────────────────┤
-│  Physical GPU (A100/H100/L4/T4)             │  <-- The actual silicon
-└─────────────────────────────────────────────┘
-```
+![GPU on Kubernetes Stack](https://raw.githubusercontent.com/saiyam1814/katacoda-scenarios/main/kubecon26-workshop/images/k8s-gpu-stack.png)
 
-The **NVIDIA GPU Operator** automates installing all these layers. Today, we're deploying on CPU, but the Kubernetes patterns are identical.
+The **NVIDIA GPU Operator** automates installing all these layers (driver, toolkit, device plugin, monitoring). Today, we're deploying on CPU, but the Kubernetes patterns are identical.
 
 ## Verify Your Cluster
 
@@ -179,7 +173,11 @@ Let's break down what Kubernetes did when you ran `kubectl apply`:
 
 ## GPU Sharing Preview
 
-In the slides, you learned about GPU sharing. Here's how it maps to Kubernetes:
+In the slides, you learned about three GPU sharing techniques. Here's a visual comparison:
+
+![GPU Sharing Techniques](https://raw.githubusercontent.com/saiyam1814/katacoda-scenarios/main/kubecon26-workshop/images/gpu-sharing.png)
+
+Here's how each maps to Kubernetes resource requests:
 
 ```yaml
 # Time-Slicing: Multiple pods share one GPU

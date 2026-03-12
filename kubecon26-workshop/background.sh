@@ -14,7 +14,7 @@ kubectl config set-context --current --namespace=ai-workshop
 pip3 install numpy --quiet --break-system-packages 2>/dev/null &
 
 # Pre-download vCluster CLI
-curl -L -o /usr/local/bin/vcluster "https://github.com/loft-sh/vcluster/releases/download/v0.24.1/vcluster-linux-amd64" 2>/dev/null && chmod +x /usr/local/bin/vcluster &
+curl -L -o /usr/local/bin/vcluster "https://github.com/loft-sh/vcluster/releases/download/v0.32.1/vcluster-linux-amd64" 2>/dev/null && chmod +x /usr/local/bin/vcluster &
 
 # Wait for background downloads
 wait

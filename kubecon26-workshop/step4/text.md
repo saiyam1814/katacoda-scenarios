@@ -4,16 +4,18 @@ Time to upgrade from keyword matching to **real semantic search** using vector e
 
 ## What Are Vector Embeddings?
 
-An embedding model converts text into a list of numbers (a vector) that captures its **meaning**:
+Remember how the LLM works by predicting the next token? Embedding models do something different - they read the **entire text** and compress its meaning into a list of numbers called a **vector**.
 
 ```
-"How do I handle more traffic?"  →  [0.12, -0.34, 0.56, 0.23, ...]
-"Kubernetes scaling with HPA"    →  [0.11, -0.31, 0.53, 0.25, ...]
-"Pod security best practices"   →  [0.78, 0.12, -0.45, 0.02, ...]
-                                          ↑ These are CLOSE!
+"How do I handle more traffic?"  →  [0.12, -0.34, 0.56, 0.23, ...]  (384 numbers)
+"Kubernetes scaling with HPA"    →  [0.11, -0.31, 0.53, 0.25, ...]  (384 numbers)
+"Pod security best practices"   →  [0.78, 0.12, -0.45, 0.02, ...]  (384 numbers)
+                                          ↑ First two are CLOSE!
 ```
 
-Similar meanings produce similar vectors. **Cosine similarity** measures how close two vectors are (1.0 = identical, 0.0 = unrelated).
+**What do the 384 dimensions mean?** Think of it like coordinates. In 2D, a point has (x, y). In 384D, each number captures a different aspect of meaning - topics, sentiment, technical level, domain, etc. The model learns WHAT each dimension represents during training. We don't manually define them.
+
+**Cosine similarity** measures the angle between two vectors (1.0 = identical meaning, 0.0 = completely unrelated). Two texts about "scaling applications" will have vectors pointing in a similar direction, even if they use completely different words.
 
 ## Pull the Embedding Model
 
@@ -50,7 +52,7 @@ print(f'Vector type: float32')
 "
 ```{{exec}}
 
-> **384 dimensions!** Each piece of text becomes a point in 384-dimensional space. Similar texts cluster together in this space.
+> **384 numbers per text!** Each piece of text becomes a point in 384-dimensional space. The embedding model learned (during its training on millions of text pairs) to place similar-meaning texts CLOSE together in this space. "scaling applications" and "handling more traffic" end up near each other, even though they share no keywords. That's the magic of semantic search.
 
 ## Verify NumPy is Available
 
@@ -187,24 +189,23 @@ def rag_query(question):
         marker = " <-- BEST" if filename == best_doc else ""
         print(f"  {filename:<30} {sim:.4f} {bar}{marker}")
 
-    if best_doc and score > 0.3:
+    if best_doc and score > 0.1:
         print(f"\nUsing: {best_doc} (similarity: {score:.4f})")
-        context = embeddings[best_doc]["content"]
+        # Truncate context for faster LLM generation on CPU
+        context = embeddings[best_doc]["content"][:600]
 
-        prompt = f"""Based on the following documentation, answer the question accurately and concisely.
+        prompt = f"""Answer concisely based on this context.
 
-Documentation:
-{context}
+Context: {context}
 
 Question: {question}
-
-Answer:"""
+Answer in 2-3 sentences:"""
 
         print("Generating grounded answer...\n---")
         answer = ask_ollama(prompt)
         print(answer)
     else:
-        print("\nNo relevant documents found (threshold: 0.3)")
+        print("\nNo relevant documents found (threshold: 0.1)")
         print("Asking without context (may hallucinate)...")
         print("---")
         print(ask_ollama(question))
@@ -235,28 +236,23 @@ This creates embedding vectors for each document (one-time operation):
 python3 /root/workshop/rag-app/vector-rag.py index
 ```{{exec}}
 
-> **What just happened?** Each document was sent to the `all-minilm` model, which converted it into a 384-dimensional vector. These vectors are stored in `embeddings.json` so we don't need to re-compute them.
+> **What just happened?** Each document was sent through the `all-minilm` neural network, which read the text and outputted 384 numbers representing its meaning. "kubernetes-scaling.txt" became a vector like `[0.12, -0.34, ...]`. These vectors are saved to `embeddings.json` - a simple file-based vector store. In production, you'd use a dedicated vector database (Qdrant, Pinecone) that can handle millions of documents with fast approximate search.
 
 ## Test Vector RAG - The Magic Moment
 
-Remember how keyword RAG couldn't find "scaling" when we said "handle more traffic"? Watch this:
+Let's start with a query that clearly demonstrates semantic understanding:
 
 ```bash
-# Semantic search understands MEANING, not just keywords!
-python3 /root/workshop/rag-app/vector-rag.py "How do I handle more traffic to my application?"
+# GPU sharing - natural language, finds the right document
+python3 /root/workshop/rag-app/vector-rag.py "How can multiple teams share a single GPU?"
 ```{{exec}}
 
-The vector search found the scaling document because "handle more traffic" is **semantically similar** to "scaling" and "autoscaler" - even though they share no keywords!
+Look at the similarity scores! The GPU document scores much higher than others because the **meaning** matches, even if the exact words differ.
 
 ## More Semantic Queries
 
 ```bash
-# This finds the GPU document using natural language
-python3 /root/workshop/rag-app/vector-rag.py "How can multiple teams share a single GPU?"
-```{{exec}}
-
-```bash
-# This finds security document from a high-level question
+# Security question - different words, same meaning
 python3 /root/workshop/rag-app/vector-rag.py "How do I protect my cluster from unauthorized access?"
 ```{{exec}}
 
@@ -265,15 +261,24 @@ python3 /root/workshop/rag-app/vector-rag.py "How do I protect my cluster from u
 python3 /root/workshop/rag-app/vector-rag.py "What is HPA and what kubectl command creates one?"
 ```{{exec}}
 
+```bash
+# This is about scaling but uses NONE of the scaling keywords!
+python3 /root/workshop/rag-app/vector-rag.py "My website is overwhelmed with requests what should I do"
+```{{exec}}
+
+> Notice the similarity scores: even if the top score is modest (0.15-0.50), vector search still ranks the **correct document first**. That's the power of semantic search - it understands meaning, not just keywords.
+
 ## Compare: Keyword vs Vector
 
 ```bash
 echo "=== KEYWORD RAG ==="
-/root/workshop/rag-app/simple-rag.sh "handle more traffic to my apps"
+echo "(keyword matching - may find wrong document or nothing)"
+/root/workshop/rag-app/simple-rag.sh "My website is overwhelmed what should I do"
 echo ""
 echo ""
 echo "=== VECTOR RAG ==="
-python3 /root/workshop/rag-app/vector-rag.py "handle more traffic to my apps"
+echo "(semantic search - understands meaning)"
+python3 /root/workshop/rag-app/vector-rag.py "My website is overwhelmed what should I do"
 ```{{exec}}
 
 ## Why This Matters for Production

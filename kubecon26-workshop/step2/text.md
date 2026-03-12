@@ -49,7 +49,7 @@ echo "What is Kubernetes in 2 sentences?" | kubectl exec -i deployment/ollama -n
 
 ## Understanding the Inference Process
 
-What just happened when you asked that question? Let's trace the request:
+What just happened when you asked that question? LLMs work by **predicting the next word** (actually token), one at a time. Here's the full flow:
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -57,23 +57,30 @@ What just happened when you asked that question? Let's trace the request:
 ├──────────────────────────────────────────────────────────┤
 │                                                           │
 │  1. TOKENIZE: "What is Kubernetes" → [1724, 338, 29...]  │
-│     Text converted to numbers the model understands       │
+│     Text is split into tokens (sub-words) and converted   │
+│     to numbers. "Kubernetes" might be 1-2 tokens.         │
 │                                                           │
 │  2. PROCESS: Feed tokens through neural network layers    │
-│     1.1 billion parameters process the input              │
+│     1.1 billion parameters = 1.1 billion tunable numbers  │
+│     organized into layers of matrix multiplications.      │
 │     This is where CPU/GPU matters most!                   │
-│       - CPU: Sequential matrix operations (~5 tokens/s)   │
-│       - GPU: Parallel matrix operations (~100 tokens/s)   │
+│       - CPU: Sequential matrix ops (~5 tokens/s)          │
+│       - GPU: Parallel matrix ops (~100+ tokens/s)         │
 │                                                           │
-│  3. GENERATE: Predict next token, one at a time           │
-│     "Kubernetes" → "is" → "an" → "open" → "source" →... │
-│     Each token requires a full forward pass               │
+│  3. PREDICT NEXT TOKEN: The model outputs probabilities   │
+│     "Kubernetes is" → next word probabilities:            │
+│       "an" (72%), "a" (15%), "the" (8%), ...              │
+│     It picks the most likely token, then repeats.         │
+│     "an" → "open" → "source" → "container" → ...         │
+│     Each token requires a FULL forward pass!              │
 │                                                           │
 │  4. DECODE: Token IDs → text you can read                 │
 │     [29...] → "Kubernetes is an open source..."           │
 │                                                           │
 └──────────────────────────────────────────────────────────┘
 ```
+
+> **Why is it slow on CPU?** Each token requires multiplying the input through ALL 1.1 billion parameters. On CPU, these matrix multiplications happen sequentially. On GPU, thousands of CUDA cores do them in parallel. For a 70B model, this difference is even more dramatic - CPU would take minutes per response, GPU takes seconds.
 
 ## Try More Prompts
 
@@ -102,12 +109,22 @@ kubectl logs -l app=ollama -n ai-workshop --tail=5
 
 ## Use the Ollama API Directly
 
-The Ollama REST API is how production applications connect. Let's use it through kubectl:
+The Ollama REST API is how production applications connect. Let's access it via port-forward:
 
 ```bash
-# Use the generate API endpoint
-kubectl exec deployment/ollama -n ai-workshop -- curl -s http://localhost:11434/api/generate \
-  -d '{"model": "tinyllama", "prompt": "What is a Kubernetes namespace?", "stream": false}' | python3 -m json.tool | head -20
+# Start port-forward to access Ollama API from the host
+kubectl port-forward svc/ollama -n ai-workshop 11434:11434 &
+sleep 3
+
+# Use the generate API endpoint (non-streaming for clean output)
+curl -s http://localhost:11434/api/generate \
+  -d '{"model": "tinyllama", "prompt": "What is a Kubernetes namespace?", "stream": false}' | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+print('Response:', data.get('response', 'N/A')[:300])
+print(f'Eval duration: {data.get(\"eval_duration\", 0)/1e9:.1f}s')
+print(f'Tokens generated: {data.get(\"eval_count\", 0)}')
+"
 ```{{exec}}
 
 > **Production Note**: In a real deployment, you'd expose this API via an Ingress or Gateway API with:

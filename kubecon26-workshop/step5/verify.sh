@@ -19,7 +19,7 @@ else
 fi
 
 # Check if vCluster pods are running in team-ml namespace
-if kubectl get pods -n team-ml 2>/dev/null | grep -q "Running\|Completed"; then
+if kubectl get pods -n team-ml 2>/dev/null | grep -qE "Running|Completed"; then
     echo "vCluster components running in team-ml"
 else
     echo "vCluster pods not ready in team-ml"

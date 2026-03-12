@@ -2,6 +2,15 @@
 
 Your LLM can chat, but it **hallucinates**. Ask it about specific topics and it'll confidently make things up. Let's fix that with **Retrieval-Augmented Generation (RAG)** - the #1 pattern for making LLMs useful in production.
 
+## Why RAG? The Enterprise AI Problem
+
+Every company wants to use LLMs with their **own data** - internal docs, knowledge bases, product info, policies. But LLMs are trained on public internet data. They don't know about YOUR organization. You have two options:
+
+1. **Fine-tuning**: Retrain the model on your data (expensive, slow, needs GPUs)
+2. **RAG**: At query time, find relevant docs and add them to the prompt (cheap, fast, no retraining)
+
+RAG wins for most use cases because you can update your knowledge base instantly (just add documents), it's much cheaper, and the LLM doesn't need to memorize anything - it just needs to read and reason.
+
 ## The Hallucination Problem
 
 Let's prove the problem first. Ask about something specific:
@@ -14,17 +23,15 @@ The answer might be partially correct, partially wrong. That's hallucination - t
 
 ## How RAG Fixes This
 
+![RAG Pipeline Architecture](https://raw.githubusercontent.com/saiyam1814/katacoda-scenarios/main/kubecon26-workshop/images/rag-pipeline.png)
+
 RAG has two phases:
 
-```
-INDEXING (one-time setup):
-  Documents  -->  Chunking  -->  Embeddings  -->  Vector Store
+**Indexing (one-time):** Your documents are processed and stored in a searchable format. In the simple version, we just store the files. In the vector version (Step 4), we convert them to mathematical representations.
 
-QUERY (every question):
-  Question  -->  Embed  -->  Search  -->  Add Context  -->  LLM  -->  Grounded Answer
-```
+**Query (every question):** When a user asks something, we first SEARCH our documents for relevant info, then ADD that info to the prompt, then let the LLM GENERATE an answer using that context.
 
-The key insight: instead of asking the LLM to remember everything, we **retrieve** relevant documents and **augment** the prompt with real data. The LLM becomes a reasoning engine, not a knowledge base.
+The key insight: instead of asking the LLM to remember everything, we **retrieve** relevant documents and **augment** the prompt with real data. The LLM becomes a **reasoning engine**, not a knowledge base. This is why RAG is the #1 pattern in enterprise AI - you get accurate answers from YOUR data without retraining a model.
 
 ## Create a Knowledge Base
 
@@ -197,14 +204,13 @@ doc=$(search_documents "$question")
 if [ -n "$doc" ]; then
     echo "Found: $(basename "$doc") (keyword match)"
     echo ""
-    prompt="Based on the following documentation, answer this question concisely and accurately.
+    context=$(head -c 600 "$doc")
+    prompt="Answer concisely based on this context.
 
-Documentation:
-$(cat "$doc")
+Context: $context
 
 Question: $question
-
-Answer:"
+Answer in 2-3 sentences:"
     echo "Generating answer with context..."
     echo "---"
     echo "$prompt" | kubectl exec -i deployment/ollama -n ai-workshop -- ollama run tinyllama
@@ -234,14 +240,16 @@ Now let's see the difference RAG makes:
 
 ## See the Limitation of Keyword RAG
 
-The keyword approach breaks when the query uses different words than the documents:
+The keyword approach breaks when the query uses **different words** than the documents:
 
 ```bash
-# This might NOT find the right document because the keywords don't match well
-/root/workshop/rag-app/simple-rag.sh "How do I handle more traffic to my application?"
+# Try a query that means "scaling" but doesn't USE the word "scaling"
+/root/workshop/rag-app/simple-rag.sh "My website is overwhelmed with requests what should I do"
 ```{{exec}}
 
-The user said "handle more traffic" but the document talks about "scaling" and "HPA". A human would understand these are the same concept, but keyword matching doesn't.
+The user is asking about scaling/autoscaling, but they used words like "overwhelmed" and "requests" instead of "HPA" or "scaling". The keyword search either finds the **wrong document** or nothing at all.
+
+A human would instantly know this is a scaling question. Keyword matching can't understand **meaning** - it can only match literal words.
 
 **This is exactly why we need vector/semantic search - which we'll build in the next step!**
 
