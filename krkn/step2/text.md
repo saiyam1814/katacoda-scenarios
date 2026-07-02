@@ -12,6 +12,8 @@ echo "krknctl $(krknctl --version 2>/dev/null | head -1) ready, scenario images 
 ```{{exec}}
 
 > **Note:** krknctl may mention that a newer version is available - ignore that during this tutorial. We intentionally pin a version to avoid a known kubeconfig-permissions bug in the latest beta ([krknctl#95](https://github.com/krkn-chaos/krknctl/issues/95)).
+>
+> Also: krknctl fetches scenario metadata from quay.io on each run. If that request hiccups you may see a Go panic mentioning `getRegistryImages` - a known upstream bug. This environment retries automatically; if you ever hit it elsewhere, just re-run the command.
 
 ## Take a "Before" Snapshot
 

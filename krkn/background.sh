@@ -15,6 +15,27 @@ systemctl start podman 2>/dev/null || true
 # (see https://github.com/krkn-chaos/krknctl/issues/95).
 curl -fsSL https://raw.githubusercontent.com/krkn-chaos/krknctl/refs/heads/main/install.sh | bash -s -- --version v0.10.21-beta
 
+# krknctl fetches scenario metadata from quay.io on every invocation and
+# panics (Go exit status 2) if that request transiently fails: it does
+# resp, _ := http.Get(...) and then dereferences a nil resp. The fetch
+# happens before any chaos container starts, so retrying is always safe.
+# Wrap it in the interactive shell until it is fixed upstream.
+cat >> /root/.bashrc <<'EOF'
+
+krknctl() {
+    local rc attempt
+    for attempt in 1 2 3; do
+        command krknctl "$@"
+        rc=$?
+        [ "$rc" -ne 2 ] && return "$rc"
+        echo ""
+        echo ">>> krknctl hit a transient quay.io metadata error (known upstream bug), retrying $attempt/3..."
+        sleep 3
+    done
+    return "$rc"
+}
+EOF
+
 # Create the namespace for the target app
 kubectl create namespace demo --dry-run=client -o yaml | kubectl apply -f -
 
