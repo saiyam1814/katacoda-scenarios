@@ -54,7 +54,7 @@ Note `stress-node01` **depends on** `kill-nginx-pod`, making this a serial chain
 krknctl graph run /root/chaos-plan.json
 ```{{exec}}
 
-Watch the stages execute in order: the pod kill completes (and recovery is verified), *then* the CPU hog starts. This takes 2-3 minutes.
+Watch the stages execute in order: the pod kill completes (and recovery is verified), *then* the CPU hog starts. Each stage includes krkn's cool-down wait, so the full campaign takes about 4 minutes.
 
 ## Confirm the Cluster Survived
 

@@ -55,7 +55,7 @@ Look at the **load average** and the `%Cpu` line - a chunk of the node's CPU is 
 
 ## Wait for Completion and Query the Result
 
-The scenario cleans up after itself - the hog pod is removed when the duration expires. Wait for the detached run to finish, then query its status like you learned in Step 3:
+The scenario cleans up after itself - the hog pod is removed when the duration expires. The container keeps running a bit longer than the 60s of chaos (krkn adds a cool-down wait after the scenario), so expect this to loop for a couple of minutes. Wait for the detached run to finish, then query its status like you learned in Step 3:
 
 ```bash
 until [ -z "$(podman ps -q --filter 'name=krknctl-node-cpu-hog')" ]; do echo "chaos still running..."; sleep 10; done
