@@ -40,7 +40,7 @@ krknctl run pod-scenarios \
   --namespace demo \
   --pod-label "app=standalone" \
   --disruption-count 1 \
-  --expected-recovery-time 45 || echo ">>> CHAOS EXPERIMENT FAILED (this is the point!) <<<"
+  --expected-recovery-time 45 || echo '>>> CHAOS EXPERIMENT FAILED - and that is the point <<<'
 ```{{exec}}
 
 ## What Happened?

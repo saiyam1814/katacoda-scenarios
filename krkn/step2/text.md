@@ -8,8 +8,10 @@ The background setup pre-pulls the scenario image (it's large). This command wai
 
 ```bash
 until [ -f /tmp/.krkn-setup-done ]; do echo "waiting for background setup..."; sleep 5; done
-echo "krknctl $(krknctl --version 2>/dev/null | head -1) ready, scenario images pulled!"
+echo "krknctl $(krknctl --version 2>/dev/null | head -1) ready, scenario images pulled."
 ```{{exec}}
+
+> **Note:** krknctl may mention that a newer version is available - ignore that during this tutorial. We intentionally pin a version to avoid a known kubeconfig-permissions bug in the latest beta ([krknctl#95](https://github.com/krkn-chaos/krknctl/issues/95)).
 
 ## Take a "Before" Snapshot
 
