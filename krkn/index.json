@@ -1,0 +1,44 @@
+{
+  "title": "Getting Started with Krkn - Chaos Engineering for Kubernetes",
+  "description": "Learn chaos engineering hands-on with Krkn, the CNCF chaos tool for Kubernetes. Kill pods, hog node resources, and orchestrate multi-scenario chaos runs - then watch your cluster heal itself.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh",
+      "courseData": "background.sh"
+    },
+    "steps": [
+      {
+        "title": "Meet Your Cluster and Deploy a Target App",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Your First Chaos Experiment: Kill Pods",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Read the Results: Recovery and Exit Codes",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Node Chaos: CPU Hog on a Worker",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Orchestrate Multiple Scenarios with Graphs",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}
