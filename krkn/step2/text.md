@@ -20,6 +20,16 @@ kubectl get pods -n demo
 kubectl get pods -n demo -o name > /tmp/pods-before.txt
 ```{{exec}}
 
+## Where Does the Chaos Actually Run?
+
+One thing that surprises people: `krknctl` does **not** deploy anything into your cluster to inject this chaos. It runs the scenario as a **local container** (via Podman here - Docker works too) right on this machine, and that container talks to the Kubernetes API using your kubeconfig - just like `kubectl` does. Your cluster's own runtime (containerd) is not involved at all.
+
+```
+  krknctl ──> podman ──> [krkn-hub scenario container] ──kubeconfig──> Kubernetes API
+```
+
+This is what makes Krkn drop-in for CI/CD: any runner that can start a container can chaos-test any cluster it can reach.
+
 ## Unleash the Kraken
 
 Run the pod disruption scenario against the `demo` namespace, targeting the `app=nginx` label, killing **1 pod**:

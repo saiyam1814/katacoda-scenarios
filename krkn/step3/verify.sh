@@ -3,7 +3,7 @@
 # Verify Step 3: failure experiment ran against the naked pod
 
 # At least 2 pod-scenarios containers should exist (step 2 + the naked pod run)
-RUN_COUNT=$(docker ps -a --format '{{.Image}}' 2>/dev/null | grep -c "pod-scenarios")
+RUN_COUNT=$(podman ps -a --format '{{.Image}}' 2>/dev/null | grep -c "pod-scenarios")
 if [ "${RUN_COUNT:-0}" -ge 2 ]; then
     echo "Found $RUN_COUNT pod-scenarios runs"
 else

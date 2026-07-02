@@ -58,8 +58,8 @@ Look at the **load average** and the `%Cpu` line - a chunk of the node's CPU is 
 The scenario cleans up after itself - the hog pod is removed when the duration expires. Wait for the detached run to finish, then query its status like you learned in Step 3:
 
 ```bash
-until [ -z "$(docker ps -q --filter 'name=krknctl-node-cpu-hog')" ]; do echo "chaos still running..."; sleep 10; done
-LAST_RUN=$(docker ps -a --filter "name=krknctl-node-cpu-hog" --format "{{.Names}}" | head -1)
+until [ -z "$(podman ps -q --filter 'name=krknctl-node-cpu-hog')" ]; do echo "chaos still running..."; sleep 10; done
+LAST_RUN=$(podman ps -a --filter "name=krknctl-node-cpu-hog" --format "{{.Names}}" | head -1)
 krknctl query-status "$LAST_RUN"
 kubectl get pods -n default
 ```{{exec}}

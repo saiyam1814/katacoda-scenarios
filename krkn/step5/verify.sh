@@ -10,7 +10,7 @@ else
 fi
 
 # At least 3 pod-scenarios containers total (steps 2, 3 and the graph run)
-POD_RUNS=$(docker ps -a --format '{{.Image}}' 2>/dev/null | grep -c "pod-scenarios")
+POD_RUNS=$(podman ps -a --format '{{.Image}}' 2>/dev/null | grep -c "pod-scenarios")
 if [ "${POD_RUNS:-0}" -ge 3 ]; then
     echo "Graph pod-scenarios stage executed"
 else

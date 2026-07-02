@@ -14,11 +14,11 @@ A chaos experiment is only useful if you can act on its result. Krkn is built fo
 Every `krknctl run` leaves a scenario container behind. List them and query the status of your Step 2 run:
 
 ```bash
-docker ps -a --filter "name=krknctl" --format "table {{.Names}}\t{{.Status}}"
+podman ps -a --filter "name=krknctl" --format "table {{.Names}}\t{{.Status}}"
 ```{{exec}}
 
 ```bash
-LAST_RUN=$(docker ps -a --filter "name=krknctl" --format "{{.Names}}" | head -1)
+LAST_RUN=$(podman ps -a --filter "name=krknctl" --format "{{.Names}}" | head -1)
 krknctl query-status "$LAST_RUN"
 ```{{exec}}
 

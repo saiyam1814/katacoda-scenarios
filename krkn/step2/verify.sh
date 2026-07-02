@@ -3,7 +3,7 @@
 # Verify Step 2: pod-scenarios chaos experiment ran
 
 # A krkn-hub pod-scenarios container should exist (running or exited)
-if docker ps -a --format '{{.Image}}' 2>/dev/null | grep -q "pod-scenarios"; then
+if podman ps -a --format '{{.Image}}' 2>/dev/null | grep -q "pod-scenarios"; then
     echo "pod-scenarios chaos container found"
 else
     echo "No pod-scenarios run found - run 'krknctl run pod-scenarios ...' first"
