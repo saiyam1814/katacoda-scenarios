@@ -1,0 +1,44 @@
+{
+  "title": "Getting Started with Chaos Mesh - Kubernetes-Native Chaos Engineering",
+  "description": "Learn chaos engineering with Chaos Mesh, the CNCF chaos platform built on Kubernetes CRDs. Kill pods, inject network latency, drive experiments from a web dashboard, and chain them into workflows.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh",
+      "courseData": "background.sh"
+    },
+    "steps": [
+      {
+        "title": "Install Chaos Mesh and Deploy a Target App",
+        "text": "step1/text.md",
+        "verify": "step1/verify.sh"
+      },
+      {
+        "title": "Chaos as Kubernetes Objects: Kill Pods with PodChaos",
+        "text": "step2/text.md",
+        "verify": "step2/verify.sh"
+      },
+      {
+        "title": "Inject Network Latency and Measure It",
+        "text": "step3/text.md",
+        "verify": "step3/verify.sh"
+      },
+      {
+        "title": "Drive Chaos from the Web Dashboard",
+        "text": "step4/text.md",
+        "verify": "step4/verify.sh"
+      },
+      {
+        "title": "Chain Experiments into a Chaos Workflow",
+        "text": "step5/text.md",
+        "verify": "step5/verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}

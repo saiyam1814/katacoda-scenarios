@@ -1,0 +1,23 @@
+#!/bin/bash
+
+clear
+echo "============================================================"
+echo "   Chaos Mesh - Kubernetes-Native Chaos Engineering"
+echo "============================================================"
+echo ""
+echo "   Chaos experiments as Kubernetes resources:"
+echo "   kubectl apply your failures, watch your cluster heal."
+echo ""
+echo "   What you'll do:"
+echo "     1. Install Chaos Mesh with Helm"
+echo "     2. Kill pods with a PodChaos resource"
+echo "     3. Inject 200ms network latency and measure it"
+echo "     4. Explore the Chaos Mesh web dashboard"
+echo "     5. Chain experiments into a chaos Workflow"
+echo ""
+echo "   Environment: $(kubectl get nodes --no-headers 2>/dev/null | wc -l | tr -d ' ') node Kubernetes cluster (containerd)"
+echo ""
+echo "   Helm repo and container images are being prepared in"
+echo "   the background - you can start Step 1 right away."
+echo ""
+echo "============================================================"
