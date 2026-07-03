@@ -45,7 +45,9 @@ Log in with username **admin** and password **chaos**.
 
 ## Watch Chaos Happen on a Graph
 
-In Grafana, go to **Dashboards** and open one of the Kubernetes performance dashboards (e.g. under the **k8s** or **General** folder - pick the Prometheus datasource if asked). Set the time range to the last 15 minutes and auto-refresh to 5s.
+In Grafana, go to **Dashboards**, open the **k8s** folder, and select the **K8s Performance** dashboard. The **Cluster Prometheus** datasource is pre-selected. Set the time range to the last 15 minutes and auto-refresh to 5s.
+
+> **Heads-up on the Chaos folder**: those per-scenario dashboards read Krkn's run telemetry from an **Elasticsearch/OpenSearch** datasource (`--es-url`). We didn't deploy Elasticsearch in this playground, so opening them shows a plugin error - that's expected here, not a broken install. In production, that folder is where teams track recovery times and resilience trends across hundreds of runs.
 
 Now hit the cluster with another CPU hog and watch it land on the graphs:
 

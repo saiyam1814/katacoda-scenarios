@@ -39,6 +39,10 @@ EOF
 # Create the namespace for the target app
 kubectl create namespace demo --dry-run=client -o yaml | kubectl apply -f -
 
+# Label the worker so kube-state-metrics exposes kube_node_role for it -
+# the krkn-visualize k8s dashboards filter nodes by role=worker
+kubectl label node node01 node-role.kubernetes.io/worker= --overwrite 2>/dev/null || true
+
 # Pre-pull the krkn-hub scenario images with podman - the same runtime
 # krknctl uses - so the pulls are actually reused (large images, saves minutes)
 podman pull -q quay.io/krkn-chaos/krkn-hub:pod-scenarios &
