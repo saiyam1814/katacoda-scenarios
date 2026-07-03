@@ -14,7 +14,7 @@ Kubernetes promises self-healing. But do you *know* your workloads recover when:
 
 Chaos engineering turns "we think it recovers" into "we proved it recovers".
 
-## What You'll Do in ~20 Minutes
+## What You'll Do in ~25 Minutes
 
 ```
 Step 1: Deploy a target application on a real 2-node cluster
@@ -22,6 +22,7 @@ Step 2: Run your first chaos experiment - kill pods with krknctl
 Step 3: Read the results - recovery checks and exit codes
 Step 4: Stress a worker node with a CPU hog scenario
 Step 5: Chain multiple scenarios into one chaos run with graphs
+Step 6: Watch chaos hit the graphs in Krkn's web UI (Grafana)
 ```
 
 ## The Krkn Toolbox

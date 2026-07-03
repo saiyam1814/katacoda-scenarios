@@ -51,3 +51,31 @@ wait $POD_PULL $CPU_PULL
 # Marker used by foreground.sh and step verifications
 touch /tmp/.krkn-setup-done
 echo "Background setup completed!"
+
+# --- Step 6 (web UI) prerequisites - not needed until late in the tutorial,
+# --- so they run after the main marker and never block steps 1-5.
+
+# Minimal Prometheus (server + node-exporter + kube-state-metrics) that the
+# krkn-visualize k8s dashboards read from. No PV (no dynamic provisioner here).
+if ! command -v helm &>/dev/null; then
+    curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+fi
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update prometheus-community
+helm install prometheus prometheus-community/prometheus \
+  --namespace monitoring --create-namespace \
+  --set alertmanager.enabled=false \
+  --set prometheus-pushgateway.enabled=false \
+  --set server.persistentVolume.enabled=false
+
+# Pre-pull the krkn-visualize images: the deployer container (runs via podman)
+# and the in-cluster images (grafana, renderer, dashboard syncer) on both nodes
+podman pull -q quay.io/krkn-chaos/krkn-visualize:latest &
+for img in "docker.io/grafana/grafana:10.4.0" "docker.io/grafana/grafana-image-renderer:latest" "quay.io/krkn-chaos/visualize-syncer:opensearch-latest"; do
+    ctr -n k8s.io image pull "$img" >/dev/null 2>&1 &
+    ssh -o StrictHostKeyChecking=no node01 "ctr -n k8s.io image pull $img" >/dev/null 2>&1 &
+done
+wait
+
+touch /tmp/.krkn-visualize-ready
+echo "Web UI prerequisites ready!"

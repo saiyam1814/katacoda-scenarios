@@ -32,6 +32,11 @@
         "title": "Orchestrate Multiple Scenarios with Graphs",
         "text": "step5/text.md",
         "verify": "step5/verify.sh"
+      },
+      {
+        "title": "See the Impact: Krkn's Web UI",
+        "text": "step6/text.md",
+        "verify": "step6/verify.sh"
       }
     ],
     "finish": {

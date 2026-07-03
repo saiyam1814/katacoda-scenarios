@@ -19,6 +19,9 @@ In about 20 minutes, you ran a complete chaos engineering workflow on a real Kub
 ### Step 5: Chaos Campaigns
 - Chained scenarios into a dependency graph with `krknctl graph run`
 
+### Step 6: The Web UI
+- Deployed krkn-visualize (Grafana) with `krknctl visualize` and watched a CPU hog land on live cluster dashboards
+
 ## From This Playground to Production
 
 | You did today | Production version |
