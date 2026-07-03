@@ -44,8 +44,4 @@ In about 20 minutes you ran the full Chaos Mesh workflow on a real cluster:
 | CNCF project page | [cncf.io/projects/chaosmesh](https://www.cncf.io/projects/chaosmesh/) |
 | Slack | [#project-chaos-mesh on CNCF Slack](https://cloud-native.slack.com/archives/C0193VAV272) |
 
-## Compare the Approaches
-
-Curious how CLI-driven chaos feels in contrast? Try the companion scenario: **[Getting Started with Krkn](https://killercoda.com/saiyampathak/scenario/krkn)** - same cluster, same 20 minutes, a completely different philosophy (external runner + exit codes for CI/CD instead of in-cluster CRDs).
-
 **Now go break things on purpose - declaratively!**
