@@ -1,0 +1,29 @@
+{
+  "title": "03 - Autoscale a Frontend with HorizontalPodAutoscaler",
+  "description": "Platform Architecture: create an HPA with CPU utilization targets and prove it reads live metrics. CNPE domain: Platform Architecture and Infrastructure.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the HPA",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Watch it scale under load",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "16 - Wire PromLab and Build coral-dashboard",
+  "description": "Observability and Operations: add a Prometheus datasource to Grafana and build a timeseries panel with a rate() query. CNPE domain: Observability and Operations.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Add the PromLab datasource",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Build coral-dashboard",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

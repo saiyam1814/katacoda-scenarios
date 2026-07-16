@@ -1,0 +1,29 @@
+{
+  "title": "18 - Enable span-switch Tracing and Export the Exception",
+  "description": "Observability and Operations: turn on OTLP tracing with env vars, hunt an error span in Jaeger, extract exception.message. CNPE domain: Observability and Operations.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Turn tracing on",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Find the error span and export the exception",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

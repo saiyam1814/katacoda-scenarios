@@ -1,0 +1,29 @@
+{
+  "title": "17 - Alert when HTTP Error Rate Spikes",
+  "description": "Observability and Operations: write a PrometheusRule with a ratio expression, a for: clause and severity routing - and see it fire. CNPE domain: Observability and Operations.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the PrometheusRule",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Confirm Prometheus loaded it - and watch it fire",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

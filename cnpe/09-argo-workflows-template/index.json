@@ -1,0 +1,29 @@
+{
+  "title": "09 - Offer a deploy-kit WorkflowTemplate",
+  "description": "GitOps and Continuous Delivery: build a reusable, parameterized Argo WorkflowTemplate that deploys apps on demand - platform self-service in action. CNPE domain: GitOps and Continuous Delivery.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the WorkflowTemplate",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Submit a run and verify the result",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

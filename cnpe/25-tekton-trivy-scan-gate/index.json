@@ -1,0 +1,29 @@
+{
+  "title": "25 - Fail the Pipeline when an Image has CRITICAL CVEs",
+  "description": "Security and Policy: add a Trivy scan gate to a Tekton pipeline - vulnerable images never reach deploy. CNPE domain: Security and Policy Enforcement.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the scan Task and wire the gate",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Run it against a bad and a good image",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

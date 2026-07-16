@@ -1,0 +1,29 @@
+{
+  "title": "21 - Warn on Baseline PSS across Fleet Namespaces",
+  "description": "Security and Policy: enable Pod Security Admission warn mode, find the offenders, label only them. CNPE domain: Security and Policy Enforcement.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Enable warn=baseline on the fleet",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Find and label the offenders",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "12 - Trigger a Tekton Pipeline from a Webhook",
+  "description": "GitOps and Continuous Delivery: Tekton Triggers - EventListener, TriggerBinding, TriggerTemplate - so a curl starts a PipelineRun. CNPE domain: GitOps and Continuous Delivery.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the trigger trio",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Fire the webhook",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

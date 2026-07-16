@@ -1,0 +1,31 @@
+{
+  "title": "CNPE — Hands-on Exam Scenarios",
+  "description": "25 exam-style scenarios for the Certified Cloud Native Platform Engineer (CNPE), ordered by exam domain. Companion labs for the CNPE Scenarios and Solutions ebook.",
+  "items": [
+    { "path": "01-resourcequota-limitrange" },
+    { "path": "02-pvc-storageclasses" },
+    { "path": "03-hpa-autoscaling" },
+    { "path": "04-networkpolicy-tenant-isolation" },
+    { "path": "05-opencost-rightsizing" },
+    { "path": "06-argocd-gitops-podinfo" },
+    { "path": "07-argo-rollouts-canary" },
+    { "path": "08-argo-rollouts-bluegreen" },
+    { "path": "09-argo-workflows-template" },
+    { "path": "10-argo-workflows-edit-steps" },
+    { "path": "11-tekton-kubectl-apply-task" },
+    { "path": "12-tekton-triggers-webhook" },
+    { "path": "13-crd-featureflag" },
+    { "path": "14-crossplane-composition-patch" },
+    { "path": "15-crossplane-xrd-claim" },
+    { "path": "16-grafana-dashboard" },
+    { "path": "17-prometheusrule-alert" },
+    { "path": "18-jaeger-tracing-otel" },
+    { "path": "19-broken-stack-remediation" },
+    { "path": "20-rbac-ci-bot" },
+    { "path": "21-pod-security-standards" },
+    { "path": "22-gatekeeper-image-tags" },
+    { "path": "23-kyverno-cosign-verify" },
+    { "path": "24-istio-authorizationpolicy" },
+    { "path": "25-tekton-trivy-scan-gate" }
+  ]
+}

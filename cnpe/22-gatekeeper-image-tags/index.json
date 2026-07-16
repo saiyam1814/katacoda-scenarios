@@ -1,0 +1,29 @@
+{
+  "title": "22 - Reject Floating Image Tags with Gatekeeper",
+  "description": "Security and Policy: instantiate a Gatekeeper ConstraintTemplate as a Constraint that blocks :latest and untagged images. CNPE domain: Security and Policy Enforcement.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the Constraint",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Prove deny and allow",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

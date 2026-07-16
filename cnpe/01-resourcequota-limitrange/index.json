@@ -1,0 +1,29 @@
+{
+  "title": "01 - Cap Pods and CPU Defaults for squad-nebula",
+  "description": "Platform Architecture: guard a shared namespace with exactly one ResourceQuota and one LimitRange. CNPE domain: Platform Architecture and Infrastructure.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the guardrails",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Prove the guardrails work",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

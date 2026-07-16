@@ -1,0 +1,29 @@
+{
+  "title": "04 - Isolate a Tenant with NetworkPolicies",
+  "description": "Platform Architecture: default-deny a tenant namespace, then punch precise holes for the edge gateway and DNS. CNPE domain: Platform Architecture and Infrastructure.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Default-deny ingress",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Allow the edge gateway and DNS",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

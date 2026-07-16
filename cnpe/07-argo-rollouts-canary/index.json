@@ -1,0 +1,29 @@
+{
+  "title": "07 - Roll out media-proxy with a Weighted Canary",
+  "description": "GitOps and Continuous Delivery: progressive delivery with Argo Rollouts and Istio traffic splitting - 20%, 40%, 100%. CNPE domain: GitOps and Continuous Delivery.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the Rollout",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Release a new version and watch the weights",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

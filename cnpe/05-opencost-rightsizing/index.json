@@ -1,0 +1,29 @@
+{
+  "title": "05 - Right-size Three Services with OpenCost",
+  "description": "Platform Architecture: use OpenCost allocation data to find the cheapest and most expensive workloads, then right-size them. CNPE domain: Platform Architecture and Infrastructure.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Read costs from OpenCost",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Right-size and label",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

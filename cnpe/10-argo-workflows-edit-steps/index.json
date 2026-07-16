@@ -1,0 +1,24 @@
+{
+  "title": "10 - Add a ready-check Step to release-checker",
+  "description": "GitOps and Continuous Delivery: surgically insert a step into an existing Argo Workflow without breaking what works. CNPE domain: GitOps and Continuous Delivery.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Insert the ready-check step",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

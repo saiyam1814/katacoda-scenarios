@@ -1,0 +1,29 @@
+{
+  "title": "24 - Lock Down East-West Traffic with Istio AuthorizationPolicy",
+  "description": "Security and Policy: allow exactly one ServiceAccount to call checkout, deny everyone else - identity-based zero trust with Istio. CNPE domain: Security and Policy Enforcement.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the AuthorizationPolicy",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Prove allow and deny",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

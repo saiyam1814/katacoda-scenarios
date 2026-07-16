@@ -1,0 +1,29 @@
+{
+  "title": "19 - Unblock metrics-portal without Editing Deployments",
+  "description": "Observability and Operations: a broken stack, a constraint, and your diagnosis skills - fix Pending and CreateContainerConfigError pods the allowed way. CNPE domain: Observability and Operations.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Diagnose the three failures",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Fix them within the rules",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

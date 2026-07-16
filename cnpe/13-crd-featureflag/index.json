@@ -1,0 +1,29 @@
+{
+  "title": "13 - Ship a FeatureFlag CRD for the Platform API",
+  "description": "Platform APIs and Self-Service: design a CustomResourceDefinition with OpenAPI validation and short names. CNPE domain: Platform APIs and Self-Service Capabilities.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the CRD",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Create the CR and prove validation",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "23 - Gate Workloads with Kyverno Cosign Keyless Verify",
+  "description": "Security and Policy: supply-chain enforcement - only Cosign keyless-signed images may run. CNPE domain: Security and Policy Enforcement.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the ClusterPolicy",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Prove signed passes, unsigned fails",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

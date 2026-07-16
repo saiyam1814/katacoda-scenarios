@@ -1,0 +1,29 @@
+{
+  "title": "11 - Finish compile-release with a kubectl-apply Task",
+  "description": "GitOps and Continuous Delivery: extend an existing Tekton Pipeline with a Task that applies a manifest produced by an earlier task. CNPE domain: GitOps and Continuous Delivery.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Write the kubectl-apply Task",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Wire it into the Pipeline and run it",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

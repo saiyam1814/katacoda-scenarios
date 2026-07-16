@@ -1,0 +1,29 @@
+{
+  "title": "20 - Give a CI Bot Least-Privilege RBAC",
+  "description": "Security and Policy: ServiceAccount + Role + RoleBinding scoped to one namespace, proven with kubectl auth can-i. CNPE domain: Security and Policy Enforcement.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create SA, Role and RoleBinding",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Prove the boundary with auth can-i",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "02 - Create pg-storage and cdn-cache PVCs",
+  "description": "Platform Architecture: unblock stuck workloads by creating PVCs against the right StorageClasses. CNPE domain: Platform Architecture and Infrastructure.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Investigate the stuck Pods",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Create the PVCs and unblock the apps",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

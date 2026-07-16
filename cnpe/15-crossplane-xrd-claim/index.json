@@ -1,0 +1,29 @@
+{
+  "title": "15 - Expose a Platform Claim with Crossplane XRD",
+  "description": "Platform APIs and Self-Service: define XBucketApp with claim BucketApp so app teams self-serve without cloud credentials. CNPE domain: Platform APIs and Self-Service Capabilities.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the XRD with claim names",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Compose it and claim a bucket",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}
