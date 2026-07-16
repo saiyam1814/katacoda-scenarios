@@ -26,6 +26,8 @@
     { "path": "22-gatekeeper-image-tags" },
     { "path": "23-kyverno-cosign-verify" },
     { "path": "24-istio-authorizationpolicy" },
-    { "path": "25-tekton-trivy-scan-gate" }
+    { "path": "25-tekton-trivy-scan-gate" },
+    { "path": "26-flagger-canary" },
+    { "path": "27-linkerd-authorization" }
   ]
 }

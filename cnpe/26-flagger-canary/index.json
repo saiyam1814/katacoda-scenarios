@@ -1,0 +1,29 @@
+{
+  "title": "26 - Automated Canary Analysis with Flagger",
+  "description": "Bonus lab: the other progressive-delivery tool - Flagger drives the canary from live metrics instead of a fixed step program. CNPE domain: GitOps and Continuous Delivery.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the Canary resource",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Release and let the metrics decide",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "title": "27 - mTLS-Identity Authorization with Linkerd",
+  "description": "Bonus lab: the same zero-trust outcome as the Istio lab, in Linkerd's Server + AuthorizationPolicy model. CNPE domain: Security and Policy Enforcement.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create the Server (and watch it default-deny)",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Authorize exactly one identity",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}
