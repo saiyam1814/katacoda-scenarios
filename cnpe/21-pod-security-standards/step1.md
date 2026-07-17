@@ -1,6 +1,6 @@
 # Enable warn=baseline on the fleet
 
-Pod Security Admission is configured with **namespace labels** — no policy engine
+Pod Security Admission is configured with **namespace labels** - no policy engine
 needed, it is built into the API server:
 
 - `pod-security.kubernetes.io/warn=baseline`
@@ -23,11 +23,11 @@ kubectl get ns --show-labels | grep fleet
 
 <details><summary>✦ warn vs audit vs enforce</summary>
 
-- **warn** — clients see a warning on apply; nothing is blocked
-- **audit** — violations land in the API audit log; nothing is blocked
-- **enforce** — violating Pods are **rejected**
+- **warn** - clients see a warning on apply; nothing is blocked
+- **audit** - violations land in the API audit log; nothing is blocked
+- **enforce** - violating Pods are **rejected**
 
-Rolling out `warn` first is the standard adoption path — you are doing the real thing
+Rolling out `warn` first is the standard adoption path - you are doing the real thing
 right now.
 
 </details>

@@ -1,6 +1,6 @@
 # Watch it scale under load
 
-The exam usually stops at "create the HPA and verify it reads metrics" — but seeing a
+The exam usually stops at "create the HPA and verify it reads metrics" - but seeing a
 scale-out once makes the mechanism stick forever.
 
 Generate load against the service (runs for ~3 minutes in the background):
@@ -19,7 +19,7 @@ for w in 1 2 3 4; do
 done
 ```{{exec}}
 
-Watch the HPA react (CPU climbs above 60%, replicas grow — takes 1–2 minutes):
+Watch the HPA react (CPU climbs above 60%, replicas grow - takes 1–2 minutes):
 
 ```plain
 kubectl -n edge-web get hpa storefront -w
@@ -35,7 +35,7 @@ kubectl -n edge-web delete pod load-gen load-gen-1 load-gen-2 load-gen-3 load-ge
 
 Scale-up reacts quickly; scale-down waits out a **5-minute stabilization window**
 (`--horizontal-pod-autoscaler-downscale-stabilization`) to avoid flapping.
-You do not need to wait for it — the verify check only requires that the HPA
+You do not need to wait for it - the verify check only requires that the HPA
 successfully read metrics and scaled up at least once.
 
 </details>

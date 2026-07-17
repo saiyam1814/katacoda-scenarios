@@ -40,7 +40,7 @@ EOF
 
 You should see `forbidden: maximum cpu usage per Container is 250m`.
 
-Leave `default-cpu-pod` running — the verify check looks at it.
+Leave `default-cpu-pod` running - the verify check looks at it.
 
 <details><summary>✦ Why did the quota not complain?</summary>
 

@@ -11,11 +11,11 @@ App teams want object storage without ever seeing a cloud credential. You will e
    - Composite kind **`XBucketApp`** (cluster-scoped, version `v1alpha1`,
      served + referenceable)
    - **Claim** kind **`BucketApp`** (this is what makes it namespaced self-service)
-   - Spec fields **`region`** and **`size`** — both strings, both required
+   - Spec fields **`region`** and **`size`** - both strings, both required
 2. Apply the provided **Composition** (it "provisions" a bucket as a ConfigMap in
-   `bucket-system` via provider-kubernetes — same pattern as a real cloud bucket,
+   `bucket-system` via provider-kubernetes - same pattern as a real cloud bucket,
    zero cloud bill)
 3. As an app team, claim a bucket: **`media-assets`** in namespace **`team-apps`**
-   with `region: eu-west-1`, `size: small` — and wait until it is **Ready**
+   with `region: eu-west-1`, `size: small` - and wait until it is **Ready**
 
 Click **START** while Crossplane installs.

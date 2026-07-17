@@ -33,7 +33,7 @@ kubectl auth can-i --list -n build-room \
 
 <details><summary>✦ Reading `auth can-i --list`</summary>
 
-You will also see rows like `selfsubjectreviews` — every authenticated identity gets
+You will also see rows like `selfsubjectreviews` - every authenticated identity gets
 those. The interesting rows are your two: `deployments.apps` and `configmaps`, each
 with the six verbs. No `secrets` row = the bot cannot even read Secrets. 
 

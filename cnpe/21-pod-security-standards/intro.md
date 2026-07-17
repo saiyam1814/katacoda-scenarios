@@ -17,7 +17,7 @@ Pod Security Standard?
 
 **Constraints:**
 
-- Do **not** patch any Deployment specs to silence warnings — this is an audit,
+- Do **not** patch any Deployment specs to silence warnings - this is an audit,
   not a fix
 - Do **not** label clean namespaces
 

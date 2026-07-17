@@ -1,6 +1,6 @@
-# Confirm Prometheus loaded it — and watch it fire
+# Confirm Prometheus loaded it - and watch it fire
 
-Creating the object is half the job. **Prove Prometheus loaded it** — on the exam this
+Creating the object is half the job. **Prove Prometheus loaded it** - on the exam this
 is the difference between full and zero marks (a rule with the wrong labels sits there,
 silently ignored).
 
@@ -22,13 +22,13 @@ Or visually: open [Prometheus on port 9090]({{TRAFFIC_HOST1_9090}}) → **Status
 and **Alerts**.
 
 The lab app errors at ~8%, so the alert goes **pending** first (the `for: 5m` clock),
-then **firing**. Watch it flip (this takes about 5 minutes — the point of `for:`):
+then **firing**. Watch it flip (this takes about 5 minutes - the point of `for:`):
 
 ```bash
 watch -n 15 'curl -s http://localhost:9090/api/v1/alerts | python3 -m json.tool | grep -E "alertname|state"'
 ```{{exec interrupt}}
 
-While you wait, sanity-check the ratio the alert computes — it should print ~0.08:
+While you wait, sanity-check the ratio the alert computes - it should print ~0.08:
 
 ```bash
 curl -s "http://localhost:9090/api/v1/query" \

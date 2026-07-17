@@ -16,7 +16,7 @@ Create an Argo CD **Application** named **`podinfo-ui`** (in namespace `argocd`)
   - `ui.color: "#336699"`
 - Syncs **automatically** (prune + self-heal) and ends up **Synced / Healthy**
 
-**Constraint:** the Argo CD controller must create the resources —
+**Constraint:** the Argo CD controller must create the resources - 
 running `helm install` or `kubectl apply` on rendered manifests scores **zero**.
 
 Click **START** while Argo CD finishes installing.

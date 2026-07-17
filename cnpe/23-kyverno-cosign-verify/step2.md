@@ -1,6 +1,6 @@
 # Prove signed passes, unsigned fails
 
-**Signed** Distroless image — should sail through admission (the first verification
+**Signed** Distroless image - should sail through admission (the first verification
 takes a few seconds while Kyverno talks to Rekor):
 
 ```bash
@@ -27,7 +27,7 @@ spec:
 EOF
 ```{{exec}}
 
-**Unsigned** image — the admission webhook must reject it:
+**Unsigned** image - the admission webhook must reject it:
 
 ```bash
 cat <<'EOF' | kubectl apply -f - ; echo "exit: $?"
@@ -62,7 +62,7 @@ Confirm the end state:
 kubectl -n policy-sandbox get deploy,pods
 ```{{exec}}
 
-<details><summary>✦ Interesting detail — the image got mutated</summary>
+<details><summary>✦ Interesting detail - the image got mutated</summary>
 
 ```bash
 kubectl -n policy-sandbox get pod -l app=ok-signed-web \

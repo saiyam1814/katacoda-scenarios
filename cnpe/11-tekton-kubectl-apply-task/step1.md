@@ -1,6 +1,6 @@
 # Write the kubectl-apply Task
 
-Study what exists — especially how `package` declares its result:
+Study what exists - especially how `package` declares its result:
 
 ```plain
 kubectl -n pipeline-lab get pipeline compile-release -o yaml | grep -A8 "tasks:"
@@ -13,7 +13,7 @@ Create Task `kubectl-apply` (API `tekton.dev/v1`). Requirements again:
 - image `bitnamilegacy/kubectl:1.28.9`
 - write the param to a file, `kubectl apply -f` that file
 
-<details><summary>✦ Tip — params inside scripts</summary>
+<details><summary>✦ Tip - params inside scripts</summary>
 
 Inside a Task step, `$(params.manifest)` expands to the raw string. Quote it carefully
 when writing to a file:

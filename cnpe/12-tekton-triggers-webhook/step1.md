@@ -1,6 +1,6 @@
 # Create the trigger trio
 
-Confirm the pipeline works the manual way first — this is your baseline:
+Confirm the pipeline works the manual way first - this is your baseline:
 
 ```bash
 tkn pipeline start build-ship -n ci-otter -p gitrevision=manual-test --showlog
@@ -12,7 +12,7 @@ Now build the three objects. Data flows:
 PipelineRun → controller runs it. The *EventListener* is the HTTP front door that ties
 bindings to templates.
 
-<details><summary>✦ Tip — the three shapes</summary>
+<details><summary>✦ Tip - the three shapes</summary>
 
 - TriggerTemplate: `spec.params` + `spec.resourcetemplates[]` (an inline PipelineRun;
   reference params with the `tt.params.<name>` curly-brace syntax)

@@ -1,6 +1,6 @@
 # Default-deny ingress
 
-First prove the problem — from the *unrelated* namespace, the API answers:
+First prove the problem - from the *unrelated* namespace, the API answers:
 
 ```bash
 kubectl -n other-squad exec squad-client -- \
@@ -33,7 +33,7 @@ spec:
 EOF
 ```{{exec}}
 
-Re-run the probe — it must now time out:
+Re-run the probe - it must now time out:
 
 ```bash
 kubectl -n other-squad exec squad-client -- \

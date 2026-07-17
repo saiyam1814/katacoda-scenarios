@@ -13,13 +13,13 @@ Now build `deploy-kit`. Structure to aim for:
 
 - `spec.serviceAccountName: workflow-runner`
 - `spec.entrypoint: ship`
-- `spec.arguments.parameters` — the four parameter names
-- one template `ship` with matching `inputs.parameters` and a `resource:` block —
+- `spec.arguments.parameters` - the four parameter names
+- one template `ship` with matching `inputs.parameters` and a `resource:` block - 
   `action: apply` plus an inline `manifest: |` where every dynamic field references
   an input parameter (Argo's curly-brace syntax: `inputs.parameters.appName` wrapped
   in double braces)
 
-<details><summary>✦ Tip — resource templates</summary>
+<details><summary>✦ Tip - resource templates</summary>
 
 A `resource` template makes the Workflow itself do `kubectl <action>` on a manifest:
 

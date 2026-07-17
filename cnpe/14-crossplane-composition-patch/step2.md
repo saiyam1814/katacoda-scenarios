@@ -6,7 +6,7 @@ Apply the composite resource:
 kubectl apply -f /root/app-xr.yaml
 ```{{exec}}
 
-Trace the chain — XR → composed Objects → real Deployment/Service:
+Trace the chain - XR → composed Objects → real Deployment/Service:
 
 ```bash
 kubectl get xwebapp demo-site
@@ -32,11 +32,11 @@ kubectl -n compose-sandbox get deploy demo-site \
 
 Debug down the chain, not up:
 
-1. `kubectl describe xwebapp demo-site` — composition selected? events?
-2. `kubectl get objects.kubernetes.crossplane.io` — `SYNCED=False`? describe it;
+1. `kubectl describe xwebapp demo-site` - composition selected? events?
+2. `kubectl get objects.kubernetes.crossplane.io` - `SYNCED=False`? describe it;
    the error is usually a bad `toFieldPath`
-3. `kubectl -n crossplane-system logs deploy/crossplane --tail=20` — core issues
-4. Fix `/root/composition.yaml`, re-apply — Crossplane reconciles existing XRs
+3. `kubectl -n crossplane-system logs deploy/crossplane --tail=20` - core issues
+4. Fix `/root/composition.yaml`, re-apply - Crossplane reconciles existing XRs
    automatically
 
 </details>

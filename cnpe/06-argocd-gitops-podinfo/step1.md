@@ -10,7 +10,7 @@ Now write the `Application`. The kind is `argoproj.io/v1alpha1` and the importan
 blocks are `source` (repo, path, revision, helm values), `destination`
 (server + namespace) and `syncPolicy`.
 
-<details><summary>✦ Tip 1 — where do Helm values go?</summary>
+<details><summary>✦ Tip 1 - where do Helm values go?</summary>
 
 Inside `spec.source.helm.values` as an **inline YAML string** (note the `|`):
 
@@ -24,7 +24,7 @@ helm:
 
 </details>
 
-<details><summary>✦ Tip 2 — the namespace does not exist</summary>
+<details><summary>✦ Tip 2 - the namespace does not exist</summary>
 
 Do not create `apps-ui` by hand. Let Argo CD do it:
 

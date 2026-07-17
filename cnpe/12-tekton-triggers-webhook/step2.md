@@ -18,15 +18,15 @@ tkn pipelinerun list -n ci-otter
 tkn pipelinerun logs --last -f -n ci-otter
 ```{{exec}}
 
-The log should print `building and shipping revision 4f2c1ab` — the value travelled
+The log should print `building and shipping revision 4f2c1ab` - the value travelled
 from your JSON body through the binding into the pipeline. 
 
 <details><summary>✦ If nothing happens</summary>
 
-- `kubectl -n ci-otter logs deploy/el-build-ship-el --tail=20` — the listener logs every
+- `kubectl -n ci-otter logs deploy/el-build-ship-el --tail=20` - the listener logs every
   event and every rejection reason
-- `couldn't create resource` → RBAC — the listener SA must be able to create
+- `couldn't create resource` → RBAC - the listener SA must be able to create
   PipelineRuns (pre-wired here via the two `tekton-triggers-eventlistener-*` bindings)
-- Empty revision? Your binding must read `$(body.after)` — exactly the field you POSTed
+- Empty revision? Your binding must read `$(body.after)` - exactly the field you POSTed
 
 </details>

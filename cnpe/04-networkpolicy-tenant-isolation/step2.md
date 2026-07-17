@@ -14,7 +14,7 @@ kubectl get ns --show-labels | grep -E "NAME|edge|squad|red"
 
 <details><summary>✦ Tip</summary>
 
-`namespaceSelector` matches **namespace labels** — not names. If you must match a
+`namespaceSelector` matches **namespace labels** - not names. If you must match a
 namespace by name, use the built-in label `kubernetes.io/metadata.name: <name>`.
 
 Careful with YAML structure: `- namespaceSelector: … ports: …` inside **one** list item

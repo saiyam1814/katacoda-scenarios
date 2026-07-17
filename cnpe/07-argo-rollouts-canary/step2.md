@@ -1,6 +1,6 @@
 # Release a new version and watch the weights
 
-Now the fun part. In a second terminal tab, watch the live traffic split — the
+Now the fun part. In a second terminal tab, watch the live traffic split - the
 `traffic-gen` Pod prints which nginx version served each request (it reads the
 version from the response body; the `Server:` *header* would just say `envoy`,
 because the sidecar rewrites it):
@@ -15,7 +15,7 @@ Trigger the canary by updating the image:
 kubectl argo rollouts set image media-proxy media-proxy=nginx:1.26 -n release-bay
 ```{{exec}}
 
-Watch the rollout walk the steps — 20%, pause, 40%, pause, 100%:
+Watch the rollout walk the steps - 20%, pause, 40%, pause, 100%:
 
 ```plain
 kubectl argo rollouts get rollout media-proxy -n release-bay --watch
@@ -29,7 +29,7 @@ kubectl -n release-bay get virtualservice media-proxy \
 ```{{exec}}
 
 Once the rollout is fully promoted (Healthy, revision 2), scale down the legacy
-Deployment — the Rollout owns the service now:
+Deployment - the Rollout owns the service now:
 
 ```bash
 kubectl -n release-bay scale deploy media-proxy --replicas=0

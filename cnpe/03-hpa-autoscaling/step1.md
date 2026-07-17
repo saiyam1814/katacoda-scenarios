@@ -1,6 +1,6 @@
 # Create the HPA
 
-Confirm the app and its resource **requests** first — CPU *utilization* is measured
+Confirm the app and its resource **requests** first - CPU *utilization* is measured
 against requests, so an HPA without requests is arithmetic on nothing:
 
 ```plain
@@ -18,7 +18,7 @@ One line does it:
 kubectl autoscale --help | head -20
 ```{{exec}}
 
-If you prefer YAML, the modern API is `autoscaling/v2` — `kubectl explain hpa.spec.metrics --api-version=autoscaling/v2` helps.
+If you prefer YAML, the modern API is `autoscaling/v2` - `kubectl explain hpa.spec.metrics --api-version=autoscaling/v2` helps.
 
 </details>
 
@@ -61,7 +61,7 @@ Then confirm it reads metrics (give it up to a minute):
 kubectl -n edge-web get hpa storefront -w
 ```{{exec interrupt}}
 
-`cpu: 0%/60%` means metrics flow. `cpu: <unknown>/60%` means trouble —
+`cpu: 0%/60%` means metrics flow. `cpu: <unknown>/60%` means trouble - 
 check `kubectl top pods -n edge-web` and metrics-server.
 
 </details>

@@ -7,9 +7,9 @@ identity, not IP ranges.
 
 **The mesh (all sidecar-injected):**
 
-- `payments` — Service **`checkout`** (the protected one, port 8080, label `app: checkout`)
-- `web` — Pod `storefront` running as ServiceAccount **`storefront`** (the only allowed caller)
-- `batch` — Pod `reporting` running as ServiceAccount `reporting` (must be denied)
+- `payments` - Service **`checkout`** (the protected one, port 8080, label `app: checkout`)
+- `web` - Pod `storefront` running as ServiceAccount **`storefront`** (the only allowed caller)
+- `batch` - Pod `reporting` running as ServiceAccount `reporting` (must be denied)
 
 **Your task:** create **AuthorizationPolicy `checkout-allow-storefront`** in namespace
 `payments` that:

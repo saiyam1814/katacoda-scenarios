@@ -9,7 +9,7 @@ kubectl -n kyverno get pods
 Now the policy. The `verifyImages` rule type does the heavy lifting; your job is to
 wire the keyless attestor correctly.
 
-<details><summary>✦ Tip — verifyImages skeleton</summary>
+<details><summary>✦ Tip - verifyImages skeleton</summary>
 
 ```yaml
 rules:
@@ -30,7 +30,7 @@ rules:
 ```{{copy}}
 
 Kyverno auto-generates matching rules for Deployments/StatefulSets/etc. from the Pod
-match (autogen) — so applying a bad **Deployment** is denied too, not just bare Pods.
+match (autogen) - so applying a bad **Deployment** is denied too, not just bare Pods.
 
 </details>
 

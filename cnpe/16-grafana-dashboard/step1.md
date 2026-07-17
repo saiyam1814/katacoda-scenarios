@@ -19,7 +19,7 @@ Open Grafana: [click here to open port 3000]({{TRAFFIC_HOST1_3000}})
 4. Leave auth off, toggle **Default** on
 5. **Save & test** → “Successfully queried the Prometheus API”
 
-<details><summary>✦ Backup — pure API (if the UI misbehaves)</summary>
+<details><summary>✦ Backup - pure API (if the UI misbehaves)</summary>
 
 ```bash
 curl -s -X POST http://localhost:3000/api/datasources \
@@ -33,7 +33,7 @@ curl -s -X POST http://localhost:3000/api/datasources \
 <details><summary>✦ Why `prom.obs.svc:9090`?</summary>
 
 Grafana runs **inside** the cluster, so it reaches Prometheus through the Service DNS
-name `<service>.<namespace>.svc` — not `localhost`, not a NodePort. Datasource access
+name `<service>.<namespace>.svc` - not `localhost`, not a NodePort. Datasource access
 mode `proxy` (Server) means the Grafana backend makes that request.
 
 </details>

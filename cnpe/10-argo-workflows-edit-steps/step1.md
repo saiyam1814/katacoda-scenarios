@@ -7,7 +7,7 @@ cat /root/release-checker.yaml
 ```{{exec}}
 
 Note the **steps syntax**: `steps:` is a list of *lists*. Each outer item
-(`- - name: ...`) is a **sequential** stage; multiple entries in the same inner list
+(`-  name: ...`) is a **sequential** stage; multiple entries in the same inner list
 would run **in parallel**. You need a new sequential stage in the middle.
 
 Edit with `vim /root/release-checker.yaml` (or `nano`), then submit:
@@ -19,21 +19,21 @@ argo submit /root/release-checker.yaml -n workflows --watch
 The watch view should show three nodes finishing in order:
 `deploy` → `ready-check` → `test`, and finally `Status: Succeeded`.
 
-<details><summary>✦ Tip — the two edits</summary>
+<details><summary>✦ Tip - the two edits</summary>
 
-**Edit 1** — in the `main` template's `steps`, insert a middle stage:
+**Edit 1** - in the `main` template's `steps`, insert a middle stage:
 
 ```yaml
 steps:
-  - - name: deploy
+  -  name: deploy
       template: deploy
-  - - name: ready-check
+  -  name: ready-check
       template: wait-ready
-  - - name: test
+  -  name: test
       template: test
 ```{{copy}}
 
-**Edit 2** — append the new template under `templates:`:
+**Edit 2** - append the new template under `templates:`:
 
 ```yaml
 - name: wait-ready
@@ -43,14 +43,14 @@ steps:
     args: [rollout, status, deploy/checkout-api, -n, stage-coral, --timeout=90s]
 ```{{copy}}
 
-(The image ships only the `kubectl` binary — there is no shell in it, so the
+(The image ships only the `kubectl` binary - there is no shell in it, so the
 command must invoke `kubectl` directly, like the existing `deploy` template does.)
 
-Mind the indentation — templates sit at the same level as `deploy` and `test`.
+Mind the indentation - templates sit at the same level as `deploy` and `test`.
 
 </details>
 
-<details><summary>✅ Solution — full file</summary>
+<details><summary>✅ Solution - full file</summary>
 
 ```bash
 cat <<'EOF' > /root/release-checker.yaml
@@ -65,11 +65,11 @@ spec:
   templates:
     - name: main
       steps:
-        - - name: deploy
+        -  name: deploy
             template: deploy
-        - - name: ready-check
+        -  name: ready-check
             template: wait-ready
-        - - name: test
+        -  name: test
             template: test
 
     - name: deploy

@@ -5,8 +5,8 @@
 Two Deployments were just rolled out to the `storage-lab` namespace and both are stuck.
 They reference PersistentVolumeClaims that nobody created:
 
-- `pg` (Postgres) needs claim **`pg-storage`** — the DBA asked for the **high-IOPS** storage tier
-- `cdn` (static content) needs claim **`cdn-cache`** — the **standard** tier is fine
+- `pg` (Postgres) needs claim **`pg-storage`** - the DBA asked for the **high-IOPS** storage tier
+- `cdn` (static content) needs claim **`cdn-cache`** - the **standard** tier is fine
 
 Create both PVCs with:
 
@@ -17,6 +17,6 @@ Create both PVCs with:
 **Constraints:**
 
 - Do **not** edit the Deployments
-- Do **not** create or modify StorageClasses — pick from what the cluster offers
+- Do **not** create or modify StorageClasses - pick from what the cluster offers
 
 Click **START** when the environment is ready.

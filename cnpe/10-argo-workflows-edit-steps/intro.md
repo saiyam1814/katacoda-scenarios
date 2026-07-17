@@ -3,13 +3,13 @@
 **Domain:** GitOps and Continuous Delivery &nbsp;|&nbsp; **Suggested time:** 10 minutes
 
 The `release-checker` Workflow deploys `checkout-api` to staging and then runs smoke
-tests — but the tests sometimes fire **before the rollout finishes**. Classic race.
+tests - but the tests sometimes fire **before the rollout finishes**. Classic race.
 
 The Workflow definition lives at **`/root/release-checker.yaml`**. It currently runs:
 
 `deploy` → `test`
 
-**Your task — edit the file so that:**
+**Your task - edit the file so that:**
 
 1. A new step **`ready-check`** (using a new template **`wait-ready`**) runs
    **between** `deploy` and `test`

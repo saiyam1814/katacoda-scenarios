@@ -1,6 +1,6 @@
 # Wait for Healthy and prove the values
 
-An Application object alone is not the goal — **Synced + Healthy** is.
+An Application object alone is not the goal - **Synced + Healthy** is.
 
 Watch the status (Ctrl+C when both columns are green):
 
@@ -25,17 +25,17 @@ kubectl -n apps-ui get deploy podinfo-ui \
 
 <details><summary>✦ If the app hangs in Progressing</summary>
 
-- `kubectl -n argocd logs deploy/argocd-repo-server --tail=30` — repo/chart fetch issues
-- `kubectl -n apps-ui get pods` — image pulls can take a moment on fresh nodes
-- `argocd app get podinfo-ui --core` — shows per-resource health
+- `kubectl -n argocd logs deploy/argocd-repo-server --tail=30` - repo/chart fetch issues
+- `kubectl -n apps-ui get pods` - image pulls can take a moment on fresh nodes
+- `argocd app get podinfo-ui --core` - shows per-resource health
 
 </details>
 
 <details><summary>✦ How would Flux solve this?</summary>
 
-Same Git repo, two objects instead of one — a `GitRepository` (source) plus a
+Same Git repo, two objects instead of one - a `GitRepository` (source) plus a
 `HelmRelease` (reconciliation with `values:` and `targetNamespace`). The book chapter
-walks through the full Flux equivalent. The exam lets you pick either tool — pick the
+walks through the full Flux equivalent. The exam lets you pick either tool - pick the
 one installed in the task's cluster.
 
 </details>

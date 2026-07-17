@@ -11,10 +11,10 @@ Back in the Grafana UI ([port 3000]({{TRAFFIC_HOST1_3000}})):
 6. **Apply / Back to dashboard**, then 💾 **Save dashboard** → title
    **`coral-dashboard`** → Save
 
-You should see lines for the shop app's endpoints (`/` and `/err` — a traffic
+You should see lines for the shop app's endpoints (`/` and `/err` - a traffic
 generator hits them nonstop, and Prometheus has been scraping since setup).
 
-<details><summary>✦ Backup — pure API</summary>
+<details><summary>✦ Backup - pure API</summary>
 
 ```bash
 curl -s -X POST http://localhost:3000/api/dashboards/db \
@@ -41,6 +41,6 @@ curl -s -X POST http://localhost:3000/api/dashboards/db \
 - Test the query in Prometheus directly:
   `kubectl -n obs port-forward --address 0.0.0.0 svc/prom 9090:9090 &` then open
   [port 9090]({{TRAFFIC_HOST1_9090}}) → run `http_requests_total`
-- `rate()` needs at least 2 scrape samples — wait ~30s after setup
+- `rate()` needs at least 2 scrape samples - wait ~30s after setup
 
 </details>

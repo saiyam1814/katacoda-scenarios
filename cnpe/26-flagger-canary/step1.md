@@ -6,11 +6,11 @@ See what exists before Flagger touches anything:
 kubectl -n release-bay get deploy,svc,virtualservice
 ```{{exec}}
 
-Just the Deployment — no services, no VirtualService. Flagger will generate all of
+Just the Deployment - no services, no VirtualService. Flagger will generate all of
 that from your Canary spec. That is the big difference from Argo Rollouts (lab 07),
 where the Services and VirtualService had to exist first.
 
-<details><summary>✦ Tip — Canary anatomy</summary>
+<details><summary>✦ Tip - Canary anatomy</summary>
 
 ```yaml
 spec:
@@ -20,7 +20,7 @@ spec:
 ```{{copy}}
 
 `request-success-rate` and `request-duration` are built-in metric templates for the
-istio provider — no PromQL needed.
+istio provider - no PromQL needed.
 
 </details>
 
@@ -54,7 +54,7 @@ spec:
 EOF
 ```{{exec}}
 
-Watch Flagger initialize (takes ~1 minute — it builds the primary side):
+Watch Flagger initialize (takes ~1 minute - it builds the primary side):
 
 ```plain
 kubectl -n release-bay get canary media-proxy -w

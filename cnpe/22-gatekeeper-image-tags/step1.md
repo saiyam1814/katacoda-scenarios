@@ -1,6 +1,6 @@
 # Create the Constraint
 
-Inspect the template first — its `crd.spec.names.kind` is the kind **you** must
+Inspect the template first - its `crd.spec.names.kind` is the kind **you** must
 instantiate:
 
 ```bash
@@ -13,7 +13,7 @@ Now write the Constraint. The `match.kinds` list uses **apiGroups + kinds** pair
 <details><summary>✦ Tip</summary>
 
 Constraints use the API group `constraints.gatekeeper.sh/v1beta1`, and the **kind** is
-whatever the template declared — here `ForbidFloatingTag`. Core-group resources (Pod)
+whatever the template declared - here `ForbidFloatingTag`. Core-group resources (Pod)
 use `apiGroups: [""]`.
 
 </details>

@@ -10,10 +10,10 @@ echo "Jaeger UI is up"
 
 Open [Jaeger on port 16686]({{TRAFFIC_HOST1_16686}}):
 
-1. **Service:** `span-switch` (give it ~30–60s to appear — spans ship in batches)
+1. **Service:** `span-switch` (give it ~30–60s to appear - spans ship in batches)
 2. **Tags:** `error=true`
 3. **Find Traces** → open a red trace → expand the failed **`charge-card`** span
-4. Under **Logs / Events** you'll find an `exception` event —
+4. Under **Logs / Events** you'll find an `exception` event - 
    copy the value of **`exception.message`**
 
 Then write the file (replace the value only if yours differs):
@@ -28,8 +28,8 @@ cat /root/exception.json
 <details><summary>✦ No service in Jaeger?</summary>
 
 - Wait 30–60s: the BatchSpanProcessor flushes on an interval
-- `kubectl -n trace-lab logs deploy/span-switch --tail=5` — is tracing ENABLED?
-- `kubectl -n observability logs deploy/jaeger --tail=10` — collector complaints?
+- `kubectl -n trace-lab logs deploy/span-switch --tail=5` - is tracing ENABLED?
+- `kubectl -n observability logs deploy/jaeger --tail=10` - collector complaints?
 - Only every 5th order errors, so error traces appear within ~5 seconds of each other
 
 </details>

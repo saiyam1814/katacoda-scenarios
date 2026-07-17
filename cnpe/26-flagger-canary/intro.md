@@ -4,7 +4,7 @@
 
 In lab 07 *you* programmed the canary steps with Argo Rollouts. **Flagger** flips the
 model: you declare the analysis, and Flagger shifts traffic **only while live metrics
-stay healthy** — a bad release rolls back on its own.
+stay healthy** - a bad release rolls back on its own.
 
 Flagger runs in `istio-system` (provider: istio, metrics from the addon Prometheus).
 Namespace `release-bay` has Deployment **`media-proxy`** (nginx:1.25, 2 replicas) and

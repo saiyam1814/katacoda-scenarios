@@ -7,7 +7,7 @@ kubectl -n shop-core get deploy,svc,pods
 ```{{exec}}
 
 Write the Rollout with a `strategy.blueGreen` block. The manual gate is a single
-boolean — find it.
+boolean - find it.
 
 <details><summary>✦ Tip</summary>
 
@@ -15,7 +15,7 @@ boolean — find it.
 kubectl explain rollout.spec.strategy.blueGreen --recursive | head -25
 ```{{copy}}
 
-(Works because Rollouts installs its CRDs — `kubectl explain` reads them.)
+(Works because Rollouts installs its CRDs - `kubectl explain` reads them.)
 The field you want is `autoPromotionEnabled: false`.
 
 </details>

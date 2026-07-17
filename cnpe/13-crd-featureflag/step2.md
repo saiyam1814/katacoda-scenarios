@@ -6,7 +6,7 @@ Apply the contract file:
 kubectl apply -f /root/checkout-express.yaml
 ```{{exec}}
 
-Use the short name — this is how the grader (and your users) will look:
+Use the short name - this is how the grader (and your users) will look:
 
 ```bash
 kubectl get ff -n flags-lab

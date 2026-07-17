@@ -14,4 +14,4 @@ or erroring, dashboards are dark, and the team lead is standing behind you.
 
 Bring both Deployments to **Available**.
 
-Click **START** when ready — then find out what is broken before touching anything.
+Click **START** when ready - then find out what is broken before touching anything.

@@ -13,7 +13,7 @@ reconciled forever.
 - `argocd app wait <name> --health --core` is your exam-friendly wait
 - Score comes from **Synced + Healthy + correct values in the live cluster**
 
-📖 This lab is **Chapter 6** of the *CNPE Scenarios and Solutions* book — including the
+📖 This lab is **Chapter 6** of the *CNPE Scenarios and Solutions* book - including the
 complete **Flux** solution to the same task.
 
-Next lab: **07 — Roll out media-proxy with a weighted canary**.
+Next lab: **07 - Roll out media-proxy with a weighted canary**.

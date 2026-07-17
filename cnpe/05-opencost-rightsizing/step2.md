@@ -15,7 +15,7 @@ Apply the finance decisions:
 kubectl -n alpha-svc get deploy api-alpha -o jsonpath='{.spec.replicas}'
 ```{{exec}}
 
-`kubectl scale` sets absolute values — do the addition yourself, or inline it:
+`kubectl scale` sets absolute values - do the addition yourself, or inline it:
 
 ```plain
 kubectl -n alpha-svc scale deploy api-alpha \
@@ -34,7 +34,7 @@ kubectl -n alpha-svc label deploy api-alpha cost.platform.io/adjusted=yes
 kubectl -n gamma-svc label deploy api-gamma cost.platform.io/adjusted=yes
 ```{{exec}}
 
-Final check — this is what a grader would look at:
+Final check - this is what a grader would look at:
 
 ```bash
 kubectl get deploy -A -l cost.platform.io/adjusted=yes

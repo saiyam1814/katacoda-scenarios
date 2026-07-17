@@ -9,9 +9,9 @@ vim /root/composition.yaml
 ```{{copy}}
 
 Replace the five `TODO` comments with real patches. Follow the example patch above
-them — same `type`, different paths.
+them - same `type`, different paths.
 
-<details><summary>✦ Tip — patch anatomy</summary>
+<details><summary>✦ Tip - patch anatomy</summary>
 
 ```yaml
 - type: FromCompositeFieldPath     # read from the XR ...
@@ -25,7 +25,7 @@ the intent obvious.
 
 </details>
 
-<details><summary>✅ Solution — the five patches</summary>
+<details><summary>✅ Solution - the five patches</summary>
 
 Add these under the `app-deployment` resource's `patches:` (after the example):
 

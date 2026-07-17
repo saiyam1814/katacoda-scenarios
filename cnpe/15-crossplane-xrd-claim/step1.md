@@ -3,7 +3,7 @@
 The XRD is like a CRD plus two Crossplane extras: **`claimNames`** (enables the
 namespaced proxy object) and **`referenceable`** (lets Compositions target it).
 
-<details><summary>✦ Tip — XRD skeleton</summary>
+<details><summary>✦ Tip - XRD skeleton</summary>
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1

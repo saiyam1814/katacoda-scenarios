@@ -50,7 +50,7 @@ echo "reporting (should be denied):"
 kubectl -n batch exec reporting -c curl -- curl -sw ' HTTP:%{http_code}' --max-time 5 http://checkout.payments.svc:8080/hostname ; echo
 ```{{exec}}
 
-The reporting caller gets a `403` from checkout's **linkerd-proxy** — the request
+The reporting caller gets a `403` from checkout's **linkerd-proxy** - the request
 never reaches the app, and the decision was made on the caller's mTLS certificate.
 
 <details><summary>✦ Compare with the Istio lab (24)</summary>

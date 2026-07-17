@@ -5,7 +5,7 @@
 The CI system deploys into namespace `build-room` using a ServiceAccount. Security
 reviewed the current setup ("cluster-admin, obviously") and had opinions.
 
-**Your task — all in namespace `build-room`:**
+**Your task - all in namespace `build-room`:**
 
 1. ServiceAccount **`ci-bot`**
 2. Role **`ci-bot`** allowing exactly:

@@ -23,7 +23,7 @@ kubectl get storageclass
 ```{{exec}}
 
 Create a marker file once you know the two claim names and the two class names
-(this is just for this lab — the exam has no marker files):
+(this is just for this lab - the exam has no marker files):
 
 ```bash
 touch /root/investigated
@@ -31,8 +31,8 @@ touch /root/investigated
 
 <details><summary>✦ What you should have found</summary>
 
-- Pod `pg-…` is `Pending` — claim `pg-storage` does not exist
-- Pod `cdn-…` is `Pending` — claim `cdn-cache` does not exist
+- Pod `pg-…` is `Pending` - claim `pg-storage` does not exist
+- Pod `cdn-…` is `Pending` - claim `cdn-cache` does not exist
 - Classes available: `fast-iops` (annotated `high-iops` tier), `standard`, and the
   cluster default `local-path`
 

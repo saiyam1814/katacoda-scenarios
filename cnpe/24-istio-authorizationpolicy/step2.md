@@ -16,7 +16,7 @@ kubectl -n batch exec reporting -- \
   curl -s --max-time 5 http://checkout.payments.svc:8080/hostname ; echo
 ```{{exec}}
 
-Expected: `RBAC: access denied` — that string comes from the checkout **sidecar**,
+Expected: `RBAC: access denied` - that string comes from the checkout **sidecar**,
 which rejected the peer certificate's identity before the request touched the app.
 
 <details><summary>✦ Both blocked? Neither blocked?</summary>
@@ -26,14 +26,14 @@ which rejected the peer certificate's identity before the request touched the ap
   should list `istio-proxy`
 - **Neither blocked:** did the policy land in the **payments** namespace with the
   right `selector`? `istioctl analyze -n payments` finds typos
-- Policy changes take a few seconds to reach sidecars — retry once before debugging
+- Policy changes take a few seconds to reach sidecars - retry once before debugging
 - A connection opened **before** the policy can keep answering until Envoy drains
-  it (up to ~45s) — an intruder curl that still succeeds right after `apply` is
+  it (up to ~45s) - an intruder curl that still succeeds right after `apply` is
   usually just that stale connection. Wait and retry.
 
 </details>
 
-<details><summary>✦ Bonus — see the identity in the certificate</summary>
+<details><summary>✦ Bonus - see the identity in the certificate</summary>
 
 ```bash
 istioctl proxy-config secret deploy/checkout -n payments | head -5

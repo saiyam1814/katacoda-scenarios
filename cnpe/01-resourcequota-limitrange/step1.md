@@ -2,8 +2,8 @@
 
 Create both objects in the `squad-nebula` namespace:
 
-1. ResourceQuota **`nebula-pod-cap`** — hard cap of **6 Pods**
-2. LimitRange **`nebula-cpu-defaults`** — per **Container**:
+1. ResourceQuota **`nebula-pod-cap`** - hard cap of **6 Pods**
+2. LimitRange **`nebula-cpu-defaults`** - per **Container**:
    - `defaultRequest` CPU `50m`
    - `default` (limit) CPU `50m`
    - `max` CPU `250m`
@@ -22,7 +22,7 @@ kubectl -n squad-nebula get deploy,pods
 kubectl create quota nebula-pod-cap --hard=pods=6 -n squad-nebula
 ```{{exec}}
 
-There is no generator for LimitRange — write YAML.
+There is no generator for LimitRange - write YAML.
 `kubectl explain limitrange.spec.limits` shows every field.
 
 </details>

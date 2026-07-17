@@ -11,7 +11,7 @@ Then confirm both Pods reach `Running`.
 
 <details><summary>✦ Tip</summary>
 
-Both classes use `volumeBindingMode: WaitForFirstConsumer` — the PVC will show
+Both classes use `volumeBindingMode: WaitForFirstConsumer` - the PVC will show
 `Pending` until the Pod that uses it is scheduled. That is normal, not an error.
 Since the Pods already exist, binding happens seconds after you create the claims.
 

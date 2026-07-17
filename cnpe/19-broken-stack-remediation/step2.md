@@ -1,9 +1,9 @@
 # Fix them within the rules
 
-All three fixes are **create/update of allowed objects** — the Deployments stay
+All three fixes are **create/update of allowed objects** - the Deployments stay
 untouched.
 
-<details><summary>✅ Fix 1 — loosen the quota</summary>
+<details><summary>✅ Fix 1 - loosen the quota</summary>
 
 ```bash
 cat <<'EOF' | kubectl apply -f -
@@ -20,19 +20,19 @@ EOF
 
 </details>
 
-<details><summary>✅ Fix 2 — create the missing Secret</summary>
+<details><summary>✅ Fix 2 - create the missing Secret</summary>
 
 ```bash
 kubectl -n metrics-portal create secret generic metrics-db-auth \
   --from-literal=POSTGRES_PASSWORD='s3cret-p0rtal'
 ```{{exec}}
 
-The kubelet retries container creation on its own — no Pod delete needed for
+The kubelet retries container creation on its own - no Pod delete needed for
 `CreateContainerConfigError` (deleting it is also fine and faster).
 
 </details>
 
-<details><summary>✅ Fix 3 — create the missing PVC</summary>
+<details><summary>✅ Fix 3 - create the missing PVC</summary>
 
 ```bash
 cat <<'EOF' | kubectl apply -f -
@@ -53,7 +53,7 @@ EOF
 
 </details>
 
-Now watch it heal — the ReplicaSet retries pod creation with backoff, so the
+Now watch it heal - the ReplicaSet retries pod creation with backoff, so the
 `metrics-ui` pod can take a minute to appear after the quota fix:
 
 ```plain
@@ -70,7 +70,7 @@ kubectl -n metrics-portal get deploy,pods,pvc
 <details><summary>✦ Impatient? Legal shortcuts</summary>
 
 - Delete the `CreateContainerConfigError` pod → recreated instantly, picks up the Secret
-- The quota-blocked pod cannot be hurried by deleting (nothing exists yet) — the RS
+- The quota-blocked pod cannot be hurried by deleting (nothing exists yet) - the RS
   controller retries within ~1 minute. Breathe.
 
 </details>

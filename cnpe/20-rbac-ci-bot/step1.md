@@ -1,6 +1,6 @@
 # Create SA, Role and RoleBinding
 
-All three can be created imperatively — fastest correct answer in the exam:
+All three can be created imperatively - fastest correct answer in the exam:
 
 <details><summary>✦ Tip</summary>
 
@@ -10,11 +10,11 @@ kubectl create rolebinding --help | head -12
 ```{{copy}}
 
 Note: Deployments live in the `apps` API group → `--resource=deployments.apps`.
-No `delete` in the verb list — least privilege means *exactly* what was asked.
+No `delete` in the verb list - least privilege means *exactly* what was asked.
 
 </details>
 
-<details><summary>✅ Solution — imperative</summary>
+<details><summary>✅ Solution - imperative</summary>
 
 ```bash
 kubectl -n build-room create serviceaccount ci-bot
@@ -30,7 +30,7 @@ kubectl -n build-room create rolebinding ci-bot \
 
 </details>
 
-<details><summary>✅ Solution — declarative equivalent</summary>
+<details><summary>✅ Solution - declarative equivalent</summary>
 
 ```yaml
 apiVersion: v1

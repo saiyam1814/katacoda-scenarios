@@ -6,12 +6,12 @@ Study the pipeline you are extending:
 kubectl -n ci-otter get pipeline build-ship -o yaml | grep -A20 "tasks:"
 ```{{exec}}
 
-<details><summary>✦ Tip — the two moving parts</summary>
+<details><summary>✦ Tip - the two moving parts</summary>
 
-1. A Task whose step exits non-zero on findings — Trivy does this natively:
+1. A Task whose step exits non-zero on findings - Trivy does this natively:
    `trivy image --exit-code 1 --severity CRITICAL <image>`
 2. Ordering: `scan` runs `runAfter: [image]`; **`deploy` must change** to
-   `runAfter: [scan]` — otherwise the gate can be bypassed in parallel
+   `runAfter: [scan]` - otherwise the gate can be bypassed in parallel
 
 </details>
 

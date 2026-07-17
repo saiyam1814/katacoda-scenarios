@@ -1,6 +1,6 @@
 # Create the Rollout
 
-Inspect what exists — the names in the cluster are your source of truth:
+Inspect what exists - the names in the cluster are your source of truth:
 
 ```plain
 kubectl -n release-bay get deploy,svc,virtualservice
@@ -10,7 +10,7 @@ A `Rollout` is a drop-in Deployment replacement (`argoproj.io/v1alpha1`) with a
 `strategy.canary` block. Wire in the two services, the Istio VirtualService/route,
 and the weight steps.
 
-<details><summary>✦ Tip 1 — the strategy block shape</summary>
+<details><summary>✦ Tip 1 - the strategy block shape</summary>
 
 ```yaml
 strategy:
@@ -29,11 +29,11 @@ strategy:
 
 </details>
 
-<details><summary>✦ Tip 2 — about the old Deployment</summary>
+<details><summary>✦ Tip 2 - about the old Deployment</summary>
 
 The task says don't *edit* it. A Rollout with its own template simply takes over the
 services (Argo Rollouts adds a pod-template-hash selector to them). Scaling the old
-Deployment down afterwards is good hygiene — the book chapter also shows the
+Deployment down afterwards is good hygiene - the book chapter also shows the
 `workloadRef` migration pattern, which adopts an existing Deployment instead.
 
 </details>
@@ -80,7 +80,7 @@ spec:
 EOF
 ```{{exec}}
 
-Check it becomes Healthy (first revision skips the steps — nothing to canary against yet):
+Check it becomes Healthy (first revision skips the steps - nothing to canary against yet):
 
 ```plain
 kubectl argo rollouts get rollout media-proxy -n release-bay

@@ -1,6 +1,6 @@
 # Diagnose the three failures
 
-Run the standard triage sweep — in this order, every time:
+Run the standard triage sweep - in this order, every time:
 
 ```bash
 kubectl -n metrics-portal get deploy,pods
@@ -19,7 +19,7 @@ kubectl -n metrics-portal get quota,limitrange,secret,pvc
 ```{{exec}}
 
 Three distinct problems are hiding in that output. When you can name all three,
-record your diagnosis (one line each) — this mirrors how you should take notes
+record your diagnosis (one line each) - this mirrors how you should take notes
 in the exam terminal:
 
 ```bash
@@ -33,7 +33,7 @@ cat /root/triage.txt
 
 <details><summary>✦ How each problem announces itself</summary>
 
-- **Quota:** the Deployment shows `0/1` but **no Pod exists** — the ReplicaSet event
+- **Quota:** the Deployment shows `0/1` but **no Pod exists** - the ReplicaSet event
   says `forbidden: exceeded quota: portal-quota`
 - **Missing Secret:** Pod status `CreateContainerConfigError`, describe says
   `secret "metrics-db-auth" not found`

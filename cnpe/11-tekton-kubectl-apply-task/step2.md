@@ -24,7 +24,7 @@ Then start a run and follow it:
 tkn pipeline start compile-release -n pipeline-lab --showlog
 ```{{exec}}
 
-When it finishes, confirm the end state — the Deployment the pipeline applied:
+When it finishes, confirm the end state - the Deployment the pipeline applied:
 
 ```bash
 tkn pipelinerun list -n pipeline-lab
@@ -33,18 +33,18 @@ kubectl -n pipeline-lab get deploy compiled-web
 
 <details><summary>✦ If the run fails</summary>
 
-- `tkn pipelinerun logs -f -n pipeline-lab` — read the failing step's output
-- `error validating data` → your heredoc mangled the manifest — use
+- `tkn pipelinerun logs -f -n pipeline-lab` - read the failing step's output
+- `error validating data` → your heredoc mangled the manifest - use
   `printf '%s\n' "$(params.manifest)"`
-- `deployments.apps is forbidden` → the TaskRun pod's ServiceAccount lacks RBAC —
+- `deployments.apps is forbidden` → the TaskRun pod's ServiceAccount lacks RBAC - 
   in this lab the `default` SA in `pipeline-lab` is already bound to a Role that
   allows Deployments
 - A task result must be **consumed with the exact syntax**
-  `$(tasks.<task-name>.results.<result-name>)` — typos fail at validation time
+  `$(tasks.<task-name>.results.<result-name>)` - typos fail at validation time
 
 </details>
 
-<details><summary>✅ Solution — full pipeline patch</summary>
+<details><summary>✅ Solution - full pipeline patch</summary>
 
 ```bash
 kubectl -n pipeline-lab apply -f - <<'EOF'

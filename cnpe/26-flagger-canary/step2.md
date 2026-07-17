@@ -1,13 +1,13 @@
 # Release and let the metrics decide
 
-Trigger the canary the GitOps way — just change the image on the **original**
+Trigger the canary the GitOps way - just change the image on the **original**
 Deployment (Flagger watches it):
 
 ```bash
 kubectl -n release-bay set image deploy/media-proxy media-proxy=nginx:1.26
 ```{{exec}}
 
-Watch Flagger work through the analysis — every 20s it checks the success rate and,
+Watch Flagger work through the analysis - every 20s it checks the success rate and,
 if healthy, adds 20% weight (this takes ~2–3 minutes to full promotion):
 
 ```plain
@@ -39,7 +39,7 @@ kubectl -n release-bay get deploy media-proxy-primary \
 
 If the new version served 5xx errors, `request-success-rate` would drop below 99,
 Flagger would halt advancement, and after `threshold: 3` failed checks it would
-**roll back to the primary automatically** — canary phase `Failed`, traffic back at
+**roll back to the primary automatically** - canary phase `Failed`, traffic back at
 100/0, and your users mostly unharmed. That automatic verdict is exactly what the
 fixed `steps:` program in lab 07 cannot give you.
 

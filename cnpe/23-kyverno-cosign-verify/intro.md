@@ -3,7 +3,7 @@
 **Domain:** Security and Policy Enforcement &nbsp;|&nbsp; **Suggested time:** 12 minutes
 
 The supply-chain guild's new rule: **no unsigned images run here**. Kyverno is
-installed cluster-wide. Google's Distroless images are Cosign **keyless**-signed —
+installed cluster-wide. Google's Distroless images are Cosign **keyless**-signed - 
 they are the reference "good" images.
 
 Create **ClusterPolicy `supply-chain-signoff`** that:

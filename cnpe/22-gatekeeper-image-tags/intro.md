@@ -2,7 +2,7 @@
 
 **Domain:** Security and Policy Enforcement &nbsp;|&nbsp; **Suggested time:** 10 minutes
 
-`:latest` took production down again — nobody knows which "latest" was running.
+`:latest` took production down again - nobody knows which "latest" was running.
 **Gatekeeper** (OPA) is installed, and the platform team already ships a
 **ConstraintTemplate** named **`forbidfloatingtag`** (kind: **`ForbidFloatingTag`**)
 whose Rego rejects `:latest` and untagged images.

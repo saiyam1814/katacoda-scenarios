@@ -6,7 +6,7 @@ The naming rules trip people up, so anchor them first:
 - `spec.names`: `kind` (CamelCase), `plural`, `singular`, `shortNames`
 - Validation lives in `versions[].schema.openAPIV3Schema`
 
-<details><summary>✦ Tip — integer bounds</summary>
+<details><summary>✦ Tip - integer bounds</summary>
 
 OpenAPI v3 integers support `minimum` / `maximum` directly:
 

@@ -4,7 +4,7 @@
 
 Namespace `pipeline-lab` has a Tekton **Pipeline `compile-release`** with two tasks,
 `build` and `package`. The `package` Task renders a Kubernetes manifest and emits it as
-a **result** named `manifest`. Nothing deploys it — that is your job.
+a **result** named `manifest`. Nothing deploys it - that is your job.
 
 **Your task:**
 
@@ -18,9 +18,9 @@ a **result** named `manifest`. Nothing deploys it — that is your job.
    - Passes `$(tasks.package.results.manifest)` as the `manifest` param
 3. Start a **PipelineRun** and wait until it **succeeds**
 
-*(The original scenario used `bitnami/kubectl:1.29` — Bitnami moved its versioned
+*(The original scenario used `bitnami/kubectl:1.29` - Bitnami moved its versioned
 public tags to the `bitnamilegacy` archive in 2025, so the lab pins that. The task
-writes a file inside the step, so the image must ship a shell — `rancher/kubectl`
+writes a file inside the step, so the image must ship a shell - `rancher/kubectl`
 does not.)*
 
 Click **START** while Tekton installs.

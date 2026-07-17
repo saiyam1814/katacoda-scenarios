@@ -1,6 +1,6 @@
 # Compose it and claim a bucket
 
-Apply the platform-side Composition (this one is given — you built one from scratch in
+Apply the platform-side Composition (this one is given - you built one from scratch in
 lab 14):
 
 ```bash
@@ -62,7 +62,7 @@ spec:
 EOF
 ```{{exec}}
 
-Wait for readiness and trace the chain — Claim → XR → Object → ConfigMap:
+Wait for readiness and trace the chain - Claim → XR → Object → ConfigMap:
 
 ```bash
 kubectl -n team-apps wait bucketapp/media-assets --for=condition=Ready --timeout=180s
@@ -71,11 +71,11 @@ kubectl get xbucketapp
 kubectl -n bucket-system get cm -l platform.example.io/kind=bucket -o yaml | grep -E "name:|region|size" | head -6
 ```{{exec}}
 
-<details><summary>✦ Note — claim vs XR names</summary>
+<details><summary>✦ Note - claim vs XR names</summary>
 
 The claim is `media-assets` in `team-apps`; Crossplane generated a cluster-scoped XR
 named `media-assets-<hash>` for it. That XR name flowed into the ConfigMap name via
-the `metadata.name` patch. Claims are the **only** namespaced piece — that is what
+the `metadata.name` patch. Claims are the **only** namespaced piece - that is what
 makes them safe to hand to tenants (RBAC on the claim kind per namespace).
 
 </details>

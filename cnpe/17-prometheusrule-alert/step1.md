@@ -1,6 +1,6 @@
 # Create the PrometheusRule
 
-First — the step everyone skips and regrets: find out which labels the Prometheus
+First - the step everyone skips and regrets: find out which labels the Prometheus
 instance uses to pick up rules:
 
 ```bash
@@ -15,7 +15,7 @@ sum(rate(errors[5m])) / sum(rate(total[5m])) > threshold
 
 The app labels 5xx requests with `status="500"`.
 
-<details><summary>✦ Tip — PrometheusRule anatomy</summary>
+<details><summary>✦ Tip - PrometheusRule anatomy</summary>
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
