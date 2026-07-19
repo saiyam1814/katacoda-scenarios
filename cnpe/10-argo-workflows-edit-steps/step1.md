@@ -7,7 +7,7 @@ cat /root/release-checker.yaml
 ```{{exec}}
 
 Note the **steps syntax**: `steps:` is a list of *lists*. Each outer item
-(`-  name: ...`) is a **sequential** stage; multiple entries in the same inner list
+(`- - name: ...`) is a **sequential** stage; multiple entries in the same inner list
 would run **in parallel**. You need a new sequential stage in the middle.
 
 Edit with `vim /root/release-checker.yaml` (or `nano`), then submit:
@@ -25,11 +25,11 @@ The watch view should show three nodes finishing in order:
 
 ```yaml
 steps:
-  -  name: deploy
+  - - name: deploy
       template: deploy
-  -  name: ready-check
+  - - name: ready-check
       template: wait-ready
-  -  name: test
+  - - name: test
       template: test
 ```{{copy}}
 
@@ -65,11 +65,11 @@ spec:
   templates:
     - name: main
       steps:
-        -  name: deploy
+        - - name: deploy
             template: deploy
-        -  name: ready-check
+        - - name: ready-check
             template: wait-ready
-        -  name: test
+        - - name: test
             template: test
 
     - name: deploy

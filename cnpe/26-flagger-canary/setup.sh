@@ -12,7 +12,11 @@ FLAGGER_CHART_VERSION=1.43.0
 ARCH=$(uname -m); [ "$ARCH" = "aarch64" ] && IARCH=arm64 || IARCH=amd64
 curl -sL "https://github.com/istio/istio/releases/download/${ISTIO_VERSION}/istio-${ISTIO_VERSION}-linux-${IARCH}.tar.gz" | tar xz -C /opt
 ln -sf "/opt/istio-${ISTIO_VERSION}/bin/istioctl" /usr/local/bin/istioctl
-istioctl install --set profile=minimal -y
+istioctl install --set profile=minimal -y \
+  --set values.pilot.resources.requests.cpu=100m \
+  --set values.pilot.resources.requests.memory=512Mi \
+  --set values.global.proxy.resources.requests.cpu=10m \
+  --set values.global.proxy.resources.requests.memory=64Mi  # fit 2-vCPU lab VMs
 
 kubectl apply -f "/opt/istio-${ISTIO_VERSION}/samples/addons/prometheus.yaml"
 
