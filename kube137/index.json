@@ -1,0 +1,41 @@
+{
+  "title": "Kubernetes 1.37",
+  "description": "Kubernetes 1.37 playground with containerd, plus a few 1.37 alpha features switched on so you can actually try them",
+  "difficulty": "Beginner",
+  "time": "20",
+  "details": {
+    "steps": [
+      {
+        "title": "Cluster up + what's new",
+        "text": "step1.md"
+      },
+      {
+        "title": "How alpha features get turned on",
+        "text": "step2.md"
+      },
+      {
+        "title": "Alpha: gang scheduling (Workload API)",
+        "text": "step3.md"
+      },
+      {
+        "title": "Alpha: emptyDir mode + bind mount options",
+        "text": "step4.md"
+      },
+      {
+        "title": "Alpha: StatefulSet Recreate + flip your own gate",
+        "text": "step5.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "code": "foreground.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {"uilayout": "terminal"},
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

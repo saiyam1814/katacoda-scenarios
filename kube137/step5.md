@@ -1,0 +1,133 @@
+# Alpha: StatefulSet `Recreate`, then flip a gate yourself
+
+## StatefulSet Recreate strategy
+
+`StatefulSetRecreateStrategy` (alpha, new in 1.37) adds a third `updateStrategy.type`
+alongside `RollingUpdate` and `OnDelete`. Deployments have had `Recreate` forever; for
+StatefulSets it matters when the old and new versions genuinely cannot coexist - a schema
+migration, a single-writer lock, a leader election that hates split versions.
+
+```plain
+cat <<'EOF' | kubectl apply -f -
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  clusterIP: None
+  selector: {app: web}
+  ports: [{port: 80}]
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  serviceName: web
+  replicas: 3
+  updateStrategy:
+    type: Recreate
+  selector:
+    matchLabels: {app: web}
+  template:
+    metadata:
+      labels: {app: web}
+    spec:
+      terminationGracePeriodSeconds: 1
+      containers:
+      - name: web
+        image: nginx:1.29-alpine
+        resources:
+          requests: {cpu: 5m, memory: 16Mi}
+EOF
+```{{exec}}
+
+```plain
+kubectl rollout status statefulset/web --timeout=180s
+```{{exec}}
+
+Now change the image and watch what happens. With `RollingUpdate` you would see `web-2`,
+then `web-1`, then `web-0` cycle one at a time. With `Recreate`, **all three go down
+first**:
+
+```plain
+kubectl set image statefulset/web web=nginx:1.28-alpine
+```{{exec}}
+
+```plain
+kubectl get pods -l app=web -w
+```{{exec}}
+
+Press `Ctrl+C` once they are all back. The alpha gate also adds a `Progressing` condition to
+StatefulSet status:
+
+```plain
+kubectl get statefulset web -o jsonpath='{.status.conditions}' | python3 -m json.tool
+```{{exec}}
+
+```plain
+kubectl delete statefulset web && kubectl delete svc web
+```{{exec}}
+
+## Flip your own gate
+
+`/root/alpha/gate.sh` patches the static Pod manifests in `/etc/kubernetes/manifests` for
+kube-apiserver, kube-controller-manager and kube-scheduler, then waits for the API server to
+restart. It snapshots the manifests the first time you use it.
+
+Take an explicit backup first:
+
+```plain
+/root/alpha/gate.sh backup
+```{{exec}}
+
+Turn on `NodeLifecycleConditions` - an alpha in 1.37 that adds well-known Node lifecycle
+conditions:
+
+```plain
+/root/alpha/gate.sh add NodeLifecycleConditions=true
+```{{exec}}
+
+```plain
+/root/alpha/gate.sh show
+```{{exec}}
+
+```plain
+kubectl describe node $(hostname -s) | sed -n '/Conditions:/,/Addresses:/p'
+```{{exec}}
+
+If a feature ships **new API types**, the gate alone is not enough - the group version has
+to be served too. That is the second half of `gate.sh`:
+
+```plain
+/root/alpha/gate.sh api storage.k8s.io/v1alpha1=true
+```{{exec}}
+
+```plain
+kubectl api-versions | grep alpha
+```{{exec}}
+
+### Roll it back
+
+```plain
+/root/alpha/gate.sh restore
+```{{exec}}
+
+```plain
+/root/alpha/gate.sh show
+```{{exec}}
+
+### One warning
+
+You will see `--feature-gates=AllAlpha=true` suggested around the internet. It does work,
+and it is a fast way to get an unbootable control plane - it switches on gates that conflict
+with each other, gates that need a driver you do not have, and gates whose defaults are
+`false` precisely because they are not finished. Enable the handful you actually want to
+test. If you do try it here, `gate.sh restore` is your way back.
+
+Kubelet gates live somewhere different again - `/var/lib/kubelet/config.yaml` under
+`featureGates:`, followed by `systemctl restart kubelet`:
+
+```plain
+grep -A 8 featureGates /var/lib/kubelet/config.yaml
+```{{exec}}
