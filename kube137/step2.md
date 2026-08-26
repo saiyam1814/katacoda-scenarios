@@ -11,6 +11,21 @@ Every alpha feature in Kubernetes sits behind a **feature gate**, and most of th
 
 Miss step 2 and `kubectl apply` just says `no matches for kind`, even with the gate on.
 
+**New in 1.37: gates have dependencies.** Some gates now declare that they require other
+gates, and the check is fatal - the component refuses to start rather than silently
+misbehaving. Enable `CompositePodGroup` without `TopologyAwareWorkloadScheduling` and
+kube-apiserver dies on boot with:
+
+```plain
+command failed ... enabled, but depends on features that are disabled:
+[TopologyAwareWorkloadScheduling]
+```
+
+Worth knowing before you go gate-hunting: if the control plane will not come up after you
+flip something, this is the first thing to check. `CompositePodGroup` needs
+`GenericWorkload` **and** `TopologyAwareWorkloadScheduling`; `H2CContainerProbe` needs
+`NodeDeclaredFeatures` (GA in 1.37, so already on).
+
 ## What this cluster was built with
 
 The `kubeadm` config used at init time:
@@ -56,6 +71,7 @@ kubectl get --raw "/api/v1/nodes/$(hostname -s)/proxy/configz" | python3 -m json
 | Gate | Stage in 1.37 | What it unlocks |
 | --- | --- | --- |
 | `GenericWorkload` | Beta (off by default) | Workload / PodGroup API + gang scheduling |
+| `TopologyAwareWorkloadScheduling` | Alpha | `schedulingConstraints` on a PodGroup; required by `CompositePodGroup` |
 | `CompositePodGroup` | Alpha | `CompositePodGroup` in `scheduling.k8s.io/v1alpha3` |
 | `PodGroupPreemptionPolicy` | Alpha | `preemptionPolicy` on a PodGroup |
 | `EmptyDirVolumeMode` | Alpha | `emptyDir.mode` permission bits |

@@ -51,11 +51,31 @@ EOF
 kubectl wait --for=condition=Ready pod/volume-alpha --timeout=90s
 ```{{exec}}
 
-A note on how gated fields fail: if `EmptyDirVolumeMode` or `VolumeBindMountOptions` were
-off, this Pod would still be **accepted** - the apiserver silently strips fields behind a
-disabled gate rather than erroring. You would only notice downstream, when `stat` reports
-`777` and `/proc/mounts` shows no `noexec`. If that happens here, run
-`/root/alpha/gate.sh show` and turn the gates on as shown in step 5.
+These three gates have to be on in **two** places: the apiserver (so the fields survive
+admission) and the **kubelet** (so the node can actually honour them). Both are configured
+for you at init - but it is worth knowing what each half failing looks like.
+
+If the *apiserver* lacked the gate, the Pod would still be accepted: the apiserver silently
+strips fields behind a disabled gate rather than erroring, and you would only notice when
+`stat` reports `777`.
+
+If the *kubelet* lacked it, 1.37 now catches it up front. `NodeDeclaredFeatures` went GA in
+this release: the kubelet publishes what it supports to `node.status.declaredFeatures`, and
+the scheduler refuses to place a Pod asking for something the node never declared:
+
+```plain
+0/1 nodes are available: 1 node(s) didn't match Pod's required features.
+```
+
+That is a much better failure than a silently ignored `noexec`. Have a look at what this
+node declares:
+
+```plain
+kubectl get node -o jsonpath='{.items[0].status.declaredFeatures}'; echo
+```{{exec}}
+
+If your Pod ever sticks in `Pending` with that message, the fix is
+`/root/alpha/gate.sh kubelet <Gate>=true`, not another control-plane change.
 
 ## 1. `emptyDir.mode`
 

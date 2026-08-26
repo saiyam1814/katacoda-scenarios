@@ -11,7 +11,11 @@ CNI_PLUGINS_VERSION="v1.9.1"   # base CNI binaries used by Flannel
 ALPHA_DIR="/root/alpha"
 
 # Gates handed to kube-apiserver / kube-controller-manager / kube-scheduler.
-CP_GATES="GenericWorkload=true,CompositePodGroup=true,PodGroupPreemptionPolicy=true,VolumeBindMountOptions=true,EmptyDirVolumeMode=true,StatefulSetRecreateStrategy=true,AtomicWriteVolumeUserFields=true,H2CContainerProbe=true"
+# NOTE: 1.37 enforces feature gate dependencies. CompositePodGroup requires both
+# GenericWorkload and TopologyAwareWorkloadScheduling, or kube-apiserver refuses to
+# start with "depends on features that are disabled". H2CContainerProbe requires
+# NodeDeclaredFeatures, which is GA (on) in 1.37.
+CP_GATES="GenericWorkload=true,TopologyAwareWorkloadScheduling=true,CompositePodGroup=true,PodGroupPreemptionPolicy=true,VolumeBindMountOptions=true,EmptyDirVolumeMode=true,StatefulSetRecreateStrategy=true,AtomicWriteVolumeUserFields=true,H2CContainerProbe=true"
 # Alpha/beta API groups the above need served.
 RUNTIME_CONFIG="scheduling.k8s.io/v1beta1=true,scheduling.k8s.io/v1alpha3=true"
 
@@ -187,8 +191,9 @@ kubectl taint nodes "${HOST}" node-role.kubernetes.io/control-plane:NoSchedule- 
 # ---------------------------------------------------------------------------
 cat >"${ALPHA_DIR}/gate.sh" <<'GATE'
 #!/usr/bin/env bash
-# gate.sh add    <Gate>=<true|false> [more,gates=true]  -> add gates to the control plane
-# gate.sh api    <group/version=true>                   -> add a runtime-config entry to kube-apiserver
+# gate.sh add     <Gate>=<true|false> [more,gates=true] -> add gates to the control plane
+# gate.sh kubelet <Gate>=true[,Gate2=true]              -> add gates to the kubelet, then restart it
+# gate.sh api     <group/version=true>                  -> add a runtime-config entry to kube-apiserver
 # gate.sh show                                          -> print the gates currently in the manifests
 # gate.sh backup                                        -> snapshot the static pod manifests
 # gate.sh restore                                       -> put the snapshot back
@@ -250,13 +255,51 @@ case "${1:-}" in
     mkdir -p "$B"; [ -f "$B/kube-apiserver.yaml" ] || cp -f "$M"/*.yaml "$B"/
     for c in $COMPONENTS; do merge_arg "$M/$c.yaml" feature-gates "$2"; done
     echo "added '$2' to: $COMPONENTS"; wait_api ;;
+  kubelet)
+    [ -n "${2:-}" ] || { echo "usage: $0 kubelet Gate=true[,Gate2=true]"; exit 1; }
+    K=/var/lib/kubelet/config.yaml
+    cp -f "$K" "$K.bak"
+    python3 - "$K" "$2" <<'PY'
+import sys, re
+path, add = sys.argv[1], sys.argv[2]
+want = dict(kv.split('=', 1) for kv in add.split(',') if '=' in kv)
+lines = open(path).read().rstrip('\n').split('\n')
+out, i, found = [], 0, False
+while i < len(lines):
+    ln = lines[i]
+    if re.match(r'^featureGates:\s*$', ln):
+        found = True
+        out.append('featureGates:')
+        i += 1
+        cur = {}
+        while i < len(lines) and re.match(r'^\s+\S', lines[i]):
+            m = re.match(r'^\s+([A-Za-z0-9_]+):\s*(\S+)\s*$', lines[i])
+            if m:
+                cur[m.group(1)] = m.group(2)
+            i += 1
+        cur.update(want)
+        out.extend('  %s: %s' % kv for kv in sorted(cur.items()))
+        continue
+    out.append(ln)
+    i += 1
+if not found:
+    out.append('featureGates:')
+    out.extend('  %s: %s' % kv for kv in sorted(want.items()))
+open(path, 'w').write('\n'.join(out) + '\n')
+PY
+    systemctl restart kubelet
+    echo "added '$2' to the kubelet (backup: $K.bak); waiting for the node..."
+    for _ in $(seq 1 45); do
+      kubectl get node "$(hostname -s)" >/dev/null 2>&1 && { echo "   node is back"; break; }
+      sleep 2
+    done ;;
   api)
     [ -n "${2:-}" ] || { echo "usage: $0 api group/version=true"; exit 1; }
     mkdir -p "$B"; [ -f "$B/kube-apiserver.yaml" ] || cp -f "$M"/*.yaml "$B"/
     merge_arg "$M/kube-apiserver.yaml" runtime-config "$2"
     echo "added '$2' to kube-apiserver --runtime-config"; wait_api ;;
   *)
-    sed -n '2,6p' "$0" ;;
+    sed -n '2,7p' "$0" ;;
 esac
 GATE
 chmod +x "${ALPHA_DIR}/gate.sh"
@@ -269,4 +312,4 @@ else
   echo "Kubernetes ${REL} is up (plain - alpha gates were NOT applied)."
   echo "Turn them on with: /root/alpha/gate.sh add ${CP_GATES}"
 fi
-echo "Helper: /root/alpha/gate.sh   (add | api | show | backup | restore)"
+echo "Helper: /root/alpha/gate.sh   (add | kubelet | api | show | backup | restore)"

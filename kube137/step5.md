@@ -125,9 +125,26 @@ with each other, gates that need a driver you do not have, and gates whose defau
 `false` precisely because they are not finished. Enable the handful you actually want to
 test. If you do try it here, `gate.sh restore` is your way back.
 
+### Don't forget the kubelet
+
 Kubelet gates live somewhere different again - `/var/lib/kubelet/config.yaml` under
-`featureGates:`, followed by `systemctl restart kubelet`:
+`featureGates:` - and the kubelet has to be restarted to pick them up:
 
 ```plain
 grep -A 8 featureGates /var/lib/kubelet/config.yaml
 ```{{exec}}
+
+`gate.sh` has a separate subcommand for those, because patching the static pod manifests
+does nothing for node-side features:
+
+```plain
+/root/alpha/gate.sh kubelet DefaultPodSysctls=true
+```{{exec}}
+
+```plain
+kubectl get node -o jsonpath='{.items[0].status.declaredFeatures}'; echo
+```{{exec}}
+
+Since `NodeDeclaredFeatures` is GA in 1.37, a node-side gate you forget shows up as a
+`FailedScheduling` event saying the node "didn't match Pod's required features" - not as a
+silently ignored field.
