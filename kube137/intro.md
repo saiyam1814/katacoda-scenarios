@@ -12,7 +12,8 @@ what each one lets you do. By the end you will have hands-on with:
 
 - **Gang scheduling** with the Workload / PodGroup API (`scheduling.k8s.io/v1beta1`)
 - **`emptyDir.mode`** - custom permission bits on emptyDir volumes
-- **`volumeMounts[].bindMountOptions`** - `noexec` / `nodev` / `nosuid` on a mount
+- **`configMap.defaultUser`** - file ownership on atomically-written volumes
+- **`volumeMounts[].bindMountOptions`** - and why 1.37 refuses to schedule it here
 - **StatefulSet `Recreate`** update strategy
 - Flipping any other feature gate yourself, and rolling it back
 

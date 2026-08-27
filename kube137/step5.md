@@ -42,24 +42,36 @@ spec:
 EOF
 ```{{exec}}
 
+Note that `kubectl rollout status` does **not** work here - it only supports
+`RollingUpdate`, so wait on the Pods instead:
+
 ```plain
-kubectl rollout status statefulset/web --timeout=180s
+kubectl wait --for=condition=Ready pod -l app=web --timeout=240s
 ```{{exec}}
 
-Now change the image and watch what happens. With `RollingUpdate` you would see `web-2`,
-then `web-1`, then `web-0` cycle one at a time. With `Recreate`, **all three go down
-first**:
+Now change the image. With `RollingUpdate` you would see `web-2`, then `web-1`, then `web-0`
+cycle one at a time. With `Recreate`, **all three go down together first**. Sample the state
+once a second so you can actually see it:
 
 ```plain
 kubectl set image statefulset/web web=nginx:1.28-alpine
+for i in $(seq 1 8); do
+  echo "[t+${i}s] $(kubectl get pods -l app=web --no-headers | awk '{print $1"="$3}' | tr '\n' ' ')"
+  sleep 1
+done
 ```{{exec}}
 
 ```plain
-kubectl get pods -l app=web -w
-```{{exec}}
+[t+1s] web-0=Terminating web-1=Running web-2=Running
+[t+2s] web-0=Completed web-1=Completed web-2=Completed
+[t+3s] web-0=ContainerCreating
+[t+7s] web-0=Running web-1=Running web-2=ContainerCreating
+[t+8s] web-0=Running web-1=Running web-2=Running
+```
 
-Press `Ctrl+C` once they are all back. The alpha gate also adds a `Progressing` condition to
-StatefulSet status:
+At `t+2s` the entire set is down. That is the whole point of `Recreate`: no moment where old
+and new versions are serving at the same time. The alpha gate also adds a `Progressing`
+condition to StatefulSet status:
 
 ```plain
 kubectl get statefulset web -o jsonpath='{.status.conditions}' | python3 -m json.tool

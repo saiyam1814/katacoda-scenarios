@@ -5,14 +5,18 @@ You ran a 1.37 cluster and drove four alpha/beta features end to end:
 - **Gang scheduling** - `GenericWorkload` + `scheduling.k8s.io/v1beta1`, all-or-nothing
   placement via `PodGroup` and `spec.schedulingGroup.podGroupName`
 - **`emptyDir.mode`** - permission bits on scratch volumes without `fsGroup` gymnastics
-- **`bindMountOptions`** - `noexec` / `nodev` / `nosuid` straight from the Pod spec
+- **`bindMountOptions`** - blocked by `NodeDeclaredFeatures` because containerd does not
+  advertise `MountOptions`, which is the more useful lesson: an alpha feature can depend on
+  your container runtime, and 1.37 tells you so instead of ignoring the field
 - **`defaultUser`** - file ownership on ConfigMap, Secret and projected volumes
 - **StatefulSet `Recreate`** - tear the whole set down before bringing the new version up
 
-And the two-part rule that makes any alpha feature work:
+And the rules that make any alpha feature work:
 
-1. `--feature-gates=Gate=true` on **every** component that participates
+1. `--feature-gates=Gate=true` on **every** component that participates, kubelet included
 2. `--runtime-config=group/version=true` on kube-apiserver if it ships new types
+3. Gates now have **dependencies** - miss one and the component refuses to start
+4. Some features also need the node (or its runtime) to declare support
 
 ## Where to go next
 

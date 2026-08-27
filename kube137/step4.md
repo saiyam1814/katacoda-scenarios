@@ -1,18 +1,18 @@
-# Alpha: things you can feel on a single Pod
+# Alpha: emptyDir mode, file ownership, and a lesson in node features
 
-Three small storage alphas from 1.37. Unlike the scheduling one, you can watch each of
-these change behaviour inside a container in about ten seconds.
+Two 1.37 storage alphas you can feel inside a container in ten seconds, and a third that
+teaches you something more useful than it would have if it just worked.
 
-| Field | Gate |
-| --- | --- |
-| `emptyDir.mode` | `EmptyDirVolumeMode` |
-| `volumeMounts[].bindMountOptions` | `VolumeBindMountOptions` |
-| `configMap.defaultUser` / `items[].user` | `AtomicWriteVolumeUserFields` |
+| Field | Gate | Works here? |
+| --- | --- | --- |
+| `emptyDir.mode` | `EmptyDirVolumeMode` | yes |
+| `configMap.defaultUser` / `items[].user` | `AtomicWriteVolumeUserFields` | yes |
+| `volumeMounts[].bindMountOptions` | `VolumeBindMountOptions` | needs runtime support - see below |
 
-## Set it all up in one Pod
+## Set up
 
 ```plain
-kubectl create configmap app-conf --from-literal=greeting=hello --dry-run=client -o yaml | kubectl apply -f -
+kubectl create configmap app-conf --from-literal=greeting=hello
 ```{{exec}}
 
 ```plain
@@ -29,7 +29,6 @@ spec:
     volumeMounts:
     - name: strict
       mountPath: /data/strict
-      bindMountOptions: ["noexec", "nosuid", "nodev"]
     - name: normal
       mountPath: /data/normal
     - name: conf
@@ -48,34 +47,8 @@ EOF
 ```{{exec}}
 
 ```plain
-kubectl wait --for=condition=Ready pod/volume-alpha --timeout=90s
+kubectl wait --for=condition=Ready pod/volume-alpha --timeout=120s
 ```{{exec}}
-
-These three gates have to be on in **two** places: the apiserver (so the fields survive
-admission) and the **kubelet** (so the node can actually honour them). Both are configured
-for you at init - but it is worth knowing what each half failing looks like.
-
-If the *apiserver* lacked the gate, the Pod would still be accepted: the apiserver silently
-strips fields behind a disabled gate rather than erroring, and you would only notice when
-`stat` reports `777`.
-
-If the *kubelet* lacked it, 1.37 now catches it up front. `NodeDeclaredFeatures` went GA in
-this release: the kubelet publishes what it supports to `node.status.declaredFeatures`, and
-the scheduler refuses to place a Pod asking for something the node never declared:
-
-```plain
-0/1 nodes are available: 1 node(s) didn't match Pod's required features.
-```
-
-That is a much better failure than a silently ignored `noexec`. Have a look at what this
-node declares:
-
-```plain
-kubectl get node -o jsonpath='{.items[0].status.declaredFeatures}'; echo
-```{{exec}}
-
-If your Pod ever sticks in `Pending` with that message, the fix is
-`/root/alpha/gate.sh kubelet <Gate>=true`, not another control-plane change.
 
 ## 1. `emptyDir.mode`
 
@@ -86,47 +59,106 @@ bits directly:
 kubectl exec volume-alpha -- stat -c '%a %n' /data/strict /data/normal
 ```{{exec}}
 
+```plain
+700 /data/strict
+777 /data/normal
+```
+
 `700` on the one you asked for, `777` on the default. Values from `0000` to `01777` are
 allowed, so `01777` gives you sticky-bit `/tmp` semantics.
 
-## 2. `bindMountOptions`
-
-`noexec`, `nodev` and `nosuid` are ordinary Linux mount options that were simply not
-reachable from a Pod spec until now. Check what the kubelet actually mounted:
-
-```plain
-kubectl exec volume-alpha -- grep -E ' /data/(strict|normal) ' /proc/mounts
-```{{exec}}
-
-Now prove `noexec` bites. Copy a real binary onto each volume and try to run it:
-
-```plain
-kubectl exec volume-alpha -- sh -c 'cp /bin/busybox /data/normal/bb && /data/normal/bb echo "ran from normal volume"'
-```{{exec}}
-
-```plain
-kubectl exec volume-alpha -- sh -c 'cp /bin/busybox /data/strict/bb && /data/strict/bb echo "should never print"'
-```{{exec}}
-
-The second one fails with **Permission denied** even though the file is `+x` and the process
-is root. That is the kernel refusing to `execve` off a `noexec` mount - a genuinely useful
-hardening knob for writable scratch space that attackers love to drop payloads into.
-
-## 3. `defaultUser` on an atomically-written volume
+## 2. `defaultUser` on an atomically-written volume
 
 ConfigMap, Secret, projected and ClusterTrustBundle volumes are written atomically by the
-kubelet, and until 1.37 the files were always owned by root. Now you pick the owner UID:
+kubelet, and until 1.37 those files were always owned by root. Now you pick the owner UID:
 
 ```plain
 kubectl exec volume-alpha -- stat -c '%u %a %n' /etc/app/greeting
 ```{{exec}}
 
-`1000`, not `0`. Set it per file instead with `items[].user`, which overrides `defaultUser`.
-This is the piece that lets a non-root container read a mounted Secret without granting
+```plain
+1000 777 /etc/app/greeting
+```
+
+UID `1000`, not `0`. Set it per file instead with `items[].user`, which overrides
+`defaultUser`. This is what lets a non-root container read a mounted Secret without granting
 world-read on it.
+
+## 3. `bindMountOptions`, and why it does not work here
+
+`noexec`, `nodev` and `nosuid` are ordinary Linux mount options that were not reachable from
+a Pod spec until now. Add one to the same Pod:
+
+```plain
+kubectl delete pod volume-alpha --force --grace-period=0
+```{{exec}}
+
+```plain
+cat <<'EOF' | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-strict
+spec:
+  containers:
+  - name: app
+    image: busybox:1.36
+    command: ["sh", "-c", "sleep 3600"]
+    volumeMounts:
+    - name: strict
+      mountPath: /data/strict
+      bindMountOptions: ["noexec", "nosuid", "nodev"]
+  volumes:
+  - name: strict
+    emptyDir: {}
+EOF
+```{{exec}}
+
+The apiserver accepts it. But the Pod never starts:
+
+```plain
+kubectl get pod volume-strict
+```{{exec}}
+
+```plain
+kubectl describe pod volume-strict | tail -4
+```{{exec}}
+
+```plain
+Warning  FailedScheduling  ...  0/1 nodes are available:
+1 node(s) didn't match Pod's required features.
+```
+
+**This is `NodeDeclaredFeatures`, which went GA in 1.37, doing its job.** The kubelet
+publishes what the node can actually honour, and the scheduler refuses to place a Pod that
+needs something missing. Look at what this node declares:
+
+```plain
+kubectl get node -o jsonpath='{.items[0].status.declaredFeatures}'; echo
+```{{exec}}
+
+`VolumeBindMountOptions` is not in that list, even though the gate is on everywhere. The
+feature needs two things, not one:
+
+```go
+Discover: cfg.FeatureGates.Enabled("VolumeBindMountOptions") && cfg.RuntimeFeatures.MountOptions
+```
+
+The second half is a **CRI runtime capability**, and the containerd on this box does not
+advertise `MountOptions`:
+
+```plain
+containerd --version
+```{{exec}}
+
+So the honest lesson is the one worth more than a working `noexec` demo: in 1.37 an alpha
+feature can be gated on your *container runtime*, not just your control plane, and the
+failure now surfaces as a clear scheduling event instead of a silently ignored field. Before
+1.37 this Pod would have started and quietly mounted without `noexec`.
 
 ## Clean up
 
 ```plain
-kubectl delete pod volume-alpha --ignore-not-found && kubectl delete cm app-conf --ignore-not-found
+kubectl delete pod volume-strict --force --grace-period=0 --ignore-not-found
+kubectl delete cm app-conf --ignore-not-found
 ```{{exec}}
