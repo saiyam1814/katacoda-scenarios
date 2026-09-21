@@ -16,3 +16,7 @@ passes data between tasks.
 📖 This lab is **Chapter 11** of the *CNPE Scenarios and Solutions* book.
 
 Next lab: **12 - Trigger a Tekton Pipeline from a webhook**.
+
+Steps execute sequentially by default. A failed step normally stops later steps,
+but `onError: continue` changes that behavior. `when` expressions can skip steps;
+retries can repeat execution. Inspect these fields when diagnosing a TaskRun.

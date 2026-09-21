@@ -9,7 +9,7 @@ params = {p["name"]: p for p in spec.get("params", [])}
 assert "manifest" in params
 assert params["manifest"].get("type", "string") == "string"
 steps = spec["steps"]
-assert any("kubectl" in s.get("image", "") for s in steps)
+assert any(s.get("image") == "alpine/k8s:1.35.0" for s in steps)
 body = json.dumps(steps)
 assert "kubectl apply -f" in body
 assert "params.manifest" in body

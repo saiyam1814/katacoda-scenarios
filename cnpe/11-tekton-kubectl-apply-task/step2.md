@@ -35,7 +35,7 @@ kubectl -n pipeline-lab get deploy compiled-web
 
 - `tkn pipelinerun logs -f -n pipeline-lab` - read the failing step's output
 - `error validating data` → your heredoc mangled the manifest - use
-  `printf '%s\n' "$(params.manifest)"`
+  `printf '%s\n' "$MANIFEST"`
 - `deployments.apps is forbidden` → the TaskRun pod's ServiceAccount lacks RBAC - 
   in this lab the `default` SA in `pipeline-lab` is already bound to a Role that
   allows Deployments

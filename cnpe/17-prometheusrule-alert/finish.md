@@ -10,7 +10,7 @@ PrometheusRule object → operator config reload → rule evaluation → pending
 - Error-ratio idiom: `sum(rate(errors[5m])) / sum(rate(total[5m])) > 0.05`
 - `status=~"5.."` - regex match for all 5xx codes
 - `for: 5m` = condition must hold 5 minutes before firing (pending in between)
-- `severity` is just a label - routing happens in Alertmanager, but graders check the label
+- `severity` is just a label - routing happens in Alertmanager, and the task requires this label
 - Verify in the Prometheus UI/API (**Status → Rules**), not just `kubectl get`
 
 📖 This lab is **Chapter 17** of the *CNPE Scenarios and Solutions* book.

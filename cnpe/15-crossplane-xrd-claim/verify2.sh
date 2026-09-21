@@ -1,20 +1,14 @@
 #!/bin/bash
-# Claim exists and is Ready
-kubectl -n team-apps get bucketapp media-assets >/dev/null 2>&1 || exit 1
-READY=$(kubectl -n team-apps get bucketapp media-assets -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}')
-[ "$READY" = "True" ] || exit 1
-
-# A composed ConfigMap landed in bucket-system with the claim's values
-kubectl -n bucket-system get cm -o json | python3 -c "
-import json, sys
-cms = json.load(sys.stdin)['items']
-ok = any(
-    cm['metadata']['name'].startswith('media-assets')
-    and cm.get('data', {}).get('region') == 'eu-west-1'
-    and cm.get('data', {}).get('size') == 'small'
-    for cm in cms
-)
-sys.exit(0 if ok else 1)
-" || exit 1
-
+set -euo pipefail
+kubectl -n team-apps get bucketapp media-assets -o json > /tmp/cnpe15-xr.json
+kubectl -n team-apps get configmap media-assets -o json > /tmp/cnpe15-cm.json
+python3 - <<'PY'
+import json
+x=json.load(open('/tmp/cnpe15-xr.json')); c=json.load(open('/tmp/cnpe15-cm.json'))
+assert all(any(v['type']==t and v['status']=='True' for v in x['status']['conditions']) for t in ['Ready','Synced'])
+assert x['spec']['crossplane']['compositionRef']['name']=='bucketapp-configmap'
+assert c['data']=={'region':'eu-west-1','size':'small'}
+assert c['metadata']['namespace']==x['metadata']['namespace']=='team-apps'
+assert any(o['uid']==x['metadata']['uid'] and o.get('controller') for o in c['metadata']['ownerReferences'])
+PY
 exit 0

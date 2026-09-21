@@ -1,6 +1,6 @@
 {
-  "title": "14 - Patch an XWebApp Composition in Crossplane",
-  "description": "Platform APIs and Self-Service: complete the FromCompositeFieldPath patches so an XR fans out into a Deployment and Service. CNPE domain: Platform APIs and Self-Service Capabilities.",
+  "title": "Crossplane v2: Composition patches",
+  "description": "Namespaced composite resources with a Pipeline Composition and native Kubernetes resources.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,12 +9,12 @@
     },
     "steps": [
       {
-        "title": "Complete the Composition patches",
+        "title": "Complete the Composition",
         "text": "step1.md",
         "verify": "verify1.sh"
       },
       {
-        "title": "Apply the XR and watch it compose",
+        "title": "Create and verify the XR",
         "text": "step2.md",
         "verify": "verify2.sh"
       }

@@ -12,6 +12,6 @@ Create a HorizontalPodAutoscaler named **`storefront`** that:
 - Scales on **average CPU utilization of 60%**
 
 Then verify the HPA can actually **read live metrics** - an HPA that shows
-`<unknown>` targets would score zero on the exam even though the object exists.
+An HPA with `<unknown>` targets cannot demonstrate that it is receiving the required metrics.
 
 Click **START** when the environment is ready.

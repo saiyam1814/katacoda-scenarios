@@ -1,109 +1,81 @@
 #!/bin/bash
 exec >>/var/log/cnpe-setup.log 2>&1
-set -x
-
+set -euo pipefail
 export KUBECONFIG=/root/.kube/config
-until kubectl get nodes >/dev/null 2>&1; do sleep 2; done
-
-CROSSPLANE_CHART_VERSION=1.20.0
-PROVIDER_K8S_VERSION=v0.18.0
-
-# --- Crossplane core -----------------------------------------------------------
-helm repo add crossplane-stable https://charts.crossplane.io/stable
-helm repo update crossplane-stable
-helm upgrade --install crossplane crossplane-stable/crossplane \
-  --namespace crossplane-system --create-namespace \
-  --version ${CROSSPLANE_CHART_VERSION} --wait --timeout 10m
-
-# --- provider-kubernetes with a fixed ServiceAccount -----------------------------
-cat <<EOF | kubectl apply -f -
-apiVersion: pkg.crossplane.io/v1beta1
-kind: DeploymentRuntimeConfig
-metadata:
-  name: provider-kubernetes
-spec:
-  serviceAccountTemplate:
-    metadata:
-      name: provider-kubernetes
----
+kubectl wait --for=condition=Ready nodes --all --timeout=180s
+CROSSPLANE_CHART_VERSION=2.3.0
+helm upgrade --install crossplane crossplane --repo https://charts.crossplane.io/stable   --namespace crossplane-system --create-namespace   --version "$CROSSPLANE_CHART_VERSION" --wait --timeout 10m
+cat <<'EOF' | kubectl apply -f -
 apiVersion: pkg.crossplane.io/v1
-kind: Provider
+kind: Function
 metadata:
-  name: provider-kubernetes
+  name: function-patch-and-transform
 spec:
-  package: xpkg.crossplane.io/crossplane-contrib/provider-kubernetes:${PROVIDER_K8S_VERSION}
-  runtimeConfigRef:
-    apiVersion: pkg.crossplane.io/v1beta1
-    kind: DeploymentRuntimeConfig
-    name: provider-kubernetes
+  package: xpkg.crossplane.io/crossplane-contrib/function-patch-and-transform:v0.8.2
 EOF
-
-kubectl wait provider.pkg.crossplane.io/provider-kubernetes --for=condition=Healthy --timeout=600s || true
-
-# Lab-grade RBAC so the provider can manage cluster objects
 cat <<'EOF' | kubectl apply -f -
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: ClusterRole
 metadata:
-  name: provider-kubernetes-admin
-subjects:
-  - kind: ServiceAccount
-    name: provider-kubernetes
-    namespace: crossplane-system
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
+  name: cnpe-compose-native
+  labels:
+    rbac.crossplane.io/aggregate-to-crossplane: 'true'
+rules:
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - '*'
+- apiGroups:
+  - ''
+  resources:
+  - services
+  - configmaps
+  verbs:
+  - '*'
 EOF
-
-# In-cluster ProviderConfig
-sleep 5
+kubectl wait function.pkg.crossplane.io/function-patch-and-transform --for=condition=Healthy --timeout=600s
+kubectl create namespace compose-sandbox --dry-run=client -o yaml | kubectl apply -f -
 cat <<'EOF' | kubectl apply -f -
-apiVersion: kubernetes.crossplane.io/v1alpha1
-kind: ProviderConfig
-metadata:
-  name: default
-spec:
-  credentials:
-    source: InjectedIdentity
-EOF
-
-# --- XRD (given) -----------------------------------------------------------------
-cat <<'EOF' | kubectl apply -f -
-apiVersion: apiextensions.crossplane.io/v1
+apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
   name: xwebapps.platform.acme.dev
 spec:
+  scope: Namespaced
   group: platform.acme.dev
   names:
     kind: XWebApp
     plural: xwebapps
   versions:
-    - name: v1alpha1
-      served: true
-      referenceable: true
-      schema:
-        openAPIV3Schema:
-          type: object
-          properties:
-            spec:
-              type: object
-              required: [appName, desiredReplicas, containerImage, targetNamespace]
-              properties:
-                appName:
-                  type: string
-                desiredReplicas:
-                  type: integer
-                containerImage:
-                  type: string
-                targetNamespace:
-                  type: string
+  - name: v1alpha1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        required:
+        - spec
+        properties:
+          spec:
+            type: object
+            required:
+            - appName
+            - desiredReplicas
+            - containerImage
+            properties:
+              appName:
+                type: string
+                minLength: 1
+              desiredReplicas:
+                type: integer
+                minimum: 1
+              containerImage:
+                type: string
+                minLength: 1
 EOF
-
-kubectl create namespace compose-sandbox --dry-run=client -o yaml | kubectl apply -f -
-
-# --- The incomplete Composition the candidate must finish -------------------------
+kubectl wait xrd/xwebapps.platform.acme.dev --for=condition=Established --timeout=120s
 cat <<'EOF' > /root/composition.yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
@@ -113,91 +85,91 @@ spec:
   compositeTypeRef:
     apiVersion: platform.acme.dev/v1alpha1
     kind: XWebApp
-  mode: Resources
-  resources:
-    - name: app-deployment
-      base:
-        apiVersion: kubernetes.crossplane.io/v1alpha2
-        kind: Object
-        spec:
-          providerConfigRef:
-            name: default
-          forProvider:
-            manifest:
-              apiVersion: apps/v1
-              kind: Deployment
+  mode: Pipeline
+  pipeline:
+  - step: patch-and-transform
+    functionRef:
+      name: function-patch-and-transform
+    input:
+      apiVersion: pt.fn.crossplane.io/v1beta1
+      kind: Resources
+      resources:
+      - name: app-deployment
+        base:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: placeholder
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: placeholder
+            template:
               metadata:
-                name: placeholder
-                namespace: placeholder
-              spec:
-                replicas: 1
-                selector:
-                  matchLabels:
-                    app: placeholder
-                template:
-                  metadata:
-                    labels:
-                      app: placeholder
-                  spec:
-                    containers:
-                      - name: web
-                        image: placeholder
-                        ports:
-                          - containerPort: 80
-      patches:
-        # Example patch (already complete): XR targetNamespace -> Deployment namespace
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.targetNamespace
-          toFieldPath: spec.forProvider.manifest.metadata.namespace
-        # TODO(1): spec.appName        -> Deployment metadata.name
-        # TODO(2): spec.appName        -> pod template label 'app'
-        # TODO(3): spec.appName        -> selector matchLabels 'app'
-        # TODO(4): spec.desiredReplicas -> Deployment replicas
-        # TODO(5): spec.containerImage  -> first container image
-
-    - name: app-service
-      base:
-        apiVersion: kubernetes.crossplane.io/v1alpha2
-        kind: Object
-        spec:
-          providerConfigRef:
-            name: default
-          forProvider:
-            manifest:
-              apiVersion: v1
-              kind: Service
-              metadata:
-                name: placeholder
-                namespace: placeholder
-              spec:
-                selector:
+                labels:
                   app: placeholder
-                ports:
-                  - port: 80
-                    targetPort: 80
-      patches:
+              spec:
+                containers:
+                - name: web
+                  image: placeholder
+                  ports:
+                  - containerPort: 80
+        patches:
         - type: FromCompositeFieldPath
-          fromFieldPath: spec.targetNamespace
-          toFieldPath: spec.forProvider.manifest.metadata.namespace
+          fromFieldPath: metadata.namespace
+          toFieldPath: metadata.namespace
+          policy:
+            fromFieldPath: Required
+        readinessChecks:
+        - type: MatchCondition
+          matchCondition:
+            type: Available
+            status: 'True'
+      - name: app-service
+        base:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: placeholder
+          spec:
+            selector:
+              app: placeholder
+            ports:
+            - port: 80
+              targetPort: 80
+        patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.namespace
+          toFieldPath: metadata.namespace
+          policy:
+            fromFieldPath: Required
         - type: FromCompositeFieldPath
           fromFieldPath: spec.appName
-          toFieldPath: spec.forProvider.manifest.metadata.name
+          toFieldPath: metadata.name
+          policy:
+            fromFieldPath: Required
         - type: FromCompositeFieldPath
           fromFieldPath: spec.appName
-          toFieldPath: spec.forProvider.manifest.spec.selector.app
+          toFieldPath: spec.selector.app
+          policy:
+            fromFieldPath: Required
+        readinessChecks:
+        - type: None
 EOF
-
-# --- The XR to apply in step 2 ------------------------------------------------------
+# Complete the five app-deployment patches listed in the task.
 cat <<'EOF' > /root/app-xr.yaml
 apiVersion: platform.acme.dev/v1alpha1
 kind: XWebApp
 metadata:
   name: demo-site
+  namespace: compose-sandbox
 spec:
+  crossplane:
+    compositionRef:
+      name: xwebapp-kubernetes
   appName: demo-site
   desiredReplicas: 2
   containerImage: nginx:1.25
-  targetNamespace: compose-sandbox
 EOF
-
 touch /tmp/.cnpe-setup-done

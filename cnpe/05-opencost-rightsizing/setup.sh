@@ -1,6 +1,6 @@
 #!/bin/bash
 exec >>/var/log/cnpe-setup.log 2>&1
-set -x
+set -euxo pipefail
 
 export KUBECONFIG=/root/.kube/config
 until kubectl get nodes >/dev/null 2>&1; do sleep 2; done
@@ -9,27 +9,36 @@ until kubectl get nodes >/dev/null 2>&1; do sleep 2; done
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update prometheus-community
 
-curl -sL https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml -o /tmp/extraScrapeConfigs.yaml
+curl -fsSL --retry 2 https://raw.githubusercontent.com/opencost/opencost/develop/kubernetes/prometheus/extraScrapeConfigs.yaml -o /tmp/extraScrapeConfigs.yaml
 
 helm upgrade --install prometheus prometheus-community/prometheus \
   --namespace prometheus-system --create-namespace \
   --set prometheus-pushgateway.enabled=false \
   --set alertmanager.enabled=false \
   --set prometheus-node-exporter.enabled=false \
-  -f /tmp/extraScrapeConfigs.yaml --wait --timeout 10m || true
+  -f /tmp/extraScrapeConfigs.yaml --wait --timeout 10m
 
 # --- OpenCost ----------------------------------------------------------------
 kubectl create namespace opencost --dry-run=client -o yaml | kubectl apply -f -
-# pinned: kubernetes/opencost.yaml was removed from the develop branch (Helm-only now);
-# v1.117.0 is the last release tag that still ships the standalone manifest
-curl -sL https://raw.githubusercontent.com/opencost/opencost/v1.117.0/kubernetes/opencost.yaml -o /tmp/opencost.yaml
+# This release contains the standalone manifest used by this lab. Its image tags
+# are mutable; the manifest version is not an image-version pin.
+curl -fsSL --retry 2 https://raw.githubusercontent.com/opencost/opencost/v1.117.0/kubernetes/opencost.yaml -o /tmp/opencost.yaml
 kubectl apply --namespace opencost -f /tmp/opencost.yaml
 
 # --- kubectl-cost plugin -------------------------------------------------------
-ARCH=$(uname -m); [ "$ARCH" = "aarch64" ] && ARCH=arm64; [ "$ARCH" = "x86_64" ] && ARCH=amd64
-KCOST_VERSION=$(curl -s https://api.github.com/repos/kubecost/kubectl-cost/releases/latest | grep tag_name | cut -d'"' -f4)
-curl -sL "https://github.com/kubecost/kubectl-cost/releases/download/${KCOST_VERSION}/kubectl-cost-linux-${ARCH}.tar.gz" | tar -xz -C /tmp
-mv /tmp/kubectl-cost /usr/local/bin/kubectl-cost && chmod +x /usr/local/bin/kubectl-cost || true
+# v0.6.6 publishes Linux amd64, but no Linux arm64 archive. The UI and API do
+# not depend on this optional client.
+if [ "$(uname -m)" = x86_64 ]; then
+  if curl -fsSL --retry 2 https://github.com/kubecost/kubectl-cost/releases/download/v0.6.6/kubectl-cost-linux-amd64.tar.gz -o /tmp/kubectl-cost.tar.gz &&
+     tar -xzf /tmp/kubectl-cost.tar.gz -C /tmp &&
+     install -m 755 /tmp/kubectl-cost /usr/local/bin/kubectl-cost; then
+    echo 'Installed optional kubectl-cost v0.6.6'
+  else
+    echo 'kubectl-cost installation failed; use the OpenCost UI or allocation API.'
+  fi
+else
+  echo 'No Linux kubectl-cost archive for this architecture; use the OpenCost UI or allocation API.'
+fi
 
 # --- The three services to right-size ---------------------------------------
 for ns in alpha-svc beta-svc gamma-svc; do
@@ -92,6 +101,9 @@ spec:
             limits: { cpu: 400m, memory: 512Mi }
 EOF
 
-kubectl -n opencost rollout status deploy/opencost --timeout=300s || true
+kubectl -n opencost rollout status deploy/opencost --timeout=300s
+for ns in alpha-svc beta-svc gamma-svc; do
+  kubectl -n "$ns" rollout status deployment --timeout=300s
+done
 
 touch /tmp/.cnpe-setup-done

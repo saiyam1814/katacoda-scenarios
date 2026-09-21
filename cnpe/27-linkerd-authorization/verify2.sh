@@ -18,8 +18,15 @@ PYEOF
 OUT=$(kubectl -n web exec storefront -c curl -- curl -s --max-time 5 http://checkout.payments.svc:8080/hostname 2>/dev/null)
 echo "$OUT" | grep -q "checkout" || exit 1
 
-# reporting denied (403 from the proxy, or no payload)
-OUT2=$(kubectl -n batch exec reporting -c curl -- curl -s --max-time 5 http://checkout.payments.svc:8080/hostname 2>/dev/null)
-echo "$OUT2" | grep -q "checkout" && exit 1
+# Require HTTP 403 from the proxy; failed probes and empty responses do not
+# demonstrate a policy denial.
+DENIED=0
+for _ in 1 2 3 4 5 6; do
+  if STATUS=$(kubectl -n batch exec reporting -c curl -- curl -sS -o /dev/null -w '%{http_code}' --max-time 5 http://checkout.payments.svc:8080/hostname 2>/dev/null); then
+    [ "$STATUS" = "403" ] && { DENIED=1; break; }
+  fi
+  sleep 2
+done
+[ "$DENIED" = "1" ] || exit 1
 
 exit 0

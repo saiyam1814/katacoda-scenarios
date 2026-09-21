@@ -38,13 +38,13 @@ steps:
 ```yaml
 - name: wait-ready
   container:
-    image: rancher/kubectl:v1.28.0
+    image: alpine/k8s:1.35.0
     command: [kubectl]
     args: [rollout, status, deploy/checkout-api, -n, stage-coral, --timeout=90s]
 ```{{copy}}
 
-(The image ships only the `kubectl` binary - there is no shell in it, so the
-command must invoke `kubectl` directly, like the existing `deploy` template does.)
+The image includes kubectl 1.35 and a shell. This template invokes kubectl
+directly because the check needs a single command.
 
 Mind the indentation - templates sit at the same level as `deploy` and `test`.
 
@@ -74,13 +74,13 @@ spec:
 
     - name: deploy
       container:
-        image: rancher/kubectl:v1.28.0
+        image: alpine/k8s:1.35.0
         command: [kubectl]
         args: [-n, stage-coral, rollout, restart, deploy/checkout-api]
 
     - name: wait-ready
       container:
-        image: rancher/kubectl:v1.28.0
+        image: alpine/k8s:1.35.0
         command: [kubectl]
         args: [rollout, status, deploy/checkout-api, -n, stage-coral, --timeout=90s]
 

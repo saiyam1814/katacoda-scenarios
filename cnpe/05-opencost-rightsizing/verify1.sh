@@ -1,5 +1,8 @@
 #!/bin/bash
-H=/root; [ -r /root/cheapest.txt ] || H="$HOME"
-[ "$(cat $H/cheapest.txt 2>/dev/null | tr -d '[:space:]')" = "api-alpha" ] || exit 1
-[ "$(cat $H/expensive.txt 2>/dev/null | tr -d '[:space:]')" = "api-gamma" ] || exit 1
+RESULT_DIR="${CNPE_WORKDIR:-/root}"
+if [ -z "${CNPE_WORKDIR:-}" ] && [ ! -r "$RESULT_DIR/cheapest.txt" ]; then
+  RESULT_DIR="$HOME"
+fi
+[ "$(tr -d '[:space:]' < "$RESULT_DIR/cheapest.txt")" = "api-alpha" ] || exit 1
+[ "$(tr -d '[:space:]' < "$RESULT_DIR/expensive.txt")" = "api-gamma" ] || exit 1
 exit 0

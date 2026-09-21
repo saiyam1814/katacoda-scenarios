@@ -120,7 +120,7 @@ spec:
 
     - name: deploy
       container:
-        image: rancher/kubectl:v1.28.0
+        image: alpine/k8s:1.35.0
         command: [kubectl]
         args: [-n, stage-coral, rollout, restart, deploy/checkout-api]
 

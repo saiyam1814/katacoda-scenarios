@@ -5,7 +5,7 @@ safe rollback window.
 
 ## Key facts to remember
 
-- `autoPromotionEnabled: false` **is** the manual gate - memorize this field
+- `autoPromotionEnabled: false` requires manual promotion; use the documentation to check the field
 - Promotion = selector flip on the active Service; instant, no restarts
 - The previous ReplicaSet stays up for `scaleDownDelaySeconds` (default 30s) - that is
   your `undo` window

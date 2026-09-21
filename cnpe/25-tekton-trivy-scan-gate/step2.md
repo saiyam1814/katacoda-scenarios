@@ -25,7 +25,9 @@ tkn pipeline start build-ship -n ci-otter \
   -p image=gcr.io/distroless/static:nonroot --showlog
 ```{{exec}}
 
-This one sails through - distroless static has nothing to CVE - and `deploy` runs:
+If the scan finds no CRITICAL vulnerabilities, the run succeeds and `deploy` runs.
+Image tags and vulnerability databases change, so inspect the report rather than
+assuming this image will always pass:
 
 ```bash
 tkn pipelinerun list -n ci-otter
@@ -37,7 +39,7 @@ kubectl -n ci-otter get deploy shipped
 - `TOOMANYREQUESTS` from the DB registry → rerun; or add
   `--db-repository public.ecr.aws/aquasecurity/trivy-db` to the trivy command
 - Timeouts: first DB download needs network headroom - the run may take 2–3 minutes
-- To scan without a DB fetch each run, real platforms cache the DB in a workspace - 
-  the book chapter shows how
+- To avoid downloading the database for each run, a pipeline can mount a shared
+  workspace at Trivy's cache directory. That configuration is outside this exercise.
 
 </details>

@@ -1,6 +1,6 @@
 # Diagnose the three failures
 
-Run the standard triage sweep - in this order, every time:
+Start by inspecting workload state, events and dependencies:
 
 ```bash
 kubectl -n metrics-portal get deploy,pods
@@ -41,3 +41,15 @@ cat /root/triage.txt
   `persistentvolumeclaim "metrics-ui-data" not found`
 
 </details>
+
+If a container has started, inspect its logs, selecting the application container
+when the Pod has more than one:
+
+```bash
+kubectl -n metrics-portal logs <pod> -c <container>
+kubectl -n metrics-portal logs <pod> -c <container> --previous
+```{{copy}}
+
+`--previous` reads the previous terminated instance and is useful after restarts.
+A container blocked before startup by a missing Secret or PVC has no application
+logs yet; inspect events and its specification instead.

@@ -1,21 +1,13 @@
-# Expose a Platform Claim with Crossplane XRD
+# Define a namespaced platform API with Crossplane v2
 
-**Domain:** Platform APIs and Self-Service Capabilities &nbsp;|&nbsp; **Suggested time:** 14 minutes
+Create XRD `bucketapps.platform.example.io` using `apiextensions.crossplane.io/v2`:
+kind `BucketApp`, scope `Namespaced`, version `v1alpha1` served and referenceable.
+Require `spec.region` and `spec.size`, both strings. Do not use `claimNames`.
 
-App teams want object storage without ever seeing a cloud credential. You will expose a
-**namespaced Claim** they can `kubectl apply` like any other resource.
+Apply the supplied `/root/bucket-composition.yaml`. Then create composite resource
+`media-assets` in `team-apps` with `region: eu-west-1` and `size: small`, selecting
+Composition `bucketapp-configmap` through `spec.crossplane.compositionRef`.
 
-**Your task:**
-
-1. Create XRD **`xbucketapps.platform.example.io`**:
-   - Composite kind **`XBucketApp`** (cluster-scoped, version `v1alpha1`,
-     served + referenceable)
-   - **Claim** kind **`BucketApp`** (this is what makes it namespaced self-service)
-   - Spec fields **`region`** and **`size`** - both strings, both required
-2. Apply the provided **Composition** (it "provisions" a bucket as a ConfigMap in
-   `bucket-system` via provider-kubernetes - same pattern as a real cloud bucket,
-   zero cloud bill)
-3. As an app team, claim a bucket: **`media-assets`** in namespace **`team-apps`**
-   with `region: eu-west-1`, `size: small` - and wait until it is **Ready**
-
-Click **START** while Crossplane installs.
+Wait for the XR to become Ready and inspect its composed ConfigMap in `team-apps`.
+The ConfigMap models the requested settings; this lab does not create cloud storage
+or credentials. Do not create that ConfigMap manually.

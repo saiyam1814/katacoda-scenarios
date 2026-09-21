@@ -1,8 +1,7 @@
 # Investigate the stuck Pods
 
 Before writing YAML, understand *why* the Pods are stuck and *what exactly* they expect.
-This is the habit that saves you on the exam: the names you need are always already in
-the cluster.
+Inspect the existing cluster resources for the required names.
 
 Look at the Pods:
 
@@ -23,7 +22,7 @@ kubectl get storageclass
 ```{{exec}}
 
 Create a marker file once you know the two claim names and the two class names
-(this is just for this lab - the exam has no marker files):
+(these marker files are specific to the practice lab):
 
 ```bash
 touch /root/investigated

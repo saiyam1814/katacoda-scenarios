@@ -35,7 +35,9 @@ kubectl -n apps-ui get deploy podinfo-ui \
 
 Same Git repo, two objects instead of one - a `GitRepository` (source) plus a
 `HelmRelease` (reconciliation with `values:` and `targetNamespace`). The book chapter
-walks through the full Flux equivalent. The exam lets you pick either tool - pick the
-one installed in the task's cluster.
+walks through the full Flux equivalent. Use the tool required by the task. When alternatives are allowed, choose a
+familiar tool that is installed in the environment.
 
 </details>
+
+For a complete, independent Flux environment, start scenario 28 on a fresh cluster.

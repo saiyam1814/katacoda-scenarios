@@ -4,7 +4,7 @@ Create NetworkPolicy **`allow-api-from-edge`** in `tenant-red`:
 
 - Applies to Pods labelled **`app=api`**
 - **Ingress:** only from namespaces labelled **`purpose=edge`**, only **TCP 8080**
-- **Egress:** allow **UDP 53** (DNS) so the api Pods can still resolve names
+- **Egress:** allow **UDP and TCP 53** (DNS) so the api Pods can still resolve names
 
 Check the labels you will match on:
 
@@ -51,6 +51,8 @@ spec:
               kubernetes.io/metadata.name: kube-system
       ports:
         - protocol: UDP
+          port: 53
+        - protocol: TCP
           port: 53
 EOF
 ```{{exec}}

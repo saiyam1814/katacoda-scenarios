@@ -1,6 +1,6 @@
 # Create SA, Role and RoleBinding
 
-All three can be created imperatively - fastest correct answer in the exam:
+Create all three objects with kubectl generators:
 
 <details><summary>✦ Tip</summary>
 

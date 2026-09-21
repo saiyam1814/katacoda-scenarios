@@ -6,7 +6,7 @@ It is 9:03 on a Monday. The internal `metrics-portal` stack (Deployments **`metr
 and **`metrics-db`**) never came up after the weekend change freeze. Pods are Pending
 or erroring, dashboards are dark, and the team lead is standing behind you.
 
-**The rules (this is the exam's favorite trick):**
+**Permitted changes:**
 
 - You may create or change: **ResourceQuota, LimitRange, Secrets, PVCs**
 - You may **delete Pods** (they are cattle)

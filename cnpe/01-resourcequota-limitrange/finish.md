@@ -9,7 +9,7 @@ You gave `squad-nebula` real guardrails:
 
 - Generate what you can (`kubectl create quota`), write YAML only when you must
 - Re-read constraints: *exactly one* of each object, *don't touch* the Deployment
-- Verify the end state - graders only score what is running
+- Verify the requested fields and the policy behavior
 
 ## Learn the concepts
 

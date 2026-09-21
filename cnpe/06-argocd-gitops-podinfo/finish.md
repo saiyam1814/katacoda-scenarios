@@ -10,7 +10,7 @@ reconciled forever.
 - Helm values: `spec.source.helm.values` (string) or `valuesObject` (structured)
 - `CreateNamespace=true` goes under `syncPolicy.syncOptions`
 - `automated: {prune: true, selfHeal: true}` = full GitOps (drift correction + deletion)
-- `argocd app wait <name> --health --core` is your exam-friendly wait
+- `argocd app wait <name> --health --core` waits for the Application to become healthy
 - Score comes from **Synced + Healthy + correct values in the live cluster**
 
 📖 This lab is **Chapter 6** of the *CNPE Scenarios and Solutions* book - including the

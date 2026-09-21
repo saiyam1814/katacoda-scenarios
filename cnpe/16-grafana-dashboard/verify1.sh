@@ -14,7 +14,7 @@ match = [d for d in ds if d.get("name") == "PromLab"]
 assert match, "no datasource named PromLab"
 d = match[0]
 assert d["type"] == "prometheus"
-assert d["url"].rstrip("/") == "http://prom.obs.svc:9090"
+assert d["url"].rstrip("/") in ("http://prom.obs.svc:9090", "http://prom.obs.svc.cluster.local:9090")
 assert d.get("isDefault") is True
 PYEOF
 exit 0

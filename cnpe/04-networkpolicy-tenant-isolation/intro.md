@@ -8,7 +8,7 @@ workloads. Lock it down without breaking the edge path:
 1. NetworkPolicy **`deny-all-ingress`** - deny **all ingress** to every Pod in `tenant-red`
 2. NetworkPolicy **`allow-api-from-edge`** - for Pods labelled **`app=api`**:
    - allow ingress **only** from namespace `ingress-gw` (it carries label `purpose=edge`) on **TCP 8080**
-   - allow **DNS egress** (UDP 53) so lookups keep working
+   - allow **DNS egress** (UDP and TCP 53) so lookups keep working
 
 **The cast:**
 

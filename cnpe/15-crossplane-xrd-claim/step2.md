@@ -1,53 +1,13 @@
-# Compose it and claim a bucket
+# Compose a ConfigMap from the XR
 
-Apply the platform-side Composition (this one is given - you built one from scratch in
-lab 14):
+Read the supplied Composition. It uses a Pipeline function to map `spec.region`
+and `spec.size` to native ConfigMap data in the XR's namespace.
 
 ```bash
-cat <<'EOF' | kubectl apply -f -
-apiVersion: apiextensions.crossplane.io/v1
-kind: Composition
-metadata:
-  name: xbucketapp-objects
-spec:
-  compositeTypeRef:
-    apiVersion: platform.example.io/v1alpha1
-    kind: XBucketApp
-  mode: Resources
-  resources:
-    - name: bucket
-      base:
-        apiVersion: kubernetes.crossplane.io/v1alpha2
-        kind: Object
-        spec:
-          providerConfigRef:
-            name: default
-          forProvider:
-            manifest:
-              apiVersion: v1
-              kind: ConfigMap
-              metadata:
-                name: placeholder
-                namespace: bucket-system
-                labels:
-                  platform.example.io/kind: bucket
-              data:
-                region: placeholder
-                size: placeholder
-      patches:
-        - type: FromCompositeFieldPath
-          fromFieldPath: metadata.name
-          toFieldPath: spec.forProvider.manifest.metadata.name
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.region
-          toFieldPath: spec.forProvider.manifest.data.region
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.size
-          toFieldPath: spec.forProvider.manifest.data.size
-EOF
+kubectl apply -f /root/bucket-composition.yaml
 ```{{exec}}
 
-Now switch hats: you are an app developer in `team-apps`. Claim a bucket:
+<details><summary>Solution: composite resource</summary>
 
 ```bash
 cat <<'EOF' | kubectl apply -f -
@@ -57,25 +17,18 @@ metadata:
   name: media-assets
   namespace: team-apps
 spec:
+  crossplane:
+    compositionRef:
+      name: bucketapp-configmap
   region: eu-west-1
   size: small
 EOF
-```{{exec}}
-
-Wait for readiness and trace the chain - Claim → XR → Object → ConfigMap:
-
-```bash
 kubectl -n team-apps wait bucketapp/media-assets --for=condition=Ready --timeout=180s
-kubectl -n team-apps get bucketapp
-kubectl get xbucketapp
-kubectl -n bucket-system get cm -l platform.example.io/kind=bucket -o yaml | grep -E "name:|region|size" | head -6
+kubectl -n team-apps get bucketapp media-assets
+kubectl -n team-apps get configmap media-assets -o yaml
 ```{{exec}}
 
-<details><summary>✦ Note - claim vs XR names</summary>
-
-The claim is `media-assets` in `team-apps`; Crossplane generated a cluster-scoped XR
-named `media-assets-<hash>` for it. That XR name flowed into the ConfigMap name via
-the `metadata.name` patch. Claims are the **only** namespaced piece - that is what
-makes them safe to hand to tenants (RBAC on the claim kind per namespace).
-
+The ConfigMap must contain `region: eu-west-1` and `size: small` and have an owner
+reference to the XR. Its readiness check is `None` because ConfigMaps have no Ready
+condition; this does not prove that any cloud bucket exists.
 </details>

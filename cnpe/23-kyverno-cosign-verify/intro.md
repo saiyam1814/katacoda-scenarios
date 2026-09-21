@@ -23,3 +23,8 @@ Then prove in `policy-sandbox`:
 - Deployment with `busybox:1.36` → **denied**
 
 Click **START** while Kyverno installs.
+
+This exercise pins Kyverno 1.13.6 and uses its `ClusterPolicy` API. Kyverno's
+published 1.19 deprecation notice covers legacy ClusterPolicy and namespaced
+Policy, with removal planned for 1.20. Follow the installed version's documentation
+when migrating this example to the newer policy APIs.

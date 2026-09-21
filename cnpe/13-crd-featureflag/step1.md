@@ -3,7 +3,7 @@
 The naming rules trip people up, so anchor them first:
 
 - CRD **name** = `<plural>.<group>` → `featureflags.toggle.acme.dev`
-- `spec.names`: `kind` (CamelCase), `plural`, `singular`, `shortNames`
+- `spec.names`: `kind` (PascalCase), `plural`, `singular`, `shortNames`
 - Validation lives in `versions[].schema.openAPIV3Schema`
 
 <details><summary>✦ Tip - integer bounds</summary>
@@ -45,6 +45,7 @@ spec:
       schema:
         openAPIV3Schema:
           type: object
+          required: [spec]
           properties:
             spec:
               type: object
@@ -68,3 +69,9 @@ kubectl wait --for=condition=established crd/featureflags.toggle.acme.dev --time
 ```{{exec}}
 
 </details>
+
+Use PascalCase for `kind` (`FeatureFlag`) and lowercase names for the plural and
+short name. Modern kubectl uses strict field validation by default, so an unknown
+field can cause rejection. If validation is set to warn or ignore, the API server
+can prune fields not allowed by the structural schema. Required fields and bounds
+are separate schema checks.

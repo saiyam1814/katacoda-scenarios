@@ -79,7 +79,7 @@ spec:
       type: string
   steps:
     - name: deploy
-      image: bitnamilegacy/kubectl:1.28.9
+      image: alpine/k8s:1.35.0
       script: |
         #!/bin/sh
         set -eu

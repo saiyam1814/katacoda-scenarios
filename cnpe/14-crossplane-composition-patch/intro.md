@@ -1,15 +1,10 @@
-# Patch an XWebApp Composition in Crossplane
+# Complete a Crossplane v2 Composition
 
-**Domain:** Platform APIs and Self-Service Capabilities &nbsp;|&nbsp; **Suggested time:** 14 minutes
+Crossplane v2 and function-patch-and-transform are installed. The namespaced
+`XWebApp` API already exists. Complete `/root/composition.yaml` so the
+`app-deployment` resource maps these XR fields:
 
-Your platform offers app teams a one-object API: apply an **`XWebApp`**, get a running
-Deployment + Service. The XRD exists, provider-kubernetes is healthy, and a colleague
-left the Composition **half-finished** at **`/root/composition.yaml`**.
-
-The Service side is done. The Deployment side has an example patch plus five TODOs - 
-complete them so XR fields map into the composed Deployment:
-
-| From XR field | To Deployment field |
+| From | To |
 |---|---|
 | `spec.appName` | `metadata.name` |
 | `spec.appName` | `spec.template.metadata.labels.app` |
@@ -17,11 +12,7 @@ complete them so XR fields map into the composed Deployment:
 | `spec.desiredReplicas` | `spec.replicas` |
 | `spec.containerImage` | `spec.template.spec.containers[0].image` |
 
-⚠️ The composed resource is a provider-kubernetes **Object** that wraps the Deployment,
-so every `toFieldPath` starts with **`spec.forProvider.manifest.`** - the example patch
-in the file shows the pattern.
-
-Then apply **`/root/app-xr.yaml`** and confirm a Deployment **and** Service named
-`demo-site` appear in **`compose-sandbox`**.
-
-Click **START** while Crossplane installs.
+Keep the existing namespace patch and Service resource. Apply the Composition and
+`/root/app-xr.yaml`. The XR `demo-site` in `compose-sandbox` must create a Deployment
+with two `nginx:1.25` replicas and a Service selecting its Pods. Do not create or
+edit the Deployment and Service manually.

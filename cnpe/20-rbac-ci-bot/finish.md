@@ -1,7 +1,7 @@
 # Least privilege, proven! 🎉
 
 The bot can ship Deployments and ConfigMaps in its own namespace - nothing more,
-nowhere else. And you *proved* it, which is the part graders score.
+nowhere else through this RoleBinding. You checked both permitted and denied actions.
 
 ## Key facts to remember
 

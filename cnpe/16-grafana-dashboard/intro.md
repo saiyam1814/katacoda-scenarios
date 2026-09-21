@@ -18,6 +18,6 @@ already scrapes a shop app that exports `http_requests_total`.
    - Query **`rate(http_requests_total[5m])`**
 3. **Save** the dashboard and confirm the panel draws data
 
-Do it in the UI (like the exam) - an API path is shown as backup.
+Use the Grafana UI to create and verify the dashboard.
 
 Click **START** when ready.

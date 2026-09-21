@@ -31,10 +31,10 @@ strategy:
 
 <details><summary>✦ Tip 2 - about the old Deployment</summary>
 
-The task says don't *edit* it. A Rollout with its own template simply takes over the
-services (Argo Rollouts adds a pod-template-hash selector to them). Scaling the old
-Deployment down afterwards is good hygiene - the book chapter also shows the
-`workloadRef` migration pattern, which adopts an existing Deployment instead.
+`workloadRef` reads the Pod template from the existing Deployment. Do not also set
+`spec.template`. With `scaleDown: onsuccess`, the controller scales that Deployment
+down after the Rollout is healthy. Change future images on the referenced
+Deployment; Rollouts observes the change and runs the canary strategy.
 
 </details>
 
@@ -67,16 +67,11 @@ spec:
         - setWeight: 40
         - pause: { duration: 30s }
         - setWeight: 100
-  template:
-    metadata:
-      labels:
-        app: media-proxy
-    spec:
-      containers:
-        - name: media-proxy
-          image: nginx:1.25
-          ports:
-            - containerPort: 80
+  workloadRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: media-proxy
+    scaleDown: onsuccess
 EOF
 ```{{exec}}
 

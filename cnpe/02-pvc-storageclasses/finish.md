@@ -1,6 +1,6 @@
 # Storage unblocked! 🎉
 
-You practiced the classic CNPE storage flow:
+You practiced these storage troubleshooting steps:
 
 1. **Read the cluster first** - claim names live in the Deployment spec, class names in `kubectl get sc`
 2. **Map requirements to classes** - "high-IOPS" was a *hint*, not a class name

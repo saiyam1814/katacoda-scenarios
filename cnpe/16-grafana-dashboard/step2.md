@@ -14,26 +14,8 @@ Back in the Grafana UI ([port 3000]({{TRAFFIC_HOST1_3000}})):
 You should see lines for the shop app's endpoints (`/` and `/err` - a traffic
 generator hits them nonstop, and Prometheus has been scraping since setup).
 
-<details><summary>✦ Backup - pure API</summary>
-
-```bash
-curl -s -X POST http://localhost:3000/api/dashboards/db \
-  -H 'Content-Type: application/json' -u admin:admin \
-  -d '{
-    "dashboard": {
-      "title": "coral-dashboard",
-      "panels": [{
-        "type": "timeseries",
-        "title": "Request Mix",
-        "gridPos": {"h": 9, "w": 24, "x": 0, "y": 0},
-        "targets": [{"expr": "rate(http_requests_total[5m])", "refId": "A"}]
-      }]
-    },
-    "overwrite": true
-  }' | python3 -m json.tool
-```{{exec}}
-
-</details>
+Save the dashboard, reopen it from Dashboards, and confirm that Request Mix still
+plots data using PromLab.
 
 <details><summary>✦ No data in the panel?</summary>
 

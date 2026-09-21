@@ -34,7 +34,7 @@ kubectl -n alpha-svc label deploy api-alpha cost.platform.io/adjusted=yes
 kubectl -n gamma-svc label deploy api-gamma cost.platform.io/adjusted=yes
 ```{{exec}}
 
-Final check - this is what a grader would look at:
+Check the required final state:
 
 ```bash
 kubectl get deploy -A -l cost.platform.io/adjusted=yes

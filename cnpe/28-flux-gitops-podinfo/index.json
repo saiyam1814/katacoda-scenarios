@@ -1,6 +1,6 @@
 {
-  "title": "Crossplane v2: Namespaced platform API",
-  "description": "Namespaced composite resources with a Pipeline Composition and native Kubernetes resources.",
+  "title": "28 - GitOps-install podinfo with Flux",
+  "description": "Optional Chapter 6 alternative: GitRepository and HelmRelease, matching Argo CD values.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,12 +9,12 @@
     },
     "steps": [
       {
-        "title": "Define the namespaced API",
+        "title": "Create the Flux source and HelmRelease",
         "text": "step1.md",
         "verify": "verify1.sh"
       },
       {
-        "title": "Create and verify the XR",
+        "title": "Verify reconciliation and deployed values",
         "text": "step2.md",
         "verify": "verify2.sh"
       }

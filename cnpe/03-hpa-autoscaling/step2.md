@@ -1,7 +1,6 @@
 # Watch it scale under load
 
-The exam usually stops at "create the HPA and verify it reads metrics" - but seeing a
-scale-out once makes the mechanism stick forever.
+After verifying that the HPA reads metrics, generate load to observe a scale event.
 
 Generate load against the service (runs for ~3 minutes in the background):
 

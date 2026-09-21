@@ -1,7 +1,7 @@
 # Race condition fixed! 🎉
 
-You made a surgical change to a pipeline you did not write - the most realistic CI/CD
-task on the exam.
+You added a readiness check to an existing workflow while preserving its deploy
+and test behavior.
 
 ## Key facts to remember
 
@@ -10,7 +10,7 @@ task on the exam.
 - New step needs **two** edits: the step entry *and* the template it references
 - `argo submit -n <ns> --watch` shows the node tree live; `argo logs @latest -n <ns>`
   tails the newest run
-- Never rename or remove what already works - graders diff the end state
+- Never rename or remove what already works - verify that existing behavior is preserved
 - `kubectl rollout status --timeout` inside a container = the standard "wait for ready"
   gate between deploy and test
 

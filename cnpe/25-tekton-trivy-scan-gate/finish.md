@@ -15,5 +15,8 @@ shut and swing open.
 
 📖 This lab is **Chapter 25** of the *CNPE Scenarios and Solutions* book.
 
-🏁 **That's all 25 labs.** Do them again until the muscle memory is boring - that is
-what passing feels like.
+The image tags and vulnerability database change over time. Record the image
+digest and database metadata when repeating the accepted and rejected paths.
+A registry or database download error is not evidence of a vulnerability rejection.
+
+Continue with the Flagger and Linkerd exercises, or try the Flux alternative in lab 28.

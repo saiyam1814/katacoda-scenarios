@@ -11,10 +11,10 @@ for pr in prs:
     succeeded = None
     for c in pr.get("status", {}).get("conditions", []):
         if c.get("type") == "Succeeded":
-            succeeded = (c.get("status") == "True")
-    if img == "nginx:1.16" and succeeded is False:
+            succeeded = c.get("status")
+    if img == "nginx:1.16" and succeeded == "False":
         failed_bad = True
-    if img == "gcr.io/distroless/static:nonroot" and succeeded is True:
+    if img == "gcr.io/distroless/static:nonroot" and succeeded == "True":
         ok_good = True
 assert failed_bad, "no failed run for the vulnerable image"
 assert ok_good, "no successful run for the clean image"

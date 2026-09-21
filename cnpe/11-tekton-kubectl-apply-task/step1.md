@@ -10,7 +10,7 @@ kubectl -n pipeline-lab get task package -o yaml | grep -B2 -A4 results
 Create Task `kubectl-apply` (API `tekton.dev/v1`). Requirements again:
 
 - param `manifest`, type `string`
-- image `bitnamilegacy/kubectl:1.28.9`
+- image `alpine/k8s:1.35.0`
 - write the param to a file, `kubectl apply -f` that file
 
 <details><summary>✦ Tip - params inside scripts</summary>
@@ -19,7 +19,7 @@ Inside a Task step, `$(params.manifest)` expands to the raw string. Quote it car
 when writing to a file:
 
 ```sh
-printf '%s\n' "$(params.manifest)" > /tmp/out.yaml
+printf '%s\n' "$MANIFEST" > /tmp/out.yaml
 ```{{copy}}
 
 `printf` survives multi-line YAML; `echo` may mangle it.
@@ -41,11 +41,14 @@ spec:
       type: string
   steps:
     - name: apply
-      image: bitnamilegacy/kubectl:1.28.9
+      image: alpine/k8s:1.35.0
+      env:
+        - name: MANIFEST
+          value: $(params.manifest)
       script: |
         #!/bin/sh
         set -eu
-        printf '%s\n' "$(params.manifest)" > /tmp/out.yaml
+        printf '%s\n' "$MANIFEST" > /tmp/out.yaml
         kubectl apply -f /tmp/out.yaml
 EOF
 ```{{exec}}

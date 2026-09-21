@@ -13,7 +13,7 @@ sharpest edge in Linkerd policy: **a Server alone denies everything on its port.
   or schedule a very short outage
 - mTLS is on by default in Linkerd - no PeerAuthentication equivalent needed
 - Namespaces join the mesh via the `linkerd.io/inject: enabled` **annotation**
-  (Istio uses a *label* - the exam loves that distinction)
+  (the Istio sidecar lab uses a namespace label instead)
 - `linkerd check` is the first command for any mesh weirdness
 
 📖 This lab is **Chapter 27** (bonus) of the *CNPE Scenarios and Solutions* book.

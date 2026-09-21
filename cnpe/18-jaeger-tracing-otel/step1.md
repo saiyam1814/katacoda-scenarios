@@ -35,3 +35,8 @@ and the app uses the HTTP exporter - so 4318. Mixing them up is the most common
 tracing-lab mistake. The exporter appends `/v1/traces` to the endpoint automatically.
 
 </details>
+
+When the task supplies a Jaeger UI link, open it directly. Port-forwarding is only
+needed for a practice environment that does not expose the UI. In Jaeger, select
+the application service and search recent traces; expand the failed span and its
+exception event before writing the required JSON output.

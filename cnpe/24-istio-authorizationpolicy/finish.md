@@ -5,7 +5,7 @@ don't.
 
 ## Key facts to remember
 
-- Principal format: `cluster.local/ns/<ns>/sa/<serviceaccount>` - memorize it
+- Principal format: `cluster.local/ns/<ns>/sa/<serviceaccount>` - check the mesh trust domain and required identity
 - **ALLOW policy selected + no rule match = deny.** No catch-all DENY needed
 - No policy on a workload = allow all (mesh default)
 - Empty `rules: []` on an ALLOW policy = deny **everything** for that workload

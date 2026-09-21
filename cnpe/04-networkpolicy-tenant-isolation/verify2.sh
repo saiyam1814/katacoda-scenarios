@@ -21,14 +21,12 @@ for rule in ing:
         ok = True
 assert ok
 
-# egress: UDP 53 allowed somewhere
-eg = spec.get("egress", [])
-dns_ok = False
-for rule in eg:
-    for p in rule.get("ports", []):
-        if str(p.get("port")) == "53" and p.get("protocol") == "UDP":
-            dns_ok = True
-assert dns_ok
+# Both DNS transports must reach the DNS namespace.
+dns_protocols = set()
+for rule in spec.get("egress", []):
+    if any(peer.get("namespaceSelector", {}).get("matchLabels", {}).get("kubernetes.io/metadata.name") == "kube-system" for peer in rule.get("to", [])):
+        dns_protocols.update(p.get("protocol", "TCP") for p in rule.get("ports", []) if str(p.get("port")) == "53")
+assert {"UDP", "TCP"} <= dns_protocols
 assert "Egress" in spec.get("policyTypes", [])
 PYEOF
 
@@ -38,4 +36,5 @@ if kubectl -n kube-system get pods 2>/dev/null | grep -qE "cilium|calico"; then
   kubectl -n other-squad exec squad-client -- curl -s --max-time 4 http://api.tenant-red.svc:8080/hostname >/dev/null 2>&1 && exit 1
 fi
 
+kubectl -n tenant-red exec deployment/api -- nslookup -vc kubernetes.default.svc.cluster.local >/dev/null 2>&1 || exit 1
 exit 0

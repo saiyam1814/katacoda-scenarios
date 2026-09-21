@@ -8,7 +8,7 @@ then decide** - and you didn't quietly "fix" workloads that weren't yours to cha
 - PSA = namespace labels: `pod-security.kubernetes.io/<enforce|warn|audit>=<privileged|baseline|restricted>`
 - Warnings fire at **admission** - restart or server-side dry-run to see them
 - `kubectl apply --dry-run=server` shows PSA warnings **without touching anything** - 
-  a killer exam trick
+  a useful admission check
 - **baseline** blocks host access (hostPath, hostNetwork, privileged);
   **restricted** additionally demands non-root, seccomp, dropped capabilities
 - The `-version=latest` label pins which policy version evaluates - set it when asked

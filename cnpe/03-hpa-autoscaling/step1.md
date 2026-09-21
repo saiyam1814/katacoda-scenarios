@@ -24,7 +24,7 @@ If you prefer YAML, the modern API is `autoscaling/v2` - `kubectl explain hpa.sp
 
 <details><summary>✅ Solution</summary>
 
-The imperative way (on kubectl ≤ 1.33 use `--cpu-percent=60` instead of `--cpu=60%`):
+The imperative way (on kubectl ≤ 1.33 use `--cpu=60%` instead of `--cpu=60%`):
 
 ```bash
 kubectl -n edge-web autoscale deployment storefront \

@@ -1,5 +1,19 @@
 # Create the Constraint
 
+Read the existing template before creating its constraint:
+
+```bash
+kubectl get constrainttemplate forbidfloatingtag -o yaml
+```{{exec}}
+
+Inspect `spec.crd.spec.names.kind` for the generated constraint kind, the
+`spec.crd.spec.validation.openAPIV3Schema` for parameter names and types, and the
+`targets[].rego` code for which container and controller paths it checks. Do not
+infer the parameter name from the template's filename. This lab's template declares
+`ForbidFloatingTag` and has no configurable parameters. Its Rego reads Pod specs,
+controller templates and CronJob job templates; retain that installed logic.
+
+
 Inspect the template first - its `crd.spec.names.kind` is the kind **you** must
 instantiate:
 

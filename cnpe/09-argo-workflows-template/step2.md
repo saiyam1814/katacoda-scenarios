@@ -11,8 +11,7 @@ argo submit --from workflowtemplate/deploy-kit -n workflows \
   --watch
 ```{{exec}}
 
-When the workflow shows `Succeeded`, verify the actual outcome - the thing the grader
-scores:
+When the workflow shows `Succeeded`, verify the resulting Deployment:
 
 ```bash
 kubectl -n demo-reef get deploy catalog-ui

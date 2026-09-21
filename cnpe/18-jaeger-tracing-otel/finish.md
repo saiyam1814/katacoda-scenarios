@@ -5,9 +5,9 @@ spans into Jaeger, filter by `error=true`, and read the `exception` event off th
 
 ## Key facts to remember
 
-- **4317 = OTLP/gRPC, 4318 = OTLP/HTTP** - the task always tells you which
+- **4317 = OTLP/gRPC, 4318 = OTLP/HTTP** - match the exporter protocol to the collector configuration
 - `kubectl set env deploy/<name> KEY=value` edits + restarts in one move
-- OTel SDKs batch spans - give Jaeger 30–60s before panicking
+- OTel SDKs batch spans - allow time for export, then check collector and application logs if no traces appear
 - Exceptions live as span **events** named `exception` with attributes
   `exception.message`, `exception.type`, `exception.stacktrace`
 - In Jaeger search, `error=true` finds spans whose status is ERROR

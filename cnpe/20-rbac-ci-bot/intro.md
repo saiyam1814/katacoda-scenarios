@@ -3,7 +3,7 @@
 **Domain:** Security and Policy Enforcement &nbsp;|&nbsp; **Suggested time:** 8 minutes
 
 The CI system deploys into namespace `build-room` using a ServiceAccount. Security
-reviewed the current setup ("cluster-admin, obviously") and had opinions.
+requires replacing broad permissions with access limited to the stated resources.
 
 **Your task - all in namespace `build-room`:**
 

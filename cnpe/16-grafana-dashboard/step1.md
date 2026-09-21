@@ -1,6 +1,18 @@
 # Add the PromLab datasource
 
-Expose Grafana on the lab's public port:
+First discover the Prometheus Service and its port:
+
+```bash
+kubectl -n obs get svc
+kubectl -n obs get svc prom -o yaml
+```{{exec}}
+
+The Service is `prom`, its namespace is `obs`, and its port is 9090. With this
+cluster's `cluster.local` DNS domain, the full name is
+`prom.obs.svc.cluster.local`. The shorter `prom.obs.svc` also resolves inside
+this cluster.
+
+Use a direct Grafana link when supplied. Otherwise expose it for this lab:
 
 ```bash
 kubectl -n monitoring port-forward --address 0.0.0.0 svc/grafana 3000:80 >/dev/null 2>&1 &
@@ -15,20 +27,9 @@ Open Grafana: [click here to open port 3000]({{TRAFFIC_HOST1_3000}})
 
 1. Left menu → **Connections → Data sources → Add data source → Prometheus**
 2. **Name:** `PromLab`
-3. **Connection → Prometheus server URL:** `http://prom.obs.svc:9090`
+3. **Connection → Prometheus server URL:** `http://prom.obs.svc.cluster.local:9090`
 4. Leave auth off, toggle **Default** on
 5. **Save & test** → “Successfully queried the Prometheus API”
-
-<details><summary>✦ Backup - pure API (if the UI misbehaves)</summary>
-
-```bash
-curl -s -X POST http://localhost:3000/api/datasources \
-  -H 'Content-Type: application/json' \
-  -u admin:admin \
-  -d '{"name":"PromLab","type":"prometheus","url":"http://prom.obs.svc:9090","access":"proxy","isDefault":true}' | python3 -m json.tool
-```{{exec}}
-
-</details>
 
 <details><summary>✦ Why `prom.obs.svc:9090`?</summary>
 

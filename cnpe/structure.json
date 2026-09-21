@@ -1,6 +1,6 @@
 {
   "title": "CNPE — Hands-on Exam Scenarios",
-  "description": "25 exam-style scenarios for the Certified Cloud Native Platform Engineer (CNPE), ordered by exam domain. Companion labs for the CNPE Scenarios and Solutions ebook.",
+  "description": "28 hands-on scenarios: 27 chapter labs and the optional Flux alternative for Chapter 6.",
   "items": [
     { "path": "01-resourcequota-limitrange" },
     { "path": "02-pvc-storageclasses" },
@@ -28,6 +28,7 @@
     { "path": "24-istio-authorizationpolicy" },
     { "path": "25-tekton-trivy-scan-gate" },
     { "path": "26-flagger-canary" },
-    { "path": "27-linkerd-authorization" }
+    { "path": "27-linkerd-authorization" },
+    { "path": "28-flux-gitops-podinfo" }
   ]
 }

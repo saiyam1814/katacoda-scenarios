@@ -23,8 +23,7 @@ kubectl auth can-i get secrets -n build-room \
   --as=system:serviceaccount:build-room:ci-bot
 ```{{exec}}
 
-All four answers as expected? Record the proof (exam tasks often ask you to save
-command output):
+Check all four answers, then record the verification output for this exercise:
 
 ```bash
 kubectl auth can-i --list -n build-room \

@@ -11,8 +11,8 @@ Kyverno even pinned the verified digest for you.
 - `webhookTimeoutSeconds: 30` - signature checks do network I/O; the default 10s can
   flake
 - Kyverno **autogen** extends Pod rules to Deployments, StatefulSets, Jobs, etc.
-- Verified images get **mutated to digests** - expected, and a talking point in reviews
-- Keyless = certificate from Fulcio + transparency log in Rekor; no private key to leak
+- Verified images get **mutated to digests** - the policy uses the verified image content
+- Keyless = certificate from Fulcio + transparency log in Rekor; no long-lived signing key to distribute
 
 📖 This lab is **Chapter 23** of the *CNPE Scenarios and Solutions* book.
 

@@ -1,6 +1,6 @@
 # Create the PrometheusRule
 
-First - the step everyone skips and regrets: find out which labels the Prometheus
+First, find out which labels the Prometheus
 instance uses to pick up rules:
 
 ```bash

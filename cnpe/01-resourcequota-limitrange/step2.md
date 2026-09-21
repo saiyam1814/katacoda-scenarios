@@ -1,6 +1,6 @@
 # Prove the guardrails work
 
-Graders check **end state**, but in real life you should always prove your change behaves.
+Check the configured fields and test both accepted and rejected Pod requests.
 Run two experiments:
 
 **1. A Pod with no resources should be admitted and receive the `50m` defaults.**

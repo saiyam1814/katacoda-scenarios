@@ -1,68 +1,47 @@
-# Create the XRD with claim names
+# Define the namespaced composite resource
 
-The XRD is like a CRD plus two Crossplane extras: **`claimNames`** (enables the
-namespaced proxy object) and **`referenceable`** (lets Compositions target it).
+The v2 XRD creates a namespaced `BucketApp` API directly. There is no separate claim.
+The XRD is cluster-scoped; the resources created through its API are namespaced.
 
-<details><summary>✦ Tip - XRD skeleton</summary>
-
-```yaml
-apiVersion: apiextensions.crossplane.io/v1
-kind: CompositeResourceDefinition
-metadata:
-  name: <plural>.<group>       # must match names below
-spec:
-  group: <group>
-  names:                        # the composite (cluster-scoped)
-    kind: XSomething
-    plural: xsomethings
-  claimNames:                   # the claim (namespaced)
-    kind: Something
-    plural: somethings
-  versions: [...]
-```{{copy}}
-
-</details>
-
-<details><summary>✅ Solution</summary>
+<details><summary>Solution: XRD</summary>
 
 ```bash
 cat <<'EOF' | kubectl apply -f -
-apiVersion: apiextensions.crossplane.io/v1
+apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
-  name: xbucketapps.platform.example.io
+  name: bucketapps.platform.example.io
 spec:
+  scope: Namespaced
   group: platform.example.io
   names:
-    kind: XBucketApp
-    plural: xbucketapps
-  claimNames:
     kind: BucketApp
     plural: bucketapps
   versions:
-    - name: v1alpha1
-      served: true
-      referenceable: true
-      schema:
-        openAPIV3Schema:
-          type: object
-          properties:
-            spec:
-              type: object
-              required: [region, size]
-              properties:
-                region:
-                  type: string
-                size:
-                  type: string
+  - name: v1alpha1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        required:
+        - spec
+        properties:
+          spec:
+            type: object
+            required:
+            - region
+            - size
+            properties:
+              region:
+                type: string
+              size:
+                type: string
 EOF
-```{{exec}}
-
-Watch it become Established and Offered (Offered = claims are available):
-
-```bash
-kubectl get xrd xbucketapps.platform.example.io
+kubectl wait xrd/bucketapps.platform.example.io --for=condition=Established --timeout=120s
 kubectl api-resources --api-group=platform.example.io
 ```{{exec}}
 
+Expect `BucketApp` to report `NAMESPACED=true`. Wait for `Established`, not the
+legacy `Offered` condition used for claim APIs.
 </details>
