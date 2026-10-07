@@ -1,0 +1,165 @@
+[
+  {
+    "id": "cka-01-rbac",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/01-rbac",
+    "kubernetes": "v1.36.1",
+    "setupReady": true,
+    "assetsPresent": true,
+    "unsolvedCheckRejected": true,
+    "unsolvedExit": 1,
+    "solutionCodeAction": true,
+    "completed": true,
+    "notes": [
+      "Initial terminal reconnect required; return key restored the session."
+    ],
+    "screenshot": "evidence/hosted/cka-01-rbac.jpg",
+    "regression": {
+      "sourceCommit": "5d079fc",
+      "setupReady": true,
+      "terminalRemainedOpen": true,
+      "unsolvedCheckRejected": true,
+      "solutionCodeAction": true,
+      "completed": true,
+      "screenshot": "evidence/hosted/cka-01-rbac-retest.jpg"
+    }
+  },
+  {
+    "id": "cka-02-service-repair",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/02-service-repair",
+    "setupReady": true,
+    "unsolvedCheckRejected": true,
+    "unsolvedExit": 1,
+    "solutionCodeAction": true,
+    "completed": true,
+    "screenshot": "evidence/hosted/cka-02-service-repair.jpg",
+    "regression": {
+      "sourceCommit": "5d079fc",
+      "setupReady": true,
+      "terminalRemainedOpen": true,
+      "unsolvedCheckRejected": true,
+      "solutionCodeAction": true,
+      "completed": true,
+      "cleanFailureDiagnostic": true,
+      "screenshot": "evidence/hosted/cka-02-service-repair-retest.jpg"
+    }
+  },
+  {
+    "id": "cka-03-kustomize",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/03-kustomize",
+    "setupReady": true,
+    "unsolvedCheckRejected": true,
+    "unsolvedExit": 1,
+    "solutionCodeAction": true,
+    "completed": true,
+    "screenshot": "evidence/hosted/cka-03-kustomize.jpg",
+    "regression": {
+      "sourceCommit": "5d079fc",
+      "setupReady": true,
+      "terminalRemainedOpen": true,
+      "unsolvedCheckRejected": true,
+      "solutionCodeAction": true,
+      "completed": true,
+      "cleanFailureDiagnostic": true,
+      "screenshot": "evidence/hosted/cka-03-kustomize-retest.jpg"
+    }
+  },
+  {
+    "id": "cka-04-persistent-volume",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/04-persistent-volume",
+    "setupReady": true,
+    "terminalRemainedOpen": true,
+    "unsolvedCheckRejected": true,
+    "solutionCodeAction": true,
+    "completed": true,
+    "screenshot": "evidence/hosted/cka-04-persistent-volume.jpg"
+  },
+  {
+    "id": "cka-05-scheduling",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/05-scheduling",
+    "setupReady": true,
+    "terminalRemainedOpen": true,
+    "unsolvedCheckRejected": true,
+    "solutionCodeAction": true,
+    "completed": true,
+    "cleanFailureDiagnostic": true,
+    "screenshot": "evidence/hosted/cka-05-scheduling.jpg"
+  },
+  {
+    "id": "cka-06-rollout-recovery",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/06-rollout-recovery",
+    "setupReady": true,
+    "terminalRemainedOpen": true,
+    "unsolvedCheckRejected": true,
+    "solutionCodeAction": true,
+    "completed": true,
+    "screenshot": "evidence/hosted/cka-06-rollout-recovery.jpg"
+  },
+  {
+    "id": "cks-01-networkpolicy",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/01-networkpolicy",
+    "setupReady": true,
+    "unsolvedCheckRejected": true,
+    "initialFailure": "All three forbidden source/destination paths were reachable",
+    "solutionCodeAction": true,
+    "completed": true,
+    "terminalRemainedOpen": true,
+    "verifierSeconds": 5.071,
+    "fixCommit": "b8b4672",
+    "notes": [
+      "Previous sequential verifier passed directly in20.400seconds but CHECK rejected twice. Fresh environment with concurrent probes reached Scenario completed."
+    ],
+    "screenshot": "evidence/hosted/cks-01-networkpolicy.jpg"
+  },
+  {
+    "id": "cks-02-pod-security",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/02-pod-security",
+    "setupReady": true,
+    "initialFailure": "Pin restricted enforcement to v1.35",
+    "completed": true,
+    "screenshot": "evidence/hosted/cks-02-pod-security.jpg",
+    "unsolvedCheckRejected": true,
+    "solutionCodeAction": true
+  },
+  {
+    "id": "cks-03-runtime-hardening",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/03-runtime-hardening",
+    "setupReady": true,
+    "initialFailure": "Missing required securityContext",
+    "completed": true,
+    "screenshot": "evidence/hosted/cks-03-runtime-hardening.jpg",
+    "unsolvedCheckRejected": true,
+    "solutionCodeAction": true
+  },
+  {
+    "id": "cks-04-serviceaccount",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/04-serviceaccount",
+    "setupReady": true,
+    "initialFailure": "reader can get ConfigMap other but must not",
+    "completed": true,
+    "screenshot": "evidence/hosted/cks-04-serviceaccount.jpg",
+    "unsolvedCheckRejected": true,
+    "solutionCodeAction": true
+  },
+  {
+    "id": "cks-05-image-admission",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/05-image-admission",
+    "setupReady": true,
+    "unsolvedCheckRejected": true,
+    "initialFailure": "ValidatingAdmissionPolicy book-images not found",
+    "solutionCodeAction": true,
+    "completed": true,
+    "screenshot": "evidence/hosted/cks-05-image-admission.jpg"
+  },
+  {
+    "id": "cks-06-audit-policy",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/06-audit-policy",
+    "setupReady": true,
+    "unsolvedCheckRejected": true,
+    "initialFailure": "audit-policy.json does not exist",
+    "solutionCodeAction": true,
+    "setupStatusCodeAction": true,
+    "completed": true,
+    "scope": "Offline evaluation of 24 event fixtures; no live API-server audit backend",
+    "screenshot": "evidence/hosted/cks-06-audit-policy.jpg"
+  }
+]

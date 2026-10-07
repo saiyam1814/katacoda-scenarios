@@ -4,9 +4,9 @@ An initial pack of **12 original practice scenarios**: six CKA and six CKS. Each
 
 ## Why Killercoda plus scripts
 
-This repository is already connected to Killercoda. The new `book-labs` directory follows its supported `index.json`, Markdown, background setup, foreground wait and verification conventions. Each scenario uploads its own `assets` to `/opt/book-labs/<lab-id>/`. Its root wrappers also work directly from a local checkout, so the same setup, solution and verification scripts can be used for video recording or an isolated local cluster.
+This repository is already connected to Killercoda. The new `book-labs` directory follows its supported `index.json`, Markdown, background setup, foreground wait and verification conventions. The course lists individual scenario paths directly. Each scenario uploads its own `assets` to `/opt/book-labs/<lab-id>/`. Its root wrappers also work directly from a local checkout, so the same setup, solution and verification scripts can be used for video recording or an isolated local cluster.
 
-Nothing has been pushed or published. A push to the branch connected to Killercoda may publish these scenarios automatically; review and test them in the creator environment first.
+All 12 labs are published in the [CKA and CKS book companion course on Killercoda](https://killercoda.com/saiyampathak/course/book-labs). **Hosted testing, 7 October 2026: all 12 labs passed the actual Killercoda browser flow.** Each starting state was rejected, its solution code action ran, and CHECK reached the completion page. The audit lab remains an offline policy exercise inside the hosted environment. CKA 01–03 also passed fresh-environment startup and full-flow reruns at `5d079fc`, confirming the open terminal and the updated failure diagnostics for Service repair and Kustomize. Publication does not by itself establish a hosted pass. See [HOSTED-VALIDATION.md](HOSTED-VALIDATION.md) and the [browser evidence](evidence/hosted/results.json) for recorded results. Future pushes to the connected branch can update the public course; recheck affected flows after changes.
 
 ## Scenarios
 
@@ -46,7 +46,7 @@ bash book-labs/cka/02-service-repair/verify.sh
 
 Files are prepared beneath `~/book-labs/<lab-id>` and state/logs beneath `/tmp/book-labs/<lab-id>`. To use different directories, set `BOOK_LAB_WORK_ROOT` and `BOOK_LAB_STATE_ROOT` before **all** commands. Substitute that work root for `~/book-labs` in the task. Setup is repeatable and returns the lab to its starting state. A solution is intended to run after setup; rerun setup before repeating the whole exercise.
 
-Setup creates a `ready` sentinel only when preparation completes. Errors create an `error` sentinel and retain `setup.log`; the foreground wait has a timeout. A failed infrastructure preparation must not be treated as a learner's incorrect solution.
+Setup creates a `ready` sentinel only when preparation completes. Errors create an `error` sentinel and retain `setup.log`. API readiness is bounded to 180 seconds, and the foreground wait to 480 seconds. The foreground wait runs in a subshell so its shell options and exits do not close the learner's terminal. A failed infrastructure preparation must not be treated as a learner's incorrect solution. Resource checks report concise `FAIL:` messages; scheduling verification requires an event for the current Pod UID. Every introduction also includes a clickable setup-status check. The NetworkPolicy verifier runs independent traffic probes concurrently so CHECK finishes promptly while retaining all allowed/denied path checks.
 
 ## Validation and smoke tests
 
@@ -70,13 +70,13 @@ python3 book-labs/tests/network-mutation.py \
   --smoke-output /tmp/book-labs-smoke
 ```
 
-These deliberately introduce and restore common mistakes. See [VALIDATION.md](VALIDATION.md) for checks actually performed and remaining limitations.
+The current [static validation](evidence/hosted/static-validation.log) and [22 regression tests](evidence/hosted/unit-tests.log) also pass. The mutation scripts deliberately introduce and restore common mistakes. All 12 original local flows passed on Kubernetes v1.35.0 or, for the audit exercise, offline; those saved events predate the fixes made during hosted testing. See [VALIDATION.md](VALIDATION.md) for local checks and [HOSTED-VALIDATION.md](HOSTED-VALIDATION.md) for the separate browser runs and remaining limitations.
 
-## Killercoda creator check before publication
+## Killercoda checks after publication and updates
 
-The backend is `kubernetes-kubeadm-1node` (2 GB). Official documentation on 7 October 2026 lists this backend as Kubernetes 1.36, with 1.37 scheduled for 25 October. The backend cannot be assumed to match the certification version. Record `kubectl version` when testing and revisit PSA version pins and admission APIs when refreshing the book.
+The backend is `kubernetes-kubeadm-1node`. The hosted test session on 7 October 2026 observed Kubernetes **v1.36.1**; the NetworkPolicy setup screenshot shows **Cilium v1.20.1**. These observations are separate from the local Kubernetes v1.35.0 tests with kindnet or Calico. The backend cannot be assumed to match the certification version or remain unchanged. Record its version when testing and revisit PSA version pins and admission APIs when refreshing the book.
 
-Open each scenario in the creator preview, confirm assets arrive, wait for Ready, run CHECK before solving, apply the supplied solution and run CHECK again. Also inspect terminal copy/execute actions and the expandable solution. Local smoke tests cannot confirm Killercoda asset synchronization, browser behavior, image mirrors or its exact CNI/runtime.
+Open each affected scenario in the published course or creator preview, confirm assets arrive, wait for Ready, run CHECK before solving, apply the supplied solution and run CHECK again. Also inspect terminal copy/execute actions and the expandable solution. Local smoke tests cannot confirm Killercoda asset synchronization, browser behavior, image mirrors or its exact CNI/runtime. A terminal verifier pass is recorded separately from reaching the browser completion page.
 
 The solution and all necessary task information are included inside each scenario; learners do not need to buy or open the book. No changes were made to existing scenarios or to the unrelated `zero-to-rag` directory.
 

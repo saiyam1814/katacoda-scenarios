@@ -1,0 +1,27 @@
+test_first_match_protects_secret_bodies (test_audit_policy.AuditPolicyTests.test_first_match_protects_secret_bodies) ... ok
+test_health_path_boundary (test_audit_policy.AuditPolicyTests.test_health_path_boundary) ... ok
+test_resource_rule_cannot_swallow_nonresource_request (test_audit_policy.AuditPolicyTests.test_resource_rule_cannot_swallow_nonresource_request) ... ok
+test_unmatched_event_defaults_to_none (test_audit_policy.AuditPolicyTests.test_unmatched_event_defaults_to_none) ... ok
+test_unsupported_fields_fail_instead_of_being_silently_ignored (test_audit_policy.AuditPolicyTests.test_unsupported_fields_fail_instead_of_being_silently_ignored) ... ok
+test_verb_filter_and_api_group (test_audit_policy.AuditPolicyTests.test_verb_filter_and_api_group) ... ok
+test_false_condition_has_no_traceback (test_learner_shell_and_diagnostics.JsonDiagnosticTests.test_false_condition_has_no_traceback) ... ok
+test_malformed_json_has_no_traceback (test_learner_shell_and_diagnostics.JsonDiagnosticTests.test_malformed_json_has_no_traceback) ... ok
+test_missing_json_has_no_traceback (test_learner_shell_and_diagnostics.JsonDiagnosticTests.test_missing_json_has_no_traceback) ... ok
+test_missing_resource_fields_have_no_traceback (test_learner_shell_and_diagnostics.JsonDiagnosticTests.test_missing_resource_fields_have_no_traceback) ... ok
+test_true_condition_passes (test_learner_shell_and_diagnostics.JsonDiagnosticTests.test_true_condition_passes) ... ok
+test_every_foreground_script_preserves_shell_and_flags (test_learner_shell_and_diagnostics.LearnerShellTests.test_every_foreground_script_preserves_shell_and_flags) ... ok
+test_allowed_path_must_really_work (test_network_checks.NetworkCheckTests.test_allowed_path_must_really_work) ... ok
+test_exec_failure_cannot_count_as_network_denial (test_network_checks.NetworkCheckTests.test_exec_failure_cannot_count_as_network_denial) ... ok
+test_six_denials_and_allowed_path_run_in_parallel_under_ten_seconds (test_network_checks.NetworkCheckTests.test_six_denials_and_allowed_path_run_in_parallel_under_ten_seconds) ... ok
+test_unready_pod_fails_without_waiting_or_probing (test_network_checks.NetworkCheckTests.test_unready_pod_fails_without_waiting_or_probing) ... ok
+test_wrong_peer_is_rejected (test_network_checks.NetworkCheckTests.test_wrong_peer_is_rejected) ... ok
+test_zero_exit_without_remote_markers_is_rejected (test_network_checks.NetworkCheckTests.test_zero_exit_without_remote_markers_is_rejected) ... ok
+test_current_pod_scheduled_event_passes (test_readiness_and_scheduling.LabRegressionTests.test_current_pod_scheduled_event_passes) ... ok
+test_hanging_kubectl_respects_budget_and_marks_error (test_readiness_and_scheduling.LabRegressionTests.test_hanging_kubectl_respects_budget_and_marks_error) ... ok
+test_previous_pod_scheduled_event_does_not_pass_current_pod (test_readiness_and_scheduling.LabRegressionTests.test_previous_pod_scheduled_event_does_not_pass_current_pod) ... ok
+test_ready_api_completes_and_marks_ready (test_readiness_and_scheduling.LabRegressionTests.test_ready_api_completes_and_marks_ready) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 14.630s
+
+OK

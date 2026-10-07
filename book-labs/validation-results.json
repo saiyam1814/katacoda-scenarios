@@ -1,6 +1,6 @@
 {
   "date": "2026-10-07",
-  "status": "local-verification-passed",
+  "status": "local-and-hosted-verification-passed",
   "lab_count": 12,
   "kubernetes": "v1.35.0",
   "kind_node_image": "kindest/node:v1.35.0",
@@ -466,7 +466,103 @@
     "log": "evidence/unit-tests.log"
   },
   "audit_limit": "Offline audit-policy subset only; API server audit emission not tested",
-  "killercoda_creator_preview": "not tested",
-  "published": false,
-  "qa_cluster_cleanup": "removed; dedicated kubeconfig deleted"
+  "killercoda_creator_preview": "12 of 12 published browser flows passed; CKA 01-03 fresh-environment startup/full-flow regression reruns also passed at 5d079fc",
+  "published": true,
+  "qa_cluster_cleanup": "removed; dedicated kubeconfig deleted",
+  "historical_publication_status": {
+    "scope": "At the time of the original local validation record",
+    "killercoda_creator_preview": "not tested",
+    "published": false
+  },
+  "local_validation_scope": "Historical Kubernetes v1.35.0 / offline runs before subsequent hosted fixes; existing local smoke, mutation and unit-test events are preserved and are not a claim of rerunning the latest source.",
+  "hosted_validation": {
+    "date": "2026-10-07",
+    "status": "passed",
+    "course_url": "https://killercoda.com/saiyampathak/course/book-labs",
+    "results": "evidence/hosted/results.json",
+    "completed_count": 12,
+    "total_labs": 12,
+    "completed_ids": [
+      "cka-01-rbac",
+      "cka-02-service-repair",
+      "cka-03-kustomize",
+      "cka-04-persistent-volume",
+      "cka-05-scheduling",
+      "cka-06-rollout-recovery",
+      "cks-01-networkpolicy",
+      "cks-02-pod-security",
+      "cks-03-runtime-hardening",
+      "cks-04-serviceaccount",
+      "cks-05-image-admission",
+      "cks-06-audit-policy"
+    ],
+    "pending_ids": [],
+    "environment_observations": {
+      "backend": "kubernetes-kubeadm-1node",
+      "kubernetes": "v1.36.1",
+      "kubernetes_evidence": "evidence/hosted/cka-01-rbac.jpg",
+      "cni": "Cilium v1.20.1",
+      "cni_evidence": "evidence/hosted/cks-01-networkpolicy-before.jpg",
+      "scope": "Observed sessions; not independently recorded for each completed lab."
+    },
+    "fix_commits": [
+      "d25cfb1",
+      "fc526fe",
+      "1450fd1",
+      "b8b4672",
+      "5d079fc"
+    ],
+    "limits": [
+      "Per-run delivered source commit and asset hashes are not recorded for every completion.",
+      "Original local mutation tests were not all repeated on the hosted platform.",
+      "Audit exercise evaluates 24 offline fixtures; it does not validate a live audit backend.",
+      "The hosted suite covers companion labs, not the complete book manuscripts."
+    ],
+    "network_verifier_observations": {
+      "previous_direct_seconds": 20.4,
+      "previous_browser_result": "CHECK rejected twice",
+      "fixed_direct_seconds": 5.071,
+      "fixed_browser_result": "Scenario completed in a fresh environment",
+      "fix_commit": "b8b4672",
+      "evidence": "evidence/hosted/cks-01-networkpolicy.jpg"
+    },
+    "setup_status_action": {
+      "tested_lab": "cks-06-audit-policy",
+      "passed": true,
+      "evidence": "evidence/hosted/cks-06-audit-policy-status.jpg",
+      "scope": "Action present in all introductions; explicitly clicked in this recorded lab."
+    },
+    "additional_reruns": {
+      "ids": [
+        "cka-01-rbac",
+        "cka-02-service-repair",
+        "cka-03-kustomize"
+      ],
+      "status": "passed",
+      "source_commit": "5d079fc",
+      "completed_count": 3,
+      "scope": "Fresh hosted environments: Ready, terminal remained open, unsolved verification rejected, solution code action executed and CHECK completed. Service repair and Kustomize also confirmed clean failure diagnostics.",
+      "screenshots": [
+        "evidence/hosted/cka-01-rbac-retest.jpg",
+        "evidence/hosted/cka-02-service-repair-retest.jpg",
+        "evidence/hosted/cka-03-kustomize-retest.jpg"
+      ]
+    },
+    "results_sha256": "92efe2d9d0ba43aac86865629d82c3e36a0f3eeb76c02a57e2606aebd2c287a5"
+  },
+  "current_regression_validation": {
+    "date": "2026-10-07",
+    "scope": "Separate regression run after hosted fixes; original local event records unchanged.",
+    "static": {
+      "status": "passed",
+      "lab_count": 12,
+      "log": "evidence/hosted/static-validation.log"
+    },
+    "unit_tests": {
+      "count": 22,
+      "status": "passed",
+      "seconds": 14.63,
+      "log": "evidence/hosted/unit-tests.log"
+    }
+  }
 }
