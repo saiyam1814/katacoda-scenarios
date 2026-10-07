@@ -13,11 +13,31 @@ setup_begin() {
   rm -f "$STATE_DIR/ready" "$STATE_DIR/error"
   trap 'code=$?; printf "Setup failed (exit %s, line %s). Read %s/setup.log\n" "$code" "$LINENO" "$STATE_DIR" > "$STATE_DIR/error"; exit "$code"' ERR
   exec > >(tee "$STATE_DIR/setup.log") 2>&1
-  for attempt in $(seq 1 90); do
-    if kubectl --request-timeout=5s get nodes >/dev/null 2>&1; then return; fi
-    sleep 2
-  done
-  fail 'Kubernetes API did not become reachable'
+  # A process timeout also bounds discovery/credential-plugin hangs. The entire
+  # preflight is capped at 180 seconds, below the 480-second foreground wait.
+  if ! python3 - <<'PYREADY'
+import os, subprocess, sys, time
+budget = max(1.0, min(180.0, float(os.environ.get("BOOK_LAB_API_TIMEOUT_SECONDS", "180"))))
+deadline = time.monotonic() + budget
+while (remaining := deadline - time.monotonic()) > 0:
+    try:
+        result = subprocess.run(
+            ["kubectl", "--request-timeout=5s", "get", "--raw=/readyz"],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            timeout=min(5.0, remaining),
+        )
+        if result.returncode == 0:
+            sys.exit(0)
+    except subprocess.TimeoutExpired:
+        pass
+    remaining = deadline - time.monotonic()
+    if remaining > 0:
+        time.sleep(min(2.0, remaining))
+sys.exit(1)
+PYREADY
+  then
+    fail 'Kubernetes API readiness timed out (preflight budget is at most 180 seconds)'
+  fi
 }
 setup_done() { SETUP_ACTIVE=0; touch "$STATE_DIR/ready"; trap - ERR; printf 'Ready: %s\n' "$LAB_ID"; }
 require_ready() { require_tools; test -f "$STATE_DIR/ready" || fail "Run setup.sh first; inspect $STATE_DIR/setup.log"; }
