@@ -1,0 +1,33 @@
+{
+  "title": "CKA 06 - Recover a broken Deployment rollout",
+  "description": "Troubleshooting / Workloads & Scheduling",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Recover a broken Deployment rollout",
+        "text": "step1.md",
+        "verify": "verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cka-06-rollout-recovery/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

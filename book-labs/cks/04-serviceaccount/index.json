@@ -1,0 +1,33 @@
+{
+  "title": "CKS 04 - Remove excess API access and token mounts",
+  "description": "Cluster Hardening / Minimize Microservice Vulnerabilities",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Remove excess API access and token mounts",
+        "text": "step1.md",
+        "verify": "verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cks-04-serviceaccount/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

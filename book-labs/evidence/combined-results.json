@@ -1,0 +1,410 @@
+[
+  {
+    "id": "cka-01-rbac",
+    "checks": [
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.4,
+        "log": "evidence/cka-01-rbac-setup.log",
+        "check": "setup"
+      },
+      {
+        "exit": 1,
+        "passed": true,
+        "seconds": 0.1,
+        "log": "evidence/cka-01-rbac-before.log",
+        "check": "before"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.2,
+        "log": "evidence/cka-01-rbac-solution.log",
+        "check": "solution"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.9,
+        "log": "evidence/cka-01-rbac-after.log",
+        "check": "after"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / kindnet"
+  },
+  {
+    "id": "cka-02-service-repair",
+    "checks": [
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 16.8,
+        "log": "evidence/cka-02-service-repair-setup.log",
+        "check": "setup"
+      },
+      {
+        "exit": 1,
+        "passed": true,
+        "seconds": 0.2,
+        "log": "evidence/cka-02-service-repair-before.log",
+        "check": "before"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.1,
+        "log": "evidence/cka-02-service-repair-solution.log",
+        "check": "solution"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.4,
+        "log": "evidence/cka-02-service-repair-after.log",
+        "check": "after"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / kindnet"
+  },
+  {
+    "id": "cka-03-kustomize",
+    "checks": [
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.3,
+        "log": "evidence/cka-03-kustomize-setup.log",
+        "check": "setup"
+      },
+      {
+        "exit": 1,
+        "passed": true,
+        "seconds": 0.2,
+        "log": "evidence/cka-03-kustomize-before.log",
+        "check": "before"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 1.7,
+        "log": "evidence/cka-03-kustomize-solution.log",
+        "check": "solution"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.3,
+        "log": "evidence/cka-03-kustomize-after.log",
+        "check": "after"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / kindnet"
+  },
+  {
+    "id": "cka-04-persistent-volume",
+    "checks": [
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.6,
+        "log": "evidence/cka-04-persistent-volume-setup.log",
+        "check": "setup"
+      },
+      {
+        "exit": 1,
+        "passed": true,
+        "seconds": 0.1,
+        "log": "evidence/cka-04-persistent-volume-before.log",
+        "check": "before"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 6.1,
+        "log": "evidence/cka-04-persistent-volume-solution.log",
+        "check": "solution"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 4.9,
+        "log": "evidence/cka-04-persistent-volume-after.log",
+        "check": "after"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / kindnet"
+  },
+  {
+    "id": "cka-05-scheduling",
+    "checks": [
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.5,
+        "log": "evidence/cka-05-scheduling-setup.log",
+        "check": "setup"
+      },
+      {
+        "exit": 1,
+        "passed": true,
+        "seconds": 120.1,
+        "log": "evidence/cka-05-scheduling-before.log",
+        "check": "before"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 1.3,
+        "log": "evidence/cka-05-scheduling-solution.log",
+        "check": "solution"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.5,
+        "log": "evidence/cka-05-scheduling-after.log",
+        "check": "after"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / kindnet"
+  },
+  {
+    "id": "cka-06-rollout-recovery",
+    "checks": [
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 1.8,
+        "log": "evidence/cka-06-rollout-recovery-setup.log",
+        "check": "setup"
+      },
+      {
+        "exit": 1,
+        "passed": true,
+        "seconds": 120.1,
+        "log": "evidence/cka-06-rollout-recovery-before.log",
+        "check": "before"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.3,
+        "log": "evidence/cka-06-rollout-recovery-solution.log",
+        "check": "solution"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.3,
+        "log": "evidence/cka-06-rollout-recovery-after.log",
+        "check": "after"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / kindnet"
+  },
+  {
+    "id": "cks-01-networkpolicy",
+    "checks": [
+      {
+        "check": "setup",
+        "exit": 0,
+        "passed": true,
+        "seconds": 23.34,
+        "log": "evidence/cks-01-networkpolicy-setup.log"
+      },
+      {
+        "check": "before",
+        "exit": 1,
+        "passed": true,
+        "seconds": 1.53,
+        "log": "evidence/cks-01-networkpolicy-before.log"
+      },
+      {
+        "check": "solution",
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.13,
+        "log": "evidence/cks-01-networkpolicy-solution.log"
+      },
+      {
+        "check": "after",
+        "exit": 0,
+        "passed": true,
+        "seconds": 20.73,
+        "log": "evidence/cks-01-networkpolicy-after.log"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / Calico v3.33.0"
+  },
+  {
+    "id": "cks-02-pod-security",
+    "checks": [
+      {
+        "check": "setup",
+        "exit": 0,
+        "passed": true,
+        "seconds": 42.65,
+        "log": "evidence/cks-02-pod-security-setup.log"
+      },
+      {
+        "check": "before",
+        "exit": 1,
+        "passed": true,
+        "seconds": 0.13,
+        "log": "evidence/cks-02-pod-security-before.log"
+      },
+      {
+        "check": "solution",
+        "exit": 0,
+        "passed": true,
+        "seconds": 1.32,
+        "log": "evidence/cks-02-pod-security-solution.log"
+      },
+      {
+        "check": "after",
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.78,
+        "log": "evidence/cks-02-pod-security-after.log"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / kindnet"
+  },
+  {
+    "id": "cks-03-runtime-hardening",
+    "checks": [
+      {
+        "check": "setup",
+        "exit": 0,
+        "passed": true,
+        "seconds": 43.4,
+        "log": "evidence/cks-03-runtime-hardening-setup.log"
+      },
+      {
+        "check": "before",
+        "exit": 1,
+        "passed": true,
+        "seconds": 0.18,
+        "log": "evidence/cks-03-runtime-hardening-before.log"
+      },
+      {
+        "check": "solution",
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.82,
+        "log": "evidence/cks-03-runtime-hardening-solution.log"
+      },
+      {
+        "check": "after",
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.55,
+        "log": "evidence/cks-03-runtime-hardening-after.log"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / kindnet"
+  },
+  {
+    "id": "cks-04-serviceaccount",
+    "checks": [
+      {
+        "check": "setup",
+        "exit": 0,
+        "passed": true,
+        "seconds": 1.73,
+        "log": "evidence/cks-04-serviceaccount-setup.log"
+      },
+      {
+        "check": "before",
+        "exit": 1,
+        "passed": true,
+        "seconds": 0.23,
+        "log": "evidence/cks-04-serviceaccount-before.log"
+      },
+      {
+        "check": "solution",
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.81,
+        "log": "evidence/cks-04-serviceaccount-solution.log"
+      },
+      {
+        "check": "after",
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.8,
+        "log": "evidence/cks-04-serviceaccount-after.log"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / Calico v3.33.0"
+  },
+  {
+    "id": "cks-05-image-admission",
+    "checks": [
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.7,
+        "log": "evidence/cks-05-image-admission-setup.log",
+        "check": "setup"
+      },
+      {
+        "exit": 1,
+        "passed": true,
+        "seconds": 0.1,
+        "log": "evidence/cks-05-image-admission-before.log",
+        "check": "before"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.1,
+        "log": "evidence/cks-05-image-admission-solution.log",
+        "check": "solution"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 2.4,
+        "log": "evidence/cks-05-image-admission-after.log",
+        "check": "after"
+      }
+    ],
+    "environment": "Kubernetes v1.35.0 / kindnet"
+  },
+  {
+    "id": "cks-06-audit-policy",
+    "checks": [
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.1,
+        "log": "evidence/cks-06-audit-policy-setup.log",
+        "check": "setup"
+      },
+      {
+        "exit": 1,
+        "passed": true,
+        "seconds": 0.1,
+        "log": "evidence/cks-06-audit-policy-before.log",
+        "check": "before"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.0,
+        "log": "evidence/cks-06-audit-policy-solution.log",
+        "check": "solution"
+      },
+      {
+        "exit": 0,
+        "passed": true,
+        "seconds": 0.1,
+        "log": "evidence/cks-06-audit-policy-after.log",
+        "check": "after"
+      }
+    ],
+    "environment": "offline"
+  }
+]

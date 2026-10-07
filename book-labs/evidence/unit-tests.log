@@ -1,0 +1,11 @@
+test_first_match_protects_secret_bodies (test_audit_policy.AuditPolicyTests.test_first_match_protects_secret_bodies) ... ok
+test_health_path_boundary (test_audit_policy.AuditPolicyTests.test_health_path_boundary) ... ok
+test_resource_rule_cannot_swallow_nonresource_request (test_audit_policy.AuditPolicyTests.test_resource_rule_cannot_swallow_nonresource_request) ... ok
+test_unmatched_event_defaults_to_none (test_audit_policy.AuditPolicyTests.test_unmatched_event_defaults_to_none) ... ok
+test_unsupported_fields_fail_instead_of_being_silently_ignored (test_audit_policy.AuditPolicyTests.test_unsupported_fields_fail_instead_of_being_silently_ignored) ... ok
+test_verb_filter_and_api_group (test_audit_policy.AuditPolicyTests.test_verb_filter_and_api_group) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK

@@ -1,0 +1,7 @@
+deployment.apps/web 
+REVISION  CHANGE-CAUSE
+1         Working release
+2         Broken image release
+
+deployment.apps/web rolled back
+deployment "web" successfully rolled out

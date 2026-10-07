@@ -1,0 +1,3 @@
+pod/writer condition met
+pod/verify-reader created
+PASS: All checks passed for cka-04-persistent-volume

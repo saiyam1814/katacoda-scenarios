@@ -1,0 +1,9 @@
+namespace/book-cka-rollout created
+deployment.apps/web created
+Waiting for deployment "web" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "web" rollout to finish: 1 of 2 updated replicas are available...
+deployment "web" successfully rolled out
+deployment.apps/web annotated
+deployment.apps/web image updated
+deployment.apps/web annotated
+Ready: cka-06-rollout-recovery

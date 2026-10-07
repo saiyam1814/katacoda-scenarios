@@ -1,0 +1,33 @@
+{
+  "title": "CKA 05 - Repair a Pod that cannot be scheduled",
+  "description": "Workloads & Scheduling / Troubleshooting",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Repair a Pod that cannot be scheduled",
+        "text": "step1.md",
+        "verify": "verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cka-05-scheduling/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "authored": "2026-10-07",
+  "labs": [
+    {
+      "id": "cka-01-rbac",
+      "path": "cka/01-rbac",
+      "title": "Give an application team the right access",
+      "domain": "Cluster Architecture, Installation & Configuration",
+      "minutes": 8
+    },
+    {
+      "id": "cka-02-service-repair",
+      "path": "cka/02-service-repair",
+      "title": "Find why the Service is not working",
+      "domain": "Troubleshooting / Services & Networking",
+      "minutes": 10
+    },
+    {
+      "id": "cka-03-kustomize",
+      "path": "cka/03-kustomize",
+      "title": "Create a production Kustomize overlay",
+      "domain": "Cluster Architecture, Installation & Configuration / Workloads & Scheduling",
+      "minutes": 12
+    },
+    {
+      "id": "cka-04-persistent-volume",
+      "path": "cka/04-persistent-volume",
+      "title": "Bind a claim and prove data survives",
+      "domain": "Storage",
+      "minutes": 12
+    },
+    {
+      "id": "cka-05-scheduling",
+      "path": "cka/05-scheduling",
+      "title": "Repair a Pod that cannot be scheduled",
+      "domain": "Workloads & Scheduling / Troubleshooting",
+      "minutes": 8
+    },
+    {
+      "id": "cka-06-rollout-recovery",
+      "path": "cka/06-rollout-recovery",
+      "title": "Recover a broken Deployment rollout",
+      "domain": "Troubleshooting / Workloads & Scheduling",
+      "minutes": 10
+    },
+    {
+      "id": "cks-01-networkpolicy",
+      "path": "cks/01-networkpolicy",
+      "title": "Allow only the intended client traffic",
+      "domain": "Cluster Setup",
+      "minutes": 15
+    },
+    {
+      "id": "cks-02-pod-security",
+      "path": "cks/02-pod-security",
+      "title": "Enforce restricted Pod Security Admission",
+      "domain": "Minimize Microservice Vulnerabilities",
+      "minutes": 12
+    },
+    {
+      "id": "cks-03-runtime-hardening",
+      "path": "cks/03-runtime-hardening",
+      "title": "Harden a workload and check the running process",
+      "domain": "Minimize Microservice Vulnerabilities / System Hardening",
+      "minutes": 12
+    },
+    {
+      "id": "cks-04-serviceaccount",
+      "path": "cks/04-serviceaccount",
+      "title": "Remove excess API access and token mounts",
+      "domain": "Cluster Hardening / Minimize Microservice Vulnerabilities",
+      "minutes": 12
+    },
+    {
+      "id": "cks-05-image-admission",
+      "path": "cks/05-image-admission",
+      "title": "Enforce image registry and digest rules with CEL",
+      "domain": "Supply Chain Security",
+      "minutes": 18
+    },
+    {
+      "id": "cks-06-audit-policy",
+      "path": "cks/06-audit-policy",
+      "title": "Order audit rules without logging Secret bodies",
+      "domain": "Monitoring, Logging & Runtime Security",
+      "minutes": 15
+    }
+  ]
+}

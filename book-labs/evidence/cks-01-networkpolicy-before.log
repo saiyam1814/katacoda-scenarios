@@ -1,0 +1,6 @@
+pod/trusted condition met
+pod/untrusted condition met
+pod/trusted condition met
+deployment "api" successfully rolled out
+deployment "admin" successfully rolled out
+FAIL: book-cks-green/untrusted can reach 10.96.127.120 but must be denied

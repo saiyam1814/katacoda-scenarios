@@ -1,0 +1,6 @@
+{
+  "name": "kindnet",
+  "images": [
+    "docker.io/kindest/kindnetd:v20251212-v0.29.0-alpha-105-g20ccfc88"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "path": "01-rbac"
+    },
+    {
+      "path": "02-service-repair"
+    },
+    {
+      "path": "03-kustomize"
+    },
+    {
+      "path": "04-persistent-volume"
+    },
+    {
+      "path": "05-scheduling"
+    },
+    {
+      "path": "06-rollout-recovery"
+    }
+  ]
+}

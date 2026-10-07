@@ -1,0 +1,5 @@
+namespace/book-cka-storage created
+persistentvolume/book-cka-data created
+persistentvolumeclaim/data created
+pod/writer created
+Ready: cka-04-persistent-volume

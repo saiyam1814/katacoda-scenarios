@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/saiyam/git/katacoda-scenarios/book-labs/cks/06-audit-policy/assets/audit_verify.py", line 4, in <module>
+    p=json.load(open(sys.argv[1]));validate(p)
+                ~~~~^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/saiyam/git/kubernetes-scenario-books/tmp/lab-qa/work/cks-06-audit-policy/audit-policy.json'

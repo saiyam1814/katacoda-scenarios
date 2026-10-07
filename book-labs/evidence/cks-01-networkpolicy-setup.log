@@ -1,0 +1,22 @@
+namespace/book-cks-network created
+namespace/book-cks-green created
+namespace/book-cks-blue created
+namespace/book-cks-green labeled
+namespace/book-cks-blue labeled
+deployment.apps/api created
+service/api exposed
+Waiting for deployment "api" rollout to finish: 0 of 1 updated replicas are available...
+deployment "api" successfully rolled out
+deployment.apps/admin created
+service/admin exposed
+Waiting for deployment "admin" rollout to finish: 0 of 1 updated replicas are available...
+deployment "admin" successfully rolled out
+pod/trusted created
+pod/untrusted created
+pod/trusted created
+pod/trusted condition met
+pod/untrusted condition met
+pod/trusted condition met
+networkpolicy.networking.k8s.io/setup-cni-check created
+networkpolicy.networking.k8s.io "setup-cni-check" deleted from book-cks-network namespace
+Ready: cks-01-networkpolicy

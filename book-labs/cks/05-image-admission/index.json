@@ -1,0 +1,33 @@
+{
+  "title": "CKS 05 - Enforce image registry and digest rules with CEL",
+  "description": "Supply Chain Security",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Enforce image registry and digest rules with CEL",
+        "text": "step1.md",
+        "verify": "verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cks-05-image-admission/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

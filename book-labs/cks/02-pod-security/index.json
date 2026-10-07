@@ -1,0 +1,33 @@
+{
+  "title": "CKS 02 - Enforce restricted Pod Security Admission",
+  "description": "Minimize Microservice Vulnerabilities",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Enforce restricted Pod Security Admission",
+        "text": "step1.md",
+        "verify": "verify.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cks-02-pod-security/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

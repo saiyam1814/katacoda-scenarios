@@ -1,0 +1,6 @@
+{
+  "id": "cks-01-networkpolicy",
+  "mutation": "namespaceSelector and podSelector split into separate OR peers",
+  "rejected": true,
+  "restored_and_verified": true
+}

@@ -1,0 +1,3 @@
+serviceaccount/release-bot created
+role.rbac.authorization.k8s.io/release-manager created
+rolebinding.rbac.authorization.k8s.io/release-manager created

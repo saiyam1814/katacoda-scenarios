@@ -1,0 +1,6 @@
+pod/trusted condition met
+pod/untrusted condition met
+pod/trusted condition met
+deployment "api" successfully rolled out
+deployment "admin" successfully rolled out
+PASS: All checks passed for cks-01-networkpolicy

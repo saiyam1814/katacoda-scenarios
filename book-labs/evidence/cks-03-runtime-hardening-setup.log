@@ -1,0 +1,6 @@
+namespace "book-cks-runtime" deleted
+namespace/book-cks-runtime created
+deployment.apps/worker created
+Waiting for deployment "worker" rollout to finish: 0 of 1 updated replicas are available...
+deployment "worker" successfully rolled out
+Ready: cks-03-runtime-hardening

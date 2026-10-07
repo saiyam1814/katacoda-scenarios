@@ -1,0 +1,2 @@
+networkpolicy.networking.k8s.io/default-deny-ingress created
+networkpolicy.networking.k8s.io/allow-green-trusted created

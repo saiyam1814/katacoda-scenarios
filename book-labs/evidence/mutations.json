@@ -1,0 +1,38 @@
+[
+  {
+    "id": "cka-01-rbac",
+    "mutation_rejected": true
+  },
+  {
+    "id": "cka-01-rbac",
+    "mutation_rejected": true
+  },
+  {
+    "id": "cka-02-service-repair",
+    "mutation_rejected": true
+  },
+  {
+    "id": "cka-03-kustomize",
+    "mutation_rejected": true
+  },
+  {
+    "id": "cka-04-persistent-volume",
+    "mutation_rejected": true
+  },
+  {
+    "id": "cka-06-rollout-recovery",
+    "mutation_rejected": true
+  },
+  {
+    "id": "cks-02-pod-security",
+    "mutation_rejected": true
+  },
+  {
+    "id": "cks-04-serviceaccount",
+    "mutation_rejected": true
+  },
+  {
+    "id": "cks-05-image-admission",
+    "mutation_rejected": true
+  }
+]

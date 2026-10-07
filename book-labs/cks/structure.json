@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "path": "01-networkpolicy"
+    },
+    {
+      "path": "02-pod-security"
+    },
+    {
+      "path": "03-runtime-hardening"
+    },
+    {
+      "path": "04-serviceaccount"
+    },
+    {
+      "path": "05-image-admission"
+    },
+    {
+      "path": "06-audit-policy"
+    }
+  ]
+}

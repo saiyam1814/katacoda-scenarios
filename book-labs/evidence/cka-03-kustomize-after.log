@@ -1,0 +1,2 @@
+deployment "prod-web" successfully rolled out
+PASS: All checks passed for cka-03-kustomize

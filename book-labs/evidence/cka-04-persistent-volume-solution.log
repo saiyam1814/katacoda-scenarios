@@ -1,0 +1,5 @@
+pod "writer" deleted from book-cka-storage namespace
+persistentvolumeclaim "data" deleted from book-cka-storage namespace
+persistentvolumeclaim/data created
+pod/writer created
+pod/writer condition met
