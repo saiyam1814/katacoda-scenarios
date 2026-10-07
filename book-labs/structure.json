@@ -1,12 +1,54 @@
 {
+  "title": "CKA and CKS book companion labs",
+  "description": "Twelve original CKA and CKS practice scenarios with prepared environments, complete solutions and verification.",
   "items": [
     {
-      "path": "cka",
-      "title": "CKA book companion labs"
+      "path": "cka/01-rbac",
+      "title": "CKA 01 - Give an application team the right access"
     },
     {
-      "path": "cks",
-      "title": "CKS book companion labs"
+      "path": "cka/02-service-repair",
+      "title": "CKA 02 - Find why the Service is not working"
+    },
+    {
+      "path": "cka/03-kustomize",
+      "title": "CKA 03 - Create a production Kustomize overlay"
+    },
+    {
+      "path": "cka/04-persistent-volume",
+      "title": "CKA 04 - Bind a claim and prove data survives"
+    },
+    {
+      "path": "cka/05-scheduling",
+      "title": "CKA 05 - Repair a Pod that cannot be scheduled"
+    },
+    {
+      "path": "cka/06-rollout-recovery",
+      "title": "CKA 06 - Recover a broken Deployment rollout"
+    },
+    {
+      "path": "cks/01-networkpolicy",
+      "title": "CKS 01 - Allow only the intended client traffic"
+    },
+    {
+      "path": "cks/02-pod-security",
+      "title": "CKS 02 - Enforce restricted Pod Security Admission"
+    },
+    {
+      "path": "cks/03-runtime-hardening",
+      "title": "CKS 03 - Harden a workload and check the running process"
+    },
+    {
+      "path": "cks/04-serviceaccount",
+      "title": "CKS 04 - Remove excess API access and token mounts"
+    },
+    {
+      "path": "cks/05-image-admission",
+      "title": "CKS 05 - Enforce image registry and digest rules with CEL"
+    },
+    {
+      "path": "cks/06-audit-policy",
+      "title": "CKS 06 - Order audit rules without logging Secret bodies"
     }
   ]
 }

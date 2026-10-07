@@ -35,7 +35,7 @@ def validate(root):
             doc=json.loads(path.read_text())
             for item in doc['items']:
                 target=path.parent/item['path']
-                assert target.is_dir() and ((target/'index.json').is_file() or (target/'structure.json').is_file()), f'Invalid group path {target}'
+                assert target.is_dir() and (target/'index.json').is_file(), f'Course item must reference a scenario with index.json, not another group: {target}'
         except (KeyError,ValueError,AssertionError) as e: errors.append(f'{path}: {e}')
     for path in root.rglob('*.py'):
         if path==pathlib.Path(__file__): continue
