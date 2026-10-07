@@ -9,3 +9,15 @@ The base is in `~/book-labs/cka-03-kustomize/base`. Create an overlay at `~/book
 The overlay must deploy into `book-cka-kustomize`, prefix names with `prod-`, run three replicas of `web` using `nginx:1.28.0`, and add label `environment: prod` to the Deployment and Pod template. Apply the overlay. The resulting Deployment must be named `prod-web` and all three replicas must be available.
 
 Wait for **Ready** in the terminal, then start. Setup resets this lab's own resources; use an isolated practice cluster.
+
+If you see a prompt without the Ready message, check setup:
+
+```bash
+if test -f /tmp/book-labs/cka-03-kustomize/error; then
+  cat /tmp/book-labs/cka-03-kustomize/error
+elif test -f /tmp/book-labs/cka-03-kustomize/ready; then
+  printf 'Ready. Start the scenario.\n'
+else
+  printf 'Setup is still running. Wait a moment, then check again.\n'
+fi
+```{{exec}}

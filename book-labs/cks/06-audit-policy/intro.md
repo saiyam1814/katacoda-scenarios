@@ -16,3 +16,15 @@ For this offline exercise use JSON syntax and only these rule fields: `level`, `
 Do not edit the API server. The verifier evaluates representative events against this supported subset; it does not validate live API-server auditing.
 
 Wait for **Ready** in the terminal, then start. Setup resets this lab's own resources; use an isolated practice cluster.
+
+If you see a prompt without the Ready message, check setup:
+
+```bash
+if test -f /tmp/book-labs/cks-06-audit-policy/error; then
+  cat /tmp/book-labs/cks-06-audit-policy/error
+elif test -f /tmp/book-labs/cks-06-audit-policy/ready; then
+  printf 'Ready. Start the scenario.\n'
+else
+  printf 'Setup is still running. Wait a moment, then check again.\n'
+fi
+```{{exec}}

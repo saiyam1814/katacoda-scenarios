@@ -9,3 +9,15 @@ Namespace `book-cka-storage` contains Pending PVC `data` and Pod `writer`. A sta
 Repair the PVC to request `1Gi`, bind it to that PV and start the existing Pod with `/data` mounted from the claim. Write exactly `book-data-survives` to `/data/proof.txt`. The checker creates a second Pod on the same node to confirm that the data is on the volume. Preserve the PV and its `Retain` reclaim policy.
 
 Wait for **Ready** in the terminal, then start. Setup resets this lab's own resources; use an isolated practice cluster.
+
+If you see a prompt without the Ready message, check setup:
+
+```bash
+if test -f /tmp/book-labs/cka-04-persistent-volume/error; then
+  cat /tmp/book-labs/cka-04-persistent-volume/error
+elif test -f /tmp/book-labs/cka-04-persistent-volume/ready; then
+  printf 'Ready. Start the scenario.\n'
+else
+  printf 'Setup is still running. Wait a moment, then check again.\n'
+fi
+```{{exec}}

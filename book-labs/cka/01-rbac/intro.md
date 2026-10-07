@@ -9,3 +9,15 @@ In namespace `book-cka-rbac`, create ServiceAccount `release-bot`, Role `release
 The account must be able to `get`, `list`, `watch`, `update` and `patch` Deployments, and `get`, `list`, `watch` ConfigMaps. It must not create or delete Deployments, read Secrets, or manage workloads in `default`. Keep permissions within the requested namespace.
 
 Wait for **Ready** in the terminal, then start. Setup resets this lab's own resources; use an isolated practice cluster.
+
+If you see a prompt without the Ready message, check setup:
+
+```bash
+if test -f /tmp/book-labs/cka-01-rbac/error; then
+  cat /tmp/book-labs/cka-01-rbac/error
+elif test -f /tmp/book-labs/cka-01-rbac/ready; then
+  printf 'Ready. Start the scenario.\n'
+else
+  printf 'Setup is still running. Wait a moment, then check again.\n'
+fi
+```{{exec}}

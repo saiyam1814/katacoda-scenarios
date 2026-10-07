@@ -9,3 +9,15 @@ The API is running in namespace `book-cks-network`. Create NetworkPolicies in th
 Namespace `book-cks-green` contains `trusted` and `untrusted` clients. Namespace `book-cks-blue` contains another `trusted` client. Only the green trusted client may reach `api`. The green trusted client must not reach the `admin` server in the target namespace. Do not change namespace or Pod labels, and do not change the applications.
 
 Wait for **Ready** in the terminal, then start. Setup resets this lab's own resources; use an isolated practice cluster.
+
+If you see a prompt without the Ready message, check setup:
+
+```bash
+if test -f /tmp/book-labs/cks-01-networkpolicy/error; then
+  cat /tmp/book-labs/cks-01-networkpolicy/error
+elif test -f /tmp/book-labs/cks-01-networkpolicy/ready; then
+  printf 'Ready. Start the scenario.\n'
+else
+  printf 'Setup is still running. Wait a moment, then check again.\n'
+fi
+```{{exec}}
