@@ -55,7 +55,27 @@ can_i() {
   if [[ "$expected" == yes && $rc -ne 0 ]] || [[ "$expected" == no && $rc -ne 1 ]]; then fail "Unexpected authorization command error $rc"; fi
 }
 # Inspect semantic JSON, never textual matches for resource status.
-json_assert() { python3 -c 'import json,sys; d=json.load(sys.stdin); assert eval(sys.argv[1], {"__builtins__": {"all":all,"any":any,"len":len,"set":set,"sorted":sorted,"int":int}}, {"d":d}), sys.argv[2]' "$1" "$2"; }
+json_assert() {
+  python3 -c '
+import json, sys
+message = sys.argv[2]
+def reject(detail=""):
+    print("FAIL: " + message + detail, file=sys.stderr)
+    sys.exit(1)
+try:
+    d = json.load(sys.stdin)
+except (ValueError, TypeError):
+    reject(" (missing or invalid JSON input)")
+try:
+    valid = eval(sys.argv[1], {"__builtins__": {"all":all,"any":any,"len":len,"set":set,"sorted":sorted,"int":int}}, {"d":d})
+except (KeyError, IndexError, TypeError, ValueError):
+    reject(" (missing or unexpected resource fields)")
+except Exception as error:
+    reject(" (verification error: " + type(error).__name__ + ")")
+if not valid:
+    reject()
+' "$1" "$2"
+}
 
 # A successful rollout can leave old Pods terminating; never inspect .items[0].
 one_ready_pod() {
