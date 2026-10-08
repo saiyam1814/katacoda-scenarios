@@ -1,0 +1,40 @@
+- navigation:
+  - navigation:
+    - link "logo":
+      - /url: "#"
+      - link "logo":
+        - /url: /
+        - img "logo"
+    - list:
+      - listitem: Editor
+      - listitem: Tab 1
+      - generic: +
+    - generic "Time till environment expires": 111m
+    - generic "Scenario Brain":
+      - img "Scenario Brain"
+    - generic "Exit Scenario":
+    - list:
+      - button "☰"
+- heading "CKA — Gateway routes and Ingress TLS" [level=1]
+- heading "Expose HTTPS with a verified certificate" [level=2]
+- separator
+- heading "Scenario — Expose HTTPS with a verified certificate" [level=1]
+- paragraph: "Book scenario(s): 34."
+- paragraph: Using prepared web.key and web.crt, create TLS Secret web-tls and Ingress web in book-cka-routing, class lab-ingress, hostname web.cka.lab, Prefix/, backend Service web-ingress:80. Use the prepared client with /trust/ca.crt to prove HTTPS succeeds with certificate verification. Prove the certificate does not match wrong.cka.lab. Keep the Gateway route working.
+- heading "Verify your work" [level=2]
+- paragraph:
+  - text: Use
+  - strong: CHECK
+  - text: . The verifier examines the real objects and the stated result; a manifest existing on disk is not enough.
+- code: bash /opt/book-labs/cka-14-gateway-ingress/verify-step-02.sh
+- button "copy":
+- paragraph
+- generic "Solution"
+- paragraph:
+  - text: To run every worked solution in this grouped lab, use
+  - code: bash /opt/book-labs/cka-14-gateway-ingress/solution.sh
+  - text: . Every step remains independently verifiable after all solutions finish.
+- button "BACK"
+- button "CHECK"
+- iframe [id="iframe"]:
+  - textbox "Terminal input"

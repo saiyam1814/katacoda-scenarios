@@ -1,0 +1,97 @@
+[
+  {
+    "id": "cka-14-gateway-ingress",
+    "path": "cka/14-gateway-ingress",
+    "title": "CKA \u2014 Gateway routes and Ingress TLS",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/14-gateway-ingress",
+    "sourceCommit": "d4fa0a5",
+    "stepCount": 2,
+    "steps": [
+      {
+        "title": "Create and diagnose Gateway API routes",
+        "text": "step1.md",
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Expose HTTPS with a verified certificate",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      }
+    ],
+    "setupReady": true,
+    "setupErrorSentinelAbsent": true,
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "solutionExitCodes": [
+      0,
+      0
+    ],
+    "finalExitCodes": [
+      0,
+      0
+    ],
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "allAssetsMatched": true,
+    "allAssetSha256": {
+      "cleanup.sh": "364a71022f4882a649f3f653fc9e308fab8920820124bb2a0b5548b334e04c6c",
+      "helm.sh": "d6308deb16c3b27387c95de903f60e5e2bdcb49d457a5de036430b6d60288ccc",
+      "lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+      "routing.sh": "94fe7596e002c06d77310b8b450a9151a61171a523f8d1f7e17af197ed558c13",
+      "setup.sh": "ae5bad33203b51bea153e68723bc25a5383831b1a94320bad2dc17c9dabfc3b1",
+      "solution-step-01.sh": "e73dc42693419779fa82f0f811434e5631b97ef2168147bc73c16c18869213b6",
+      "solution-step-02.sh": "bb40a199230ef3f5c175a67ad5e3cca008b34c98dea70fbd9d9400805dc16ef1",
+      "solution.sh": "a216e2f6e2a3e7d1758552a48a839655211c8315fcdd07ad54f784cc6e6b5cae",
+      "verify-step-01.sh": "83b3970a5cbcee9172c64c603bede1f08b2f90a1107612e987d2a8e1d27c1f26",
+      "verify-step-02.sh": "0fd3b1c4f2ee2186856d91112225bdeeb2c6b2b32a91026b747ecabfac1e53e5",
+      "verify.sh": "4ad01491567762c0e4f52f6c91b3a638ced1044c97d0257f1593ddfd85270c9e"
+    },
+    "hostedAllAssetsManifestSha256": "203d6b3d74759bc3b6cbe5d9abba134c325a52853a27c4d46e69df3b30b945ba",
+    "assetHashCommand": "(cd /opt/book-labs/cka-14-gateway-ingress && sha256sum * | sha256sum); (cd /opt/book-labs/cka-14-gateway-ingress && sha256sum *)",
+    "assetManifestOrder": "lexicographic file names; all11 regular asset files, two spaces between digest and basename, one newline per entry",
+    "assetDeliveryScope": "Fresh automatic delivery of every current asset. No manual asset replacement in the passing VM. Previous stale automatic delivery was exited before this fresh run.",
+    "executionMethod": "Normal Chrome-extension terminal: supplied solution-step-01.sh then actual independent CHECK, supplied solution-step-02.sh then actual independent CHECK. Final page visibly says Scenario completed and includes the correct lab title.",
+    "browser": "Chrome extension id1",
+    "tabId": "323929543",
+    "providerVmHost": "c733cbae3646703f-1-40200.papa.r.killercoda.com",
+    "runtime": {
+      "kubernetes": "v1.36.1",
+      "node": "controlplane",
+      "internalIp": "172.30.1.2",
+      "os": "Ubuntu24.04.5LTS",
+      "kernel": "6.8.0-146-generic",
+      "architecture": "amd64",
+      "containerRuntime": "containerd://2.2.1"
+    },
+    "observedServiceType": "ClusterIP",
+    "screenshot": "evidence/hosted-full-2026-10-08/cka14-service-fix-completed.png",
+    "transcript": "evidence/hosted-full-2026-10-08/cka14-service-fix-observations.md",
+    "evidenceScreenshots": [
+      "evidence/hosted-full-2026-10-08/cka14-service-fix-ready-source.png",
+      "evidence/hosted-full-2026-10-08/cka14-service-fix-initial-fail-hashes.png",
+      "evidence/hosted-full-2026-10-08/cka14-service-fix-step1-pass.png",
+      "evidence/hosted-full-2026-10-08/cka14-service-fix-step1-check-advanced.png",
+      "evidence/hosted-full-2026-10-08/cka14-service-fix-step2-pass.png",
+      "evidence/hosted-full-2026-10-08/cka14-service-fix-completed.png"
+    ],
+    "completionDom": "evidence/hosted-full-2026-10-08/cka14-service-fix-completed.txt",
+    "observedAt": "2026-10-08T12:47:35.385115+00:00",
+    "previousRuns": [
+      {
+        "status": "stale automatic asset delivery; not promoted as current source",
+        "observedAllAssetAggregate": "05305ac6336a080851cc7537a414574bcb50930033289437a801d228c366315c",
+        "screenshot": "evidence/hosted-full-2026-10-08/cka14-service-fix-attempt1-stale.png",
+        "resolution": "Exited that VM, waited for course navigation, started a fresh VM; fresh current source and all checks recorded above."
+      }
+    ],
+    "transportNotes": "After CHECK1 the browser connection temporarily timed out. Reconnecting to the same tab showed step2, independently confirming CHECK1 advanced. CHECK2 then visibly produced the completion page. No terminal command inferred from transport dispatch was counted without observed output.",
+    "cleanupExitCode": 0,
+    "providerVmExited": true,
+    "cleanupScreenshot": "evidence/hosted-full-2026-10-08/cka14-service-fix-cleanup.png"
+  }
+]

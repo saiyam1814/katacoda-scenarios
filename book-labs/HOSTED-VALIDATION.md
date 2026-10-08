@@ -19,7 +19,7 @@ Each final record includes setup readiness, actual CHECK advancement to the fini
 | [cka-11-services-networkpolicy](https://killercoda.com/saiyampathak/course/book-labs/11-services-networkpolicy) | 2/2 | [Screenshot](evidence/hosted-full-2026-10-08/cka-11-services-networkpolicy-completed.jpg) |
 | [cka-12-csi-volumes](https://killercoda.com/saiyampathak/course/book-labs/12-csi-volumes) | 2/2 | [Screenshot](evidence/hosted-full-2026-10-08/cka-12-csi-volumes-completed.jpg) |
 | [cka-13-helm-certificates](https://killercoda.com/saiyampathak/course/book-labs/13-helm-certificates) | 2/2 | [Screenshot](evidence/hosted-full-2026-10-08/cka-13-helm-certificates-completed.jpg) |
-| [cka-14-gateway-ingress](https://killercoda.com/saiyampathak/course/book-labs/14-gateway-ingress) | 2/2 | [Screenshot](evidence/hosted-full-2026-10-08/cka-14-gateway-ingress-completed.jpg) |
+| [cka-14-gateway-ingress](https://killercoda.com/saiyampathak/course/book-labs/14-gateway-ingress) | 2/2 | [Screenshot](evidence/hosted-full-2026-10-08/cka14-service-fix-completed.png) |
 | [cks-01-networkpolicy](https://killercoda.com/saiyampathak/course/book-labs/01-networkpolicy) | 3/3 | [Screenshot](evidence/hosted-full-2026-10-08/cks01-final-completed.png) |
 | [cks-02-pod-security](https://killercoda.com/saiyampathak/course/book-labs/02-pod-security) | 2/2 | [Screenshot](evidence/hosted-full-2026-10-08/cks02-final-completed.png) |
 | [cks-03-runtime-hardening](https://killercoda.com/saiyampathak/course/book-labs/03-runtime-hardening) | 3/3 | [Screenshot](evidence/hosted-full-2026-10-08/cks03-final-completed.png) |
@@ -50,6 +50,8 @@ Native bootstrap was replayed from a full reset with the published final helper 
 
 ## Runtime issues corrected and retested
 
+- The fresh-book setup audit found that Traefik chart 41.6.1 reads `service.spec.type`. CKA14 now explicitly creates a ClusterIP Service. Commit d4fa0a5 was pushed and a fresh automatic-delivery retake matched all 11 current assets, rejected both unsolved checks and completed both browser CHECKs. The earlier record remains in the history files.
+
 - Native package selection no longer exits early under pipefail; package operations and reboot prompts work in the provider terminal.
 - The hosted two-node underlay uses Cilium VXLAN on UDP port 4789 with MTU 1400. Packet captures and successful DNS from both nodes established these settings.
 - NetworkPolicy checks exercise real allowed and denied traffic with Cilium identities, including the same-namespace peer and metadata isolation.
@@ -58,6 +60,6 @@ Native bootstrap was replayed from a full reset with the published final helper 
 - Missing starting-state answer files and HTTPRoutes now produce readable checker failures instead of Python tracebacks.
 - Autoscaling uses a 50m CPU request on the observed one-CPU hosted VM so the requested replicas fit. It still requires real CPU metrics, scaling above one replica and a fully ready Deployment. The hosted task explains this adaptation from the book example.
 
-Ordinary hosted clusters were observed on Kubernetes 1.36.1. Native bootstrap installs its specified version and the upgrade lab performs a real 1.34.12 to 1.35.9 upgrade. HA uses three control-plane containers and a load balancer on one provider host, proving member/process failure and quorum rather than independent physical-host resilience.
+Ordinary hosted clusters, including the fresh CKA14 retake, were observed on Kubernetes 1.36.1. Native bootstrap installs its specified version and the upgrade lab performs a real 1.34.12 to 1.35.9 upgrade. HA uses three control-plane containers and a load balancer on one provider host, proving member/process failure and quorum rather than independent physical-host resilience.
 
 The [local validation](VALIDATION.md) remains a separate dated record: 28 labs and 72 local checks. The [7 October hosted report](HOSTED-VALIDATION-2026-10-07.md) preserves the earlier 12-lab suite. Future source or backend changes require affected checks to be repeated.
