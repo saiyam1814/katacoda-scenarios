@@ -47,7 +47,7 @@ kubectl get --raw=/readyz
 curl -fsSL https://falco.org/repo/falcosecurity-packages.asc | gpg --dearmor --yes -o /usr/share/keyrings/falco-archive-keyring.gpg
 printf '%s\n' 'deb [signed-by=/usr/share/keyrings/falco-archive-keyring.gpg] https://download.falco.org/packages/deb stable main' > /etc/apt/sources.list.d/book-falco.list
 apt-get update -qq
-falco_version=$(apt-cache madison falco | awk '$3 ~ /^0[.]45[.]0/ {print $3;exit}')
+falco_version=$(apt-cache madison falco | awk '$3 ~ /^0[.]45[.]0/ && !found {print $3;found=1}')
 test -n "$falco_version" || fail 'Pinned Falco 0.45.0 package unavailable'
 FALCO_FRONTEND=noninteractive FALCO_DRIVER_CHOICE=none FALCOCTL_ENABLED=no apt-get install -y -qq "falco=$falco_version"
 falco --version

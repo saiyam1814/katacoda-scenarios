@@ -18,7 +18,7 @@ packages)
  pkg=$(apt-cache madison kubeadm | awk -v wanted="$version-" '!found && index($3,wanted)==1{print $3;found=1}')
  test -n "$pkg" || { printf 'Requested package %s is unavailable.\n' "$version" >&2; exit 1; }
  apt-mark unhold kubeadm kubelet kubectl || true
- DEBIAN_FRONTEND=noninteractive apt-get install -y --allow-downgrades kubeadm="$pkg" kubelet="$pkg" kubectl="$pkg"
+ DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=l apt-get install -y --allow-downgrades kubeadm="$pkg" kubelet="$pkg" kubectl="$pkg"
  apt-mark hold kubeadm kubelet kubectl
  systemctl daemon-reload
  systemctl enable kubelet
@@ -32,14 +32,14 @@ upgrade-kubeadm)
  pkg=$(apt-cache madison kubeadm | awk -v wanted="$version-" '!found && index($3,wanted)==1{print $3;found=1}')
  test -n "$pkg"
  apt-mark unhold kubeadm
- DEBIAN_FRONTEND=noninteractive apt-get install -y kubeadm="$pkg"
+ DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=l apt-get install -y kubeadm="$pkg"
  apt-mark hold kubeadm
  printf '%s\n' "$pkg" > /var/tmp/book-kubernetes-package
  ;;
 upgrade-kubelet)
  pkg=$(cat /var/tmp/book-kubernetes-package)
  apt-mark unhold kubelet kubectl
- DEBIAN_FRONTEND=noninteractive apt-get install -y kubelet="$pkg" kubectl="$pkg"
+ DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=l apt-get install -y kubelet="$pkg" kubectl="$pkg"
  apt-mark hold kubelet kubectl
  systemctl daemon-reload
  systemctl restart kubelet

@@ -4,6 +4,8 @@ CKA chapter 1. This is a disposable infrastructure lab. Use the root terminal on
 
 Setup: 1–3 minutes to reset. Build: approximately 10–20 minutes including package/image downloads; allow 30 minutes practice. Wait for the Ready message before starting.
 
+The supported two-VM image gives each host one CPU. The cluster-building script exempts only kubeadm’s `NumCPU` sizing check for this disposable practice environment; other preflight checks remain enabled.
+
 If you see a prompt without the Ready message, check setup:
 
 ```bash

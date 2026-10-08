@@ -4,9 +4,13 @@ assets="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 minor=${1:?};version=${2:?}
 for node in node01 controlplane; do
  if [[ "$node" == node01 ]]; then timeout 360 ssh -o BatchMode=yes -o ConnectTimeout=5 node01 bash -s -- packages "$minor" "$version" < "$assets/node-packages.sh"
- else timeout 360 bash "$assets/node-packages.sh" packages "$minor" "$version"; fi
+ else timeout --foreground 360 bash "$assets/node-packages.sh" packages "$minor" "$version"; fi
 done
-kubeadm init --kubernetes-version "v$version" --apiserver-advertise-address 172.30.1.2 --control-plane-endpoint controlplane:6443 --pod-network-cidr 10.244.0.0/16 --cri-socket unix:///run/containerd/containerd.sock
+# The supported two-VM teaching image exposes one CPU per VM.
+# Exempt only this sizing check in the disposable lab; retain all other checks.
+init_args=()
+if (( $(nproc) < 2 )); then init_args+=(--ignore-preflight-errors=NumCPU); fi
+kubeadm init "${init_args[@]}" --kubernetes-version "v$version" --apiserver-advertise-address 172.30.1.2 --control-plane-endpoint controlplane:6443 --pod-network-cidr 10.244.0.0/16 --cri-socket unix:///run/containerd/containerd.sock
 mkdir -p /root/.kube
 cp /etc/kubernetes/admin.conf /root/.kube/config
 export KUBECONFIG=/etc/kubernetes/admin.conf

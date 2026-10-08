@@ -4,6 +4,8 @@ CKA chapter 10 and CKS chapter 7. This is a disposable infrastructure lab. Use t
 
 Setup: approximately 10–15 minutes for the fresh v1.34.12 cluster and package downloads. Practice: 25–30 minutes. The free-session time budget is tight on a slow image mirror. Wait for the Ready message before starting.
 
+The supported two-VM image gives each host one CPU. The cluster-building script exempts only kubeadm’s `NumCPU` sizing check for this disposable practice environment; other preflight checks remain enabled.
+
 If you see a prompt without the Ready message, check setup:
 
 ```bash
