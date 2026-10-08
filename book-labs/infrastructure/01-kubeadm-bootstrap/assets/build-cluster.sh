@@ -26,7 +26,7 @@ fi
 helm repo add cilium https://helm.cilium.io/ --force-update
 helm repo update
 helm install cilium cilium/cilium --version 1.20.2 --namespace kube-system \
- --set cleanState=true --set operator.replicas=1 --set kubeProxyReplacement=false --set routingMode=tunnel --set tunnelProtocol=vxlan \
+ --set cleanState=true --set operator.replicas=1 --set kubeProxyReplacement=false --set routingMode=tunnel --set tunnelProtocol=vxlan --set tunnelPort=4789 --set MTU=1400 \
  --set ipam.mode=cluster-pool --set 'ipam.operator.clusterPoolIPv4PodCIDRList[0]=10.244.0.0/16'
 join=$(kubeadm token create --print-join-command)
 timeout 180 ssh -o BatchMode=yes -o ConnectTimeout=5 node01 "$join --cri-socket unix:///run/containerd/containerd.sock"
@@ -36,3 +36,7 @@ kubectl -n kube-system rollout status deployment/cilium-operator --timeout=300s
 kubectl wait --for=condition=Ready node --all --timeout=300s
 # Reset cleanup is needed once; future agent restarts should preserve BPF state.
 helm upgrade cilium cilium/cilium --version 1.20.2 --namespace kube-system --reuse-values --set cleanState=false
+
+# Wait for the final agent configuration and DNS after the one-time reset cleanup.
+kubectl -n kube-system rollout status daemonset/cilium --timeout=300s
+kubectl -n kube-system rollout status deployment/coredns --timeout=300s

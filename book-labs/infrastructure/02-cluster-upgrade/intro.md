@@ -6,6 +6,8 @@ Setup: approximately 10–15 minutes for the fresh v1.34.12 cluster and package 
 
 The supported two-VM image gives each host one CPU. The cluster-building script exempts only kubeadm’s `NumCPU` sizing check for this disposable practice environment; other preflight checks remain enabled.
 
+The hosted network uses an underlay MTU of 1450. The Cilium installation matches the provider’s working VXLAN settings: UDP port 4789 and an explicit Cilium MTU setting of 1400. These settings are specific to this hosted environment; use the network requirements of your own machines elsewhere.
+
 If you see a prompt without the Ready message, check setup:
 
 ```bash

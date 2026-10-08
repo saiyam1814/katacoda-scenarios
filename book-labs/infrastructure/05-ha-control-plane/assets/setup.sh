@@ -25,7 +25,13 @@ for node in book-ha-control-plane3 book-ha-control-plane2; do
  docker exec "$node" kubeadm reset -f
  k delete node "$node"
 done
-k get nodes -o json | json_check 'len(d["items"])==1' 'Expected one initialized control plane after resetting join targets'
+# The external load balancer needs time to stop selecting the reset API servers.
+# Wait for the real final state here, rather than failing on a transient EOF.
+deadline=$((SECONDS + 180))
+until k get nodes -o json | json_check 'len(d["items"])==1 and d["items"][0]["metadata"]["name"]=="book-ha-control-plane" and any(c["type"]=="Ready" and c["status"]=="True" for c in d["items"][0]["status"]["conditions"])' 'Expected one Ready initialized control plane after resetting join targets'; do
+  (( SECONDS < deadline )) || fail 'API did not settle after resetting the two join targets'
+  sleep 2
+done
 mkdir -p /root/.kube
 cp "$KUBECONFIG" /root/.kube/config
 printf 'export KUBECONFIG=%q\n' "$KUBECONFIG" > "$WORK_DIR/environment.sh"
