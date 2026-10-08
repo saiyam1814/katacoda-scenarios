@@ -17,3 +17,4 @@ node_exec tee "$STATIC_DIR/book-cka-static.yaml" < "$WORK_DIR/static.yaml" >/dev
 NODE=$(first_node)
 for i in $(seq 1 60); do kubectl -n book-cka-hostpods get pod "book-cka-static-$NODE" >/dev/null 2>&1 && break; sleep 2; done
 ready_pod book-cka-hostpods "book-cka-static-$NODE"
+printf 'book-cka-static-%s\n' "$NODE" > "$WORK_DIR/mirror-name.txt"

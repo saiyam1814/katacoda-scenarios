@@ -2,7 +2,7 @@
 
 Book scenario(s): 12.
 
-Create Deployment `created` in `book-cka-rollout` with three replicas of `nginx:1.28.0`. Save its live YAML as `~/book-labs/cka-06-rollout-recovery/created.yaml`. Require all replicas Ready.
+Create Deployment `created` in `book-cka-rollout` with three replicas of `nginx:1.28.0`. Save its live YAML as `~/book-labs/cka-06-rollout-recovery/created.yaml`. Require all replicas Ready and save each created Pod name plus its node name to pods-nodes.txt.
 
 ## Verify your work
 

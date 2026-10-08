@@ -2,7 +2,7 @@
 
 We will work through 4 related tasks. Each has a separate CHECK and solution. The resources belong to this lab; setup resets them so you can practise again.
 
-**Environment:** A disposable kubeadm cluster with administrative access.
+**Environment:** A disposable two-node kubeadm cluster: one worker and one control plane with its normal NoSchedule taint.
 
 Wait for Ready before starting. Check setup without leaving the terminal:
 

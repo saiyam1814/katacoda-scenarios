@@ -1,28 +1,28 @@
-# Scenario
+# Scenario — Bind a genuine static local volume
 
-Namespace `book-cka-storage` contains Pending PVC `data` and Pod `writer`. A static PV `book-cka-data` is available with capacity `1Gi`, storage class `book-manual` and access mode `ReadWriteOnce`.
+Book scenario(s): 36.
 
-Repair the PVC to request `1Gi`, bind it to that PV and start the existing Pod with `/data` mounted from the claim. Write exactly `book-data-survives` to `/data/proof.txt`. The checker creates a second Pod on the same node to confirm that the data is on the volume. Preserve the PV and its `Retain` reclaim policy.
+On the node named in node.txt, setup created /var/book-labs/cka-local/data containing marker.txt. Create StorageClass book-cka-local (no provisioner, WaitForFirstConsumer), PV book-cka-local-data (local path, node affinity, 1Gi, RWO, Retain), PVC data and a BusyBox reader in book-cka-storage. Read the existing marker from the mounted claim. Use a local PV, not a hostPath PV.
 
-## Validate
+## Verify your work
 
-Use the **CHECK** button when you are done. You can also run:
+Use **CHECK**. The verifier examines the real objects and the stated result; a manifest existing on disk is not enough.
 
 ```bash
-bash /opt/book-labs/cka-04-persistent-volume/verify.sh
+bash /opt/book-labs/cka-04-persistent-volume/verify-step-01.sh
 ```{{exec}}
-
-Read the failed check and inspect the object before changing anything else.
 
 <details><summary>Solution</summary>
 
-The complete solution is available inside the environment. Read it first, then run it if needed:
+Try the task first. Then read and run this step's worked solution:
 
 ```bash
-cat /opt/book-labs/cka-04-persistent-volume/solution.sh
-bash /opt/book-labs/cka-04-persistent-volume/solution.sh
+cat /opt/book-labs/cka-04-persistent-volume/solution-step-01.sh
+bash /opt/book-labs/cka-04-persistent-volume/solution-step-01.sh
 ```{{exec}}
 
-This lab uses `hostPath` on an isolated single-node environment for static PV practice. Production storage should use an appropriate CSI driver; hostPath does not move data between nodes.
+
 
 </details>
+
+To run every worked solution in this grouped lab, use `bash /opt/book-labs/cka-04-persistent-volume/solution.sh`. Every step remains independently verifiable after all solutions finish.

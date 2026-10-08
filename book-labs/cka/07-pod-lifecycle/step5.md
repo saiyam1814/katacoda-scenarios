@@ -2,7 +2,7 @@
 
 Book scenario(s): 18.
 
-Create Pod `shared` in `book-cka-pods` with restartPolicy Never. BusyBox containers `writer` and `reader` share emptyDir `/work`; writer saves `Hello from writer` to `/work/message`, reader waits for the file, prints it and exits successfully. Both containers must terminate with exit 0.
+Create Pod `shared` in `book-cka-pods` with restartPolicy Never. BusyBox containers c1 and c2 write Hello from c1 container. and Hello from c2 container. to separate files in shared emptyDir /work. Container c3 waits for both files, prints both in order and exits. All three must complete successfully without a startup race.
 
 ## Verify your work
 

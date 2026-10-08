@@ -3,40 +3,14 @@ set -Eeuo pipefail
 export LAB_ID=cka-04-persistent-volume
 source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/lib.sh"
 setup_begin
+source "$(dirname -- "${BASH_SOURCE[0]}")/local-node.sh"
+
 reset_ns book-cka-storage
-kubectl delete pv book-cka-data --ignore-not-found --wait=true --timeout=60s
-kubectl apply -f - <<'YAML'
-apiVersion: v1
-kind: PersistentVolume
-metadata: {name: book-cka-data}
-spec:
-  capacity: {storage: 1Gi}
-  accessModes: [ReadWriteOnce]
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: book-manual
-  hostPath: {path: /var/book-labs/cka-storage, type: DirectoryOrCreate}
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata: {name: data, namespace: book-cka-storage}
-spec:
-  accessModes: [ReadWriteOnce]
-  storageClassName: book-manual
-  volumeName: book-cka-data
-  resources:
-    requests: {storage: 2Gi}
----
-apiVersion: v1
-kind: Pod
-metadata: {name: writer, namespace: book-cka-storage}
-spec:
-  containers:
-  - name: writer
-    image: busybox:1.37.0
-    command: [sh, -c, 'sleep 3600']
-    volumeMounts: [{name: data, mountPath: /data}]
-  volumes:
-  - name: data
-    persistentVolumeClaim: {claimName: data}
-YAML
+kubectl delete pv book-cka-local-data book-cka-local-retained --ignore-not-found
+kubectl delete storageclass book-cka-local --ignore-not-found
+first_node > "$WORK_DIR/node.txt"
+node_exec mkdir -p /var/book-labs/cka-local/data /var/book-labs/cka-local/retained
+printf 'local-volume-data\n' | node_exec tee /var/book-labs/cka-local/data/marker.txt
+node_exec rm -f /var/book-labs/cka-local/retained/retained.txt
+rm -f "$WORK_DIR/deleted-claim-uid.txt"
 setup_done

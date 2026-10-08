@@ -2,7 +2,7 @@
 
 Book scenario(s): 9.
 
-Create Ready Pod `near-anchor` in `book-cka-scheduling`, image `nginx:1.28.0`, with required Pod affinity to `role=anchor` on topology key `kubernetes.io/hostname`. Do not set nodeName or a nodeSelector. Keep the anchor Pod.
+Create Ready Pod anchor using nginx:1.28.0 and label role=anchor. Create Ready Pod `near-anchor` in `book-cka-scheduling`, image `redis:7.4.5`, with required Pod affinity to `role=anchor` on topology key `kubernetes.io/hostname`. Do not set nodeName or a nodeSelector. Keep the anchor Pod.
 
 ## Verify your work
 

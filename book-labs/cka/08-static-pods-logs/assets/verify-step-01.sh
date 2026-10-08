@@ -7,6 +7,7 @@ node_exec() { if [[ -n ${BOOK_LAB_NODE_CONTAINER:-} ]]; then docker exec -i "$BO
 
 STATIC_DIR=$(cat "$WORK_DIR/static-dir.txt")
 node_exec test -s "$STATIC_DIR/book-cka-static.yaml" || fail 'Static manifest is absent on the node'
+[[ $(cat "$WORK_DIR/mirror-name.txt") == "book-cka-static-$(first_node)" ]] || fail 'Save the mirror Pod name'
 NODE=$(first_node)
 assert_pod_ready book-cka-hostpods "book-cka-static-$NODE"
 kubectl -n book-cka-hostpods get pod "book-cka-static-$NODE" -o json | json_assert 'd["metadata"].get("annotations",{}).get("kubernetes.io/config.mirror") and d["spec"]["containers"][0]["image"]=="nginx:1.28.0"' 'Require a kubelet-managed mirror Pod'

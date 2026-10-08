@@ -25,7 +25,13 @@
       "path": "08-static-pods-logs"
     },
     {
+      "path": "09-metrics-autoscaling"
+    },
+    {
       "path": "10-probes-configuration"
+    },
+    {
+      "path": "14-gateway-ingress"
     }
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "title": "CKS - Ingress TLS and service identity",
+  "description": "CKS book: practical security scenarios",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Serve an Ingress with a trusted TLS hostname",
+        "text": "step1.md",
+        "verify": "verify-step1.sh"
+      },
+      {
+        "title": "Require mTLS and authorize a service identity",
+        "text": "step2.md",
+        "verify": "verify-step2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cks-09-ingress-mtls/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

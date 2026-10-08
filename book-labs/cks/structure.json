@@ -23,6 +23,12 @@
     },
     {
       "path": "08-host-security"
+    },
+    {
+      "path": "09-ingress-mtls"
+    },
+    {
+      "path": "10-incident-investigation"
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 Book scenario(s): 14.
 
-Deployment `web` is failing because its second release has an invalid image. Inspect recorded change causes and roll back to the working release. Keep two replicas of `nginx:1.27.5`. Save actual history to `~/book-labs/cka-06-rollout-recovery/history.txt`.
+Deployment `web` is failing because its second release has an invalid image. Inspect recorded change causes and roll back to the working release. First record and complete a successful nginx:1.28.0 upgrade with change cause Successful upgrade. Then roll back to revision1, keeping four replicas of nginx:1.27.5. Save actual history to `~/book-labs/cka-06-rollout-recovery/history.txt`.
 
 ## Verify your work
 

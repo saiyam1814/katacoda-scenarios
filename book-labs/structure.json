@@ -16,7 +16,7 @@
     },
     {
       "path": "cka/04-persistent-volume",
-      "title": "CKA 04 - Bind a claim and prove data survives"
+      "title": "CKA — Static local volumes and retained data"
     },
     {
       "path": "cka/05-scheduling",
@@ -35,8 +35,16 @@
       "title": "CKA — Static Pod lifecycle and container logs"
     },
     {
+      "path": "cka/09-metrics-autoscaling",
+      "title": "CKA — Metrics and CPU autoscaling"
+    },
+    {
       "path": "cka/10-probes-configuration",
       "title": "CKA — Configuration, probes, resource limits and placement"
+    },
+    {
+      "path": "cka/14-gateway-ingress",
+      "title": "CKA — Gateway routes and Ingress TLS"
     },
     {
       "path": "cks/01-networkpolicy",
@@ -69,6 +77,14 @@
     {
       "path": "cks/08-host-security",
       "title": "CKS - Host, sandbox and runtime detection"
+    },
+    {
+      "path": "cks/09-ingress-mtls",
+      "title": "CKS - Ingress TLS and service identity"
+    },
+    {
+      "path": "cks/10-incident-investigation",
+      "title": "CKS - Investigate and contain a live incident"
     },
     {
       "path": "infrastructure/03-etcd-recovery",

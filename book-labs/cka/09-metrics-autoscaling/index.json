@@ -1,0 +1,38 @@
+{
+  "title": "CKA \u2014 Metrics and CPU autoscaling",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Find the highest memory consumer from live metrics",
+        "text": "step1.md",
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Drive a real HPA scale-out",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cka-09-metrics-autoscaling/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

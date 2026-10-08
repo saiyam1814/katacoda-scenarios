@@ -1,6 +1,6 @@
 {
-  "title": "CKA 04 - Bind a claim and prove data survives",
-  "description": "Storage",
+  "title": "CKA \u2014 Static local volumes and retained data",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,14 @@
     },
     "steps": [
       {
-        "title": "Bind a claim and prove data survives",
+        "title": "Bind a genuine static local volume",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Observe Retain after deleting a claim",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
       }
     ],
     "finish": {

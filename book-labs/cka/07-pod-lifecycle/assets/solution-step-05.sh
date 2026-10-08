@@ -14,12 +14,12 @@ kubectl apply -f - <<'YAML'
   "spec": {
     "containers": [
       {
-        "name": "writer",
+        "name": "c1",
         "image": "busybox:1.37.0",
         "command": [
           "sh",
           "-c",
-          "printf \"Hello from writer\\n\" >/work/message"
+          "printf \"Hello from c1 container.\\n\" >/work/c1.txt"
         ],
         "volumeMounts": [
           {
@@ -29,12 +29,27 @@ kubectl apply -f - <<'YAML'
         ]
       },
       {
-        "name": "reader",
+        "name": "c2",
         "image": "busybox:1.37.0",
         "command": [
           "sh",
           "-c",
-          "for i in $(seq 1 60); do if test -s /work/message; then cat /work/message; printf \"received\\n\" > /work/receipt; exit 0; fi; sleep 1; done; exit 1"
+          "printf \"Hello from c2 container.\\n\" >/work/c2.txt"
+        ],
+        "volumeMounts": [
+          {
+            "name": "work",
+            "mountPath": "/work"
+          }
+        ]
+      },
+      {
+        "name": "c3",
+        "image": "busybox:1.37.0",
+        "command": [
+          "sh",
+          "-c",
+          "for i in $(seq 1 60); do if test -s /work/c1.txt && test -s /work/c2.txt; then cat /work/c1.txt /work/c2.txt; exit 0; fi; sleep 1; done; exit 1"
         ],
         "volumeMounts": [
           {
@@ -55,4 +70,4 @@ kubectl apply -f - <<'YAML'
 }
 YAML
 for i in $(seq 1 60); do test "$(kubectl -n book-cka-pods get pod shared -o jsonpath='{.status.phase}')" = Succeeded && break; sleep 2; done
-kubectl -n book-cka-pods logs shared -c reader
+kubectl -n book-cka-pods logs shared -c c3

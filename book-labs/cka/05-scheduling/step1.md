@@ -2,7 +2,7 @@
 
 Book scenario(s): 5.
 
-Recreate `reporter` in `book-cka-scheduling` using `busybox:1.37.0`, requiring `book-labs.example/disk=ssd`. Keep it running. Let the scheduler select the node; do not set nodeName.
+Label the worker listed in node.txt with book-labs.example/disk=ssd. Recreate `reporter` in `book-cka-scheduling` using `busybox:1.37.0`, requiring `book-labs.example/disk=ssd`. Keep it running. Let the scheduler select the node; do not set nodeName.
 
 ## Verify your work
 

@@ -34,9 +34,12 @@
     {
       "id": "cka-04-persistent-volume",
       "path": "cka/04-persistent-volume",
-      "title": "Bind a claim and prove data survives",
-      "domain": "Storage",
-      "minutes": 12
+      "title": "CKA — Static local volumes and retained data",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 12,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
     },
     {
       "id": "cka-05-scheduling",
@@ -45,7 +48,7 @@
       "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
       "minutes": 8,
       "step_count": 4,
-      "backend": "kubernetes-kubeadm-1node",
+      "backend": "kubernetes-kubeadm-2nodes",
       "execution": "api"
     },
     {
@@ -79,6 +82,16 @@
       "execution": "host"
     },
     {
+      "id": "cka-09-metrics-autoscaling",
+      "path": "cka/09-metrics-autoscaling",
+      "title": "CKA — Metrics and CPU autoscaling",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 16,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "api"
+    },
+    {
       "id": "cka-10-probes-configuration",
       "path": "cka/10-probes-configuration",
       "title": "CKA — Configuration, probes, resource limits and placement",
@@ -86,6 +99,16 @@
       "minutes": 32,
       "step_count": 4,
       "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
+    },
+    {
+      "id": "cka-14-gateway-ingress",
+      "path": "cka/14-gateway-ingress",
+      "title": "CKA — Gateway routes and Ingress TLS",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 16,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node-4GB",
       "execution": "api"
     },
     {
@@ -162,6 +185,26 @@
       "domain": "CKS book: practical security scenarios",
       "minutes": 40,
       "step_count": 5,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "host"
+    },
+    {
+      "id": "cks-09-ingress-mtls",
+      "path": "cks/09-ingress-mtls",
+      "title": "CKS - Ingress TLS and service identity",
+      "domain": "CKS book: practical security scenarios",
+      "minutes": 16,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "api"
+    },
+    {
+      "id": "cks-10-incident-investigation",
+      "path": "cks/10-incident-investigation",
+      "title": "CKS - Investigate and contain a live incident",
+      "domain": "CKS book: practical security scenarios",
+      "minutes": 16,
+      "step_count": 2,
       "backend": "kubernetes-kubeadm-1node-4GB",
       "execution": "host"
     },

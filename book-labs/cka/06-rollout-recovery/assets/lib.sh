@@ -82,6 +82,7 @@ one_ready_pod() {
   kubectl -n "$1" get pods -l "$2" -o json | python3 -c 'import json,sys; items=json.load(sys.stdin)["items"]; pods=[p for p in items if not p["metadata"].get("deletionTimestamp") and p.get("status",{}).get("phase")=="Running" and any(c["type"]=="Ready" and c["status"]=="True" for c in p.get("status",{}).get("conditions",[]))]; assert len(pods)==1, "Expected exactly one current Ready Pod"; print(pods[0]["metadata"]["name"])'
 }
 
+
 assert_pod_ready() { kubectl -n "$1" get pod "$2" -o json | json_assert 'not d["metadata"].get("deletionTimestamp") and any(c["type"]=="Ready" and c["status"]=="True" for c in d.get("status",{}).get("conditions",[]))' "$1/$2 must be Ready"; }
 assert_deploy_ready() { kubectl -n "$1" get deployment "$2" -o json | json_assert 'd["status"].get("observedGeneration",0)>=d["metadata"]["generation"] and d["status"].get("availableReplicas",0)==d["spec"].get("replicas",1) and d["status"].get("updatedReplicas",0)==d["spec"].get("replicas",1)' "$1/$2 must finish its rollout"; }
 first_node() { kubectl get nodes -o jsonpath='{.items[0].metadata.name}'; }

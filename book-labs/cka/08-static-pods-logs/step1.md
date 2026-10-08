@@ -2,7 +2,7 @@
 
 Book scenario(s): 7.
 
-Inspect the kubelet staticPodPath recorded in `~/book-labs/cka-08-static-pods-logs/static-dir.txt`. Place `book-cka-static.yaml` there with a Pod named `book-cka-static` in namespace `book-cka-hostpods`, image nginx:1.28.0. Let the kubelet create the mirror Pod; do not create this Pod through kubectl apply.
+Inspect the kubelet staticPodPath recorded in `~/book-labs/cka-08-static-pods-logs/static-dir.txt`. Place `book-cka-static.yaml` there with a Pod named `book-cka-static` in namespace `book-cka-hostpods`, image nginx:1.28.0. Let the kubelet create the mirror Pod; save its name to mirror-name.txt in the lab work directory. Do not create this Pod through kubectl apply.
 
 ## Verify your work
 
