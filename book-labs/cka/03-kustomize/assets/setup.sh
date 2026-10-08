@@ -34,7 +34,7 @@ cat > "$WORK_DIR/app/base/resources.json" <<'JSON'
             "containers": [
               {
                 "name": "web",
-                "image": "nginx:1.28.0"
+                "image": "nginx:1.27.5"
               }
             ]
           }
@@ -69,6 +69,11 @@ kind: Kustomization
 resources:
 - resources.json
 YAML
+
+python3 - "$WORK_DIR/app/base" "$STATE_DIR/base-hashes.json" <<'PYHASH'
+import hashlib,json,pathlib,sys
+p=pathlib.Path(sys.argv[1]);pathlib.Path(sys.argv[2]).write_text(json.dumps({f.name:hashlib.sha256(f.read_bytes()).hexdigest() for f in p.iterdir() if f.is_file()}))
+PYHASH
 source "$(dirname -- "${BASH_SOURCE[0]}")/metrics.sh"
 metrics_prepare
 setup_done

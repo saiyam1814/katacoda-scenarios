@@ -31,7 +31,13 @@
       "path": "10-probes-configuration"
     },
     {
+      "path": "11-services-networkpolicy"
+    },
+    {
       "path": "12-csi-volumes"
+    },
+    {
+      "path": "13-helm-certificates"
     },
     {
       "path": "14-gateway-ingress"

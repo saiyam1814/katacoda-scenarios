@@ -102,6 +102,16 @@
       "execution": "api"
     },
     {
+      "id": "cka-11-services-networkpolicy",
+      "path": "cka/11-services-networkpolicy",
+      "title": "CKA — Service exposure and NetworkPolicy isolation",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 16,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
+    },
+    {
       "id": "cka-12-csi-volumes",
       "path": "cka/12-csi-volumes",
       "title": "CKA — CSI persistence and real filesystem expansion",
@@ -110,6 +120,16 @@
       "step_count": 2,
       "backend": "kubernetes-kubeadm-1node-4GB",
       "execution": "host"
+    },
+    {
+      "id": "cka-13-helm-certificates",
+      "path": "cka/13-helm-certificates",
+      "title": "CKA — Helm lifecycle and certificate reconciliation",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 16,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "api"
     },
     {
       "id": "cka-14-gateway-ingress",

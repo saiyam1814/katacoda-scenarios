@@ -2,7 +2,7 @@
 
 Book scenario(s): 29.
 
-Use the prepared app/base in your lab work directory. Create app/overlays/prod: prefix prod-, three replicas, nginx:1.28.0, and environment=production labels on workload and Service selectors. Save app/rendered.yaml, apply the overlay, and prove the Service reaches the application.
+Use the prepared app/base in your lab work directory. Keep the prepared base unchanged. Create app/overlays/prod: prefix prod-, three replicas, nginx:1.28.0, and environment=production labels on workload and Service selectors. Save app/rendered.yaml, apply the overlay, and prove the Service reaches the application.
 
 ## Verify your work
 
