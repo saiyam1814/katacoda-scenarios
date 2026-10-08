@@ -30,7 +30,8 @@ ingressClass:
   isDefaultClass: false
   name: lab-ingress
 service:
-  type: ClusterIP
+  spec:
+    type: ClusterIP
 ports:
   web:
     port: 80
