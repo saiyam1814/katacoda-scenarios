@@ -23,7 +23,13 @@ kind create cluster --name book-ha --config "$ASSET_DIR/ha.yaml" --kubeconfig "$
 # Reset one member at a time; kubeadm removes its stacked etcd membership first.
 for node in book-ha-control-plane3 book-ha-control-plane2; do
  docker exec "$node" kubeadm reset -f
- k delete node "$node"
+ # The reset API server may still be selected briefly by the load balancer.
+ # Deletion is idempotent even if a response is lost after the API accepted it.
+ deadline=$((SECONDS + 120))
+ until k delete node "$node" --ignore-not-found --wait=false; do
+  (( SECONDS < deadline )) || fail "Could not remove reset node $node from the API"
+  sleep 2
+ done
 done
 # The external load balancer needs time to stop selecting the reset API servers.
 # Wait for the real final state here, rather than failing on a transient EOF.
