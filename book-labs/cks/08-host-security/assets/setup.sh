@@ -25,10 +25,10 @@ python3 - <<'PYSET'
 import yaml,pathlib,os
 p=pathlib.Path('/etc/kubernetes/manifests/kube-controller-manager.yaml');d=yaml.safe_load(p.read_text());c=d['spec']['containers'][0]['command'];c[:]=[x for x in c if not x.startswith('--profiling=')]+['--profiling=true'];t=pathlib.Path('/etc/kubernetes/book-controller.tmp');t.write_text(yaml.safe_dump(d));os.replace(t,p)
 PYSET
-chmod 644 /etc/kubernetes/manifests/kube-controller-manager.yaml
+chmod 644 /etc/kubernetes/manifests/kube-controller-manager.yaml /var/lib/kubelet/config.yaml
 for n in $(seq 1 90); do pgrep -af '^kube-controller-manager.*--profiling=true' >/dev/null && break; sleep 1; done
 pgrep -af '^kube-controller-manager.*--profiling=true'
-kube-bench run --benchmark cis-1.12 --config-dir /opt/book-tools/kube-bench/cfg --config /opt/book-tools/kube-bench/cfg/config.yaml --check 1.1.3,1.3.2 --json > "$WORK_DIR/cis-before.json"
+kube-bench run --benchmark cis-1.12 --config-dir /opt/book-tools/kube-bench/cfg --config /opt/book-tools/kube-bench/cfg/config.yaml --check 1.1.3,1.3.2,4.1.9 --json > "$WORK_DIR/cis-before.json"
 # Install the complete pinned gVisor release, including its required sidecars.
 curl -fL --retry 3 -O https://github.com/google/gvisor/releases/download/release-20260928.0/gvisor-x86_64.tar.bz2
 curl -fL --retry 3 -O https://github.com/google/gvisor/releases/download/release-20260928.0/SHA256SUMS

@@ -9,7 +9,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata: {name: deny-client-egress, namespace: book-cks-egress}
 spec:
-  podSelector: {matchLabels: {app: client}}
+  podSelector: {}
   policyTypes: [Egress]
 YAML
 kubectl apply -f "$WORK_DIR/deny-egress.yaml"
@@ -19,7 +19,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata: {name: block-metadata, namespace: book-cks-metadata}
 spec:
-  podSelector: {matchLabels: {app: client}}
+  podSelector: {}
   policyTypes: [Egress]
   egress:
   - to:

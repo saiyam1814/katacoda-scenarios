@@ -13,3 +13,5 @@ bash /opt/book-labs/cks-01-networkpolicy/solution.sh
 
 It solves all steps in this group. Use CHECK for each step to verify its own result.
 </details>
+
+The metadata protection policy must select every Pod in `book-cks-metadata`.

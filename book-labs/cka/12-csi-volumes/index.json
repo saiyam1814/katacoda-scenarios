@@ -1,0 +1,38 @@
+{
+  "title": "CKA \u2014 CSI persistence and real filesystem expansion",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Provision a CSI volume and retain data across Pod recreation",
+        "text": "step1.md",
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Expand the mounted ext4 filesystem without losing data",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cka-12-csi-volumes/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

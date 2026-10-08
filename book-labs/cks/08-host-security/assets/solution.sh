@@ -7,9 +7,10 @@ python3 - <<'PYFIX'
 import yaml,pathlib,os
 p=pathlib.Path('/etc/kubernetes/manifests/kube-controller-manager.yaml');d=yaml.safe_load(p.read_text());c=d['spec']['containers'][0]['command'];c[:]=[x for x in c if not x.startswith('--profiling=')]+['--profiling=false'];t=pathlib.Path('/etc/kubernetes/book-controller.tmp');t.write_text(yaml.safe_dump(d));t.chmod(0o600);os.replace(t,p)
 PYFIX
+chmod 600 /var/lib/kubelet/config.yaml
 for n in $(seq 1 90); do pgrep -af '^kube-controller-manager.*--profiling=false' >/dev/null && break; sleep 1; done
 pgrep -af '^kube-controller-manager.*--profiling=false'
-kube-bench run --benchmark cis-1.12 --config-dir /opt/book-tools/kube-bench/cfg --config /opt/book-tools/kube-bench/cfg/config.yaml --check 1.1.3,1.3.2 --json > "$WORK_DIR/cis-after.json"
+kube-bench run --benchmark cis-1.12 --config-dir /opt/book-tools/kube-bench/cfg --config /opt/book-tools/kube-bench/cfg/config.yaml --check 1.1.3,1.3.2,4.1.9 --json > "$WORK_DIR/cis-after.json"
 cat > /etc/apparmor.d/book-deny-tmp <<'PROFILE'
 #include <tunables/global>
 profile book-deny-tmp flags=(attach_disconnected,mediate_deleted) {
@@ -47,10 +48,11 @@ kind: RuntimeClass
 metadata: {name: book-missing}
 handler: does-not-exist
 YAML
+kubectl label node "$(kubectl get nodes -o jsonpath='{.items[0].metadata.name}')" book-labs.example/runsc=true --overwrite
 for pair in sandbox:book-sandbox missing:book-missing; do
  pod=${pair%:*};class=${pair#*:}
  kubectl -n book-cks-host delete pod "$pod" --ignore-not-found
- kubectl -n book-cks-host run "$pod" --image=busybox:1.37.0 --overrides="{\"spec\":{\"runtimeClassName\":\"$class\"}}" --command -- sleep 3600
+ kubectl -n book-cks-host run "$pod" --image=busybox:1.37.0 --overrides="{\"spec\":{\"runtimeClassName\":\"$class\",\"nodeSelector\":{\"book-labs.example/runsc\":\"true\"}}}" --command -- sleep 3600
 done
 ready_pod book-cks-host sandbox
 kubectl -n book-cks-host exec sandbox -- dmesg > "$WORK_DIR/sandbox-runtime.txt"
@@ -92,3 +94,6 @@ ss -lntp '( sport = :9999 )' > "$WORK_DIR/listener-before.txt"
 systemctl status book-debug --no-pager > "$WORK_DIR/listener-status.txt"
 printf 'book-debug.service\n' > "$WORK_DIR/listener-unit.txt"
 systemctl disable --now book-debug
+
+kube-bench run --benchmark cis-1.12 --config-dir /opt/book-tools/kube-bench/cfg --config /opt/book-tools/kube-bench/cfg/config.yaml --json > "$WORK_DIR/cis-review.json"
+kubectl -n kube-system get configmap coredns -o yaml > "$WORK_DIR/coredns-review.yaml"

@@ -83,3 +83,5 @@ cp release/manifest.json release/changed.json
 printf '\nchanged\n' >> release/changed.json
 if cosign verify-blob --key release/cosign.pub --bundle release/manifest.bundle.json release/changed.json; then exit 1; fi
 unset COSIGN_PASSWORD
+
+python3 "$(dirname "$0")/scan-namespace.py" "$WORK_DIR/reports/namespace"

@@ -14,7 +14,7 @@
         "verify": "verify-step1.sh"
       },
       {
-        "title": "Deny egress from one workload",
+        "title": "Deny egress from a namespace",
         "text": "step2.md",
         "verify": "verify-step2.sh"
       },

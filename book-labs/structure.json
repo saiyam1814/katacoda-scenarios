@@ -43,6 +43,10 @@
       "title": "CKA — Configuration, probes, resource limits and placement"
     },
     {
+      "path": "cka/12-csi-volumes",
+      "title": "CKA — CSI persistence and real filesystem expansion"
+    },
+    {
       "path": "cka/14-gateway-ingress",
       "title": "CKA — Gateway routes and Ingress TLS"
     },

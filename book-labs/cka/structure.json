@@ -31,6 +31,9 @@
       "path": "10-probes-configuration"
     },
     {
+      "path": "12-csi-volumes"
+    },
+    {
       "path": "14-gateway-ingress"
     }
   ]

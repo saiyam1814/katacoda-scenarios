@@ -102,6 +102,16 @@
       "execution": "api"
     },
     {
+      "id": "cka-12-csi-volumes",
+      "path": "cka/12-csi-volumes",
+      "title": "CKA — CSI persistence and real filesystem expansion",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 16,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "host"
+    },
+    {
       "id": "cka-14-gateway-ingress",
       "path": "cka/14-gateway-ingress",
       "title": "CKA — Gateway routes and Ingress TLS",

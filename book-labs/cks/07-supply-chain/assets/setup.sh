@@ -55,4 +55,12 @@ printf 'book-secure-web\n' > "$WORK_DIR/build/index.html"
 printf 'do-not-ship-this\n' > "$WORK_DIR/build/developer-secret.txt"
 printf '{"name":"book-release","version":"1.0"}\n' > "$WORK_DIR/release/manifest.json"
 
+reset_ns book-cks-scan
+for n in $(seq 1 30); do kubectl -n book-cks-scan get sa default >/dev/null 2>&1 && break; sleep 1; done
+image=$(cat "$WORK_DIR/scan-image.txt")
+kubectl -n book-cks-scan run risk --image="$image" --overrides='{"spec":{"initContainers":[{"name":"prepare","image":"busybox:1.37.0","command":["true"]}]}}' --command -- sleep 3600
+kubectl -n book-cks-scan run utility --image=busybox:1.37.0 --command -- sleep 3600
+ready_pod book-cks-scan risk
+ready_pod book-cks-scan utility
+python3 "$(dirname "$0")/scan-namespace.py" "$STATE_DIR/namespace-baseline"
 setup_done

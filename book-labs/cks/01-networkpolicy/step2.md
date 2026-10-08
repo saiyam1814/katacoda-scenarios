@@ -1,6 +1,6 @@
-# Deny egress from one workload
+# Deny egress from a namespace
 
-In `book-cks-egress`, deny all outgoing traffic from Pods labelled `app=client`, while leaving the web Deployment unaffected. Save the NetworkPolicy as `~/book-labs/cks-01-networkpolicy/deny-egress.yaml`. Test by IP so a DNS failure cannot masquerade as blocking the target HTTP connection.
+In `book-cks-egress`, deny all outgoing traffic from every Pod. Keep the web service reachable by incoming requests from the separate `book-cks-metadata` namespace. Save the NetworkPolicy as `~/book-labs/cks-01-networkpolicy/deny-egress.yaml`. Test by IP so a DNS failure cannot masquerade as blocking the target HTTP connection.
 
 <details><summary>Worked solution</summary>
 
@@ -13,3 +13,5 @@ bash /opt/book-labs/cks-01-networkpolicy/solution.sh
 
 It solves all steps in this group. Use CHECK for each step to verify its own result.
 </details>
+
+The deny policy must select every Pod in `book-cks-egress`, not just the client label. The unblocked control request comes from the separate metadata exercise namespace.
