@@ -1,0 +1,33 @@
+{
+  "title": "CKA 01 \u2014 Initialize and join a kubeadm cluster",
+  "description": "CKA chapter 1",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Build a functioning two-VM cluster",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/infra-01-kubeadm-bootstrap/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}

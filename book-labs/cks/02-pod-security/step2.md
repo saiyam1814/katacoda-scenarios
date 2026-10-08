@@ -1,6 +1,6 @@
 # Repair a privileged Deployment
 
-In `book-cks-privileged`, repair Deployment `inspector`: one BusyBox 1.37.0 container must run as UID/GID 1000, disallow privilege escalation, drop every capability and use a read-only root filesystem. Remove privileged mode. Preserve the long-running command. Prove the replacement Pod has no effective capabilities and cannot create `/blocked`. Save the final Deployment to `~/book-labs/cks-02-pod-security/inspector.yaml`.
+In `book-cks-privileged`, repair Deployment `inspector`: one BusyBox 1.37.0 container must run as UID/GID 1000, disallow privilege escalation, drop every capability and use a read-only root filesystem. Remove privileged mode and configure RuntimeDefault seccomp on the Pod template. Preserve the long-running command. Prove the replacement Pod has no effective capabilities and cannot create `/blocked`. Save the final Deployment to `~/book-labs/cks-02-pod-security/inspector.yaml`.
 
 <details><summary>Worked solution</summary>
 

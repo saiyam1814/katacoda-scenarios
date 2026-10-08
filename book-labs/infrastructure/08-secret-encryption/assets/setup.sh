@@ -11,6 +11,7 @@ if any(x.startswith('--encryption-provider-config=') for x in m['spec']['contain
 EOF
 ns cks25
 k -n cks25 create secret generic database --from-literal=password=cks25-lab-marker
+k get secrets --all-namespaces -o json | python3 -c 'import json,sys;print(json.dumps(["/registry/secrets/"+x["metadata"]["namespace"]+"/"+x["metadata"]["name"] for x in json.load(sys.stdin)["items"]]))' > "$STATE_DIR/existing-secret-keys.json"
 mkdir -p /etc/kubernetes/encryption
 cp /etc/kubernetes/manifests/kube-apiserver.yaml "$WORK_DIR/kube-apiserver.before.yaml"
 etcd endpoint health

@@ -1,0 +1,48 @@
+{
+  "title": "CKA + CKS \u2014 Recover, drain and protect a worker",
+  "description": "CKA chapters 20 and 23; CKS chapter 24",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Recover the stopped kubelet",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Prove what cordon does",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      },
+      {
+        "title": "Drain, recover workloads and uncordon",
+        "text": "step3.md",
+        "verify": "verify3.sh"
+      },
+      {
+        "title": "Protect kubelet authentication and authorization",
+        "text": "step4.md",
+        "verify": "verify4.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/infra-04-worker-operations/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}

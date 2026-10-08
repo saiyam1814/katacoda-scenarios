@@ -13,4 +13,5 @@ for image,allowed in [(open(sys.argv[1]).read().strip(),True),('busybox:1.37.0',
  assert (p.returncode==0)==allowed,p.stderr
  if not allowed: assert 'book-images' in p.stderr,p.stderr
 PYVERIFY
+test -s "$WORK_DIR/cks28-policy.yaml"
 pass "Step 2: Close the ephemeral-container admission gap"

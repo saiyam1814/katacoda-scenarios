@@ -10,6 +10,7 @@ fail() { printf 'FAIL: %s\n' "$*" >&2; exit 1; }
 pass() { printf 'PASS: %s\n' "$*"; }
 k() { kubectl --request-timeout=4s "$@"; }
 setup_begin() {
+ if test -f "$STATE_DIR/ready"; then printf "This environment is already prepared. Use a fresh session to reset.\n"; exit 0; fi
  test "$(id -u)" = 0 || fail 'This host exercise requires the disposable VM root shell.'
  rm -f "$STATE_DIR/ready" "$STATE_DIR/error"
  trap 'rc=$?; printf "Setup failed, exit %s at line %s; inspect %s/setup.log\n" "$rc" "$LINENO" "$STATE_DIR" > "$STATE_DIR/error"; exit "$rc"' ERR

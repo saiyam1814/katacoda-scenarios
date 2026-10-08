@@ -13,3 +13,5 @@ bash /opt/book-labs/cks-05-image-admission/solution.sh
 
 It solves all steps in this group. Use CHECK for each step to verify its own result.
 </details>
+
+Save the policy and its binding in `~/book-labs/cks-05-image-admission/cks28-policy.yaml`.

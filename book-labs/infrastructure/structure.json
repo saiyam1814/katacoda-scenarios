@@ -1,7 +1,22 @@
 {
   "items": [
     {
+      "path": "01-kubeadm-bootstrap"
+    },
+    {
+      "path": "02-cluster-upgrade"
+    },
+    {
       "path": "03-etcd-recovery"
+    },
+    {
+      "path": "04-worker-operations"
+    },
+    {
+      "path": "05-ha-control-plane"
+    },
+    {
+      "path": "06-api-repair"
     },
     {
       "path": "07-apiserver-security"

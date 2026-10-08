@@ -8,6 +8,9 @@ kubectl -n book-cks-secrets delete rolebinding excess --ignore-not-found
 kubectl -n book-cks-secrets create role database-reader --verb=get --resource=secrets --resource-name=database --dry-run=client -o yaml | kubectl apply -f -
 kubectl -n book-cks-secrets create role deploy-creator --verb=create --resource=deployments.apps --dry-run=client -o yaml | kubectl apply -f -
 for role in database-reader deploy-creator; do kubectl -n book-cks-secrets create rolebinding "$role" --role="$role" --serviceaccount=book-cks-secrets:sam --dry-run=client -o yaml | kubectl apply -f -; done
+kubectl -n book-cks-secrets create secret generic database --from-literal=username=admin --from-literal=password=book-lab-secret --dry-run=client -o yaml | kubectl apply -f -
+(umask 077; kubectl -n book-cks-secrets get secret database -o jsonpath='{.data.username}' | base64 -d > "$WORK_DIR/username")
+chmod 600 "$WORK_DIR/username"
 kubectl -n book-cks-secrets delete pod consumer --ignore-not-found
 kubectl apply -f - <<'YAML'
 apiVersion: v1
@@ -41,3 +44,8 @@ kubectl --kubeconfig="$WORK_DIR/reader.kubeconfig" config set-context reader --c
 kubectl --kubeconfig="$WORK_DIR/reader.kubeconfig" config use-context reader
 unset token
 kubectl --kubeconfig="$WORK_DIR/reader.kubeconfig" get configmap settings
+
+kubectl -n book-cks-identity patch serviceaccount default --type=merge -p '{"automountServiceAccountToken":false}'
+kubectl -n book-cks-identity delete pod default-probe --ignore-not-found
+kubectl -n book-cks-identity run default-probe --image=busybox:1.37.0 --command -- sleep 3600
+ready_pod book-cks-identity default-probe

@@ -87,8 +87,28 @@
       "title": "CKS - Investigate and contain a live incident"
     },
     {
+      "path": "infrastructure/01-kubeadm-bootstrap",
+      "title": "CKA 01 — Initialize and join a kubeadm cluster"
+    },
+    {
+      "path": "infrastructure/02-cluster-upgrade",
+      "title": "CKA 10 + CKS 07 — Upgrade both kubeadm nodes"
+    },
+    {
       "path": "infrastructure/03-etcd-recovery",
       "title": "CKA 11 — Restore a real etcd snapshot"
+    },
+    {
+      "path": "infrastructure/04-worker-operations",
+      "title": "CKA + CKS — Recover, drain and protect a worker"
+    },
+    {
+      "path": "infrastructure/05-ha-control-plane",
+      "title": "CKA 27 — Join and fail over three control planes"
+    },
+    {
+      "path": "infrastructure/06-api-repair",
+      "title": "CKA 37 — Recover the API server"
     },
     {
       "path": "infrastructure/07-apiserver-security",

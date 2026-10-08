@@ -209,12 +209,62 @@
       "execution": "host"
     },
     {
+      "id": "infra-01-kubeadm-bootstrap",
+      "path": "infrastructure/01-kubeadm-bootstrap",
+      "title": "CKA 01 — Initialize and join a kubeadm cluster",
+      "domain": "CKA chapter 1",
+      "minutes": 10,
+      "step_count": 1,
+      "backend": "kubernetes-kubeadm-2nodes",
+      "execution": "host"
+    },
+    {
+      "id": "infra-02-cluster-upgrade",
+      "path": "infrastructure/02-cluster-upgrade",
+      "title": "CKA 10 + CKS 07 — Upgrade both kubeadm nodes",
+      "domain": "CKA chapter 10 and CKS chapter 7",
+      "minutes": 16,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-2nodes",
+      "execution": "host"
+    },
+    {
       "id": "infra-03-etcd-recovery",
       "path": "infrastructure/03-etcd-recovery",
       "title": "CKA 11 — Restore a real etcd snapshot",
       "domain": "CKA chapter 11",
       "minutes": 16,
       "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
+    },
+    {
+      "id": "infra-04-worker-operations",
+      "path": "infrastructure/04-worker-operations",
+      "title": "CKA + CKS — Recover, drain and protect a worker",
+      "domain": "CKA chapters 20 and 23; CKS chapter 24",
+      "minutes": 32,
+      "step_count": 4,
+      "backend": "kubernetes-kubeadm-2nodes",
+      "execution": "host"
+    },
+    {
+      "id": "infra-05-ha-control-plane",
+      "path": "infrastructure/05-ha-control-plane",
+      "title": "CKA 27 — Join and fail over three control planes",
+      "domain": "CKA chapter 27",
+      "minutes": 24,
+      "step_count": 3,
+      "backend": "ubuntu-4GB",
+      "execution": "host"
+    },
+    {
+      "id": "infra-06-api-repair",
+      "path": "infrastructure/06-api-repair",
+      "title": "CKA 37 — Recover the API server",
+      "domain": "CKA chapter 37",
+      "minutes": 10,
+      "step_count": 1,
       "backend": "kubernetes-kubeadm-1node",
       "execution": "host"
     },

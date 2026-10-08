@@ -1,0 +1,38 @@
+{
+  "title": "CKA 10 + CKS 07 \u2014 Upgrade both kubeadm nodes",
+  "description": "CKA chapter 10 and CKS chapter 7",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Upgrade the control plane by one minor",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Upgrade the worker and check the application",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/infra-02-cluster-upgrade/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-2nodes"
+  }
+}

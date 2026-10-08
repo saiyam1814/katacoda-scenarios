@@ -1,0 +1,43 @@
+{
+  "title": "CKA 27 \u2014 Join and fail over three control planes",
+  "description": "CKA chapter 27",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Join two real control-plane members",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Prove writes survive one unavailable member",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      },
+      {
+        "title": "Recover the failed member",
+        "text": "step3.md",
+        "verify": "verify3.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/infra-05-ha-control-plane/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu-4GB"
+  }
+}
