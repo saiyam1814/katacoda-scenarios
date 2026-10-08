@@ -4,16 +4,22 @@
     {
       "id": "cka-01-rbac",
       "path": "cka/01-rbac",
-      "title": "Give an application team the right access",
-      "domain": "Cluster Architecture, Installation & Configuration",
-      "minutes": 8
+      "title": "CKA — RBAC scopes and ServiceAccount identity",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 8,
+      "step_count": 3,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
     },
     {
       "id": "cka-02-service-repair",
       "path": "cka/02-service-repair",
-      "title": "Find why the Service is not working",
-      "domain": "Troubleshooting / Services & Networking",
-      "minutes": 10
+      "title": "CKA — Service, DNS and application troubleshooting",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 10,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
     },
     {
       "id": "cka-03-kustomize",
@@ -85,5 +91,6 @@
       "domain": "Monitoring, Logging & Runtime Security",
       "minutes": 15
     }
-  ]
+  ],
+  "updated": "2026-10-08"
 }

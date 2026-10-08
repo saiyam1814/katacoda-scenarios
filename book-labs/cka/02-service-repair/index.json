@@ -1,6 +1,6 @@
 {
-  "title": "CKA 02 - Find why the Service is not working",
-  "description": "Troubleshooting / Services & Networking",
+  "title": "CKA \u2014 Service, DNS and application troubleshooting",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,14 @@
     },
     "steps": [
       {
-        "title": "Find why the Service is not working",
+        "title": "Repair the Service and client resolver",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Recover a workload through events and endpoints",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
       }
     ],
     "finish": {

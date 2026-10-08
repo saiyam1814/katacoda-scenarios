@@ -1,15 +1,15 @@
-# Scenario — Give a release bot limited access
+# Scenario — Run a Pod without an API token
 
-Book scenario(s): 22.
+Book scenario(s): 24.
 
-In `book-cka-rbac`, create `release-bot`, Role `release-manager` and its RoleBinding. Allow get/list/watch/update/patch Deployments and get/list/watch ConfigMaps. Deny Secret access, Deployment create/delete and permissions in other namespaces.
+Create Ready Pod `web-identity` with image `nginx:1.28.0` and ServiceAccount `demo-sa` in `book-cka-rbac`. Set `automountServiceAccountToken: false`. The web container must have no API token file or projected service-account-token volume.
 
 ## Verify your work
 
 Use **CHECK**. The verifier examines the real objects and the stated result; a manifest existing on disk is not enough.
 
 ```bash
-bash /opt/book-labs/cka-01-rbac/verify-step-01.sh
+bash /opt/book-labs/cka-01-rbac/verify-step-03.sh
 ```{{exec}}
 
 <details><summary>Solution</summary>
@@ -17,8 +17,8 @@ bash /opt/book-labs/cka-01-rbac/verify-step-01.sh
 Try the task first. Then read and run this step's worked solution:
 
 ```bash
-cat /opt/book-labs/cka-01-rbac/solution-step-01.sh
-bash /opt/book-labs/cka-01-rbac/solution-step-01.sh
+cat /opt/book-labs/cka-01-rbac/solution-step-03.sh
+bash /opt/book-labs/cka-01-rbac/solution-step-03.sh
 ```{{exec}}
 
 

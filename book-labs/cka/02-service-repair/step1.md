@@ -1,28 +1,28 @@
-# Scenario
+# Scenario — Repair the Service and client resolver
 
-Deployment `web` in namespace `book-cka-service` is healthy, but Service `web` does not return the application.
+Book scenario(s): 35.
 
-Fix the existing Service so TCP port `80` reaches the `web` Pods on container port `80`. Keep the Service name and ClusterIP. Do not change the Deployment labels. From the existing `client` Pod, `wget -qO- http://web` must return the NGINX welcome page.
+In `book-cka-service`, restore HTTP from `client` to `web.book-cka-service.svc.cluster.local`. Repair the selector, target port and client DNS configuration. Keep the existing web Deployment. Save a short diagnosis naming each fault to `~/book-labs/cka-02-service-repair/causes.txt`.
 
-## Validate
+## Verify your work
 
-Use the **CHECK** button when you are done. You can also run:
+Use **CHECK**. The verifier examines the real objects and the stated result; a manifest existing on disk is not enough.
 
 ```bash
-bash /opt/book-labs/cka-02-service-repair/verify.sh
+bash /opt/book-labs/cka-02-service-repair/verify-step-01.sh
 ```{{exec}}
-
-Read the failed check and inspect the object before changing anything else.
 
 <details><summary>Solution</summary>
 
-The complete solution is available inside the environment. Read it first, then run it if needed:
+Try the task first. Then read and run this step's worked solution:
 
 ```bash
-cat /opt/book-labs/cka-02-service-repair/solution.sh
-bash /opt/book-labs/cka-02-service-repair/solution.sh
+cat /opt/book-labs/cka-02-service-repair/solution-step-01.sh
+bash /opt/book-labs/cka-02-service-repair/solution-step-01.sh
 ```{{exec}}
 
-Inspect Service selectors, EndpointSlices and target ports. A healthy Pod does not prove that Service traffic can reach it.
+
 
 </details>
+
+To run every worked solution in this grouped lab, use `bash /opt/book-labs/cka-02-service-repair/solution.sh`. Every step remains independently verifiable after all solutions finish.

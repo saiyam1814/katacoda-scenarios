@@ -1,6 +1,6 @@
 {
-  "title": "CKA 01 - Give an application team the right access",
-  "description": "Cluster Architecture, Installation & Configuration",
+  "title": "CKA \u2014 RBAC scopes and ServiceAccount identity",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,19 @@
     },
     "steps": [
       {
-        "title": "Give an application team the right access",
+        "title": "Give a release bot limited access",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Bind reusable rules within one namespace",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      },
+      {
+        "title": "Run a Pod without an API token",
+        "text": "step3.md",
+        "verify": "verify-step-03.sh"
       }
     ],
     "finish": {

@@ -1,7 +1,11 @@
 # Scenario completed
 
-You have completed **Find why the Service is not working**. Repeat the task once without the solution, then explain why the failed state did not meet the requirement.
+You completed CKA — Service, DNS and application troubleshooting. Repeat the tasks without the solution and explain what each verification proves.
 
-Inspect Service selectors, EndpointSlices and target ports. A healthy Pod does not prove that Service traffic can reach it.
+Clean up only this lab's resources when you are finished:
 
-These companion labs are an initial pack, not the complete CKA or CKS curriculum.
+```bash
+bash /opt/book-labs/cka-02-service-repair/cleanup.sh
+```{{exec}}
+
+These are original practice exercises, not recalled examination questions.

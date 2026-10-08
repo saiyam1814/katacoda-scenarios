@@ -1,14 +1,14 @@
 {
   "title": "CKA and CKS book companion labs",
-  "description": "Twelve original CKA and CKS practice scenarios with prepared environments, complete solutions and verification.",
+  "description": "CKA and CKS book practice with prepared environments, worked solutions and checks for each task.",
   "items": [
     {
       "path": "cka/01-rbac",
-      "title": "CKA 01 - Give an application team the right access"
+      "title": "CKA — RBAC scopes and ServiceAccount identity"
     },
     {
       "path": "cka/02-service-repair",
-      "title": "CKA 02 - Find why the Service is not working"
+      "title": "CKA — Service, DNS and application troubleshooting"
     },
     {
       "path": "cka/03-kustomize",
