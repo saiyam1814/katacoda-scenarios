@@ -7,7 +7,7 @@ kubectl -n book-cka-rbac get rolebinding demo-create -o json | json_assert 'd["r
 for sa in demo-sa demo2-sa; do
  can_i yes "system:serviceaccount:book-cka-rbac:$sa" book-cka-rbac create deployments.apps
  can_i no "system:serviceaccount:book-cka-rbac:$sa" default create deployments.apps
- can_i no "system:serviceaccount:book-cka-rbac:$sa" book-cka-rbac get secrets
+ for verb in get list watch; do can_i no "system:serviceaccount:book-cka-rbac:$sa" book-cka-rbac "$verb" secrets; done
 done
 can_i yes system:serviceaccount:book-cka-rbac:demo-sa book-cka-rbac create daemonsets.apps
 can_i no system:serviceaccount:book-cka-rbac:demo2-sa book-cka-rbac create daemonsets.apps
