@@ -3,8 +3,9 @@ test_query_does_not_bypass_image_denial (test_host_helpers.ImagePolicyURLTests.t
 test_unrelated_namespaces_remain_available (test_host_helpers.ImagePolicyURLTests.test_unrelated_namespaces_remain_available) ... ok
 test_wrong_endpoint_is_rejected (test_host_helpers.ImagePolicyURLTests.test_wrong_endpoint_is_rejected) ... ok
 test_preserves_flags_mounts_other_container_and_is_idempotent (test_host_helpers.ManifestPatchTests.test_preserves_flags_mounts_other_container_and_is_idempotent) ... ok
+test_reads_large_package_index_without_sigpipe (test_host_helpers.PackageSelectionTests.test_reads_large_package_index_without_sigpipe) ... ok
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0.058s
+Ran 6 tests in 0.946s
 
 OK
