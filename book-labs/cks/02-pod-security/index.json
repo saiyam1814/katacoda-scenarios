@@ -1,6 +1,6 @@
 {
-  "title": "CKS 02 - Enforce restricted Pod Security Admission",
-  "description": "Minimize Microservice Vulnerabilities",
+  "title": "CKS - Admission and privileged workloads",
+  "description": "CKS book: practical security scenarios",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -11,7 +11,12 @@
       {
         "title": "Enforce restricted Pod Security Admission",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step1.sh"
+      },
+      {
+        "title": "Repair a privileged Deployment",
+        "text": "step2.md",
+        "verify": "verify-step2.sh"
       }
     ],
     "finish": {

@@ -1,6 +1,6 @@
 {
-  "title": "CKA 05 - Repair a Pod that cannot be scheduled",
-  "description": "Workloads & Scheduling / Troubleshooting",
+  "title": "CKA \u2014 Selectors, direct binding, affinity and DaemonSets",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,24 @@
     },
     "steps": [
       {
-        "title": "Repair a Pod that cannot be scheduled",
+        "title": "Repair a node selector",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Assign a Pod directly to a node",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      },
+      {
+        "title": "Co-locate using required Pod affinity",
+        "text": "step3.md",
+        "verify": "verify-step-03.sh"
+      },
+      {
+        "title": "Run a DaemonSet on every node",
+        "text": "step4.md",
+        "verify": "verify-step-04.sh"
       }
     ],
     "finish": {

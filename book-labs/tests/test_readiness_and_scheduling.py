@@ -42,7 +42,7 @@ elif "get" in args and "pod" in args:
     elif output == "jsonpath={.spec.nodeName}":
         print("node1", end="")
     elif output == "json":
-        print(json.dumps({"metadata": {"uid": "current-pod-uid"}, "spec": {
+        print(json.dumps({"metadata": {"uid": "current-pod-uid"}, "status": {"phase": "Running", "conditions": [{"type": "Ready", "status": "True"}]}, "spec": {
             "nodeSelector": {"book-labs.example/disk": "ssd"},
             "nodeName": "node1", "containers": [{"image": "busybox:1.37.0", "command": ["sh", "-c", "sleep 3600"]}]
         }}))
@@ -105,19 +105,19 @@ class LabRegressionTests(unittest.TestCase):
         state.mkdir(parents=True, exist_ok=True)
         (state / "ready").touch()
         return subprocess.run(
-            ["bash", str(ROOT / "cka/05-scheduling/verify.sh")],
+            ["bash", str(ROOT / "cka/05-scheduling/verify-step-01.sh")],
             env=self.env, capture_output=True, text=True, timeout=6,
         )
 
     def test_previous_pod_scheduled_event_does_not_pass_current_pod(self):
         result = self.verify_schedule("deleted-pod-uid")
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("No scheduler Scheduled event for the current Pod UID", result.stderr)
+        self.assertIn("Current Pod must have a Scheduled event", result.stderr)
 
     def test_current_pod_scheduled_event_passes(self):
         result = self.verify_schedule("current-pod-uid")
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("All checks passed", result.stdout)
+        self.assertIn("Step 1: Repair a node selector", result.stdout)
 
 
 if __name__ == "__main__":

@@ -38,16 +38,22 @@
     {
       "id": "cka-05-scheduling",
       "path": "cka/05-scheduling",
-      "title": "Repair a Pod that cannot be scheduled",
-      "domain": "Workloads & Scheduling / Troubleshooting",
-      "minutes": 8
+      "title": "CKA — Selectors, direct binding, affinity and DaemonSets",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 8,
+      "step_count": 4,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
     },
     {
       "id": "cka-06-rollout-recovery",
       "path": "cka/06-rollout-recovery",
-      "title": "Recover a broken Deployment rollout",
-      "domain": "Troubleshooting / Workloads & Scheduling",
-      "minutes": 10
+      "title": "CKA — Deployments, controlled updates and rollback",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 10,
+      "step_count": 3,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
     },
     {
       "id": "cks-01-networkpolicy",
@@ -59,9 +65,12 @@
     {
       "id": "cks-02-pod-security",
       "path": "cks/02-pod-security",
-      "title": "Enforce restricted Pod Security Admission",
-      "domain": "Minimize Microservice Vulnerabilities",
-      "minutes": 12
+      "title": "CKS - Admission and privileged workloads",
+      "domain": "CKS book: practical security scenarios",
+      "minutes": 12,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
     },
     {
       "id": "cks-03-runtime-hardening",
@@ -73,9 +82,12 @@
     {
       "id": "cks-04-serviceaccount",
       "path": "cks/04-serviceaccount",
-      "title": "Remove excess API access and token mounts",
-      "domain": "Cluster Hardening / Minimize Microservice Vulnerabilities",
-      "minutes": 12
+      "title": "CKS - RBAC, Secrets and service-account credentials",
+      "domain": "CKS book: practical security scenarios",
+      "minutes": 12,
+      "step_count": 4,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
     },
     {
       "id": "cks-05-image-admission",

@@ -1,6 +1,6 @@
 {
-  "title": "CKA 06 - Recover a broken Deployment rollout",
-  "description": "Troubleshooting / Workloads & Scheduling",
+  "title": "CKA \u2014 Deployments, controlled updates and rollback",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,19 @@
     },
     "steps": [
       {
-        "title": "Recover a broken Deployment rollout",
+        "title": "Create and inspect a Deployment",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Update an image with rolling availability",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      },
+      {
+        "title": "Inspect history and recover the broken rollout",
+        "text": "step3.md",
+        "verify": "verify-step-03.sh"
       }
     ],
     "finish": {

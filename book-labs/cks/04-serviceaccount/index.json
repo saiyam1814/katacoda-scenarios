@@ -1,6 +1,6 @@
 {
-  "title": "CKS 04 - Remove excess API access and token mounts",
-  "description": "Cluster Hardening / Minimize Microservice Vulnerabilities",
+  "title": "CKS - RBAC, Secrets and service-account credentials",
+  "description": "CKS book: practical security scenarios",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,24 @@
     },
     "steps": [
       {
-        "title": "Remove excess API access and token mounts",
+        "title": "Remove excess access and token mounts",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step1.sh"
+      },
+      {
+        "title": "Give Sam only the required permissions",
+        "text": "step2.md",
+        "verify": "verify-step2.sh"
+      },
+      {
+        "title": "Consume a Secret without mounting API credentials",
+        "text": "step3.md",
+        "verify": "verify-step3.sh"
+      },
+      {
+        "title": "Use a short-lived token with an isolated kubeconfig",
+        "text": "step4.md",
+        "verify": "verify-step4.sh"
       }
     ],
     "finish": {

@@ -1,28 +1,28 @@
-# Scenario
+# Scenario — Repair a node selector
 
-Pod `reporter` in namespace `book-cka-scheduling` is Pending. One node has label `book-labs.example/disk=ssd`.
+Book scenario(s): 5.
 
-Recreate `reporter` with a node selector for that label. Keep its container image and command. Do not remove the node selector and do not set `nodeName` directly. The Pod must become Ready on the labeled node.
+Recreate `reporter` in `book-cka-scheduling` using `busybox:1.37.0`, requiring `book-labs.example/disk=ssd`. Keep it running. Let the scheduler select the node; do not set nodeName.
 
-## Validate
+## Verify your work
 
-Use the **CHECK** button when you are done. You can also run:
+Use **CHECK**. The verifier examines the real objects and the stated result; a manifest existing on disk is not enough.
 
 ```bash
-bash /opt/book-labs/cka-05-scheduling/verify.sh
+bash /opt/book-labs/cka-05-scheduling/verify-step-01.sh
 ```{{exec}}
-
-Read the failed check and inspect the object before changing anything else.
 
 <details><summary>Solution</summary>
 
-The complete solution is available inside the environment. Read it first, then run it if needed:
+Try the task first. Then read and run this step's worked solution:
 
 ```bash
-cat /opt/book-labs/cka-05-scheduling/solution.sh
-bash /opt/book-labs/cka-05-scheduling/solution.sh
+cat /opt/book-labs/cka-05-scheduling/solution-step-01.sh
+bash /opt/book-labs/cka-05-scheduling/solution-step-01.sh
 ```{{exec}}
 
-Use `kubectl describe pod` and the FailedScheduling event. Most scheduling fields cannot be changed on an existing Pod, so recreate the standalone Pod.
+
 
 </details>
+
+To run every worked solution in this grouped lab, use `bash /opt/book-labs/cka-05-scheduling/solution.sh`. Every step remains independently verifiable after all solutions finish.

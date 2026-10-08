@@ -20,11 +20,11 @@
     },
     {
       "path": "cka/05-scheduling",
-      "title": "CKA 05 - Repair a Pod that cannot be scheduled"
+      "title": "CKA — Selectors, direct binding, affinity and DaemonSets"
     },
     {
       "path": "cka/06-rollout-recovery",
-      "title": "CKA 06 - Recover a broken Deployment rollout"
+      "title": "CKA — Deployments, controlled updates and rollback"
     },
     {
       "path": "cks/01-networkpolicy",
@@ -32,7 +32,7 @@
     },
     {
       "path": "cks/02-pod-security",
-      "title": "CKS 02 - Enforce restricted Pod Security Admission"
+      "title": "CKS - Admission and privileged workloads"
     },
     {
       "path": "cks/03-runtime-hardening",
@@ -40,7 +40,7 @@
     },
     {
       "path": "cks/04-serviceaccount",
-      "title": "CKS 04 - Remove excess API access and token mounts"
+      "title": "CKS - RBAC, Secrets and service-account credentials"
     },
     {
       "path": "cks/05-image-admission",

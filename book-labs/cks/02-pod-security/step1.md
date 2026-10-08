@@ -1,3 +1,5 @@
+# Enforce restricted Pod Security Admission
+
 # Scenario
 
 Namespace `book-cks-psa` currently permits an insecure Pod specification. Enforce the `restricted` Pod Security Standard and pin its version to `v1.35`.
@@ -14,15 +16,16 @@ bash /opt/book-labs/cks-02-pod-security/verify.sh
 
 Read the failed check and inspect the object before changing anything else.
 
-<details><summary>Solution</summary>
 
-The complete solution is available inside the environment. Read it first, then run it if needed:
+
+<details><summary>Worked solution</summary>
+
+The complete group solution is readable and runnable in the terminal:
 
 ```bash
 cat /opt/book-labs/cks-02-pod-security/solution.sh
 bash /opt/book-labs/cks-02-pod-security/solution.sh
 ```{{exec}}
 
-PSA operates at admission. Namespace labels do not evict existing Pods, so create or recreate the workload after enforcing the policy.
-
+It solves all steps in this group. Use CHECK for each step to verify its own result.
 </details>

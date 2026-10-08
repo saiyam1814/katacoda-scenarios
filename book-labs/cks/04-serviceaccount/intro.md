@@ -1,23 +1,10 @@
-# Remove excess API access and token mounts
+# CKS - RBAC, Secrets and service-account credentials
 
-**CKS scenario | Cluster Hardening / Minimize Microservice Vulnerabilities | Suggested time: 12 minutes**
-
-This is an original practice scenario. It follows public Kubernetes objectives and is not a recalled exam question.
-
-ServiceAccount `reader` and Deployment `worker` in namespace `book-cks-identity` have more API access than required.
-
-Replace Role `reader` rules so the account can only `get` ConfigMap `settings`. It must not list ConfigMaps, read ConfigMap `other`, read Secrets or access ConfigMaps in `default`. Keep the RoleBinding. Disable automatic token mounting on both the ServiceAccount and the Deployment Pod template, then roll out the change. The application does not call the Kubernetes API.
-
-Wait for **Ready** in the terminal, then start. Setup resets this lab's own resources; use an isolated practice cluster.
-
-If you see a prompt without the Ready message, check setup:
+These 4 steps use real components and keep their own verification. Setup prepares intentionally incomplete starting states. Wait for Ready before beginning. Installation failures are setup failures, not solved tasks.
 
 ```bash
-if test -f /tmp/book-labs/cks-04-serviceaccount/error; then
-  cat /tmp/book-labs/cks-04-serviceaccount/error
-elif test -f /tmp/book-labs/cks-04-serviceaccount/ready; then
-  printf 'Ready. Start the scenario.\n'
-else
-  printf 'Setup is still running. Wait a moment, then check again.\n'
-fi
+state=/tmp/book-labs/cks-04-serviceaccount
+if test -f "$state/ready"; then echo 'Ready'; elif test -f "$state/error"; then cat "$state/error"; else tail -n 15 "$state/setup.log"; fi
 ```{{exec}}
+
+The complete solution is available in each step. The shared solution solves every step; CHECK still evaluates one step at a time. Reset the scenario to repeat from the original conditions.

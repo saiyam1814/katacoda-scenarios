@@ -1,28 +1,28 @@
-# Scenario
+# Scenario — Create and inspect a Deployment
 
-Deployment `web` in namespace `book-cka-rollout` used to run two healthy replicas. A new rollout now uses a nonexistent image.
+Book scenario(s): 12.
 
-Inspect rollout history and recover the previous working Pod template. Keep two desired replicas. The final image must be `nginx:1.28.0`, with two updated, Ready and available replicas and no old replicas left.
+Create Deployment `created` in `book-cka-rollout` with three replicas of `nginx:1.28.0`. Save its live YAML as `~/book-labs/cka-06-rollout-recovery/created.yaml`. Require all replicas Ready.
 
-## Validate
+## Verify your work
 
-Use the **CHECK** button when you are done. You can also run:
+Use **CHECK**. The verifier examines the real objects and the stated result; a manifest existing on disk is not enough.
 
 ```bash
-bash /opt/book-labs/cka-06-rollout-recovery/verify.sh
+bash /opt/book-labs/cka-06-rollout-recovery/verify-step-01.sh
 ```{{exec}}
-
-Read the failed check and inspect the object before changing anything else.
 
 <details><summary>Solution</summary>
 
-The complete solution is available inside the environment. Read it first, then run it if needed:
+Try the task first. Then read and run this step's worked solution:
 
 ```bash
-cat /opt/book-labs/cka-06-rollout-recovery/solution.sh
-bash /opt/book-labs/cka-06-rollout-recovery/solution.sh
+cat /opt/book-labs/cka-06-rollout-recovery/solution-step-01.sh
+bash /opt/book-labs/cka-06-rollout-recovery/solution-step-01.sh
 ```{{exec}}
 
-Rollback restores the Pod template, not every Deployment setting. Check replica counts and rollout status after undo.
+
 
 </details>
+
+To run every worked solution in this grouped lab, use `bash /opt/book-labs/cka-06-rollout-recovery/solution.sh`. Every step remains independently verifiable after all solutions finish.
