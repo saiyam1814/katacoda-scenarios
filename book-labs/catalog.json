@@ -194,9 +194,12 @@
     {
       "id": "cks-06-audit-policy",
       "path": "cks/06-audit-policy",
-      "title": "Order audit rules without logging Secret bodies",
+      "title": "CKS 06 - Order audit rules without logging Secret bodies",
       "domain": "Monitoring, Logging & Runtime Security",
-      "minutes": 15
+      "minutes": 15,
+      "step_count": 1,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
     },
     {
       "id": "cks-07-supply-chain",

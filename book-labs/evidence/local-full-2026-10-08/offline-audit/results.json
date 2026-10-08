@@ -1,0 +1,31 @@
+{
+  "id": "cks-06-audit-policy",
+  "scope": "Actual local offline policy checks, no live API audit backend",
+  "passed": true,
+  "phases": [
+    {
+      "phase": "setup",
+      "exit_code": 0,
+      "seconds": 0.05,
+      "log": "setup.log"
+    },
+    {
+      "phase": "before",
+      "exit_code": 1,
+      "seconds": 0.092,
+      "log": "before.log"
+    },
+    {
+      "phase": "solution",
+      "exit_code": 0,
+      "seconds": 0.031,
+      "log": "solution.log"
+    },
+    {
+      "phase": "after",
+      "exit_code": 0,
+      "seconds": 0.069,
+      "log": "after.log"
+    }
+  ]
+}
