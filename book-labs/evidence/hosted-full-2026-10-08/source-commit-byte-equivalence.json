@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "created_at": "2026-10-08T13:04:31.338098+00:00",
+  "scope": "Release-time byte comparison of current source assets with the immutable commit of the recorded browser run. This is not independent hashing of delivered runtime files. Raw browser evidence retains that limitation.",
+  "entries": [
+    {
+      "path": "cka/02-service-repair",
+      "recordedSourceCommit": "b50149f",
+      "sourceCommit": "b50149fd58d3c760cac0a447ee382b951f8800bc",
+      "comparison": "all_current_asset_bytes_equal_immutable_git_blobs",
+      "assets": {
+        "cleanup.sh": {
+          "sha256": "cdec8f71f165c52873cf2a986a2b5e6406aadeda6be8ed2e416037b0595ee96e",
+          "bytes": 247,
+          "git_blob": "4128a30aa2884efc3a386e6647382fe2f7c36c20"
+        },
+        "lib.sh": {
+          "sha256": "b55070bab6c16375fbf424bc03e1d8264ace417a336fb8eb6444ce3d61416a38",
+          "bytes": 5247,
+          "git_blob": "99878c2ec2c29afdeab07a4dd8f82f9ffdad27de"
+        },
+        "setup.sh": {
+          "sha256": "61a70392eb603767c56a463943c353abccde89f814b7807543d93d96e1fd7321",
+          "bytes": 1675,
+          "git_blob": "c4f8f724d5390f173d6e4a96b062eceea4294264"
+        },
+        "solution-step-01.sh": {
+          "sha256": "73c47fcc92d2cd4d82f623b52a0cbd7cbb024837ba0e080efd1813b07c1521ca",
+          "bytes": 941,
+          "git_blob": "8bee077f1cfbd5105ff33aba0fa332f5f9acfdd3"
+        },
+        "solution-step-02.sh": {
+          "sha256": "44090a24ada45fd9c7be95064d74ea2f0be8f22daa6b47cc8fdf518184e2efb9",
+          "bytes": 1315,
+          "git_blob": "bf5026ec678cd71cd3451502f9a24ce3013f88ab"
+        },
+        "solution.sh": {
+          "sha256": "930849efb1be1c9dcc7f2610a213105b0d866c4e6a904b19285fa014a7fd3fdf",
+          "bytes": 279,
+          "git_blob": "c894c2d9a31e0b67959da2d4e76e85d433f3cca2"
+        },
+        "verify-step-01.sh": {
+          "sha256": "6583f0a1bc8dcb1b41699b3fedaedac92825a30e0a349d9cc832feeaa272280a",
+          "bytes": 1073,
+          "git_blob": "4e1784585a20483fc88fd02e31fecbba0d9848ed"
+        },
+        "verify-step-02.sh": {
+          "sha256": "1b9a803efc4fd9d35064b0fa6bd5781425c815c6df304e5558e8d4f0ab4fa07d",
+          "bytes": 1474,
+          "git_blob": "b63c48e8dccf80bcdd24f957c945bf1d207ebb74"
+        },
+        "verify.sh": {
+          "sha256": "5638796d1e14bfc7560bf68d4f4ddcba57922d0dcec1ac29b783e26dfe5aadd0",
+          "bytes": 275,
+          "git_blob": "5ab0d91f1341e293c7d8a8d01095989a920c49c9"
+        }
+      }
+    },
+    {
+      "path": "cka/03-kustomize",
+      "recordedSourceCommit": "6822ae6",
+      "sourceCommit": "6822ae6907092098a3b77ed09352f52c8bf8a198",
+      "comparison": "all_current_asset_bytes_equal_immutable_git_blobs",
+      "assets": {
+        "cleanup.sh": {
+          "sha256": "528c02698b8ea3a00a2c2a94202ff614c8b41c734bf1cc78201973cab0b1d611",
+          "bytes": 296,
+          "git_blob": "e35b2ed5e4ad5fadfd6f84eacedf44b97d276932"
+        },
+        "lib.sh": {
+          "sha256": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+          "bytes": 5248,
+          "git_blob": "a79b9eb28ba2d9ed3efc93b3f3bd76f5ac966759"
+        },
+        "metrics.sh": {
+          "sha256": "03f6e181669312a0b57bb6986bf0c0423207de80a14861e1193c523faeeaf317",
+          "bytes": 4461,
+          "git_blob": "738cfebcb33056a9cbbf3dc62c65cf7de3548b7b"
+        },
+        "setup.sh": {
+          "sha256": "ae6043d76785cd3c2dc2fa77159d8bbc41829cd36bcc8b537bfc66d3ecc170ea",
+          "bytes": 1830,
+          "git_blob": "77b7915f754ae7753bd52b959593590886105030"
+        },
+        "solution-step-01.sh": {
+          "sha256": "b4d6e9a8be4f00d9a71c7fe21c855be307106aa3970f56fa502be7bc583dac25",
+          "bytes": 777,
+          "git_blob": "bad60d662f18ab79880adaafc9117f3c6565b4e8"
+        },
+        "solution-step-02.sh": {
+          "sha256": "4cc4de078e62ca42e42ae67a6a3c967f113c67c6e0c7e6ce0abad548710398ac",
+          "bytes": 222,
+          "git_blob": "6f591a5f94583a6cd2091f603c809e457788edd7"
+        },
+        "solution.sh": {
+          "sha256": "e76a16afe0b7926d712a43eeccf9f1ee3db3d1048fe48a79d173c348c2c5b1f2",
+          "bytes": 274,
+          "git_blob": "ceb15b1ccd3afbc7e4e06865d1ce77954d581078"
+        },
+        "verify-step-01.sh": {
+          "sha256": "c477db797e90da9ed00aceebe7f73a4979e8a1fe4df8f91af16a7efa3cd3301f",
+          "bytes": 1948,
+          "git_blob": "d9d4acc83197d2722088491815ca9545811db504"
+        },
+        "verify-step-02.sh": {
+          "sha256": "01f2a8b70f4b64ad11f54d5ea5b3918bcae5fc15644dfca776fb0f9fa1e2a2b9",
+          "bytes": 452,
+          "git_blob": "0bddccc4540f415ad2731e5f264a8516698017f4"
+        },
+        "verify.sh": {
+          "sha256": "1f3aacc54aaae4d61ad440ac574f81f94da697298cbf8fa16a64c1256d549847",
+          "bytes": 270,
+          "git_blob": "295285c950b3e28ce2f8002a877dab559b451983"
+        }
+      }
+    }
+  ]
+}

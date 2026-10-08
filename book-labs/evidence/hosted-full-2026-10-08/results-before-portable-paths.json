@@ -70,7 +70,7 @@
       "verify-step-01.sh": "6583f0a1bc8dcb1b41699b3fedaedac92825a30e0a349d9cc832feeaa272280a",
       "verify-step-02.sh": "1b9a803efc4fd9d35064b0fa6bd5781425c815c6df304e5558e8d4f0ab4fa07d"
     },
-    "sourceVerification": "Current assets are byte-identical to the immutable source commit of this recorded browser run; independent delivered-file hashing was not recorded. Offline verification uses the preserved release-time Git byte-equivalence attestation.",
+    "sourceVerification": "Current assets are byte-identical to the immutable source commit of this recorded browser run; independent delivered-file hashing was not recorded.",
     "currentSourceValidated": true,
     "historicalBrowserCompletion": true,
     "recordSource": "results-root.json"
@@ -118,7 +118,7 @@
       "verify-step-01.sh": "c477db797e90da9ed00aceebe7f73a4979e8a1fe4df8f91af16a7efa3cd3301f",
       "verify-step-02.sh": "01f2a8b70f4b64ad11f54d5ea5b3918bcae5fc15644dfca776fb0f9fa1e2a2b9"
     },
-    "sourceVerification": "Current assets are byte-identical to the immutable source commit of this recorded browser run; independent delivered-file hashing was not recorded. Offline verification uses the preserved release-time Git byte-equivalence attestation.",
+    "sourceVerification": "Current assets are byte-identical to the immutable source commit of this recorded browser run; independent delivered-file hashing was not recorded.",
     "currentSourceValidated": true,
     "historicalBrowserCompletion": true,
     "recordSource": "results-root.json"
@@ -484,13 +484,13 @@
       2
     ],
     "completed": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cka09-final-completed.png",
-    "completionScreenshot": "evidence/hosted-full-2026-10-08/cka09-final-completed.png",
-    "completionDom": "evidence/hosted-full-2026-10-08/cka09-final-completed.txt",
-    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka09-final-delivered-assets.png",
-    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka09-final-negative-checks.png",
-    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka09-final-live-hpa.png",
-    "taskScreenshot": "evidence/hosted-full-2026-10-08/cka09-final-50m-task.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
+    "completionScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
+    "completionDom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.txt",
+    "startupScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-delivered-assets.png",
+    "beforeScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-negative-checks.png",
+    "solutionScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-live-hpa.png",
+    "taskScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-50m-task.png",
     "publicTaskCpuRequest": "50m",
     "publicTaskExplainsBook200mAdaptation": true,
     "observedHpa": {
@@ -507,35 +507,35 @@
     },
     "evidenceFiles": [
       {
-        "path": "evidence/hosted-full-2026-10-08/cka09-final-delivered-assets.png",
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-delivered-assets.png",
         "sha256": "dad0108d71db3786474c68c94c56a951b2eea72f28245402d0391a0692e787c6"
       },
       {
-        "path": "evidence/hosted-full-2026-10-08/cka09-final-startup-dom.txt",
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-startup-dom.txt",
         "sha256": "a944ea6f8f2a59df81077fdcb439c73f8720c438dbc244f41d43cfb4d5a6fb04"
       },
       {
-        "path": "evidence/hosted-full-2026-10-08/cka09-final-negative-checks.png",
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-negative-checks.png",
         "sha256": "64901676b80b1ef05de5383c2853db4410b64b7cc1690d1516da4ff93fa19ec3"
       },
       {
-        "path": "evidence/hosted-full-2026-10-08/cka09-final-50m-task.png",
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-50m-task.png",
         "sha256": "e6d712d343a474dfd12c4a966f05eac57d12c16a9b1fd1f055bee61f506b0998"
       },
       {
-        "path": "evidence/hosted-full-2026-10-08/cka09-final-step2-dom.txt",
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-step2-dom.txt",
         "sha256": "1b7afd25ad93eebf3c18885bfe4cf8fbb90ebf3dad4449e6b3996cccac986187"
       },
       {
-        "path": "evidence/hosted-full-2026-10-08/cka09-final-live-hpa.png",
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-live-hpa.png",
         "sha256": "63359ee0503f3b473e1deacdd53448b21e8cb0cae2a24d60f6971f02fcdcfeb7"
       },
       {
-        "path": "evidence/hosted-full-2026-10-08/cka09-final-completed.png",
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
         "sha256": "2cacf612254c23d8afe9f4d89d9d60d367cd7ae1f72a3bbda09b1fe682059db7"
       },
       {
-        "path": "evidence/hosted-full-2026-10-08/cka09-final-completed.txt",
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.txt",
         "sha256": "55ca98a9b35ec38fff49892b325dd413b1c3ff3bcbdc2f809a82b04456dfc488"
       }
     ],
@@ -546,7 +546,6 @@
       "After both CHECKs completed, an optional repeat command to print separate numeric final exit labels timed out in the terminal UI. It did not alter assets or outcomes; recorded0/0 derives from each PASS plus the fail-fast aggregate exit0 and independent browser completion.",
       "Provider environment differs from the advertised exam baseline. The public task explicitly adapts book200m CPU requests to50m on this one-CPU hosted VM."
     ],
-    "originalScreenshotPath": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
     "currentVerifierSha256": {
       "verify-step-01.sh": "2b80917713db5c7f3e90d058d0bb3100e228dbf6ee60e22bafad7afbbc836b18",
       "verify-step-02.sh": "95c789be048f8f63b7907001a6fbf4e1f229d555f3179aacda7a8b82ae1a4180"
@@ -1003,12 +1002,12 @@
         "status": "All current browser CHECK steps completed",
         "terminal_limitation": "Normal terminal input timed out; exact scripts launched by Brain, completion independently established by actual website CHECK advancement",
         "observed_at": "2026-10-08T09:13:52.031Z",
-        "completion_screenshot": "evidence/hosted-full-2026-10-08/cks01-fallback-completed.png",
+        "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-fallback-completed.png",
         "evidence_status": "Historical attempt only; excluded from final source and completion gate.",
         "source_provenance_limit": "Brain-reported output and hashes are not independent terminal attestation; later normal-terminal retake supersedes this attempt."
       }
     ],
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks01-final-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-completed.png",
     "step_count": 3,
     "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
     "actual_delivered_sha256": {
@@ -1042,10 +1041,10 @@
     "all_indexed_verifiers_attested": true,
     "not_directly_hashed_auxiliary_assets": [],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks01-final-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks01-final-terminal-pre.png",
-      "evidence/hosted-full-2026-10-08/cks01-final-terminal.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-terminal.png"
     ],
     "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
     "id": "cks-01-networkpolicy",
@@ -1058,7 +1057,7 @@
       3
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks01-final-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-completed.png",
     "unsolvedExitCodes": [
       1,
       1,
@@ -1175,7 +1174,7 @@
         "evidence_status": "Historical attempt only; excluded from final source and completion gate."
       }
     ],
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks02-final-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks02-final-completed.png",
     "step_count": 2,
     "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
     "actual_delivered_sha256": {
@@ -1205,9 +1204,9 @@
     "all_indexed_verifiers_attested": true,
     "not_directly_hashed_auxiliary_assets": [],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks02-final-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks02-final-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks02-final-terminal.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks02-final-terminal.png"
     ],
     "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
     "id": "cks-02-pod-security",
@@ -1219,7 +1218,7 @@
       2
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks02-final-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks02-final-completed.png",
     "unsolvedExitCodes": [
       1,
       1
@@ -1355,7 +1354,7 @@
     "attempt_history": [
       "Scenario Brain returned unreliable repetitive output; subsequent browser CHECK did not advance. Saved transcript is attempt history only. Reload plus Enter recovered terminal; .type delivered exact audit, all11 asset checks OK, all3 before1, supplied whole solution0, all3 after0, followed by each browser CHECK and completion."
     ],
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks03-final-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-completed.png",
     "step_count": 3,
     "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
     "actual_delivered_sha256": {
@@ -1387,10 +1386,10 @@
     "all_indexed_verifiers_attested": true,
     "not_directly_hashed_auxiliary_assets": [],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks03-final-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks03-final-terminal-pre.png",
-      "evidence/hosted-full-2026-10-08/cks03-final-terminal.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-terminal.png"
     ],
     "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
     "id": "cks-03-runtime-hardening",
@@ -1403,7 +1402,7 @@
       3
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks03-final-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-completed.png",
     "unsolvedExitCodes": [
       1,
       1,
@@ -1628,12 +1627,12 @@
             "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
           }
         },
-        "completion_screenshot": "evidence/hosted-full-2026-10-08/cks04-fallback-completed.png",
+        "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-fallback-completed.png",
         "evidence_status": "Historical attempt only; excluded from final source and completion gate.",
         "source_provenance_limit": "Brain-reported output and hashes are not independent terminal attestation; later normal-terminal retake supersedes this attempt."
       }
     ],
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks04-final-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-completed.png",
     "step_count": 4,
     "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
     "actual_delivered_sha256": {
@@ -1667,10 +1666,10 @@
     "all_indexed_verifiers_attested": true,
     "not_directly_hashed_auxiliary_assets": [],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks04-final-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks04-final-terminal-pre.png",
-      "evidence/hosted-full-2026-10-08/cks04-final-terminal.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-terminal.png"
     ],
     "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
     "id": "cks-04-serviceaccount",
@@ -1684,7 +1683,7 @@
       4
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks04-final-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-completed.png",
     "unsolvedExitCodes": [
       1,
       1,
@@ -1747,7 +1746,7 @@
       "setup_sha256": "50384c389bf539558df5fe5d3b298f54398adb0eec36dfd63f49ff836cc34db9",
       "solution_sha256": "cfce5ab12f2c27105088346363275ceebceeb19e2f55f45909c5ad067fbd1ac7"
     },
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks05-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks05-completed.png",
     "step_count": 2,
     "solution_exit": 0,
     "source_commit": "d2f0ef7c361ff59a52810e9c106c9b9e83b77580",
@@ -1781,9 +1780,9 @@
       "lib.sh"
     ],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks05-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks05-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks05-terminal.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks05-terminal.png"
     ],
     "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
     "id": "cks-05-image-admission",
@@ -1795,7 +1794,7 @@
       2
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks05-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks05-completed.png",
     "unsolvedExitCodes": [
       1,
       1
@@ -1844,7 +1843,7 @@
       "setup_sha256": "47261dcad28ad858aeca4e430489e949360569b774fd188700d6132f2ba0cb2a",
       "solution_sha256": "ba2120ed16d845349679d5876309fbb6b9f08d89076a4ded375a900ff1bca2bf"
     },
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks06-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks06-completed.png",
     "step_count": 1,
     "solution_exit": 0,
     "source_commit": "d2f0ef7c361ff59a52810e9c106c9b9e83b77580",
@@ -1870,9 +1869,9 @@
       "lib.sh"
     ],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks06-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks06-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks06-terminal.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks06-terminal.png"
     ],
     "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
     "scope": "Offline audit-policy evaluator; actual live API audit configuration is separately covered by infrastructure/07-apiserver-security.",
@@ -1884,7 +1883,7 @@
       1
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks06-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks06-completed.png",
     "unsolvedExitCodes": [
       1
     ],
@@ -2070,7 +2069,7 @@
         "evidence_status": "Historical attempt only; excluded from final source and completion gate."
       }
     ],
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks07-final-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-completed.png",
     "step_count": 6,
     "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
     "actual_delivered_sha256": {
@@ -2102,10 +2101,10 @@
     "all_indexed_verifiers_attested": true,
     "not_directly_hashed_auxiliary_assets": [],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks07-final-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks07-final-terminal-pre.png",
-      "evidence/hosted-full-2026-10-08/cks07-final-terminal.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-terminal.png"
     ],
     "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
     "id": "cks-07-supply-chain",
@@ -2121,7 +2120,7 @@
       6
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks07-final-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-completed.png",
     "unsolvedExitCodes": [
       1,
       1,
@@ -2220,7 +2219,7 @@
     "attempt_history": [
       "Initial mistyped GitHub owner URL returned404 and ran no verifier; corrected to git origin saiyam1814."
     ],
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks08-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-completed.png",
     "step_count": 5,
     "solution_exit": 0,
     "source_commit": "7e40de6cf1d59faaa51624348c87e99222a507ec",
@@ -2254,10 +2253,10 @@
       "lib.sh"
     ],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks08-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks08-initial-terminal.png",
-      "evidence/hosted-full-2026-10-08/cks08-strengthened-falco.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-initial-terminal.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-strengthened-falco.png"
     ],
     "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
     "baseline_limit": "Initial step4 negative-state result used the preceding verifier. The current strengthened Falco verifier was fetched from exact published commit7e40de6, independently hashed, directly passed and then CHECK passed before completion; all other indexed verifiers were unchanged.",
@@ -2273,7 +2272,7 @@
       5
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks08-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-completed.png",
     "unsolvedExitCodes": [
       1,
       1,
@@ -2388,12 +2387,12 @@
           "setup_sha256": "c7205f41eb0727d28cda4f1890b76f62ada63aded9f23cef3f00be321ea38b59",
           "solution_sha256": "994b4a4e78a7f2a3f24a3feaacc415087805b8ca48c0213fa37a3f196a516937"
         },
-        "completion_screenshot": "evidence/hosted-full-2026-10-08/cks09-completed.png",
+        "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-completed.png",
         "evidence_status": "Historical attempt only; excluded from final source and completion gate.",
         "source_provenance_limit": "Brain-reported output and hashes are not independent terminal attestation; later normal-terminal retake supersedes this attempt."
       }
     ],
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks09-final-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-completed.png",
     "source_provenance": "Five main-file checksums matched in direct terminal before execution; lib.sh actual raw SHA independently matched after execution. Screenshots capture both.",
     "runtime": {
       "kubernetes": "v1.36.1",
@@ -2422,11 +2421,11 @@
     "all_indexed_verifiers_attested": true,
     "not_directly_hashed_auxiliary_assets": [],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks09-final-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks09-final-terminal-pre.png",
-      "evidence/hosted-full-2026-10-08/cks09-final-terminal.png",
-      "evidence/hosted-full-2026-10-08/cks09-final-helper-runtime.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-terminal.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-helper-runtime.png"
     ],
     "id": "cks-09-ingress-mtls",
     "path": "cks/09-ingress-mtls",
@@ -2437,7 +2436,7 @@
       2
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks09-final-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-completed.png",
     "unsolvedExitCodes": [
       1,
       1
@@ -2548,12 +2547,12 @@
           "setup_sha256": "e04d260bf454ee884428be33cf871593ede8d4a08f7e048f6190b7dfa2f45064",
           "solution_sha256": "4476dc7b34efff21deaa883b2b1816b56578bd88b816a76b5685e31f9b50eb72"
         },
-        "completion_screenshot": "evidence/hosted-full-2026-10-08/cks10-completed.png",
+        "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-completed.png",
         "evidence_status": "Historical attempt only; excluded from final source and completion gate.",
         "source_provenance_limit": "Brain-reported output and hashes are not independent terminal attestation; later normal-terminal retake supersedes this attempt."
       }
     ],
-    "completion_screenshot": "evidence/hosted-full-2026-10-08/cks10-final-completed.png",
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-final-completed.png",
     "source_provenance": "All8 delivered asset hashes independently matched via direct terminal, including capture-audit.py, controlplane.py and lib.sh, before the whole supplied solution.",
     "step_count": 2,
     "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
@@ -2580,9 +2579,9 @@
     "all_indexed_verifiers_attested": true,
     "not_directly_hashed_auxiliary_assets": [],
     "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
-    "completion_dom": "evidence/hosted-full-2026-10-08/cks10-final-completed.txt",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-final-completed.txt",
     "terminal_evidence": [
-      "evidence/hosted-full-2026-10-08/cks10-final-terminal.png"
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-final-terminal.png"
     ],
     "id": "cks-10-incident-investigation",
     "path": "cks/10-incident-investigation",
@@ -2593,7 +2592,7 @@
       2
     ],
     "setupReady": true,
-    "screenshot": "evidence/hosted-full-2026-10-08/cks10-final-completed.png",
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-final-completed.png",
     "unsolvedExitCodes": [
       1,
       1
@@ -3474,7 +3473,7 @@
         "executionMethod": "Killercoda Brain command executor through Chrome; normal terminal display remained on a connection spinner",
         "verifierSha256": "83b016bb1685fa486e49d621ede255e15af58c8269d75d95ef4c13468a59bca6",
         "solutionExitCode": 0,
-        "screenshot": "evidence/hosted-full-2026-10-08/infra-09-host-hardening-completed.jpg"
+        "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/infra-09-host-hardening-completed.jpg"
       }
     ],
     "screenshot": "evidence/hosted-full-2026-10-08/infra-09-direct-completed.jpg",
