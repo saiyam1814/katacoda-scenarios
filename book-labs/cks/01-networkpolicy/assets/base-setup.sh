@@ -14,6 +14,14 @@ done
 kubectl -n book-cks-green run trusted --labels=access=trusted --image=busybox:1.37.0 --command -- sleep 3600
 kubectl -n book-cks-green run untrusted --labels=access=untrusted --image=busybox:1.37.0 --command -- sleep 3600
 kubectl -n book-cks-blue run trusted --labels=access=trusted --image=busybox:1.37.0 --command -- sleep 3600
+# The second allowed peer is local to the protected namespace. A same-label
+# client elsewhere must not inherit that local permission.
+kubectl -n book-cks-network run local-approved --labels=demo=test --image=busybox:1.37.0 --command -- sleep 3600
+kubectl -n book-cks-network run local-unapproved --labels=demo=other --image=busybox:1.37.0 --command -- sleep 3600
+kubectl -n book-cks-blue run local-approved --labels=demo=test --image=busybox:1.37.0 --command -- sleep 3600
+ready_pod book-cks-network local-approved
+ready_pod book-cks-network local-unapproved
+ready_pod book-cks-blue local-approved
 ready_pod book-cks-green trusted
 ready_pod book-cks-green untrusted
 ready_pod book-cks-blue trusted

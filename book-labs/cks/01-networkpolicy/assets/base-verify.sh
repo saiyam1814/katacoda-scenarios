@@ -9,6 +9,10 @@ for pair in 'book-cks-green trusted trusted' 'book-cks-green untrusted untrusted
   read -r namespace pod access <<< "$pair"
   kubectl --request-timeout=3s -n "$namespace" get pod "$pod" -o json | json_assert "d[\"metadata\"][\"labels\"].get(\"access\") == \"$access\" and not d[\"metadata\"].get(\"deletionTimestamp\") and any(c[\"type\"] == \"Ready\" and c[\"status\"] == \"True\" for c in d.get(\"status\",{}).get(\"conditions\",[]))" "$namespace/$pod must be Ready with its original access label; retry CHECK when ready"
 done
+for triple in 'book-cks-network local-approved test' 'book-cks-network local-unapproved other' 'book-cks-blue local-approved test'; do
+  read -r namespace pod demo <<< "$triple"
+  kubectl --request-timeout=3s -n "$namespace" get pod "$pod" -o json | json_assert "d[\"metadata\"][\"labels\"].get(\"demo\") == \"$demo\" and not d[\"metadata\"].get(\"deletionTimestamp\") and any(c[\"type\"] == \"Ready\" and c[\"status\"] == \"True\" for c in d.get(\"status\",{}).get(\"conditions\",[]))" "$namespace/$pod must be Ready with its original demo label"
+done
 for app in api admin; do
   kubectl --request-timeout=3s -n book-cks-network get deployment "$app" -o json | json_assert 'len(d["spec"]["template"]["spec"]["containers"]) == 1 and d["spec"]["template"]["spec"]["containers"][0]["image"] == "nginx:1.28.0" and not d["spec"]["template"]["spec"]["containers"][0].get("command") and not d["spec"]["template"]["spec"]["containers"][0].get("args") and d["status"].get("observedGeneration",0) >= d["metadata"]["generation"] and d["status"].get("availableReplicas",0) == d["spec"].get("replicas",1) and d["status"].get("updatedReplicas",0) == d["spec"].get("replicas",1) and d["spec"].get("replicas",1) > 0' 'Keep the original server application and wait for its rollout before CHECK'
   service=$(kubectl --request-timeout=3s -n book-cks-network get service "$app" -o json)

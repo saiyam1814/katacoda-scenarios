@@ -46,18 +46,22 @@ def probe(namespace, pod, ip, allowed):
 def main(api_ip, admin_ip):
     cases = [
         ('book-cks-green', 'trusted', api_ip, True),
+        ('book-cks-network', 'local-approved', api_ip, True),
         ('book-cks-green', 'untrusted', api_ip, False),
         ('book-cks-blue', 'trusted', api_ip, False),
         ('book-cks-green', 'trusted', admin_ip, False),
+        ('book-cks-network', 'local-unapproved', api_ip, False),
+        ('book-cks-blue', 'local-approved', api_ip, False),
+        ('book-cks-network', 'local-approved', admin_ip, False),
     ]
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as workers:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=len(cases)) as workers:
         failures = list(workers.map(lambda case: probe(*case), cases))
     for failure in failures:
         if failure:
             print('FAIL: ' + failure, file=sys.stderr)
     if any(failures):
         return 1
-    print('PASS: allowed API request and all six denied connection attempts')
+    print('PASS: both allowed API peers and all twelve denied connection attempts')
     return 0
 
 

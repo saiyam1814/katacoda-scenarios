@@ -24,5 +24,9 @@ spec:
         matchLabels: {team: green}
       podSelector:
         matchLabels: {access: trusted}
+    # A separate peer is OR, while selectors in the peer above are AND.
+    # Without namespaceSelector this Pod selector is local to this namespace.
+    - podSelector:
+        matchLabels: {demo: test}
     ports: [{protocol: TCP, port: 80}]
 YAML
