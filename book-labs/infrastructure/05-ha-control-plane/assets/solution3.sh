@@ -8,7 +8,8 @@ docker start book-ha-control-plane
 # Node Ready can briefly remain stale after restart. Wait for the actual local
 # etcd process and successful health checks from every member before grading.
 for attempt in $(seq 1 90); do
- id=$(docker exec book-ha-control-plane crictl ps --name etcd -q | head -1)
+ # Docker can report running before the nested containerd socket exists.
+ id=$(docker exec book-ha-control-plane crictl ps --name etcd -q 2>/dev/null | head -1) || id=
  if [[ -n "$id" ]] && docker exec book-ha-control-plane crictl exec "$id" etcdctl --command-timeout=3s --endpoints=https://127.0.0.1:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/healthcheck-client.crt --key=/etc/kubernetes/pki/etcd/healthcheck-client.key endpoint health --cluster >/dev/null 2>&1; then break; fi
  sleep 2
 done
