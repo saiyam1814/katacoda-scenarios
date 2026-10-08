@@ -5,6 +5,7 @@ source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/lib.sh"
 require_ready
 source "$(dirname -- "${BASH_SOURCE[0]}")/metrics.sh"
 
+[[ -r "$WORK_DIR/highest-memory.txt" && -s "$WORK_DIR/highest-memory.txt" ]] || fail "Save a readable, nonempty highest-memory.txt with the namespace and Pod name"
 metrics_check
 kubectl get --raw /apis/metrics.k8s.io/v1beta1/pods > "$STATE_DIR/pod-metrics.json"
 python3 - "$STATE_DIR/pod-metrics.json" "$WORK_DIR/highest-memory.txt" <<'PYRANK'
