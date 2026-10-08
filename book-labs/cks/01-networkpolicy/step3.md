@@ -15,3 +15,5 @@ It solves all steps in this group. Use CHECK for each step to verify its own res
 </details>
 
 The metadata protection policy must select every Pod in `book-cks-metadata`.
+
+Allow cluster Pod destinations explicitly with a `namespaceSelector: {}` peer. Cilium treats Pod identities separately from `ipBlock` destinations; the explicit peer keeps cluster DNS and the application working while the metadata address remains excluded.

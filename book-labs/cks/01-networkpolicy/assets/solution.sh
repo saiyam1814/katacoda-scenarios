@@ -24,5 +24,6 @@ spec:
   egress:
   - to:
     - ipBlock: {cidr: 0.0.0.0/0, except: [169.254.169.254/32]}
+    - namespaceSelector: {}
 YAML
 sleep 3
