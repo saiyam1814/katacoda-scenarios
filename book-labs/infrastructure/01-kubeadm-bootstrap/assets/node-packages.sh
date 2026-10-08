@@ -5,6 +5,14 @@ case "$action" in
 reset)
  test -f /etc/killercoda/host || test "${BOOK_LAB_ALLOW_DISPOSABLE_HOST:-0}" = 1 || { printf 'Requires a disposable Killercoda host.\n' >&2; exit 1; }
  kubeadm reset -f
+ # The previous container can leave PID 1 in this host-mounted file.
+ # clean-cilium-state refuses to proceed while the stale file exists.
+ old_cilium_agents=$(crictl ps --name cilium-agent -q)
+ if [[ -n "$old_cilium_agents" ]]; then
+   printf 'An old Cilium agent is still running after reset; do not remove its PID file.\n' >&2
+   exit 1
+ fi
+ rm -f /var/run/cilium/cilium.pid
  # The reset has stopped old Pods. Remove only cluster network configuration/state.
  rm -f /etc/cni/net.d/*.conf /etc/cni/net.d/*.conflist
  rm -rf /var/lib/cni
