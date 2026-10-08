@@ -3,31 +3,11 @@ set -Eeuo pipefail
 export LAB_ID=cks-05-image-admission
 source "$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/lib.sh"
 require_ready
-kubectl apply -f - <<'YAML'
-apiVersion: admissionregistration.k8s.io/v1
-kind: ValidatingAdmissionPolicy
-metadata: {name: book-images}
-spec:
-  failurePolicy: Fail
-  matchConstraints:
-    resourceRules:
-    - apiGroups: ['']
-      apiVersions: [v1]
-      operations: [CREATE, UPDATE]
-      resources: [pods]
-  validations:
-  - expression: "object.spec.containers.all(c, c.image.matches('^registry[.]k8s[.]io/[a-z0-9/._-]+@sha256:[a-f0-9]{64}$'))"
-    message: Regular container images must use registry.k8s.io and a sha256 digest
-  - expression: "!has(object.spec.initContainers) || object.spec.initContainers.all(c, c.image.matches('^registry[.]k8s[.]io/[a-z0-9/._-]+@sha256:[a-f0-9]{64}$'))"
-    message: Init container images must use registry.k8s.io and a sha256 digest
----
-apiVersion: admissionregistration.k8s.io/v1
-kind: ValidatingAdmissionPolicyBinding
-metadata: {name: book-images}
-spec:
-  policyName: book-images
-  validationActions: [Deny]
-  matchResources:
-    namespaceSelector:
-      matchLabels: {book-labs.example/image-policy: enforce}
-YAML
+bash "$(dirname "$0")/base-solution.sh"
+# Wait here for admission propagation; CHECK itself never waits for configuration.
+for n in $(seq 1 30); do
+ if ! kubectl -n book-cks-images run propagation-test --image=nginx:latest --dry-run=server >"$STATE_DIR/admission-propagation" 2>&1 && grep -q book-images "$STATE_DIR/admission-propagation"; then break; fi
+ sleep 1
+done
+kubectl patch validatingadmissionpolicy book-images --type=json -p '[{"op":"add","path":"/spec/matchConstraints/resourceRules/0/resources/-","value":"pods/ephemeralcontainers"},{"op":"add","path":"/spec/validations/-","value":{"expression":"!has(object.spec.ephemeralContainers) || object.spec.ephemeralContainers.all(c, c.image.matches(\"^registry[.]k8s[.]io/[a-z0-9/._-]+@sha256:[a-f0-9]{64}$\"))","message":"Ephemeral images must use the approved registry and digest"}}]'
+sleep 2

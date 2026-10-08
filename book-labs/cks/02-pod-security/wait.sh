@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+(
 set -Eeuo pipefail
 state="${BOOK_LAB_STATE_ROOT:-/tmp/book-labs}/cks-02-pod-security"
 for attempt in $(seq 1 900); do
@@ -9,3 +10,4 @@ for attempt in $(seq 1 900); do
 done
 if ! test -f "$state/ready"; then echo "Setup incomplete. Inspect $state/setup.log before starting."; fi
 true
+) || :

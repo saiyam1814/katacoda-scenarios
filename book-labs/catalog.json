@@ -24,9 +24,12 @@
     {
       "id": "cka-03-kustomize",
       "path": "cka/03-kustomize",
-      "title": "Create a production Kustomize overlay",
-      "domain": "Cluster Architecture, Installation & Configuration / Workloads & Scheduling",
-      "minutes": 12
+      "title": "CKA — Kustomize application and component overlays",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 12,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "api"
     },
     {
       "id": "cka-04-persistent-volume",
@@ -56,11 +59,44 @@
       "execution": "api"
     },
     {
+      "id": "cka-07-pod-lifecycle",
+      "path": "cka/07-pod-lifecycle",
+      "title": "CKA — Pods, init containers, sidecars and shared files",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 40,
+      "step_count": 5,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
+    },
+    {
+      "id": "cka-08-static-pods-logs",
+      "path": "cka/08-static-pods-logs",
+      "title": "CKA — Static Pod lifecycle and container logs",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 24,
+      "step_count": 3,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
+    },
+    {
+      "id": "cka-10-probes-configuration",
+      "path": "cka/10-probes-configuration",
+      "title": "CKA — Configuration, probes, resource limits and placement",
+      "domain": "Complete chapter tasks with setup, worked solutions and separate checks.",
+      "minutes": 32,
+      "step_count": 4,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
+    },
+    {
       "id": "cks-01-networkpolicy",
       "path": "cks/01-networkpolicy",
-      "title": "Allow only the intended client traffic",
-      "domain": "Cluster Setup",
-      "minutes": 15
+      "title": "CKS - Network isolation and metadata protection",
+      "domain": "CKS book: practical security scenarios",
+      "minutes": 15,
+      "step_count": 3,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
     },
     {
       "id": "cks-02-pod-security",
@@ -75,9 +111,12 @@
     {
       "id": "cks-03-runtime-hardening",
       "path": "cks/03-runtime-hardening",
-      "title": "Harden a workload and check the running process",
-      "domain": "Minimize Microservice Vulnerabilities / System Hardening",
-      "minutes": 12
+      "title": "CKS - Running security controls and seccomp",
+      "domain": "CKS book: practical security scenarios",
+      "minutes": 12,
+      "step_count": 3,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
     },
     {
       "id": "cks-04-serviceaccount",
@@ -92,9 +131,12 @@
     {
       "id": "cks-05-image-admission",
       "path": "cks/05-image-admission",
-      "title": "Enforce image registry and digest rules with CEL",
-      "domain": "Supply Chain Security",
-      "minutes": 18
+      "title": "CKS - Image admission across container types",
+      "domain": "CKS book: practical security scenarios",
+      "minutes": 18,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
     },
     {
       "id": "cks-06-audit-policy",
@@ -102,6 +144,66 @@
       "title": "Order audit rules without logging Secret bodies",
       "domain": "Monitoring, Logging & Runtime Security",
       "minutes": 15
+    },
+    {
+      "id": "cks-07-supply-chain",
+      "path": "cks/07-supply-chain",
+      "title": "CKS - Scan, build, inventory and sign a release",
+      "domain": "CKS book: practical security scenarios",
+      "minutes": 48,
+      "step_count": 6,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "host"
+    },
+    {
+      "id": "cks-08-host-security",
+      "path": "cks/08-host-security",
+      "title": "CKS - Host, sandbox and runtime detection",
+      "domain": "CKS book: practical security scenarios",
+      "minutes": 40,
+      "step_count": 5,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "host"
+    },
+    {
+      "id": "infra-03-etcd-recovery",
+      "path": "infrastructure/03-etcd-recovery",
+      "title": "CKA 11 — Restore a real etcd snapshot",
+      "domain": "CKA chapter 11",
+      "minutes": 16,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
+    },
+    {
+      "id": "infra-07-apiserver-security",
+      "path": "infrastructure/07-apiserver-security",
+      "title": "CKS 06 + 16 — Audit and image admission",
+      "domain": "CKS chapters 6 and 16",
+      "minutes": 16,
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
+    },
+    {
+      "id": "infra-08-secret-encryption",
+      "path": "infrastructure/08-secret-encryption",
+      "title": "CKS 25 — Encrypt real etcd Secret records",
+      "domain": "CKS chapter 25",
+      "minutes": 10,
+      "step_count": 1,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
+    },
+    {
+      "id": "infra-09-host-hardening",
+      "path": "infrastructure/09-host-hardening",
+      "title": "CKS 31 — Harden a real host service",
+      "domain": "CKS chapter 31",
+      "minutes": 10,
+      "step_count": 1,
+      "backend": "ubuntu",
+      "execution": "host"
     }
   ],
   "updated": "2026-10-08"

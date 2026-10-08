@@ -1,0 +1,58 @@
+{
+  "title": "CKS - Scan, build, inventory and sign a release",
+  "description": "CKS book: practical security scenarios",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Scan an actual image and report exploitable priorities",
+        "text": "step1.md",
+        "verify": "verify-step1.sh"
+      },
+      {
+        "title": "Repair and build a minimal image",
+        "text": "step2.md",
+        "verify": "verify-step2.sh"
+      },
+      {
+        "title": "Use Kubesec findings to repair a manifest",
+        "text": "step3.md",
+        "verify": "verify-step3.sh"
+      },
+      {
+        "title": "Verify the official kubectl binary before using it",
+        "text": "step4.md",
+        "verify": "verify-step4.sh"
+      },
+      {
+        "title": "Generate an SBOM and make an evidence-based release decision",
+        "text": "step5.md",
+        "verify": "verify-step5.sh"
+      },
+      {
+        "title": "Sign the release and reject changed content",
+        "text": "step6.md",
+        "verify": "verify-step6.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cks-07-supply-chain/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node-4GB"
+  }
+}

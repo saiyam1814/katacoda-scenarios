@@ -1,3 +1,5 @@
+# Combine namespace and Pod selectors
+
 # Scenario
 
 The API is running in namespace `book-cks-network`. Create NetworkPolicies in that namespace to deny ingress by default, then allow TCP port `80` to Pods labeled `app=api` only from Pods labeled `access=trusted` in the namespace labeled `team=green`.
@@ -14,15 +16,16 @@ bash /opt/book-labs/cks-01-networkpolicy/verify.sh
 
 Read the failed check and inspect the object before changing anything else.
 
-<details><summary>Solution</summary>
 
-The complete solution is available inside the environment. Read it first, then run it if needed:
+
+<details><summary>Worked solution</summary>
+
+The complete group solution is readable and runnable in the terminal:
 
 ```bash
 cat /opt/book-labs/cks-01-networkpolicy/solution.sh
 bash /opt/book-labs/cks-01-networkpolicy/solution.sh
 ```{{exec}}
 
-Put `namespaceSelector` and `podSelector` in the same peer entry for AND semantics. Two separate entries allow either condition. The CNI must enforce NetworkPolicy; API acceptance alone is not evidence.
-
+It solves all steps in this group. Use CHECK for each step to verify its own result.
 </details>

@@ -1,23 +1,19 @@
-# Create a production Kustomize overlay
+# CKA — Kustomize application and component overlays
 
-**CKA scenario | Cluster Architecture, Installation & Configuration / Workloads & Scheduling | Suggested time: 12 minutes**
+We will work through 2 related tasks. Each has a separate CHECK and solution. The resources belong to this lab; setup resets them so you can practise again.
 
-This is an original practice scenario. It follows public Kubernetes objectives and is not a recalled exam question.
+**Environment:** A fresh one-node kubeadm VM. Setup reads its public kubelet certificate chain; it never copies a private key. No pre-existing Metrics Server.
 
-The base is in `~/book-labs/cka-03-kustomize/base`. Create an overlay at `~/book-labs/cka-03-kustomize/overlays/prod` without changing the base.
-
-The overlay must deploy into `book-cka-kustomize`, prefix names with `prod-`, run three replicas of `web` using `nginx:1.28.0`, and add label `environment: prod` to the Deployment and Pod template. Apply the overlay. The resulting Deployment must be named `prod-web` and all three replicas must be available.
-
-Wait for **Ready** in the terminal, then start. Setup resets this lab's own resources; use an isolated practice cluster.
-
-If you see a prompt without the Ready message, check setup:
+Wait for Ready before starting. Check setup without leaving the terminal:
 
 ```bash
 if test -f /tmp/book-labs/cka-03-kustomize/error; then
-  cat /tmp/book-labs/cka-03-kustomize/error
+ cat /tmp/book-labs/cka-03-kustomize/error
 elif test -f /tmp/book-labs/cka-03-kustomize/ready; then
-  printf 'Ready. Start the scenario.\n'
+ printf 'Ready. Start the scenario.\n'
 else
-  printf 'Setup is still running. Wait a moment, then check again.\n'
+ printf 'Setup is still running; inspect /tmp/book-labs/cka-03-kustomize/setup.log.\n'
 fi
 ```{{exec}}
+
+Files and answer evidence are under `~/book-labs/cka-03-kustomize`. Only use this lab in its disposable environment. Read `cleanup.sh` before using it on a shared local test cluster.

@@ -1,0 +1,11 @@
+apiVersion: apiserver.config.k8s.io/v1
+kind: AdmissionConfiguration
+plugins:
+- name: ImagePolicyWebhook
+  configuration:
+    imagePolicy:
+      kubeConfigFile: /etc/kubernetes/image-policy/kubeconfig
+      allowTTL: 1
+      denyTTL: 1
+      retryBackoff: 100
+      defaultAllow: false

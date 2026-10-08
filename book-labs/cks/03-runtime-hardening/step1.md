@@ -1,3 +1,5 @@
+# Harden the live process
+
 # Scenario
 
 Deployment `worker` in `book-cks-runtime` is running with permissive defaults. Harden its Pod template without changing the image or sleep command.
@@ -14,15 +16,16 @@ bash /opt/book-labs/cks-03-runtime-hardening/verify.sh
 
 Read the failed check and inspect the object before changing anything else.
 
-<details><summary>Solution</summary>
 
-The complete solution is available inside the environment. Read it first, then run it if needed:
+
+<details><summary>Worked solution</summary>
+
+The complete group solution is readable and runnable in the terminal:
 
 ```bash
 cat /opt/book-labs/cks-03-runtime-hardening/solution.sh
 bash /opt/book-labs/cks-03-runtime-hardening/solution.sh
 ```{{exec}}
 
-A manifest is only part of the evidence. `/proc/1/status` confirms the running process UID, capabilities, no-new-privileges and seccomp mode; a writable `/tmp` keeps the application usable.
-
+It solves all steps in this group. Use CHECK for each step to verify its own result.
 </details>

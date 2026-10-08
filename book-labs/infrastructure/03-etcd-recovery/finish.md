@@ -1,0 +1,1 @@
+You have checked the live behavior. Reset with a fresh Killercoda session to repeat the exercise. Keep backup files until verification passes. Infrastructure changes belong only in this disposable environment.

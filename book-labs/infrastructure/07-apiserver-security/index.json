@@ -1,0 +1,38 @@
+{
+  "title": "CKS 06 + 16 \u2014 Audit and image admission",
+  "description": "CKS chapters 6 and 16",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Write actual audit records without leaking Secrets",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      },
+      {
+        "title": "Enforce a working ImagePolicyWebhook and fail closed",
+        "text": "step2.md",
+        "verify": "verify2.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/infra-07-apiserver-security/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

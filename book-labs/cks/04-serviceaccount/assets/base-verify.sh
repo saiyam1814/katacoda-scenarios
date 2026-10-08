@@ -16,5 +16,5 @@ ready_deploy book-cks-identity worker
 kubectl -n book-cks-identity get deploy worker -o json | json_assert 'd["spec"]["template"]["spec"].get("automountServiceAccountToken") is False and d["spec"]["template"]["spec"]["serviceAccountName"] == "reader"' 'Disable Pod token mounting while preserving the account'
 pod=$(one_ready_pod book-cks-identity app=worker)
 kubectl -n book-cks-identity exec "$pod" -- sh -c 'test ! -e /var/run/secrets/kubernetes.io/serviceaccount/token'
-kubectl -n book-cks-identity get pod "$pod" -o json | json_assert 'not any("projected" in v and any("serviceAccountToken" in s for s in v["projected"]["sources"]) for v in d["spec"].get("volumes",[]))' 'No projected service account token volume may remain' 
+kubectl -n book-cks-identity get pod "$pod" -o json | json_assert 'not any("projected" in v and any("serviceAccountToken" in s for s in v["projected"]["sources"]) for v in d["spec"].get("volumes",[]))' 'No projected service account token volume may remain'
 pass "All checks passed for cks-04-serviceaccount"

@@ -1,6 +1,6 @@
 {
-  "title": "CKA 03 - Create a production Kustomize overlay",
-  "description": "Cluster Architecture, Installation & Configuration / Workloads & Scheduling",
+  "title": "CKA \u2014 Kustomize application and component overlays",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,14 @@
     },
     "steps": [
       {
-        "title": "Create a production Kustomize overlay",
+        "title": "Render and apply an application overlay",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Patch and install a real metrics component",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
       }
     ],
     "finish": {
@@ -28,6 +33,6 @@
     }
   },
   "backend": {
-    "imageid": "kubernetes-kubeadm-1node"
+    "imageid": "kubernetes-kubeadm-1node-4GB"
   }
 }

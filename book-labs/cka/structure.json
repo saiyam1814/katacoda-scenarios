@@ -17,6 +17,15 @@
     },
     {
       "path": "06-rollout-recovery"
+    },
+    {
+      "path": "07-pod-lifecycle"
+    },
+    {
+      "path": "08-static-pods-logs"
+    },
+    {
+      "path": "10-probes-configuration"
     }
   ]
 }

@@ -17,6 +17,12 @@
     },
     {
       "path": "06-audit-policy"
+    },
+    {
+      "path": "07-supply-chain"
+    },
+    {
+      "path": "08-host-security"
     }
   ]
 }

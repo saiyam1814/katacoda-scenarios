@@ -1,0 +1,15 @@
+apiVersion: audit.k8s.io/v1
+kind: Policy
+omitStages: [RequestReceived]
+rules:
+- level: Metadata
+  resources:
+  - group: ""
+    resources: [secrets]
+- level: RequestResponse
+  namespaces: [cks06]
+  verbs: [create, update, patch, delete]
+  resources:
+  - group: apps
+    resources: [deployments]
+- level: Metadata

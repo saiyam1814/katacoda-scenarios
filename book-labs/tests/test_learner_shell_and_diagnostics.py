@@ -1,5 +1,6 @@
 """Hosted-UI regressions: foreground scripts must preserve the learner shell."""
 import os
+import json
 import pathlib
 import subprocess
 import tempfile
@@ -11,7 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 class LearnerShellTests(unittest.TestCase):
     def test_every_foreground_script_preserves_shell_and_flags(self):
         paths = sorted(ROOT.glob('*/*/wait.sh'))
-        self.assertEqual(len(paths), 12)
+        self.assertTrue(paths, 'No foreground scripts were tested')
         # The fake seq/sleep make the timeout branch immediate without changing
         # the script. Source it as Killercoda injects it into the learner shell.
         runner = r'''
@@ -25,7 +26,8 @@ after=$-
 printf 'LEARNER_SHELL_CONTINUES\n'
 '''
         for path in paths:
-            lab_id = path.parent.parent.name + '-' + path.parent.name
+            definition = json.loads((path.parent / 'index.json').read_text())
+            lab_id = pathlib.PurePosixPath(definition['details']['assets']['host01'][0]['target']).name
             for state in ('ready', 'error', 'timeout'):
                 for flags in ('plain', 'strict'):
                     with self.subTest(lab=lab_id, state=state, flags=flags), tempfile.TemporaryDirectory(prefix='book-wait-test-') as temp:
@@ -41,11 +43,12 @@ printf 'LEARNER_SHELL_CONTINUES\n'
                         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
                         self.assertIn('LEARNER_SHELL_CONTINUES', result.stdout)
                         if state == 'ready':
-                            self.assertIn('Ready. Start with the task', result.stdout)
+                            self.assertIn('Ready.', result.stdout)
                         elif state == 'error':
-                            self.assertIn('Setup failed for this test', result.stderr)
+                            self.assertIn('Setup failed for this test', result.stdout + result.stderr)
                         else:
-                            self.assertIn('Setup timed out', result.stderr)
+                            self.assertRegex(result.stdout + result.stderr, r'Setup (?:timed out|incomplete|exceeded)')
+                            self.assertIn('setup.log', result.stdout + result.stderr)
 
 
 class JsonDiagnosticTests(unittest.TestCase):

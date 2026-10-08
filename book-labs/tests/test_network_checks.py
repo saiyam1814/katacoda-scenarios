@@ -64,7 +64,7 @@ class NetworkCheckTests(unittest.TestCase):
 
     def verify(self,mode,delay='0'):
         env=self.env.copy();env.update(FAKE_NETWORK_MODE=mode,FAKE_DROP_DELAY=delay)
-        return subprocess.run(['bash',str(ROOT/'cks/01-networkpolicy/verify.sh')],env=env,text=True,capture_output=True,timeout=12)
+        return subprocess.run(['bash',str(ROOT/'cks/01-networkpolicy/verify-step1.sh')],env=env,text=True,capture_output=True,timeout=12)
 
     def test_six_denials_and_allowed_path_run_in_parallel_under_ten_seconds(self):
         start=time.monotonic();result=self.verify('correct','2');elapsed=time.monotonic()-start

@@ -1,0 +1,33 @@
+{
+  "title": "CKS 31 \u2014 Harden a real host service",
+  "description": "CKS chapter 31",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Keep the reporting service useful and contained",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/infra-09-host-hardening/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "ubuntu"
+  }
+}

@@ -1,7 +1,11 @@
 # Scenario completed
 
-You have completed **Create a production Kustomize overlay**. Repeat the task once without the solution, then explain why the failed state did not meet the requirement.
+You completed CKA — Kustomize application and component overlays. Repeat the tasks without the solution and explain what each verification proves.
 
-Use `kubectl kustomize` to inspect rendered resources before applying. Built-in Kustomize needs no separate binary.
+Clean up only this lab's resources when you are finished:
 
-These companion labs are an initial pack, not the complete CKA or CKS curriculum.
+```bash
+bash /opt/book-labs/cka-03-kustomize/cleanup.sh
+```{{exec}}
+
+These are original practice exercises, not recalled examination questions.

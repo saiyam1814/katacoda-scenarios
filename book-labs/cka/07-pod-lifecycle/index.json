@@ -1,0 +1,53 @@
+{
+  "title": "CKA \u2014 Pods, init containers, sidecars and shared files",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create a Pod and extract only its image",
+        "text": "step1.md",
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Prepare the web root with an init container",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      },
+      {
+        "title": "Share a Pod network namespace",
+        "text": "step3.md",
+        "verify": "verify-step-03.sh"
+      },
+      {
+        "title": "Use a native sidecar for shared logs",
+        "text": "step4.md",
+        "verify": "verify-step-04.sh"
+      },
+      {
+        "title": "Coordinate ordinary containers through a shared volume",
+        "text": "step5.md",
+        "verify": "verify-step-05.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cka-07-pod-lifecycle/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

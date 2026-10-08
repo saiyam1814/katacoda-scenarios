@@ -1,3 +1,5 @@
+# Require an approved registry and immutable image digest
+
 # Scenario
 
 Namespace `book-cks-images` has label `book-labs.example/image-policy=enforce`. Use `admissionregistration.k8s.io/v1` to create ValidatingAdmissionPolicy `book-images` and binding `book-images`.
@@ -14,15 +16,16 @@ bash /opt/book-labs/cks-05-image-admission/verify.sh
 
 Read the failed check and inspect the object before changing anything else.
 
-<details><summary>Solution</summary>
 
-The complete solution is available inside the environment. Read it first, then run it if needed:
+
+<details><summary>Worked solution</summary>
+
+The complete group solution is readable and runnable in the terminal:
 
 ```bash
 cat /opt/book-labs/cks-05-image-admission/solution.sh
 bash /opt/book-labs/cks-05-image-admission/solution.sh
 ```{{exec}}
 
-A digest pins content; this policy does not verify signatures, provenance or scan results. The dry-run digest is synthetic and is never pulled. Ephemeral-container subresource policy is a separate extension, not covered by this exercise.
-
+It solves all steps in this group. Use CHECK for each step to verify its own result.
 </details>

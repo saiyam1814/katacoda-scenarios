@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "path": "03-etcd-recovery"
+    },
+    {
+      "path": "07-apiserver-security"
+    },
+    {
+      "path": "08-secret-encryption"
+    },
+    {
+      "path": "09-host-hardening"
+    }
+  ]
+}

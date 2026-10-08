@@ -1,6 +1,6 @@
 {
-  "title": "CKS 01 - Allow only the intended client traffic",
-  "description": "Cluster Setup",
+  "title": "CKS - Network isolation and metadata protection",
+  "description": "CKS book: practical security scenarios",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,19 @@
     },
     "steps": [
       {
-        "title": "Allow only the intended client traffic",
+        "title": "Combine namespace and Pod selectors",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step1.sh"
+      },
+      {
+        "title": "Deny egress from one workload",
+        "text": "step2.md",
+        "verify": "verify-step2.sh"
+      },
+      {
+        "title": "Block metadata and preserve application access",
+        "text": "step3.md",
+        "verify": "verify-step3.sh"
       }
     ],
     "finish": {

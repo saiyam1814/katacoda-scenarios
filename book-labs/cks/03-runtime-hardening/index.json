@@ -1,6 +1,6 @@
 {
-  "title": "CKS 03 - Harden a workload and check the running process",
-  "description": "Minimize Microservice Vulnerabilities / System Hardening",
+  "title": "CKS - Running security controls and seccomp",
+  "description": "CKS book: practical security scenarios",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,19 @@
     },
     "steps": [
       {
-        "title": "Harden a workload and check the running process",
+        "title": "Harden the live process",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step1.sh"
+      },
+      {
+        "title": "Keep an HTTP server working with a read-only root",
+        "text": "step2.md",
+        "verify": "verify-step2.sh"
+      },
+      {
+        "title": "Install and enforce a local seccomp profile",
+        "text": "step3.md",
+        "verify": "verify-step3.sh"
       }
     ],
     "finish": {

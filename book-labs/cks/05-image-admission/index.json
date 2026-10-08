@@ -1,6 +1,6 @@
 {
-  "title": "CKS 05 - Enforce image registry and digest rules with CEL",
-  "description": "Supply Chain Security",
+  "title": "CKS - Image admission across container types",
+  "description": "CKS book: practical security scenarios",
   "details": {
     "intro": {
       "text": "intro.md",
@@ -9,9 +9,14 @@
     },
     "steps": [
       {
-        "title": "Enforce image registry and digest rules with CEL",
+        "title": "Require an approved registry and immutable image digest",
         "text": "step1.md",
-        "verify": "verify.sh"
+        "verify": "verify-step1.sh"
+      },
+      {
+        "title": "Close the ephemeral-container admission gap",
+        "text": "step2.md",
+        "verify": "verify-step2.sh"
       }
     ],
     "finish": {

@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
-# Killercoda injects foreground commands into the learner's interactive shell.
-# Isolate shell options and exits; report setup failures without closing that shell.
 (
-  set -eu
-  state="${BOOK_LAB_STATE_ROOT:-/tmp/book-labs}/cks-03-runtime-hardening"
-  printf 'Preparing the scenario'
-  for attempt in $(seq 1 240); do
-    if test -f "$state/error"; then printf '\n'; cat "$state/error" >&2; exit 1; fi
-    if test -f "$state/ready"; then printf '\nReady. Start with the task in the left panel.\n'; exit 0; fi
-    printf '.'; sleep 2
-  done
-  printf '\nSetup timed out. Inspect %s/setup.log and Creator Debug.\n' "$state" >&2
-  exit 1
+set -Eeuo pipefail
+state="${BOOK_LAB_STATE_ROOT:-/tmp/book-labs}/cks-03-runtime-hardening"
+for attempt in $(seq 1 900); do
+ if test -f "$state/ready"; then echo 'Ready. Open the first step.'; break; fi
+ if test -f "$state/error"; then cat "$state/error"; break; fi
+ if (( attempt % 20 == 0 )); then echo "Preparing the real lab components ($attempt seconds). Logs: $state/setup.log"; fi
+ sleep 1
+done
+if ! test -f "$state/ready"; then echo "Setup incomplete. Inspect $state/setup.log before starting."; fi
+true
 ) || :

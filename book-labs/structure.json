@@ -12,7 +12,7 @@
     },
     {
       "path": "cka/03-kustomize",
-      "title": "CKA 03 - Create a production Kustomize overlay"
+      "title": "CKA — Kustomize application and component overlays"
     },
     {
       "path": "cka/04-persistent-volume",
@@ -27,8 +27,20 @@
       "title": "CKA — Deployments, controlled updates and rollback"
     },
     {
+      "path": "cka/07-pod-lifecycle",
+      "title": "CKA — Pods, init containers, sidecars and shared files"
+    },
+    {
+      "path": "cka/08-static-pods-logs",
+      "title": "CKA — Static Pod lifecycle and container logs"
+    },
+    {
+      "path": "cka/10-probes-configuration",
+      "title": "CKA — Configuration, probes, resource limits and placement"
+    },
+    {
       "path": "cks/01-networkpolicy",
-      "title": "CKS 01 - Allow only the intended client traffic"
+      "title": "CKS - Network isolation and metadata protection"
     },
     {
       "path": "cks/02-pod-security",
@@ -36,7 +48,7 @@
     },
     {
       "path": "cks/03-runtime-hardening",
-      "title": "CKS 03 - Harden a workload and check the running process"
+      "title": "CKS - Running security controls and seccomp"
     },
     {
       "path": "cks/04-serviceaccount",
@@ -44,11 +56,35 @@
     },
     {
       "path": "cks/05-image-admission",
-      "title": "CKS 05 - Enforce image registry and digest rules with CEL"
+      "title": "CKS - Image admission across container types"
     },
     {
       "path": "cks/06-audit-policy",
       "title": "CKS 06 - Order audit rules without logging Secret bodies"
+    },
+    {
+      "path": "cks/07-supply-chain",
+      "title": "CKS - Scan, build, inventory and sign a release"
+    },
+    {
+      "path": "cks/08-host-security",
+      "title": "CKS - Host, sandbox and runtime detection"
+    },
+    {
+      "path": "infrastructure/03-etcd-recovery",
+      "title": "CKA 11 — Restore a real etcd snapshot"
+    },
+    {
+      "path": "infrastructure/07-apiserver-security",
+      "title": "CKS 06 + 16 — Audit and image admission"
+    },
+    {
+      "path": "infrastructure/08-secret-encryption",
+      "title": "CKS 25 — Encrypt real etcd Secret records"
+    },
+    {
+      "path": "infrastructure/09-host-hardening",
+      "title": "CKS 31 — Harden a real host service"
     }
   ]
 }

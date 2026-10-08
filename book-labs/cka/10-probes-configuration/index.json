@@ -1,0 +1,48 @@
+{
+  "title": "CKA \u2014 Configuration, probes, resource limits and placement",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Use ConfigMap and Secret references",
+        "text": "step1.md",
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Observe a mounted ConfigMap update",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      },
+      {
+        "title": "Combine probes, affinity, toleration and resource admission",
+        "text": "step3.md",
+        "verify": "verify-step-03.sh"
+      },
+      {
+        "title": "Prove failed readiness excludes an endpoint",
+        "text": "step4.md",
+        "verify": "verify-step-04.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cka-10-probes-configuration/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}

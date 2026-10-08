@@ -1,0 +1,43 @@
+{
+  "title": "CKA \u2014 Static Pod lifecycle and container logs",
+  "description": "Complete chapter tasks with setup, worked solutions and separate checks.",
+  "details": {
+    "intro": {
+      "text": "intro.md",
+      "background": "setup.sh",
+      "foreground": "wait.sh"
+    },
+    "steps": [
+      {
+        "title": "Create a real static Pod",
+        "text": "step1.md",
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Observe mirror-Pod recreation",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      },
+      {
+        "title": "Extract the correct container and previous-instance logs",
+        "text": "step3.md",
+        "verify": "verify-step-03.sh"
+      }
+    ],
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "*",
+          "target": "/opt/book-labs/cka-08-static-pods-logs/",
+          "chmod": "+r"
+        }
+      ]
+    }
+  },
+  "backend": {
+    "imageid": "kubernetes-kubeadm-1node"
+  }
+}
