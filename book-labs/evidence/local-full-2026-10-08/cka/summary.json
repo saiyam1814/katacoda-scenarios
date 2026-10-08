@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-08",
+  "scope": "Assigned CKA application/platform groups only; infrastructure evidence is recorded separately.",
+  "status": "passed",
+  "counts": {
+    "labs": 14,
+    "steps": 38,
+    "unsolvedRejections": 38,
+    "solvedPasses": 38,
+    "successfulSetups": 14,
+    "successfulCleanups": 14
+  },
+  "maximumSolvedCheckSeconds": 3.57,
+  "environmentNotes": [
+    "Docker on macOS ARM64; actual Kubernetes v1.35.0 clusters, kubelet/static Pods and Linux storage operations inside dedicated privileged node containers.",
+    "05 and11 used two real kind nodes and Cilium1.20.1; all other groups used a separate one-node kind cluster.",
+    "12 used OpenEBS LocalPV LVM1.10.1, a dedicated sparse4Gi loop-backed VG and mounted ext4 filesystem; growth was measured, with claim identity and data preserved.",
+    "Metrics Server v0.8.1 used the public kubelet serving-certificate chain and matching hostname SAN; kubelet TLS verification stayed enabled.",
+    "13 used cert-manager v1.20.4;14 used Traefik chart41.6.1 and Gateway APIv1.5.1.",
+    "These are local execution results, not hosted Killercoda passes. Native hosted VM/package/CNI behavior remains a separate browser-validation responsibility."
+  ],
+  "records": [
+    "01-rbac-results.json",
+    "02-service-repair-results.json",
+    "03-kustomize-results.json",
+    "04-persistent-volume-results.json",
+    "05-scheduling-results.json",
+    "06-rollout-recovery-results.json",
+    "07-pod-lifecycle-results.json",
+    "08-static-pods-logs-results.json",
+    "09-metrics-autoscaling-results.json",
+    "10-probes-configuration-results.json",
+    "11-services-networkpolicy-results.json",
+    "12-csi-volumes-results.json",
+    "13-helm-certificates-results.json",
+    "14-gateway-ingress-results.json"
+  ],
+  "resolvedFindings": [
+    "Static previous-container logs now use one controlled restart to avoid a container-log GC race.",
+    "Solutions wait for newly created Services to receive usable dataplane programming.",
+    "The CSI host-path example was rejected for real expansion; the LVM driver expands an actual filesystem.",
+    "Kustomize render verification handles kubectl\u2019s concatenated JSON output.",
+    "A semantic chapter audit added required saved outputs, both shared-volume writers, namespace-wide default deny, alternate Service port, CRD inspection and actual control-plane taint coverage."
+  ]
+}

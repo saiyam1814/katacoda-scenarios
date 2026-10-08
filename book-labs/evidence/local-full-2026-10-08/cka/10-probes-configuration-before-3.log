@@ -1,0 +1,2 @@
+Error from server (NotFound): deployments.apps "web" not found
+FAIL: book-cka-probes/web must finish its rollout (missing or invalid JSON input)

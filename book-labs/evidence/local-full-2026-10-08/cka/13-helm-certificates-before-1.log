@@ -1,0 +1,3 @@
+v4.1.4+g05fa379
+Error: release: not found
+FAIL: Require pinned install, upgrade and rollback history (missing or invalid JSON input)

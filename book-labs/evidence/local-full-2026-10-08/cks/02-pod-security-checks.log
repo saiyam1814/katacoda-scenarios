@@ -1,0 +1,13 @@
+=== before1: exit 1; 0.13 seconds ===
+FAIL: Pin restricted enforcement to v1.35
+
+=== before2: exit 1; 0.1 seconds ===
+FAIL: Repair the workload security settings
+
+=== after1: exit 0; 0.91 seconds ===
+pod/worker condition met
+PASS: All checks passed for cks-02-pod-security
+PASS: Step 1: Enforce restricted Pod Security Admission
+
+=== after2: exit 0; 0.51 seconds ===
+PASS: Step 2: Repair a privileged Deployment

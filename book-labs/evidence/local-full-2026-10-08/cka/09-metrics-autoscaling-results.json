@@ -1,0 +1,75 @@
+{
+  "lab": "cka/09-metrics-autoscaling",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 50.8
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.31
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.12
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 48.56
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.27
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.36
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 43.08
+    }
+  ],
+  "stepCount": 2,
+  "environment": "kind v1.35.0, one node",
+  "logs": [
+    "09-metrics-autoscaling-setup.log",
+    "09-metrics-autoscaling-before-1.log",
+    "09-metrics-autoscaling-before-2.log",
+    "09-metrics-autoscaling-solution.log",
+    "09-metrics-autoscaling-after-1.log",
+    "09-metrics-autoscaling-after-2.log",
+    "09-metrics-autoscaling-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "520d8ac35a0a179c7eee7e1319b92da0b73a59ba4744977f2f732c64fa149b8b",
+    "assets/lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+    "assets/metrics.sh": "03f6e181669312a0b57bb6986bf0c0423207de80a14861e1193c523faeeaf317",
+    "assets/setup.sh": "1e042b235cb1f062b65f3d0bcd146350ffd6680950a00584f80fcfc9afe71777",
+    "assets/solution-step-01.sh": "69be5263a8d822ec48f5dafa98ccb9be170b49271846f71b9913fffe06ce1af9",
+    "assets/solution-step-02.sh": "abbcc78b77f0ba98debdb497a018c526e2a149322edd8c30b37a2cf547895149",
+    "assets/solution.sh": "8dea4e20b25fcb7609f1bbcbffe706565a581b10d71ff34bb20a12d5719bc770",
+    "assets/verify-step-01.sh": "f6af91c2bc31315925a6413e1e15e8cf3d68e1d449f7bbb9d30475edb10d7274",
+    "assets/verify-step-02.sh": "2b805c0de32dc04c11af526121e80531f79b79b95b691920a180c03c424561b7",
+    "assets/verify.sh": "89e9b48444e705a6d6ac8dcf7dcf7539f835e1ca3be284fafd20a933c044b553",
+    "cleanup.sh": "f08bb898ff66722982cc0657aca6a38bcc43a5acdb54ca41d3056d6f030b9b39",
+    "finish.md": "51e8debcb6cc317d34ef406ee1be38f711dfc13bb7dd6751cd3118c7131f4180",
+    "index.json": "c3071cc04c9d385c2cbaf004fda29800cc4092227349108b285a239d8658adc1",
+    "intro.md": "6ee5117ac7d2cb09baa94226bba9dca2d80655dd942527e8f529a2203c917c1a",
+    "setup.sh": "c58ee98a0872089fb79833aded8ee924a3e10294fdd2a9081ab6384e6ef04dc0",
+    "solution.sh": "01c635173606766cbf278ff44ead23880a576fbef797fefe70cd40d60bbded66",
+    "step1.md": "9eb15c491c9f84cbf49d1d6921b6ad17400dcd29003af7870dd10061a64a22e9",
+    "step2.md": "e10e5f692681462a167a39d6cc4a5eafc4ff2e9bbbd24abe141261070fcaff26",
+    "verify-step-01.sh": "8d11bcea7578e0e639c1add0e05abfab8f2384b0da1ae7e51dde5d757cde2e1f",
+    "verify-step-02.sh": "556fd21a75436df368c05823d6fa02440ad3fa0e7c5d2381d6bbfbe7049f4ecb",
+    "verify.sh": "33433611f1e97757b00b1127b374457b3baaa982e3a79726cc9d182678682e1d",
+    "wait.sh": "05a8a9bdaaaf412af59b9ce8ddee28dba2e3449b7212f4ab18ae188267f21bb5"
+  }
+}

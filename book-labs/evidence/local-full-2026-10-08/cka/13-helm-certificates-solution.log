@@ -1,0 +1,74 @@
+v4.1.4+g05fa379
+NAME: book-cert-manager
+LAST DEPLOYED: Thu Oct  8 12:13:31 2026
+NAMESPACE: book-cka-cert-manager
+STATUS: deployed
+REVISION: 1
+DESCRIPTION: Install complete
+TEST SUITE: None
+NOTES:
+cert-manager v1.20.4 has been deployed successfully!
+
+In order to begin issuing certificates, you will need to set up a ClusterIssuer
+or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
+
+More information on the different types of issuers and how to configure them
+can be found in our documentation:
+
+https://cert-manager.io/docs/configuration/
+
+For information on how to configure cert-manager to automatically provision
+Certificates for Ingress resources, take a look at the `ingress-shim`
+documentation:
+
+https://cert-manager.io/docs/usage/ingress/
+
+For information on how to configure cert-manager to automatically provision
+Certificates for Gateway API resources, take a look at the `gateway resource`
+documentation:
+
+https://cert-manager.io/docs/usage/gateway/
+Release "book-cert-manager" has been upgraded. Happy Helming!
+NAME: book-cert-manager
+LAST DEPLOYED: Thu Oct  8 12:14:56 2026
+NAMESPACE: book-cka-cert-manager
+STATUS: deployed
+REVISION: 2
+DESCRIPTION: Upgrade complete
+TEST SUITE: None
+NOTES:
+cert-manager v1.20.4 has been deployed successfully!
+
+In order to begin issuing certificates, you will need to set up a ClusterIssuer
+or Issuer resource (for example, by creating a 'letsencrypt-staging' issuer).
+
+More information on the different types of issuers and how to configure them
+can be found in our documentation:
+
+https://cert-manager.io/docs/configuration/
+
+For information on how to configure cert-manager to automatically provision
+Certificates for Ingress resources, take a look at the `ingress-shim`
+documentation:
+
+https://cert-manager.io/docs/usage/ingress/
+
+For information on how to configure cert-manager to automatically provision
+Certificates for Gateway API resources, take a look at the `gateway resource`
+documentation:
+
+https://cert-manager.io/docs/usage/gateway/
+Rollback was a success! Happy Helming!
+REVISION	UPDATED                 	STATUS    	CHART               	APP VERSION	DESCRIPTION     
+1       	Thu Oct  8 12:13:31 2026	superseded	cert-manager-v1.20.4	v1.20.4    	Install complete
+2       	Thu Oct  8 12:14:56 2026	superseded	cert-manager-v1.20.4	v1.20.4    	Upgrade complete
+3       	Thu Oct  8 12:15:00 2026	deployed  	cert-manager-v1.20.4	v1.20.4    	Rollback to 1   
+issuer.cert-manager.io/lab-selfsigned created
+certificate.cert-manager.io/app created
+certificate.cert-manager.io/missing-issuer created
+issuer.cert-manager.io/lab-selfsigned condition met
+certificate.cert-manager.io/app condition met
+subject=
+issuer=
+X509v3 Subject Alternative Name: critical
+    DNS:app.cka.lab

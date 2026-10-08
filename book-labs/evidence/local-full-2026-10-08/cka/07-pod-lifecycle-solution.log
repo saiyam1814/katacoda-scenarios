@@ -1,0 +1,15 @@
+pod/saiyam created
+pod/saiyam condition met
+pod/init-web created
+pod/init-web condition met
+hello world
+pod/multi created
+pod/multi condition met
+PONG
+pod/log-demo created
+pod/log-demo condition met
+learning Kubernetes
+learning Kubernetes
+pod/shared created
+Hello from c1 container.
+Hello from c2 container.

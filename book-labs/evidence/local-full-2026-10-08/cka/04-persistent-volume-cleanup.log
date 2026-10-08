@@ -1,0 +1,4 @@
+namespace "book-cka-storage" deleted
+persistentvolume "book-cka-local-data" deleted
+persistentvolume "book-cka-local-retained" deleted
+storageclass.storage.k8s.io "book-cka-local" deleted

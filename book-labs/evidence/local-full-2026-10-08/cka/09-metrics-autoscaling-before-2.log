@@ -1,0 +1,2 @@
+Error from server (NotFound): horizontalpodautoscalers.autoscaling "cpu-app" not found
+FAIL: Require a working CPU HPA that actually scaled out (missing or invalid JSON input)

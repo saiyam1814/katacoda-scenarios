@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "app" not found
+FAIL: book-cka-csi/app must be Ready (missing or invalid JSON input)

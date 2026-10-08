@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "shared" not found
+FAIL: All three shared-volume containers must finish successfully (missing or invalid JSON input)

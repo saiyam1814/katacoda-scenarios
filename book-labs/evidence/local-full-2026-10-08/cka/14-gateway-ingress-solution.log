@@ -1,0 +1,8 @@
+gateway.gateway.networking.k8s.io/public-web created
+httproute.gateway.networking.k8s.io/shop created
+gateway.gateway.networking.k8s.io/public-web condition met
+httproute.gateway.networking.k8s.io/shop patched
+httproute.gateway.networking.k8s.io/shop patched
+secret/web-tls created
+ingress.networking.k8s.io/web created
+Hostname wrong.cka.lab does NOT match certificate

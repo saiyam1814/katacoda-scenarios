@@ -1,0 +1,1 @@
+PASS: Anonymous kubelet/API access denied, read-only port closed, authenticated logs and exec work

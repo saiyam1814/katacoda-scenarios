@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "demo-pod" not found
+FAIL: The mounted file must update while the existing environment stays green

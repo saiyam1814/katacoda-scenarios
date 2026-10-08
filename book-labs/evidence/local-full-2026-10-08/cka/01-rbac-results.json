@@ -1,0 +1,90 @@
+{
+  "lab": "cka/01-rbac",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 1.07
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.09
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "before-3",
+      "exit": 1,
+      "seconds": 0.14
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 11.68
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.92
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.54
+    },
+    {
+      "phase": "after-3",
+      "exit": 0,
+      "seconds": 0.26
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 10.42
+    }
+  ],
+  "stepCount": 3,
+  "environment": "kind v1.35.0, one node",
+  "logs": [
+    "01-rbac-setup.log",
+    "01-rbac-before-1.log",
+    "01-rbac-before-2.log",
+    "01-rbac-before-3.log",
+    "01-rbac-solution.log",
+    "01-rbac-after-1.log",
+    "01-rbac-after-2.log",
+    "01-rbac-after-3.log",
+    "01-rbac-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "bbed6fa48c83ac8707c188c661bb331b2e3f5ef4d25aa7d9c643a205a75d77ff",
+    "assets/lib.sh": "b55070bab6c16375fbf424bc03e1d8264ace417a336fb8eb6444ce3d61416a38",
+    "assets/setup.sh": "1eaa2f94e1251380e5d7ddfe239e96ef40a2ba103fa32d5eba3f22bd0f75febe",
+    "assets/solution-step-01.sh": "f9a00ad95660af536372d9b01ea3738eab2d70cb31358129e14eed830d21492a",
+    "assets/solution-step-02.sh": "0ef3ef291cc0ad2aca482d7b80625b5de9b4352cf9d073d94735616b2063ed74",
+    "assets/solution-step-03.sh": "bdb3d683c2ac00b13ea1ca2773a523fa49f51b79b84e233282603c5f22166396",
+    "assets/solution.sh": "cb37d7d7cc90d9d1fa30058a1d4dc51b80209edc36b41f965a7f8ee6d47f711d",
+    "assets/verify-step-01.sh": "101782bb0392379a12063d13879724a23a658f409ab979bc9d30e221024ab9c3",
+    "assets/verify-step-02.sh": "faeb9e4df2a20f334d8512bb5c00e8390829fc5142c51828c110534a66a665c5",
+    "assets/verify-step-03.sh": "a32b8e7967fe71942e7393f0de7e03dafba19b056484ccf0b13ea14ff60f0f52",
+    "assets/verify.sh": "6e898e86eee30470fd2c4a6d73db47e5bd1dd7c467cea5e7d6cae65cd7c0a512",
+    "cleanup.sh": "ca7a8409cb05abb4f5414a68dd9b640f39675e093447b90a66a97adba5bed764",
+    "finish.md": "5c7a3230a898e6fee1fc9db3dec27dc8f1eed541afd5f1780c7ee9a01c311ed5",
+    "index.json": "d0b05d57015079445c2c6892062ff9b42b94c868123a2dfcf1c84f3514d8cc97",
+    "intro.md": "174bcc561181ecd0c784fee3a585ee611d095feb71ad103e81398b51ab488dc2",
+    "setup.sh": "3b1a48c54c243d30e1c853e1c3ea9f95eaff88c4d4dd2e9287c770732db0b904",
+    "solution.sh": "0b51848b53969414f6eba2d3add062d9ec0bf610f19ce3c1f879c2785726149d",
+    "step1.md": "c42adca80a5895f7c6d9cf04b1f4480509edc8f18b6847a1034ab95ea7006784",
+    "step2.md": "17c88f2364f7b124ca91d092e7e2590dead4284d6a5b59a4e90eabdb6c3e9b4d",
+    "step3.md": "cd6d08f8c705a4aca04444f8fd81b01b7133025d60aa95c543b96f62cb440fa1",
+    "verify-step-01.sh": "12e84b008cbc60d2c25e113a6553e54f699f9161ef6adfff519ee7ae1e6d02d1",
+    "verify-step-02.sh": "d00a318b5de4f8e332aeafe7ccaaa3525d448b4dbfb6c1071675f7616d75acdf",
+    "verify-step-03.sh": "242f84ab452ad37acfb68f9937280565d4599a3fd40889c2cf525fba0da24891",
+    "verify.sh": "800a1cdb851d362507c349d22219a61235aac81ec8d80d39404f3e8ae2a5b23b",
+    "wait.sh": "102b7ae7bd8a192244f95a58b4d42ebaa516772338863c2b09146ef07cc8ffc5"
+  }
+}

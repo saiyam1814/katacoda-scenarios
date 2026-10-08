@@ -1,0 +1,15 @@
+v4.1.4+g05fa379
+namespace "book-cka-csi" deleted
+storageclass.storage.k8s.io "book-cka-expandable" deleted
+These resources were kept due to the resource policy:
+[CustomResourceDefinition] lvmnodes.local.openebs.io
+[CustomResourceDefinition] lvmsnapshots.local.openebs.io
+[CustomResourceDefinition] lvmvolumes.local.openebs.io
+
+release "book-lvm" uninstalled
+namespace "book-cka-csi-system" deleted
+customresourcedefinition.apiextensions.k8s.io "lvmnodes.local.openebs.io" deleted
+customresourcedefinition.apiextensions.k8s.io "lvmvolumes.local.openebs.io" deleted
+customresourcedefinition.apiextensions.k8s.io "lvmsnapshots.local.openebs.io" deleted
+  Volume group "book_cka_csi" successfully removed
+  Labels on physical volume "/dev/loop0" successfully wiped.

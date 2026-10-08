@@ -1,0 +1,13 @@
+=== before1: exit 1; 0.2 seconds ===
+Error from server (NotFound): ingresses.networking.k8s.io "web" not found
+FAIL: Configure the TLS ingress (missing or invalid JSON input)
+
+=== before2: exit 1; 0.2 seconds ===
+Error from server (NotFound): peerauthentications.security.istio.io "strict" not found
+FAIL: Require STRICT mTLS for the protected server (missing or invalid JSON input)
+
+=== after1: exit 0; 0.3 seconds ===
+PASS: Step 1: Serve an Ingress with a trusted TLS hostname
+
+=== after2: exit 0; 1.0 seconds ===
+PASS: Step 2: Require mTLS and authorize a service identity

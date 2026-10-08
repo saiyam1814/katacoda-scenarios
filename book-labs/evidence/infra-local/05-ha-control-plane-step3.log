@@ -1,0 +1,2 @@
+PASS: Three joined control planes and three voting etcd members verified
+PASS: All members recovered and the outage write persisted

@@ -1,0 +1,2 @@
+Error from server (NotFound): deployments.apps "metrics-server" not found
+FAIL: Require a Ready Metrics Server with 200m CPU and verified kubelet TLS (missing or invalid JSON input)

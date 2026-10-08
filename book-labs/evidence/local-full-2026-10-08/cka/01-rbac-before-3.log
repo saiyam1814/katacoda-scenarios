@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "web-identity" not found
+FAIL: book-cka-rbac/web-identity must be Ready (missing or invalid JSON input)

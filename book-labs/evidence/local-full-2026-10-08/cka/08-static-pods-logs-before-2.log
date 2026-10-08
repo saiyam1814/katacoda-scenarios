@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "book-cka-static-cka-full-labs-control-plane" not found
+FAIL: book-cka-hostpods/book-cka-static-cka-full-labs-control-plane must be Ready (missing or invalid JSON input)

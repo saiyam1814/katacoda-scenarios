@@ -1,0 +1,868 @@
+{
+  "book": "CKS",
+  "edition": "Updated edition",
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "NetworkPolicy: deny egress",
+      "lab": "cks/01-networkpolicy",
+      "steps": [
+        {
+          "number": 2,
+          "title": "Deny egress from a namespace",
+          "verify": "verify-step2.sh"
+        }
+      ],
+      "outcome": "Deny egress from a namespace",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 2,
+      "title": "NetworkPolicy: combine namespace and pod selectors",
+      "lab": "cks/01-networkpolicy",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Combine namespace and Pod selectors",
+          "verify": "verify-step1.sh"
+        }
+      ],
+      "outcome": "Combine namespace and Pod selectors",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 3,
+      "title": "AppArmor profiles",
+      "lab": "cks/08-host-security",
+      "steps": [
+        {
+          "number": 2,
+          "title": "Enforce a real AppArmor profile",
+          "verify": "verify-step2.sh"
+        }
+      ],
+      "outcome": "Enforce a real AppArmor profile",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 4,
+      "title": "RBAC",
+      "lab": "cks/04-serviceaccount",
+      "steps": [
+        {
+          "number": 2,
+          "title": "Give Sam only the required permissions",
+          "verify": "verify-step2.sh"
+        }
+      ],
+      "outcome": "Give Sam only the required permissions",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "api",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 5,
+      "title": "Image scanning",
+      "lab": "cks/07-supply-chain",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Scan an actual image and report exploitable priorities",
+          "verify": "verify-step1.sh"
+        }
+      ],
+      "outcome": "Scan an actual image and report exploitable priorities",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 6,
+      "title": "Audit policy",
+      "lab": "infrastructure/07-apiserver-security",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Write actual audit records without leaking Secrets",
+          "verify": "verify1.sh"
+        }
+      ],
+      "outcome": "Write actual audit records without leaking Secrets",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 7,
+      "title": "Kubernetes upgrade",
+      "lab": "infrastructure/02-cluster-upgrade",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Upgrade the control plane by one minor",
+          "verify": "verify1.sh"
+        },
+        {
+          "number": 2,
+          "title": "Upgrade the worker and check the application",
+          "verify": "verify2.sh"
+        }
+      ],
+      "outcome": "Upgrade the control plane by one minor; Upgrade the worker and check the application",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-2nodes",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 8,
+      "title": "CIS benchmark",
+      "lab": "cks/08-host-security",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Remediate actual CIS benchmark findings",
+          "verify": "verify-step1.sh"
+        }
+      ],
+      "outcome": "Remediate actual CIS benchmark findings",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 9,
+      "title": "Container runtimes and RuntimeClass",
+      "lab": "cks/08-host-security",
+      "steps": [
+        {
+          "number": 3,
+          "title": "Run a workload inside gVisor",
+          "verify": "verify-step3.sh"
+        }
+      ],
+      "outcome": "Run a workload inside gVisor",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 10,
+      "title": "Falco",
+      "lab": "cks/08-host-security",
+      "steps": [
+        {
+          "number": 4,
+          "title": "Detect an actual interactive container shell with Falco",
+          "verify": "verify-step4.sh"
+        }
+      ],
+      "outcome": "Detect an actual interactive container shell with Falco",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 11,
+      "title": "Secrets",
+      "lab": "cks/04-serviceaccount",
+      "steps": [
+        {
+          "number": 3,
+          "title": "Consume a Secret without mounting API credentials",
+          "verify": "verify-step3.sh"
+        }
+      ],
+      "outcome": "Consume a Secret without mounting API credentials",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "api",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 12,
+      "title": "Pod Security Admission",
+      "lab": "cks/02-pod-security",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Enforce restricted Pod Security Admission",
+          "verify": "verify-step1.sh"
+        }
+      ],
+      "outcome": "Enforce restricted Pod Security Admission",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "api",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 13,
+      "title": "SecurityContext and a working read-only filesystem",
+      "lab": "cks/03-runtime-hardening",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Harden the live process",
+          "verify": "verify-step1.sh"
+        },
+        {
+          "number": 2,
+          "title": "Keep an HTTP server working with a read-only root",
+          "verify": "verify-step2.sh"
+        }
+      ],
+      "outcome": "Harden the live process; Keep an HTTP server working with a read-only root",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 14,
+      "title": "Privileged workloads",
+      "lab": "cks/02-pod-security",
+      "steps": [
+        {
+          "number": 2,
+          "title": "Repair a privileged Deployment",
+          "verify": "verify-step2.sh"
+        }
+      ],
+      "outcome": "Repair a privileged Deployment",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "api",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 15,
+      "title": "Dockerfile and Deployment best practices",
+      "lab": "cks/07-supply-chain",
+      "steps": [
+        {
+          "number": 2,
+          "title": "Repair and build a minimal image",
+          "verify": "verify-step2.sh"
+        }
+      ],
+      "outcome": "Repair and build a minimal image",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 16,
+      "title": "ImagePolicyWebhook",
+      "lab": "infrastructure/07-apiserver-security",
+      "steps": [
+        {
+          "number": 2,
+          "title": "Enforce a working ImagePolicyWebhook and fail closed",
+          "verify": "verify2.sh"
+        }
+      ],
+      "outcome": "Enforce a working ImagePolicyWebhook and fail closed",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 17,
+      "title": "Seccomp",
+      "lab": "cks/03-runtime-hardening",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Harden the live process",
+          "verify": "verify-step1.sh"
+        },
+        {
+          "number": 3,
+          "title": "Install and enforce a local seccomp profile",
+          "verify": "verify-step3.sh"
+        }
+      ],
+      "outcome": "Apply RuntimeDefault, then enforce a Localhost seccomp profile with actual allowed writes and denied chmod.",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 18,
+      "title": "Find a service on a port",
+      "lab": "cks/08-host-security",
+      "steps": [
+        {
+          "number": 5,
+          "title": "Remove an unwanted host listener",
+          "verify": "verify-step5.sh"
+        }
+      ],
+      "outcome": "Remove an unwanted host listener",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 19,
+      "title": "Kubesec",
+      "lab": "cks/07-supply-chain",
+      "steps": [
+        {
+          "number": 3,
+          "title": "Use Kubesec findings to repair a manifest",
+          "verify": "verify-step3.sh"
+        }
+      ],
+      "outcome": "Use Kubesec findings to repair a manifest",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 20,
+      "title": "Ingress with TLS",
+      "lab": "cks/09-ingress-mtls",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Serve an Ingress with a trusted TLS hostname",
+          "verify": "verify-step1.sh"
+        }
+      ],
+      "outcome": "Serve an Ingress with a trusted TLS hostname",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 21,
+      "title": "Protect node metadata endpoints",
+      "lab": "cks/01-networkpolicy",
+      "steps": [
+        {
+          "number": 3,
+          "title": "Block metadata and preserve application access",
+          "verify": "verify-step3.sh"
+        }
+      ],
+      "outcome": "Block metadata and preserve application access",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 22,
+      "title": "Verify a platform binary",
+      "lab": "cks/07-supply-chain",
+      "steps": [
+        {
+          "number": 4,
+          "title": "Verify the official kubectl binary before using it",
+          "verify": "verify-step4.sh"
+        }
+      ],
+      "outcome": "Verify the official kubectl binary before using it",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 23,
+      "title": "Service accounts and tokens",
+      "lab": "cks/04-serviceaccount",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Remove excess access and token mounts",
+          "verify": "verify-step1.sh"
+        },
+        {
+          "number": 4,
+          "title": "Use a short-lived token with an isolated kubeconfig",
+          "verify": "verify-step4.sh"
+        }
+      ],
+      "outcome": "Remove excess access and token mounts; Use a short-lived token with an isolated kubeconfig",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "api",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 24,
+      "title": "Restrict kubelet and API access",
+      "lab": "infrastructure/04-worker-operations",
+      "steps": [
+        {
+          "number": 4,
+          "title": "Protect kubelet authentication and authorization",
+          "verify": "verify4.sh"
+        }
+      ],
+      "outcome": "Protect kubelet authentication and authorization",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-2nodes",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 25,
+      "title": "Encrypt Secrets at rest",
+      "lab": "infrastructure/08-secret-encryption",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Enable encryption and migrate existing Secrets",
+          "verify": "verify1.sh"
+        }
+      ],
+      "outcome": "Enable encryption and migrate existing Secrets",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 26,
+      "title": "SBOM and a release decision",
+      "lab": "cks/07-supply-chain",
+      "steps": [
+        {
+          "number": 5,
+          "title": "Generate an SBOM and make an evidence-based release decision",
+          "verify": "verify-step5.sh"
+        }
+      ],
+      "outcome": "Generate an SBOM and make an evidence-based release decision",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 27,
+      "title": "Sign and validate an artifact",
+      "lab": "cks/07-supply-chain",
+      "steps": [
+        {
+          "number": 6,
+          "title": "Sign the release and reject changed content",
+          "verify": "verify-step6.sh"
+        }
+      ],
+      "outcome": "Sign the release and reject changed content",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 28,
+      "title": "Admission for permitted registries",
+      "lab": "cks/05-image-admission",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Require an approved registry and immutable image digest",
+          "verify": "verify-step1.sh"
+        },
+        {
+          "number": 2,
+          "title": "Close the ephemeral-container admission gap",
+          "verify": "verify-step2.sh"
+        }
+      ],
+      "outcome": "Require an approved registry and immutable image digest; Close the ephemeral-container admission gap",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node",
+        "execution": "api",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 29,
+      "title": "Pod-to-pod encryption",
+      "lab": "cks/09-ingress-mtls",
+      "steps": [
+        {
+          "number": 2,
+          "title": "Require mTLS and authorize a service identity",
+          "verify": "verify-step2.sh"
+        }
+      ],
+      "outcome": "Require mTLS and authorize a service identity",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 30,
+      "title": "Incident investigation",
+      "lab": "cks/10-incident-investigation",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Investigate the actual audit trail",
+          "verify": "verify-step1.sh"
+        },
+        {
+          "number": 2,
+          "title": "Revoke access and isolate the affected workload",
+          "verify": "verify-step2.sh"
+        }
+      ],
+      "outcome": "Investigate the actual audit trail; Revoke access and isolate the affected workload",
+      "prerequisites": {
+        "backend": "kubernetes-kubeadm-1node-4GB",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    },
+    {
+      "chapter": 31,
+      "title": "Host hardening",
+      "lab": "infrastructure/09-host-hardening",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Keep the reporting service useful and contained",
+          "verify": "verify1.sh"
+        }
+      ],
+      "outcome": "Keep the reporting service useful and contained",
+      "prerequisites": {
+        "backend": "ubuntu",
+        "execution": "host",
+        "setup": "Run the lab setup to completion; every required component must actually install and start."
+      }
+    }
+  ],
+  "labs": [
+    {
+      "id": "01-networkpolicy",
+      "path": "cks/01-networkpolicy",
+      "title": "CKS - Network isolation and metadata protection",
+      "chapters": [
+        1,
+        2,
+        21
+      ],
+      "step_count": 3,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
+    },
+    {
+      "id": "08-host-security",
+      "path": "cks/08-host-security",
+      "title": "CKS - Host, sandbox and runtime detection",
+      "chapters": [
+        3,
+        8,
+        9,
+        10,
+        18
+      ],
+      "step_count": 5,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "host"
+    },
+    {
+      "id": "04-serviceaccount",
+      "path": "cks/04-serviceaccount",
+      "title": "CKS - RBAC, Secrets and service-account credentials",
+      "chapters": [
+        4,
+        11,
+        23
+      ],
+      "step_count": 4,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
+    },
+    {
+      "id": "07-supply-chain",
+      "path": "cks/07-supply-chain",
+      "title": "CKS - Scan, build, inventory and sign a release",
+      "chapters": [
+        5,
+        15,
+        19,
+        22,
+        26,
+        27
+      ],
+      "step_count": 6,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "host"
+    },
+    {
+      "id": "07-apiserver-security",
+      "path": "infrastructure/07-apiserver-security",
+      "title": "CKS 06 + 16 \u2014 Audit and image admission",
+      "chapters": [
+        6,
+        16
+      ],
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
+    },
+    {
+      "id": "02-cluster-upgrade",
+      "path": "infrastructure/02-cluster-upgrade",
+      "title": "CKA 10 + CKS 07 \u2014 Upgrade both kubeadm nodes",
+      "chapters": [
+        7
+      ],
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-2nodes",
+      "execution": "host"
+    },
+    {
+      "id": "02-pod-security",
+      "path": "cks/02-pod-security",
+      "title": "CKS - Admission and privileged workloads",
+      "chapters": [
+        12,
+        14
+      ],
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
+    },
+    {
+      "id": "03-runtime-hardening",
+      "path": "cks/03-runtime-hardening",
+      "title": "CKS - Running security controls and seccomp",
+      "chapters": [
+        13,
+        17
+      ],
+      "step_count": 3,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
+    },
+    {
+      "id": "09-ingress-mtls",
+      "path": "cks/09-ingress-mtls",
+      "title": "CKS - Ingress TLS and service identity",
+      "chapters": [
+        20,
+        29
+      ],
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "host"
+    },
+    {
+      "id": "04-worker-operations",
+      "path": "infrastructure/04-worker-operations",
+      "title": "CKA + CKS \u2014 Recover, drain and protect a worker",
+      "chapters": [
+        24
+      ],
+      "step_count": 4,
+      "backend": "kubernetes-kubeadm-2nodes",
+      "execution": "host"
+    },
+    {
+      "id": "08-secret-encryption",
+      "path": "infrastructure/08-secret-encryption",
+      "title": "CKS 25 \u2014 Encrypt real etcd Secret records",
+      "chapters": [
+        25
+      ],
+      "step_count": 1,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host"
+    },
+    {
+      "id": "05-image-admission",
+      "path": "cks/05-image-admission",
+      "title": "CKS - Image admission across container types",
+      "chapters": [
+        28
+      ],
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "api"
+    },
+    {
+      "id": "10-incident-investigation",
+      "path": "cks/10-incident-investigation",
+      "title": "CKS - Investigate and contain a live incident",
+      "chapters": [
+        30
+      ],
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node-4GB",
+      "execution": "host"
+    },
+    {
+      "id": "09-host-hardening",
+      "path": "infrastructure/09-host-hardening",
+      "title": "CKS 31 \u2014 Harden a real host service",
+      "chapters": [
+        31
+      ],
+      "step_count": 1,
+      "backend": "ubuntu",
+      "execution": "host"
+    }
+  ],
+  "supporting_labs": [
+    {
+      "path": "cks/06-audit-policy",
+      "scope": "Offline audit-policy foundations; full live chapter6 is infrastructure/07-apiserver-security step1."
+    }
+  ],
+  "validation": {
+    "authoring": "Every chapter is mapped to actual indexed hands-on steps with setup, solution and verifier.",
+    "local_live_passed": [
+      "cks/02-pod-security",
+      "cks/04-serviceaccount",
+      "cks/05-image-admission",
+      "cks/07-supply-chain",
+      "cks/09-ingress-mtls"
+    ],
+    "local_live_in_progress": [],
+    "hosted": "Root integration agent is performing Chrome hosted testing. Do not infer hosted success from authored coverage.",
+    "infrastructure": "See research/infrastructure-full-lab-map.json for real local infrastructure test evidence.",
+    "limitations": [
+      "Host groups require a disposable Linux VM and network access to upstream registries and package servers.",
+      "kube-bench0.16.0 explicitly uses the supplied cis-1.12 profile for two applicable controls; upstream does not automatically map hosted Kubernetes1.36.",
+      "Falco requires kernel BTF and usable modern eBPF; AppArmor requires an enabled host LSM.",
+      "No canned scan results, fabricated Falco events, mock audit records or fake runtimes are accepted as completion."
+    ],
+    "local_evidence_directory": "/tmp/cks-full-local-evidence",
+    "static_checks": {
+      "shell_scripts": 153,
+      "embedded_python_blocks": 24,
+      "python_assets": 7,
+      "errors": 0
+    },
+    "local_environment": {
+      "kubernetes": "1.35.0",
+      "cluster": "cks-full-labs",
+      "kubeconfig": "/tmp/cks-full-labs.kubeconfig",
+      "isolation": "Dedicated kind cluster; Linux groups run inside its disposable node; default user context untouched."
+    },
+    "local_results": {
+      "cks/02-pod-security": {
+        "steps": 2,
+        "all_initially_fail": true,
+        "all_solved_pass": true,
+        "check_seconds": [
+          0.91,
+          0.51
+        ]
+      },
+      "cks/04-serviceaccount": {
+        "steps": 4,
+        "all_initially_fail": true,
+        "all_solved_pass": true,
+        "check_seconds": [
+          0.88,
+          0.37,
+          0.33,
+          0.49
+        ]
+      },
+      "cks/05-image-admission": {
+        "steps": 2,
+        "all_initially_fail": true,
+        "all_solved_pass": true,
+        "check_seconds": [
+          1.17,
+          0.33
+        ]
+      },
+      "cks/07-supply-chain": {
+        "steps": 6,
+        "all_initially_fail": true,
+        "all_solved_pass": true,
+        "setup_seconds": 100.0,
+        "solution_seconds": 86.9,
+        "check_seconds": [
+          0.2,
+          0.5,
+          0.7,
+          0.8,
+          0.1,
+          2.8
+        ]
+      },
+      "cks/09-ingress-mtls": {
+        "steps": 2,
+        "all_initially_fail": true,
+        "all_solved_pass": true,
+        "setup_seconds": 114.8,
+        "solution_seconds": 8.9,
+        "check_seconds": [
+          0.3,
+          1.0
+        ]
+      }
+    },
+    "host_validation_pending": [
+      "cks/01-networkpolicy",
+      "cks/03-runtime-hardening",
+      "cks/08-host-security",
+      "cks/10-incident-investigation"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "lab": "cks/02-pod-security",
+  "source": "Actual subprocess execution on dedicated kind cluster cks-full-labs, Kubernetes1.35.0.",
+  "phases": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 87.17
+    },
+    {
+      "phase": "before1",
+      "exit": 1,
+      "seconds": 0.13
+    },
+    {
+      "phase": "before2",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 2.87
+    },
+    {
+      "phase": "after1",
+      "exit": 0,
+      "seconds": 0.91
+    },
+    {
+      "phase": "after2",
+      "exit": 0,
+      "seconds": 0.51
+    }
+  ],
+  "all_initial_checks_failed": true,
+  "all_solved_checks_passed": true
+}

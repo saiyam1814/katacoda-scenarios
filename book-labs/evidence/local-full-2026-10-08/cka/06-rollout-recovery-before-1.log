@@ -1,0 +1,2 @@
+Error from server (NotFound): deployments.apps "created" not found
+FAIL: book-cka-rollout/created must finish its rollout (missing or invalid JSON input)

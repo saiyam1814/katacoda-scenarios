@@ -1,0 +1,2 @@
+PASS: bash -n on 263 source shell scripts.
+PASS:14 JSON indexes,38 individual task/verify/solution references.

@@ -1,0 +1,22 @@
+NAME                          CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+cka-full-labs-control-plane   196m         1%       1786Mi          8%          
+NAMESPACE            NAME                                                  CPU(cores)   MEMORY(bytes)   
+kube-system          kube-apiserver-cka-full-labs-control-plane            81m          539Mi           
+kube-system          etcd-cka-full-labs-control-plane                      24m          96Mi            
+kube-system          kube-controller-manager-cka-full-labs-control-plane   33m          89Mi            
+book-cka-metrics     memory-user                                           0m           51Mi            
+kube-system          kube-scheduler-cka-full-labs-control-plane            13m          26Mi            
+kube-system          kube-proxy-25mb5                                      2m           19Mi            
+kube-system          metrics-server-5c769894d9-rj6r2                       5m           19Mi            
+kube-system          coredns-7d764666f9-hcgrw                              2m           19Mi            
+kube-system          kindnet-tdbzc                                         2m           19Mi            
+kube-system          coredns-7d764666f9-x9wc7                              2m           18Mi            
+local-path-storage   local-path-provisioner-67b8995b4b-55kbw               1m           11Mi            
+book-cka-metrics     small                                                 0m           0Mi             
+deployment.apps/cpu-app created
+service/cpu-app created
+horizontalpodautoscaler.autoscaling/cpu-app created
+pod/load created
+pod/load condition met
+Waiting for deployment "cpu-app" rollout to finish: 4 of 5 updated replicas are available...
+deployment "cpu-app" successfully rolled out

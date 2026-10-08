@@ -1,0 +1,12 @@
+storageclass.storage.k8s.io/book-cka-expandable created
+persistentvolumeclaim/data created
+pod/app created
+pod/app condition met
+pod "app" deleted from book-cka-csi namespace
+pod/app created
+pod/app condition met
+persistent-csi-data
+persistentvolumeclaim/data patched
+persistentvolumeclaim/data condition met
+persistent-csi-data
+The PersistentVolumeClaim "data" is invalid: spec.resources.requests.storage: Forbidden: field can not be less than status.capacity

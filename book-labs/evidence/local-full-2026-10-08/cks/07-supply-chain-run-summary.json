@@ -1,0 +1,78 @@
+{
+  "lab": "cks/07-supply-chain",
+  "source": "Actual subprocess execution on dedicated kind cluster cks-full-labs, Kubernetes1.35.0.",
+  "phases": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 100.0
+    },
+    {
+      "phase": "before1",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "before2",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "before3",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "before4",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "before5",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "before6",
+      "exit": 1,
+      "seconds": 0.4
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 86.9
+    },
+    {
+      "phase": "after1",
+      "exit": 0,
+      "seconds": 0.2
+    },
+    {
+      "phase": "after2",
+      "exit": 0,
+      "seconds": 0.5
+    },
+    {
+      "phase": "after3",
+      "exit": 0,
+      "seconds": 0.7
+    },
+    {
+      "phase": "after4",
+      "exit": 0,
+      "seconds": 0.8
+    },
+    {
+      "phase": "after5",
+      "exit": 0,
+      "seconds": 0.1
+    },
+    {
+      "phase": "after6",
+      "exit": 0,
+      "seconds": 2.8
+    }
+  ],
+  "all_initial_checks_failed": true,
+  "all_solved_checks_passed": true
+}

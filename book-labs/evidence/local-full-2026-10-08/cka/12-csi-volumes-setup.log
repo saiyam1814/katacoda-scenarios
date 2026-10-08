@@ -1,0 +1,28 @@
+v4.1.4+g05fa379
+namespace/book-cka-csi created
+  Physical volume "/dev/loop0" successfully created.
+  Volume group "book_cka_csi" successfully created
+"book-lvm" has been added to your repositories
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "book-lvm" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Release "book-lvm" does not exist. Installing it now.
+NAME: book-lvm
+LAST DEPLOYED: Thu Oct  8 12:10:03 2026
+NAMESPACE: book-cka-csi-system
+STATUS: deployed
+REVISION: 1
+DESCRIPTION: Install complete
+TEST SUITE: None
+NOTES:
+The OpenEBS LVM LocalPV has been installed. Check its status by running:
+$ kubectl get pods -n book-cka-csi-system -l role=openebs-lvm
+
+For more information, visit our Slack at https://openebs.io/community or view 
+the documentation online at http://docs.openebs.io/.
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import json,sys; assert any(v["name"]=="book_cka_csi" for n in json.load(sys.stdin)["items"] for v in n.get("volumeGroups",[]))
+                            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+Ready: cka-12-csi-volumes

@@ -1,0 +1,77 @@
+{
+  "lab": "cka/14-gateway-ingress",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 73.41
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.2
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.24
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 1.53
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.67
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.37
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 44.78
+    }
+  ],
+  "recordingNote": "Transcribed from the actual local test runner output; per-phase logs are preserved alongside this file.",
+  "stepCount": 2,
+  "environment": "kind v1.35.0, one node",
+  "logs": [
+    "14-gateway-ingress-setup.log",
+    "14-gateway-ingress-before-1.log",
+    "14-gateway-ingress-before-2.log",
+    "14-gateway-ingress-solution.log",
+    "14-gateway-ingress-after-1.log",
+    "14-gateway-ingress-after-2.log",
+    "14-gateway-ingress-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "364a71022f4882a649f3f653fc9e308fab8920820124bb2a0b5548b334e04c6c",
+    "assets/helm.sh": "d6308deb16c3b27387c95de903f60e5e2bdcb49d457a5de036430b6d60288ccc",
+    "assets/lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+    "assets/routing.sh": "2e928b1459f4ca37193523309415a53e33b1c67955ccef87776a5367e9c137ed",
+    "assets/setup.sh": "3afc4efef1c03e06e421e594b5e8ad2e511bfd4ba1ed615789282450e52688ed",
+    "assets/solution-step-01.sh": "e73dc42693419779fa82f0f811434e5631b97ef2168147bc73c16c18869213b6",
+    "assets/solution-step-02.sh": "bb40a199230ef3f5c175a67ad5e3cca008b34c98dea70fbd9d9400805dc16ef1",
+    "assets/solution.sh": "a216e2f6e2a3e7d1758552a48a839655211c8315fcdd07ad54f784cc6e6b5cae",
+    "assets/verify-step-01.sh": "83b3970a5cbcee9172c64c603bede1f08b2f90a1107612e987d2a8e1d27c1f26",
+    "assets/verify-step-02.sh": "0fd3b1c4f2ee2186856d91112225bdeeb2c6b2b32a91026b747ecabfac1e53e5",
+    "assets/verify.sh": "4ad01491567762c0e4f52f6c91b3a638ced1044c97d0257f1593ddfd85270c9e",
+    "cleanup.sh": "6f1f25462a9d3c5549aef9d670e47cf34e6c919159d62d65c0fc6413cf943f09",
+    "finish.md": "1eec36c2c4f2ff3fddfd2c08fd0d6dfb19094d8f5a545e96057cab92b62bf09c",
+    "index.json": "8034e85f840f0d27fb9689e8879f3e0b90ea74f8edb491f31a7847c91255bb99",
+    "intro.md": "fbb4686a673e2aaff11cba26906a9e6d5029487ca04f2323e189bfba94c6740a",
+    "setup.sh": "b048cd79a76bdd7cf476168df06379035f7f7d6ac1fa8d4d6647899199459062",
+    "solution.sh": "84e33c686e35fe4dd29331933c8907cc608c7b26684dfb8495e6efdd08d739d8",
+    "step1.md": "df897a2c5694a140b5654e4bee038bb6dc55206564fe417bb09d951399c0be35",
+    "step2.md": "0276a51cac196433c645de1c4a039a1a4c50b8005aac5eb4176da9999fc9e572",
+    "verify-step-01.sh": "12a1c604cf7860a2d9eb242c265884838c629e0c1f8b9269917c9042f1810cf2",
+    "verify-step-02.sh": "6d88ad95d7b6bdfabc816d74ba15a9d077ea1253450791ee32b0d8fb98cd0983",
+    "verify.sh": "249e4741b586efee785e89546f2c64ca54b3f35d0353063cf6ba148b2581001c",
+    "wait.sh": "7a8adc75ee2180ac8432b46894a196b11ae0a2a7eeb27e10c893f55e80196e64"
+  }
+}

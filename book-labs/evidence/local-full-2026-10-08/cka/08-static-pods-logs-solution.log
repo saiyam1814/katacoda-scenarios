@@ -1,0 +1,5 @@
+pod/book-cka-static-cka-full-labs-control-plane condition met
+pod "book-cka-static-cka-full-labs-control-plane" deleted from book-cka-hostpods namespace
+pod/book-cka-static-cka-full-labs-control-plane condition met
+c2-required-log
+ERROR: missing configuration

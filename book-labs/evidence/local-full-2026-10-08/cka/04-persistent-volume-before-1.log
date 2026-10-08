@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "reader" not found
+FAIL: book-cka-storage/reader must be Ready (missing or invalid JSON input)

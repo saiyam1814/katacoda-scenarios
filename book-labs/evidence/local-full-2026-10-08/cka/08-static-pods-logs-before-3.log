@@ -1,0 +1,2 @@
+cat: <LOCAL_HOME>/book-labs/cka-08-static-pods-logs/c2.txt: No such file or directory
+FAIL: Select c2 rather than the default container

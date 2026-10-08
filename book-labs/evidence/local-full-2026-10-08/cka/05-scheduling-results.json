@@ -1,0 +1,107 @@
+{
+  "lab": "cka/05-scheduling",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 1.05
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.12
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.11
+    },
+    {
+      "phase": "before-3",
+      "exit": 1,
+      "seconds": 0.11
+    },
+    {
+      "phase": "before-4",
+      "exit": 1,
+      "seconds": 0.15
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 38.33
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.54
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.25
+    },
+    {
+      "phase": "after-3",
+      "exit": 0,
+      "seconds": 0.38
+    },
+    {
+      "phase": "after-4",
+      "exit": 0,
+      "seconds": 0.3
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 42.58
+    }
+  ],
+  "recordingNote": "Transcribed from the actual local test runner output; per-phase logs are preserved alongside this file.",
+  "stepCount": 4,
+  "environment": "kind v1.35.0 with Cilium1.20.1, two nodes",
+  "logs": [
+    "05-scheduling-setup.log",
+    "05-scheduling-before-1.log",
+    "05-scheduling-before-2.log",
+    "05-scheduling-before-3.log",
+    "05-scheduling-before-4.log",
+    "05-scheduling-solution.log",
+    "05-scheduling-after-1.log",
+    "05-scheduling-after-2.log",
+    "05-scheduling-after-3.log",
+    "05-scheduling-after-4.log",
+    "05-scheduling-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "3186bad6502fadfae870cf8ebe8c10b9d9b45c66a20c71d92ec8a8ac5a72b475",
+    "assets/lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+    "assets/setup.sh": "3ddcacfd8c46a79cacbe8c6a7a11cb22d8eaee288dd54e50e31308ae3ff944ab",
+    "assets/solution-step-01.sh": "165bfd3785dbdfc46518111128951bd25fe5d4dd9b7c0d308bd8caeeeb590b0c",
+    "assets/solution-step-02.sh": "704b6f683af29e285182d00c180dcc29268db1073b3ee01666fd4ae36dad8fda",
+    "assets/solution-step-03.sh": "7aeb286794c66fe551bf42f687b522ca6f3dc14712e8e58694785ecddcd3d490",
+    "assets/solution-step-04.sh": "5514affdeaf480609938f27aecf078be4a85c3114a4a6a89adfced0f7140acc8",
+    "assets/solution.sh": "8eebdae450e380809d19c9b6b37684e69f9c5cafe67f0a878adfbd121c8c4836",
+    "assets/verify-step-01.sh": "40accc3a5fef1254ef28dfc9ed2f059674ae417e73e28908affcbedb3d1e111a",
+    "assets/verify-step-02.sh": "571a6795d05c40e189c7ca7ad185bd75c1906bfc7908d6e1754f2d19b933bf56",
+    "assets/verify-step-03.sh": "ec9dd26bf8d01277a0872e40092d55e8c2b8e819c46e6c9ff8078a16168d35cc",
+    "assets/verify-step-04.sh": "2417d07816e1f3476268a72f973680af66be3b4f5e001e6a567b86f87c2d5217",
+    "assets/verify.sh": "5380ae35973c2b05e68a0bafbcadcff548c7a3acb18007fd02b4879d8b4dffa4",
+    "cleanup.sh": "432abc714dd005ef9760fc777ea1fa986fb68fe8d33c9af8b63a7743a30716e6",
+    "finish.md": "0af1da48c1b184197f33ea642a57fd948f492e460c88e20a26e63d70bfd616a0",
+    "index.json": "ff01880dd0275acf5352950848493d16f6c1dd9b338d0a1c278ad3c9bb2afb4d",
+    "intro.md": "2bc110b0e52b748f6afe867889eec3480e633b153a359b92fccd6e6b9540dc0b",
+    "setup.sh": "67ae3f4004bf97d6124f90d5406a864b84d5322244a9cd580b7e9c93cb83dc44",
+    "solution.sh": "b51f88f90f8a4f2456a1af654b3c56bd0951a5c6643e087032049cc5a6f1331b",
+    "step1.md": "9d3d02ebc512f2ff05fdff51389a939029231daa0b6c37ab1b8575678247ca2a",
+    "step2.md": "9649e84119a81a7431e0b4663a20290afeaeb2277f959e55c2bb9538f04886dc",
+    "step3.md": "7d61afa5fbfc65238aee4a298833577b9b1857b11995c7f4ede77e49fd905051",
+    "step4.md": "a6abaf2e75888c824fb4d07bf8b04c94af34ff631f336763fae4aefb53796662",
+    "verify-step-01.sh": "ea8edb2526858f713a398a53a489cdda3cd9390d8eadf95644bcdd1b14d7ce38",
+    "verify-step-02.sh": "1aec4fbf0a6c69e220473264cb0103651e4c4ba1a2a689dc2cd814cf49623135",
+    "verify-step-03.sh": "c2f80272236749293faac2e4f1bc2f1499b3c931f01134509c7058fce369a662",
+    "verify-step-04.sh": "9464340265a47ed450bfb2d04bcd3715b66442d54495e69a5a578f86178d865c",
+    "verify.sh": "c073fc709b375751153ee089c20339f910e1466f11b6272eeee3635898f72b81",
+    "wait.sh": "464c8606e5cf5a5f390c193dda7566557ab7c83cadcba29fd290fa2fab427362"
+  }
+}

@@ -1,0 +1,2 @@
+Error from server (NotFound): daemonsets.apps "node-web" not found
+FAIL: Tolerate the actual control-plane taint (missing or invalid JSON input)

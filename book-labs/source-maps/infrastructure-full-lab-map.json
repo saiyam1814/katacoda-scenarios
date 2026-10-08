@@ -1,0 +1,462 @@
+{
+  "edition": "2026-10-08",
+  "chapters": [
+    {
+      "book": "CKA",
+      "chapter": 1,
+      "lab": "infrastructure/01-kubeadm-bootstrap",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Build a functioning two-VM cluster",
+          "verify": "verify1.sh"
+        }
+      ],
+      "outcome": "Real kubeadm init and worker join on two VMs, v1.35.9, Cilium1.20.2; hosted adaptation uses one worker instead of two.",
+      "prerequisites": "kubernetes-kubeadm-2nodes; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKA",
+      "chapter": 10,
+      "lab": "infrastructure/02-cluster-upgrade",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Upgrade the control plane by one minor",
+          "verify": "verify1.sh"
+        },
+        {
+          "number": 2,
+          "title": "Upgrade the worker and check the application",
+          "verify": "verify2.sh"
+        }
+      ],
+      "outcome": "Fresh v1.34.12 cluster rebuilt during setup, upgraded control-plane first to v1.35.9 then worker; actual package/control-plane versions and application HTTP checked.",
+      "prerequisites": "kubernetes-kubeadm-2nodes; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKS",
+      "chapter": 7,
+      "lab": "infrastructure/02-cluster-upgrade",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Upgrade the control plane by one minor",
+          "verify": "verify1.sh"
+        },
+        {
+          "number": 2,
+          "title": "Upgrade the worker and check the application",
+          "verify": "verify2.sh"
+        }
+      ],
+      "outcome": "Fresh v1.34.12 cluster rebuilt during setup, upgraded control-plane first to v1.35.9 then worker; actual package/control-plane versions and application HTTP checked.",
+      "prerequisites": "kubernetes-kubeadm-2nodes; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKA",
+      "chapter": 11,
+      "lab": "infrastructure/03-etcd-recovery",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Take and validate a snapshot",
+          "verify": "verify1.sh"
+        },
+        {
+          "number": 2,
+          "title": "Delete data, restore and prove recovery",
+          "verify": "verify2.sh"
+        }
+      ],
+      "outcome": "Actual etcd snapshot/restore; original object UID returns, post-snapshot object disappears, revision is bumped, live etcd references restored directory.",
+      "prerequisites": "kubernetes-kubeadm-1node; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKA",
+      "chapter": 20,
+      "lab": "infrastructure/04-worker-operations",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Recover the stopped kubelet",
+          "verify": "verify1.sh"
+        }
+      ],
+      "outcome": "Real SSH/systemd kubelet stop/start, scheduler Pending evidence by current Pod UID, actual drain/replacement, anonymous HTTP401 and authenticated logs/exec.",
+      "prerequisites": "kubernetes-kubeadm-2nodes; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKA",
+      "chapter": 23,
+      "lab": "infrastructure/04-worker-operations",
+      "steps": [
+        {
+          "number": 2,
+          "title": "Prove what cordon does",
+          "verify": "verify2.sh"
+        },
+        {
+          "number": 3,
+          "title": "Drain, recover workloads and uncordon",
+          "verify": "verify3.sh"
+        }
+      ],
+      "outcome": "Real SSH/systemd kubelet stop/start, scheduler Pending evidence by current Pod UID, actual drain/replacement, anonymous HTTP401 and authenticated logs/exec.",
+      "prerequisites": "kubernetes-kubeadm-2nodes; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKS",
+      "chapter": 24,
+      "lab": "infrastructure/04-worker-operations",
+      "steps": [
+        {
+          "number": 4,
+          "title": "Protect kubelet authentication and authorization",
+          "verify": "verify4.sh"
+        }
+      ],
+      "outcome": "Real SSH/systemd kubelet stop/start, scheduler Pending evidence by current Pod UID, actual drain/replacement, anonymous HTTP401 and authenticated logs/exec.",
+      "prerequisites": "kubernetes-kubeadm-2nodes; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKA",
+      "chapter": 27,
+      "lab": "infrastructure/05-ha-control-plane",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Join two real control-plane members",
+          "verify": "verify1.sh"
+        },
+        {
+          "number": 2,
+          "title": "Prove writes survive one unavailable member",
+          "verify": "verify2.sh"
+        },
+        {
+          "number": 3,
+          "title": "Recover the failed member",
+          "verify": "verify3.sh"
+        }
+      ],
+      "outcome": "Three real control-plane/stacked-etcd containers plus TCP load balancer on one Ubuntu4GB VM. Genuine quorum/write behavior, shared physical failure domain explicitly disclosed.",
+      "prerequisites": "ubuntu-4GB; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKA",
+      "chapter": 37,
+      "lab": "infrastructure/06-api-repair",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Repair the broken certificate path and inspect interfaces",
+          "verify": "verify1.sh"
+        }
+      ],
+      "outcome": "Real client-CA manifest fault, API outage/recovery, new Pod DNS and interface evidence from actual runtime/CNI/CSI.",
+      "prerequisites": "kubernetes-kubeadm-1node; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKS",
+      "chapter": 6,
+      "lab": "infrastructure/07-apiserver-security",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Write actual audit records without leaking Secrets",
+          "verify": "verify1.sh"
+        }
+      ],
+      "outcome": "Actual API audit file and TLS/mTLS ImagePolicyWebhook; fresh audit requests, approved/denied image admission, real service outage and recovery.",
+      "prerequisites": "kubernetes-kubeadm-1node; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKS",
+      "chapter": 16,
+      "lab": "infrastructure/07-apiserver-security",
+      "steps": [
+        {
+          "number": 2,
+          "title": "Enforce a working ImagePolicyWebhook and fail closed",
+          "verify": "verify2.sh"
+        }
+      ],
+      "outcome": "Actual API audit file and TLS/mTLS ImagePolicyWebhook; fresh audit requests, approved/denied image admission, real service outage and recovery.",
+      "prerequisites": "kubernetes-kubeadm-1node; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKS",
+      "chapter": 25,
+      "lab": "infrastructure/08-secret-encryption",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Enable encryption and migrate existing Secrets",
+          "verify": "verify1.sh"
+        }
+      ],
+      "outcome": "Actual API encryption provider, existing Secret rewrite, raw etcd ciphertext and successful API decryption.",
+      "prerequisites": "kubernetes-kubeadm-1node; dedicated disposable environment; real host access"
+    },
+    {
+      "book": "CKS",
+      "chapter": 31,
+      "lab": "infrastructure/09-host-hardening",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Keep the reporting service useful and contained",
+          "verify": "verify1.sh"
+        }
+      ],
+      "outcome": "Actual systemd process identity, effective and bounding capabilities, listener tests, service mount namespace read-only and allowed state write.",
+      "prerequisites": "ubuntu; dedicated disposable environment; real host access"
+    }
+  ],
+  "labs": [
+    {
+      "id": "infra-01-kubeadm-bootstrap",
+      "path": "infrastructure/01-kubeadm-bootstrap",
+      "title": "CKA 01 \u2014 Initialize and join a kubeadm cluster",
+      "chapters": [
+        "CKA1"
+      ],
+      "step_count": 1,
+      "backend": "kubernetes-kubeadm-2nodes",
+      "execution": "host",
+      "outcome": "Real kubeadm init and worker join on two VMs, v1.35.9, Cilium1.20.2; hosted adaptation uses one worker instead of two."
+    },
+    {
+      "id": "infra-02-cluster-upgrade",
+      "path": "infrastructure/02-cluster-upgrade",
+      "title": "CKA 10 + CKS 07 \u2014 Upgrade both kubeadm nodes",
+      "chapters": [
+        "CKA10",
+        "CKS7"
+      ],
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-2nodes",
+      "execution": "host",
+      "outcome": "Fresh v1.34.12 cluster rebuilt during setup, upgraded control-plane first to v1.35.9 then worker; actual package/control-plane versions and application HTTP checked."
+    },
+    {
+      "id": "infra-03-etcd-recovery",
+      "path": "infrastructure/03-etcd-recovery",
+      "title": "CKA 11 \u2014 Restore a real etcd snapshot",
+      "chapters": [
+        "CKA11"
+      ],
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host",
+      "outcome": "Actual etcd snapshot/restore; original object UID returns, post-snapshot object disappears, revision is bumped, live etcd references restored directory."
+    },
+    {
+      "id": "infra-04-worker-operations",
+      "path": "infrastructure/04-worker-operations",
+      "title": "CKA + CKS \u2014 Recover, drain and protect a worker",
+      "chapters": [
+        "CKA20",
+        "CKA23",
+        "CKS24"
+      ],
+      "step_count": 4,
+      "backend": "kubernetes-kubeadm-2nodes",
+      "execution": "host",
+      "outcome": "Real SSH/systemd kubelet stop/start, scheduler Pending evidence by current Pod UID, actual drain/replacement, anonymous HTTP401 and authenticated logs/exec."
+    },
+    {
+      "id": "infra-05-ha-control-plane",
+      "path": "infrastructure/05-ha-control-plane",
+      "title": "CKA 27 \u2014 Join and fail over three control planes",
+      "chapters": [
+        "CKA27"
+      ],
+      "step_count": 3,
+      "backend": "ubuntu-4GB",
+      "execution": "host",
+      "outcome": "Three real control-plane/stacked-etcd containers plus TCP load balancer on one Ubuntu4GB VM. Genuine quorum/write behavior, shared physical failure domain explicitly disclosed."
+    },
+    {
+      "id": "infra-06-api-repair",
+      "path": "infrastructure/06-api-repair",
+      "title": "CKA 37 \u2014 Recover the API server",
+      "chapters": [
+        "CKA37"
+      ],
+      "step_count": 1,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host",
+      "outcome": "Real client-CA manifest fault, API outage/recovery, new Pod DNS and interface evidence from actual runtime/CNI/CSI."
+    },
+    {
+      "id": "infra-07-apiserver-security",
+      "path": "infrastructure/07-apiserver-security",
+      "title": "CKS 06 + 16 \u2014 Audit and image admission",
+      "chapters": [
+        "CKS6",
+        "CKS16"
+      ],
+      "step_count": 2,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host",
+      "outcome": "Actual API audit file and TLS/mTLS ImagePolicyWebhook; fresh audit requests, approved/denied image admission, real service outage and recovery."
+    },
+    {
+      "id": "infra-08-secret-encryption",
+      "path": "infrastructure/08-secret-encryption",
+      "title": "CKS 25 \u2014 Encrypt real etcd Secret records",
+      "chapters": [
+        "CKS25"
+      ],
+      "step_count": 1,
+      "backend": "kubernetes-kubeadm-1node",
+      "execution": "host",
+      "outcome": "Actual API encryption provider, existing Secret rewrite, raw etcd ciphertext and successful API decryption."
+    },
+    {
+      "id": "infra-09-host-hardening",
+      "path": "infrastructure/09-host-hardening",
+      "title": "CKS 31 \u2014 Harden a real host service",
+      "chapters": [
+        "CKS31"
+      ],
+      "step_count": 1,
+      "backend": "ubuntu",
+      "execution": "host",
+      "outcome": "Actual systemd process identity, effective and bounding capabilities, listener tests, service mount namespace read-only and allowed state write."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://killercoda.com/creators",
+      "evidence": "Supported Ubuntu/Kubernetes backends; only2-node Kubernetes topology;1hour free/4hour paid lifetime; filesystem assets and per-step verification."
+    },
+    {
+      "url": "https://docs.cilium.io/en/stable/network/kubernetes/compatibility/",
+      "evidence": "Cilium1.20.2 compatibility table includes Kubernetes1.34 and1.35."
+    },
+    {
+      "url": "https://dl.k8s.io/release/stable-1.34.txt",
+      "evidence": "Returned v1.34.12 during research2026-10-08."
+    },
+    {
+      "url": "https://dl.k8s.io/release/stable-1.35.txt",
+      "evidence": "Returned v1.35.9 during research2026-10-08."
+    },
+    {
+      "url": "https://kind.sigs.k8s.io/docs/user/quick-start/",
+      "evidence": "Official multiple-control-plane node topology; kind uses actual kubeadm node containers."
+    },
+    {
+      "url": "https://etcd.io/docs/v3.6/op-guide/recovery/",
+      "evidence": "Snapshot recovery, revision bump and compaction for Kubernetes watch caches."
+    }
+  ],
+  "validation": {
+    "static": {
+      "counts": {
+        "scenarios": 9,
+        "json": 10,
+        "bash": 129,
+        "python": 15,
+        "steps": 17
+      },
+      "errors": []
+    },
+    "live_local": {
+      "groups_passed": 7,
+      "steps_passed": 14,
+      "labs": [
+        "03-etcd-recovery",
+        "04-worker-operations",
+        "05-ha-control-plane",
+        "06-api-repair",
+        "07-apiserver-security",
+        "08-secret-encryption",
+        "09-host-hardening"
+      ],
+      "environment": "Actual Kubernetesv1.35.0/etcd3.6.6, systemd/static-Pod/SSH operations in isolated privileged Docker nodes; HA3realcontrolplanes plusTCPloadbalancer. Native UbuntuVM compatibility requires hosted verification.",
+      "portable_evidence": "book-labs/evidence/infra-local/summary.json",
+      "details": [
+        "Audit checks all four required Deployment verbs and a fresh Secret event.",
+        "Encryption checks all captured existing Secret keys and a fresh write; valid plaintext mutation is rejected.",
+        "Kubelet checks anonymous401, unauthorized authenticated token403, closed read-only port and working authenticated logs/exec.",
+        "HA checks actual control-plane joins, writes with one member stopped, and all-member recovery.",
+        "Host hardening rejects an otherwise unprivileged service that retains a capability bounding set.",
+        "Existing allowed Pod executes a real command while the ImagePolicyWebhook service is stopped."
+      ]
+    },
+    "unit_tests": {
+      "tests": 5,
+      "result": "passed with PyYAML in the real node environment",
+      "scope": "helper regressions only; not counted as live chapter coverage"
+    },
+    "not_executed_locally": [
+      "infrastructure/01-kubeadm-bootstrap",
+      "infrastructure/02-cluster-upgrade"
+    ],
+    "hosted": "Parent records Chrome/Killercoda outcomes separately; do not infer hosted pass from source mapping."
+  },
+  "semantic_audit": [
+    {
+      "chapters": [
+        "CKA1"
+      ],
+      "adaptation": "Two supported VMs (controlplane,node01) instead of three book VMs. Runtime/kernel preparation is supplied by the supported backend. Real package installation, kubeadm init/join, CNI, taint and per-node DNS are exercised."
+    },
+    {
+      "chapters": [
+        "CKA10",
+        "CKS7"
+      ],
+      "checks": "One-minor upgrade on both nodes; actual API/node versions, original application UID/HTTP, two replicas and PDBminAvailable1 retained; final version evidence file."
+    },
+    {
+      "chapters": [
+        "CKA11"
+      ],
+      "checks": "Real snapshot status, deliberate deletion, restored original UID/marker, later-data removal, active restored hostPath and billion-revision bump."
+    },
+    {
+      "chapters": [
+        "CKA20",
+        "CKA23",
+        "CKS24"
+      ],
+      "checks": "Actual stopped-kubelet recovery, fresh Pod, current PodUID scheduler denial, drain relocation and replacement, uncordon, real kubelet/API authentication and authorization negatives."
+    },
+    {
+      "chapters": [
+        "CKA27"
+      ],
+      "adaptation": "Three real nested control-plane containers share a VM and one load balancer. No production physical-host resilience claim; real three-member quorum and write under one process-host outage are tested."
+    },
+    {
+      "chapters": [
+        "CKA37"
+      ],
+      "checks": "Only incorrect certificate flag repaired; live DNS, runtime version, actual CNI filenames and CSI names/absence recorded."
+    },
+    {
+      "chapters": [
+        "CKS6",
+        "CKS16"
+      ],
+      "checks": "Actual audit delivery/rotation configuration/all four Deployment verbs/Secret metadata; mTLS allowlist, denied image, real service outage fail-closed, existing Pod execution during the outage, and recovered admission."
+    },
+    {
+      "chapters": [
+        "CKS25"
+      ],
+      "checks": "Existing Secret migration plus a fresh encrypted write, rawetcdheader, no plaintextmarker, APIdecryption and configmode0600."
+    },
+    {
+      "chapters": [
+        "CKS31"
+      ],
+      "checks": "Real service/accountgroupidentity, zeroCapEff/CapBnd,NoNewPrivs, loopback/externalHTTP, protectedmountnamespace and allowedstatewrite."
+    }
+  ]
+}

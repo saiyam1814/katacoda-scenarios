@@ -1,0 +1,5 @@
+namespace/book-cka-hostpods created
+pod/logs-demo created
+pod/crash created
+pod/logs-demo condition met
+Ready: cka-08-static-pods-logs

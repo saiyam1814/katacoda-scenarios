@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "saiyam" not found
+FAIL: book-cka-pods/saiyam must be Ready (missing or invalid JSON input)

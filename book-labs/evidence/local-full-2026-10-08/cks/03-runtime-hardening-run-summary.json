@@ -1,0 +1,48 @@
+{
+  "lab": "cks/03-runtime-hardening",
+  "source": "Actual subprocess execution on dedicated kind cluster cks-full-labs, Kubernetes1.35.0.",
+  "phases": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 2.4
+    },
+    {
+      "phase": "before1",
+      "exit": 1,
+      "seconds": 0.3
+    },
+    {
+      "phase": "before2",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "before3",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 3.2
+    },
+    {
+      "phase": "after1",
+      "exit": 0,
+      "seconds": 0.7
+    },
+    {
+      "phase": "after2",
+      "exit": 0,
+      "seconds": 0.5
+    },
+    {
+      "phase": "after3",
+      "exit": 0,
+      "seconds": 0.3
+    }
+  ],
+  "all_initial_checks_failed": true,
+  "all_solved_checks_passed": true
+}

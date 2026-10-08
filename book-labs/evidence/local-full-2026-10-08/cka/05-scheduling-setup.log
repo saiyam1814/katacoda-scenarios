@@ -1,0 +1,4 @@
+namespace/book-cka-scheduling created
+node/cka-policy-worker labeled
+pod/reporter created
+Ready: cka-05-scheduling

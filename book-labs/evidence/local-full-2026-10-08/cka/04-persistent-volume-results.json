@@ -1,0 +1,76 @@
+{
+  "lab": "cka/04-persistent-volume",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 0.82
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.08
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.09
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 36.52
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.32
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.26
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 47.76
+    }
+  ],
+  "recordingNote": "Transcribed from the actual local test runner output; per-phase logs are preserved alongside this file.",
+  "stepCount": 2,
+  "environment": "kind v1.35.0, one node",
+  "logs": [
+    "04-persistent-volume-setup.log",
+    "04-persistent-volume-before-1.log",
+    "04-persistent-volume-before-2.log",
+    "04-persistent-volume-solution.log",
+    "04-persistent-volume-after-1.log",
+    "04-persistent-volume-after-2.log",
+    "04-persistent-volume-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "fb05c3b568c392d912498e27fd501b2d88f4c8a8f889175b0ef5f110460901d1",
+    "assets/lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+    "assets/local-node.sh": "d74b69fe63916f0512d8d4a32b9aa6b01929276f872d2182b6095efbc9ecc47e",
+    "assets/setup.sh": "69b7d80a78cf110a52ff487de46f8378e521dedee868c426c4c7769f8dd0430b",
+    "assets/solution-step-01.sh": "4d670330fe871d91a947068ead161144ee3502e7efe25aab987110e7b5b323a9",
+    "assets/solution-step-02.sh": "4b5d7285ebd37866cb0a1158e23bb5f48fcef27d32f05f5a6dc57d5ea53c0acd",
+    "assets/solution.sh": "aae58a45418af5376af1493c851c17ce5205b02be91bf1b34000698dadf9e7a7",
+    "assets/verify-step-01.sh": "8fda8d5db98cca7aa4e6d23a9a34a15978ac8bbcf600be68482a96afde60780b",
+    "assets/verify-step-02.sh": "e6b2d0d5ac6145d7bf0975b3fb682352ea491bbf6a06c0d615470fce716d40ff",
+    "assets/verify.sh": "a1d04d506f3a11d10a712155fb916a21bd7da5a52eb466b89be5839d9825f166",
+    "cleanup.sh": "8eab9d56a19f4044e81c77055bdaac71701db46e0c05aa22483f7cd6b1c69de1",
+    "finish.md": "6259c5942f6711418cc1f0ab4ee86adcd098d3fa5a77a05e7422b9c30a4de6cb",
+    "index.json": "345a7c429c8cff566f26e59a543451b051fcbcc21bea04ce2814bd55848de5db",
+    "intro.md": "7437260865a192d7e0940c1940da4f3596c01ede3e6d5753e586b78cecb38317",
+    "setup.sh": "27e6bbef4608a20837cfb1619fba81e4cc675bada376df4aed17de51f93dacf4",
+    "solution.sh": "df99a50e83b31f90b4cecc6cb082011f9dbe04c14e53fa3de35f900f87d6f8ba",
+    "step1.md": "1b09419b94e652589eee5b4d72153568d08cccb5975d54f7ab56d22cf9c91adf",
+    "step2.md": "cbbedcc061d3859d66a420f72a24b0b421b5c53d7226fae03345f6e1927a84f0",
+    "verify-step-01.sh": "c80fba741f5a5c8180e5028362f96a1f5098846ebb9563145335d374081271e2",
+    "verify-step-02.sh": "c75fb7476f56bb7266241876b8613e3d173bef9b62699f89933fef0359ac7c8e",
+    "verify.sh": "57dd6365808076c6124abf0c39f4b9b988cdd1ef9f66f10609e8b1c99b28ad05",
+    "wait.sh": "528be2105487256efd84d78ab726e14dcd479301a2bc7a50bdcff1960e9d73b5"
+  }
+}

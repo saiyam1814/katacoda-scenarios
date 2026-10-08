@@ -1,0 +1,1 @@
+PASS: all four live Deployment verbs have bodies; a fresh Secret event has metadata only

@@ -1,0 +1,4 @@
+namespace "book-cka-config" deleted
+namespace "book-cka-probes" deleted
+node/cka-full-labs-control-plane untainted
+node/cka-full-labs-control-plane unlabeled

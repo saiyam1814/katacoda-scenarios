@@ -1,0 +1,18 @@
+v4.1.4+g05fa379
+namespace "book-cka-certificates" deleted
+These resources were kept due to the resource policy:
+[CustomResourceDefinition] challenges.acme.cert-manager.io
+[CustomResourceDefinition] orders.acme.cert-manager.io
+[CustomResourceDefinition] certificaterequests.cert-manager.io
+[CustomResourceDefinition] certificates.cert-manager.io
+[CustomResourceDefinition] clusterissuers.cert-manager.io
+[CustomResourceDefinition] issuers.cert-manager.io
+
+release "book-cert-manager" uninstalled
+namespace "book-cka-cert-manager" deleted
+customresourcedefinition.apiextensions.k8s.io "certificaterequests.cert-manager.io" deleted
+customresourcedefinition.apiextensions.k8s.io "certificates.cert-manager.io" deleted
+customresourcedefinition.apiextensions.k8s.io "challenges.acme.cert-manager.io" deleted
+customresourcedefinition.apiextensions.k8s.io "clusterissuers.cert-manager.io" deleted
+customresourcedefinition.apiextensions.k8s.io "issuers.cert-manager.io" deleted
+customresourcedefinition.apiextensions.k8s.io "orders.acme.cert-manager.io" deleted

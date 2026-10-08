@@ -1,0 +1,24 @@
+service/prod-web created
+deployment.apps/prod-web created
+Waiting for deployment "prod-web" rollout to finish: 0 out of 3 new replicas have been updated...
+Waiting for deployment "prod-web" rollout to finish: 0 of 3 updated replicas are available...
+Waiting for deployment "prod-web" rollout to finish: 1 of 3 updated replicas are available...
+Waiting for deployment "prod-web" rollout to finish: 2 of 3 updated replicas are available...
+deployment "prod-web" successfully rolled out
+pod/client created
+pod/client condition met
+serviceaccount/metrics-server created
+clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader created
+clusterrole.rbac.authorization.k8s.io/system:metrics-server created
+rolebinding.rbac.authorization.k8s.io/metrics-server-auth-reader created
+clusterrolebinding.rbac.authorization.k8s.io/metrics-server:system:auth-delegator created
+clusterrolebinding.rbac.authorization.k8s.io/system:metrics-server created
+configmap/book-cka-metrics-tls created
+service/metrics-server created
+deployment.apps/metrics-server created
+apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io created
+Waiting for deployment "metrics-server" rollout to finish: 0 of 1 updated replicas are available...
+deployment "metrics-server" successfully rolled out
+apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io condition met
+NAME                          CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+cka-full-labs-control-plane   544m         5%       2035Mi          10%         

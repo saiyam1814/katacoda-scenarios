@@ -1,0 +1,75 @@
+{
+  "lab": "cka/11-services-networkpolicy",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 147.35
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 9.23
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.65
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 3.57
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 42.97
+    }
+  ],
+  "stepCount": 2,
+  "environment": "kind v1.35.0 with Cilium1.20.1, two nodes",
+  "logs": [
+    "11-services-networkpolicy-setup.log",
+    "11-services-networkpolicy-before-1.log",
+    "11-services-networkpolicy-before-2.log",
+    "11-services-networkpolicy-solution.log",
+    "11-services-networkpolicy-after-1.log",
+    "11-services-networkpolicy-after-2.log",
+    "11-services-networkpolicy-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "02f7652e71d74f98914ffbaf03b730f2684c1e1715fad5e1c8d891bdc9fddf54",
+    "assets/lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+    "assets/network.sh": "e9d73627483b6a74aa62a65e294ba6e2a478234c6ca1fe52573b87058e40a57e",
+    "assets/setup.sh": "69263d749b6251e21fd3fb66d20a7bb9a51316535baebfa952b01879074668d0",
+    "assets/solution-step-01.sh": "636169ab7d4cc4591ff5a9725241310ad6c843ff36dec0f966b2217af7952241",
+    "assets/solution-step-02.sh": "bff99bf614aafc46d5f27a9dcb27afbc987f2a6762cb273cb3bf54bd6ad4544f",
+    "assets/solution.sh": "24f2b98785adec88524f1afd658a4a85e71e674bab35c5ae5b8df5ce9f98bc04",
+    "assets/verify-step-01.sh": "e36b445d076e7c56f8a859ab4cdf876a731c4ab5ad93d6248f9b544b64040220",
+    "assets/verify-step-02.sh": "7dc2ccae71860eeccd9a46670f8d3e150c2c7e2581ca7d2eb41dc86beb68cb57",
+    "assets/verify.sh": "1d558075c6b52164f56225ada63a37936afbb23f4dee7052da27c249f1b86ecd",
+    "cleanup.sh": "76d34ee6012282ede0961873f8d95097a27bb4d3fbf5f2f2dd781aac35d56f6a",
+    "finish.md": "5c94f930e89b259a07bb8a1f661c1569afc13eb903cc0024b3de13234f695e31",
+    "index.json": "4f93991c4fa252a175f437cceae1a7ffddff9f23eee4985212f542168fb8fda5",
+    "intro.md": "eeeff0d81b6bc687da103b8856ed573b372a6d8bc908195b113f9c5c248beaba",
+    "setup.sh": "f3b4d50ceb3d20b571e787d4984ccbdd92fc7bd8162cec9da23fa711d9e32fe5",
+    "solution.sh": "9b5709616d214a298493268fb375d360cad3ac30c55304c39f3c73b0a68b1938",
+    "step1.md": "094afe723453599cc59be681c035052cd55bde415e32d42445544178d46a2a68",
+    "step2.md": "9a4398446bb160ab03f45db272d546fe41ffeeef0add89218cf43a60bf935c85",
+    "verify-step-01.sh": "faafc273e078e00758fc84f52838d8a6e9f2bf658b4b0eb4927c4d815a113cd9",
+    "verify-step-02.sh": "ccd2367132294d36836566351f480d29e86f042431cf541335c147d04283155d",
+    "verify.sh": "593ccbf0fe38c19d1d17fc40a8c5810ff730b6b535b509a907543de772d5484c",
+    "wait.sh": "313f1ac9e22c5dccb2790fc5efbbdf7bb5f4cb345a510d1c6eca4000c2711ddf"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "lab": "cka/13-helm-certificates",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 1.25
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.14
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.07
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 91.89
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.41
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.31
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 12.09
+    }
+  ],
+  "recordingNote": "Transcribed from the actual local test runner output; per-phase logs are preserved alongside this file.",
+  "stepCount": 2,
+  "environment": "kind v1.35.0, one node",
+  "logs": [
+    "13-helm-certificates-setup.log",
+    "13-helm-certificates-before-1.log",
+    "13-helm-certificates-before-2.log",
+    "13-helm-certificates-solution.log",
+    "13-helm-certificates-after-1.log",
+    "13-helm-certificates-after-2.log",
+    "13-helm-certificates-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "ae6c704c17a14563613d0ea653e91bbfb8baaf4bc7d517984c963f043f58c2bb",
+    "assets/helm.sh": "d6308deb16c3b27387c95de903f60e5e2bdcb49d457a5de036430b6d60288ccc",
+    "assets/lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+    "assets/setup.sh": "0361fe7698e7a5f7adc83f011d8a4990e05e453ee432145e4017375e6e3ced55",
+    "assets/solution-step-01.sh": "03f23c0d0f6450bb47f05d6a0b674bd41cb6992c90701456a938a00b19c854e1",
+    "assets/solution-step-02.sh": "852b02f1226d9da31bf4c4f4d0f4a066aa54be45630ac19d84629c1d0ad68035",
+    "assets/solution.sh": "b13f3369ea192eb58af7a3117f2a1bc45d48f5cf6f5791d284eaaae9c48bd9f7",
+    "assets/verify-step-01.sh": "5564eabd69a5bc877c0f8a8ca86a79bbe4e6aa8a5b79749205797dccb8fa0f5f",
+    "assets/verify-step-02.sh": "58bc091c165f5615c32e7bd0747e268966322e63ddd5f9e2fe4f5f5414d695b5",
+    "assets/verify.sh": "0d47f44a99cb17b29d4d458afb8905216f6c842aed0913ab75e97d4f75f3c17a",
+    "cleanup.sh": "50e3bf398cea3d191bdfd9b904b3a7ef8afaaba37016ffb1fcc465fbbaa34a79",
+    "finish.md": "6872650e32b7ea44ef4cc49f9da59ab985d02a1a6384b9c3a3e014c4b2a72240",
+    "index.json": "b1ef431b278833ceea8cc9c8794aed4dcc40e3457df458d3a7cc970ad38eac81",
+    "intro.md": "5437b3e75b2450d8ba209e451da5925f3f263b59e77ac571a5f77aab6afc6625",
+    "setup.sh": "152c376c7d1ad28101027460292f290526c37e8982bad2e68bbc9f59059616d4",
+    "solution.sh": "e4a6dbf640a1d49d4747e948b3b213c34ad76751725a907413167e9ee412826d",
+    "step1.md": "393dc9398cabaae9db111c99de2857d4b6776203db0c73613fd017ff879d6a40",
+    "step2.md": "695f3674f6770fa4aaf9793f5c62311718a0fcd07da2a8eea0e6d2962ef8b6b4",
+    "verify-step-01.sh": "11680d7952206176b6f5aa31c2dd05d044caa9acd2799a6e47bc898e58f17f8e",
+    "verify-step-02.sh": "e60a78ab6878f2b103c4b76dc5aa0420d9e2adb5557781030ecad6afdc499e20",
+    "verify.sh": "beb6af7b51580f44e4e37d543424d60b66385e8a88c502d1bda078949888ab1c",
+    "wait.sh": "4bee9f2f51cf42efda6b395745fd200142ccd0f33290abc2d664f011748a4c13"
+  }
+}

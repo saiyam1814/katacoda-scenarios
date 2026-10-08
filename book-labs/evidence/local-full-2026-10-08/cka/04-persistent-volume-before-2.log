@@ -1,0 +1,2 @@
+Error from server (NotFound): persistentvolumes "book-cka-local-retained" not found
+FAIL: The second PV must be Released, with its local data retained (missing or invalid JSON input)

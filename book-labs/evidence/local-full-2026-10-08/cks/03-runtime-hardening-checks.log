@@ -1,0 +1,26 @@
+=== before1: exit 1; 0.3 seconds ===
+deployment "worker" successfully rolled out
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+KeyError: 'securityContext'
+
+=== before2: exit 1; 0.1 seconds ===
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AssertionError: Expected exactly one current Ready Pod
+
+=== before3: exit 1; 0.1 seconds ===
+Error from server (NotFound): pods "demo" not found
+FAIL: Select the installed Localhost profile (missing or invalid JSON input)
+
+=== after1: exit 0; 0.7 seconds ===
+deployment "worker" successfully rolled out
+PASS: All checks passed for cks-03-runtime-hardening
+PASS: Step 1: Harden the live process
+
+=== after2: exit 0; 0.5 seconds ===
+web-7dcc5c748b-nmsdc
+PASS: Step 2: Keep an HTTP server working with a read-only root
+
+=== after3: exit 0; 0.3 seconds ===
+PASS: Step 3: Install and enforce a local seccomp profile

@@ -1,0 +1,76 @@
+{
+  "lab": "cka/12-csi-volumes",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 5.75
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.09
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 108.39
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.42
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.55
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 91.83
+    }
+  ],
+  "stepCount": 2,
+  "environment": "kind v1.35.0, one node",
+  "logs": [
+    "12-csi-volumes-setup.log",
+    "12-csi-volumes-before-1.log",
+    "12-csi-volumes-before-2.log",
+    "12-csi-volumes-solution.log",
+    "12-csi-volumes-after-1.log",
+    "12-csi-volumes-after-2.log",
+    "12-csi-volumes-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "9fcf55a30641892758ffadafa9e2fedd72c59210fc34f468c75c553ea86d0bbe",
+    "assets/helm.sh": "d6308deb16c3b27387c95de903f60e5e2bdcb49d457a5de036430b6d60288ccc",
+    "assets/lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+    "assets/local-node.sh": "d74b69fe63916f0512d8d4a32b9aa6b01929276f872d2182b6095efbc9ecc47e",
+    "assets/setup.sh": "e5270473b72b44daea45897aa2dc910f47d622995b313aae9438071d24340e47",
+    "assets/solution-step-01.sh": "96db8a0e6ae3dc0b5044d944d90b2f57163eb81eb0b55e74299acc9535df7765",
+    "assets/solution-step-02.sh": "4227f5b4c824c1091c01131103bd6117ab1df7f1e39dca4e598c48083c0bd666",
+    "assets/solution.sh": "f69b83849bb50b38ef209760f6a568fdc1ba428657b7c3b0602510cce1516326",
+    "assets/verify-step-01.sh": "80f990cbd90a00d2c8d88349d6c5bab1123a0c72f52a5240439d367c59b6440d",
+    "assets/verify-step-02.sh": "da60931400245b00784acbc46bd48f77a0ee8ad30908308e9a9c0d32c5a9ed60",
+    "assets/verify.sh": "241020e5342957d0cb48aaca9f28dab52541b15e4b2b5e38af913166730e683c",
+    "cleanup.sh": "e95d1e2682f61ebb8fcca7ee811e5bd8226cb5c33b568d2114623edd683e7b22",
+    "finish.md": "fe45e615c3c2c5ab5fdcb8fb6b58623fc8806deae188bdf67698c573e1f6afd9",
+    "index.json": "07844fbf1905e1eec5b2613c58fa5952740d44d0eaf754dd6ae4d94c5986990f",
+    "intro.md": "ee6c1b7093fa6ba0998c1ea5389b9a5808634d0a0f6378c8a82b79bcc3da3da2",
+    "setup.sh": "1bdbdb1b7a054d7bcfa3f11b7a2f5bead16bf79da1e43e622342a90aeeebb63c",
+    "solution.sh": "a33a2dab1eac3b15e8cff4f59e869412a06d350e09164780f2a0058f457bb293",
+    "step1.md": "339501a57ebff688daf50b9a70340799aac73b9b50941d5e8eceb623c0a28cf4",
+    "step2.md": "db7b8826f89aa711d16b84705f7982429665287baab5aad3196f187be8fd7d0c",
+    "verify-step-01.sh": "7455465223440d8cb3739de71ad82a4c28d98c7f9a5a97471780f41d0602527c",
+    "verify-step-02.sh": "b73ea914ae64f7b9d840d889b4899772e85bc119bb09f08267bd1bf164a73314",
+    "verify.sh": "8c331d376a711f0411330e80daef257df2930e2600743dfc031ef6a046167f9a",
+    "wait.sh": "a975031e208f9bf3a39ef392923f355d8481badaee05b3707a6eaaf88ccfc77c"
+  }
+}

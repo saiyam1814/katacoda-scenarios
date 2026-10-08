@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "demo-pod" not found
+FAIL: book-cka-config/demo-pod must be Ready (missing or invalid JSON input)

@@ -1,0 +1,106 @@
+{
+  "lab": "cka/10-probes-configuration",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 0.62
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.09
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.08
+    },
+    {
+      "phase": "before-3",
+      "exit": 1,
+      "seconds": 0.13
+    },
+    {
+      "phase": "before-4",
+      "exit": 1,
+      "seconds": 0.1
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 85.0
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.29
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.19
+    },
+    {
+      "phase": "after-3",
+      "exit": 0,
+      "seconds": 0.28
+    },
+    {
+      "phase": "after-4",
+      "exit": 0,
+      "seconds": 0.15
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 42.51
+    }
+  ],
+  "stepCount": 4,
+  "environment": "kind v1.35.0, one node",
+  "logs": [
+    "10-probes-configuration-setup.log",
+    "10-probes-configuration-before-1.log",
+    "10-probes-configuration-before-2.log",
+    "10-probes-configuration-before-3.log",
+    "10-probes-configuration-before-4.log",
+    "10-probes-configuration-solution.log",
+    "10-probes-configuration-after-1.log",
+    "10-probes-configuration-after-2.log",
+    "10-probes-configuration-after-3.log",
+    "10-probes-configuration-after-4.log",
+    "10-probes-configuration-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "1e68e53586ee530d932e6fe1e1025d4878a76cba40227886d64488ae0775b259",
+    "assets/lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+    "assets/setup.sh": "f2f3815e0bb0c2d1b791e81b9d12416e4f13ffb0bbb46eec6d68560ff302d5bd",
+    "assets/solution-step-01.sh": "c1d5093241a293177c48bfdd6b470a91e9833a1b7fdd541c57e8fee980e40f9a",
+    "assets/solution-step-02.sh": "2ec038f1d55e753b143c79052372e98204bd56511634662a9abbb44a7563e7ce",
+    "assets/solution-step-03.sh": "5c9ab1538702dff3159d16e2fe53e2c0e7fbf3f82c73a20c2b228444a00ff696",
+    "assets/solution-step-04.sh": "940d2977c4b4f6247d8317381d31f5c99bab4410bc7f4f59aa09fe1c704fe035",
+    "assets/solution.sh": "e933c7af5b84d657fd0917f653de0ffa0ec2e1c54e9894d71aed3891a759e25e",
+    "assets/verify-step-01.sh": "fd631633fda9f6c9bdddb0ef24241dda4c18e8923a8e3b1cafbe5669d43c1186",
+    "assets/verify-step-02.sh": "cb732c3d3903095ed8deeab36fb22ce8960b86807818b7e98ba7525679840ecc",
+    "assets/verify-step-03.sh": "e8dd7b5f69cb70fbf3aa762da2021bbb09ec360249ed1a238c413b98b93d0fe4",
+    "assets/verify-step-04.sh": "15e6326335f2f6a98925a0e68f5685d4edf328be106819cbc367822bd2a60efa",
+    "assets/verify.sh": "6ebb361de570e2664a737b4a2c50726528595ca476cb3f82d23fc42b53bed36f",
+    "cleanup.sh": "f6332f0edb1efbbea79db7ea137e28305c8253ba334884fd8ee7b931a57b4bf0",
+    "finish.md": "b10afc6a80fc349803a7e5c990acf4924e00e1cc723498e7d9103b1cf93cd2f3",
+    "index.json": "ec06d6ac0b8b2445a2a53cae4322eaf5f78fe4ff099498decd1fc958609ae601",
+    "intro.md": "d9c9ea1a042d23c34b0ca4786adf16cafc882615ef9e67965f05f5a9fb82452d",
+    "setup.sh": "795ff23e99830fac0f4ac2f9f17adc59124483b3141dbb1aae47673d6ef27e54",
+    "solution.sh": "a37df3e10d0daef372c7a3ab62213b4dd69cb4f62a0667fee60fc3acf27296be",
+    "step1.md": "82c25ff9cde166664a1c257dfda6ef12c1f178225209a3fc50d737680a7c676d",
+    "step2.md": "9e9678f9967226184df9c7b9656f5718c91ce6ac7e5c531030548689b7ba2b59",
+    "step3.md": "9ce2c22fbc4d2a0a0b44145810bda50688c9924de29af707ffdd7a26596e724d",
+    "step4.md": "735d63fe8fa02e25ce676dca443d96622bf9332e83ff5451c60798e8730ea9ba",
+    "verify-step-01.sh": "0c79422136beec5b7ebde10e6b6679db9f0a35f2dc348e668498fe38b60f9e6a",
+    "verify-step-02.sh": "a996de33acc0819c109b8ce61f8b0ba358e281352d9a6c215fc7625bcda4200b",
+    "verify-step-03.sh": "d59f4dca09a94e5d841f460feb6163db579a77630d72b40b041f8e4644b1a27f",
+    "verify-step-04.sh": "31e932fda64934df3db3f53dfb93983b1b2297d3691ab8e75150b266acf7c505",
+    "verify.sh": "6731474ec9fb8e9e70d0e6be87e90770df038150489a7d69187dd74f00332cf9",
+    "wait.sh": "009f07ae7249b3883f79720667d66506efa5f8fed0a69b0f25ae91ba54d9580e"
+  }
+}

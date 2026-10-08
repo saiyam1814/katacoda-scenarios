@@ -1,0 +1,10 @@
+test_api_timeout_query_is_accepted (test_host_helpers.ImagePolicyURLTests.test_api_timeout_query_is_accepted) ... ok
+test_query_does_not_bypass_image_denial (test_host_helpers.ImagePolicyURLTests.test_query_does_not_bypass_image_denial) ... ok
+test_unrelated_namespaces_remain_available (test_host_helpers.ImagePolicyURLTests.test_unrelated_namespaces_remain_available) ... ok
+test_wrong_endpoint_is_rejected (test_host_helpers.ImagePolicyURLTests.test_wrong_endpoint_is_rejected) ... ok
+test_preserves_flags_mounts_other_container_and_is_idempotent (test_host_helpers.ManifestPatchTests.test_preserves_flags_mounts_other_container_and_is_idempotent) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.058s
+
+OK

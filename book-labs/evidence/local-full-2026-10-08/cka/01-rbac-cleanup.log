@@ -1,0 +1,2 @@
+namespace "book-cka-rbac" deleted
+clusterrole.rbac.authorization.k8s.io "book-cka-creators" deleted

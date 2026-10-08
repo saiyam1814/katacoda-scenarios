@@ -1,0 +1,2 @@
+Error from server (NotFound): services "web" not found
+FAIL: Require the ClusterIP Service (missing or invalid JSON input)

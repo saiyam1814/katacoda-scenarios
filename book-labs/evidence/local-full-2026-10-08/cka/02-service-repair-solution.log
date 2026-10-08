@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2026-10-08T06:05:23Z"
+  labels:
+    app: web
+  name: web
+  namespace: book-cka-service
+  resourceVersion: "1087"
+  uid: 91c14ac3-49e4-4508-9105-765e1a1bb47c
+spec:
+  clusterIP: 10.96.87.136
+  clusterIPs:
+  - 10.96.87.136
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: wrong
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+nameserver 203.0.113.53
+NAME                       READY   STATUS    RESTARTS   AGE
+coredns-7d764666f9-hcgrw   1/1     Running   0          6m58s
+coredns-7d764666f9-x9wc7   1/1     Running   0          6m58s
+service/web patched
+pod "client" deleted from book-cka-service namespace
+pod/client created
+pod/client condition met
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+LAST SEEN   TYPE      REASON              OBJECT                     MESSAGE
+2s          Warning   FailedScheduling    pod/web-8cdd58ddd-pjgf7    0/1 nodes are available: 1 Insufficient memory. no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+2s          Warning   FailedScheduling    pod/web-8cdd58ddd-vsshg    0/1 nodes are available: 1 Insufficient memory. no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+39s         Normal    SuccessfulCreate    replicaset/web-8cdd58ddd   Created pod: web-8cdd58ddd-vsshg
+39s         Normal    SuccessfulCreate    replicaset/web-8cdd58ddd   Created pod: web-8cdd58ddd-pjgf7
+39s         Normal    ScalingReplicaSet   deployment/web             Scaled up replica set web-8cdd58ddd from 0 to 2
+deployment.apps/web resource requirements updated
+deployment.apps/web image updated
+deployment.apps/web patched
+service/web patched
+Waiting for deployment "web" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "web" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "web" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "web" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "web" rollout to finish: 1 out of 2 new replicas have been updated...
+Waiting for deployment "web" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "web" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "web" rollout to finish: 1 old replicas are pending termination...
+deployment "web" successfully rolled out
+pod/client created
+pod/client condition met
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+storageclass.storage.k8s.io/book-cka-local created
+persistentvolume/book-cka-local-data created
+persistentvolumeclaim/data created
+pod/reader created
+pod/reader condition met
+persistentvolume/book-cka-local-retained created
+persistentvolumeclaim/retained created
+pod/writer created
+pod/writer condition met
+pod "writer" deleted from book-cka-storage namespace
+persistentvolumeclaim "retained" deleted from book-cka-storage namespace
+persistentvolume/book-cka-local-retained condition met

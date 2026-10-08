@@ -1,0 +1,74 @@
+{
+  "lab": "cka/02-service-repair",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 5.92
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.21
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.27
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 36.76
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.35
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.38
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 42.72
+    }
+  ],
+  "stepCount": 2,
+  "environment": "kind v1.35.0, one node",
+  "logs": [
+    "02-service-repair-setup.log",
+    "02-service-repair-before-1.log",
+    "02-service-repair-before-2.log",
+    "02-service-repair-solution.log",
+    "02-service-repair-after-1.log",
+    "02-service-repair-after-2.log",
+    "02-service-repair-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "cdec8f71f165c52873cf2a986a2b5e6406aadeda6be8ed2e416037b0595ee96e",
+    "assets/lib.sh": "b55070bab6c16375fbf424bc03e1d8264ace417a336fb8eb6444ce3d61416a38",
+    "assets/setup.sh": "61a70392eb603767c56a463943c353abccde89f814b7807543d93d96e1fd7321",
+    "assets/solution-step-01.sh": "73c47fcc92d2cd4d82f623b52a0cbd7cbb024837ba0e080efd1813b07c1521ca",
+    "assets/solution-step-02.sh": "44090a24ada45fd9c7be95064d74ea2f0be8f22daa6b47cc8fdf518184e2efb9",
+    "assets/solution.sh": "930849efb1be1c9dcc7f2610a213105b0d866c4e6a904b19285fa014a7fd3fdf",
+    "assets/verify-step-01.sh": "6583f0a1bc8dcb1b41699b3fedaedac92825a30e0a349d9cc832feeaa272280a",
+    "assets/verify-step-02.sh": "1b9a803efc4fd9d35064b0fa6bd5781425c815c6df304e5558e8d4f0ab4fa07d",
+    "assets/verify.sh": "5638796d1e14bfc7560bf68d4f4ddcba57922d0dcec1ac29b783e26dfe5aadd0",
+    "cleanup.sh": "6e6d1a74a88d80edf62bf7a98232a08e6cfaddfa1ca850c4c6514ba59a2d7fd8",
+    "finish.md": "5dc017261def2bc0d3a5121213b950ef8d0937c6ce13be821150d6e7b7f7224b",
+    "index.json": "83ac6f5bc036bb13c220312a716d814bed67a03fa4bc4ddc25dc6697f60a5970",
+    "intro.md": "5178914fed46e67d772d83a6a6c144bc1971eacdacf41574ba8e12094b5f447d",
+    "setup.sh": "a8ba1808996f3d9a9360708697c1efb5e0fd3d15545e0974e09ab2c0c84949c8",
+    "solution.sh": "7861ac7e298290b6fe6996df0dd50b44e1a755fbc7f1fb5283f18dc27525391d",
+    "step1.md": "0cd08869de97ccce67e752dc1dc10432f3c4544a97049c372552632732452c19",
+    "step2.md": "b215d842acfb385e5aa95a927cac80fa17f48b52ce5973f2c91876492f99d6a8",
+    "verify-step-01.sh": "dc3637fbf9b771267cd40e3d90785042afa536cbea5b8d4cad43ea8f8d821757",
+    "verify-step-02.sh": "b6100e17c84efa2223b48849ed2bfac7e05bcf37d70877a69eb42315722dc65f",
+    "verify.sh": "abf21179a3f6e3965891f0a5f121a08a5270ca92170083573c8ee51a4ef0c43d",
+    "wait.sh": "28340b1def640411cd0b894e504431e033bb55ea463c157b51631c05f950e2fe"
+  }
+}

@@ -1,0 +1,13 @@
+namespace/book-cka-service created
+namespace/book-cka-incident created
+deployment.apps/web created
+service/web exposed
+service/web patched
+pod/client created
+configmap/app-config created
+deployment.apps/web created
+service/web created
+Waiting for deployment "web" rollout to finish: 0 of 1 updated replicas are available...
+deployment "web" successfully rolled out
+pod/client condition met
+Ready: cka-02-service-repair

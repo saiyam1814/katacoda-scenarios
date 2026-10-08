@@ -1,0 +1,31 @@
+{
+  "scope": "Local real execution; hosted Chrome results are recorded separately.",
+  "date": "2026-10-08",
+  "cluster": "cks-full-labs",
+  "kubernetes": "1.35.0",
+  "groups_passed": [
+    "02-pod-security",
+    "04-serviceaccount",
+    "05-image-admission",
+    "03-runtime-hardening",
+    "07-supply-chain",
+    "09-ingress-mtls"
+  ],
+  "steps_passed": 19,
+  "host_groups_still_awaiting_separate_validation": [
+    "cks/01-networkpolicy",
+    "cks/08-host-security",
+    "cks/10-incident-investigation"
+  ],
+  "evidence": "Exit codes, timings and sanitized actual precondition/post-solution checker output. No kubeconfig, token, Secret data or signing private-key files are included.",
+  "tool_execution": [
+    "Trivy0.75 vulnerability and CycloneDX scans",
+    "Buildah real build, containerd import and HTTP workload",
+    "Kubesec2.14.2 before/after scanning",
+    "Cosign3.1.3 transparency signing and offline verification",
+    "Official kubectl1.35 SHA verification and changed-copy rejection",
+    "Traefik41.6.1 live TLS routing and hostname failures",
+    "Istio1.31.1 strict mTLS and identity authorization",
+    "Localhost seccomp with real allowed writes and denied chmod"
+  ]
+}

@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "multi" not found
+FAIL: book-cka-pods/multi must be Ready (missing or invalid JSON input)

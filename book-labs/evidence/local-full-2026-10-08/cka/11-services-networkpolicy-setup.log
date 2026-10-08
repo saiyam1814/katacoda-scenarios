@@ -1,0 +1,27 @@
+namespace "book-cka-services" deleted
+namespace/book-cka-services created
+namespace "book-cka-policy" deleted
+namespace/book-cka-policy created
+namespace "book-cka-frontend" deleted
+namespace/book-cka-frontend created
+namespace "book-cka-other" deleted
+namespace/book-cka-other created
+namespace/book-cka-frontend labeled
+deployment.apps/web created
+pod/client created
+configmap/nginx-config created
+pod/backend created
+pod/trusted created
+pod/wrong-label created
+pod/trusted created
+Waiting for deployment "web" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "web" rollout to finish: 1 of 2 updated replicas are available...
+deployment "web" successfully rolled out
+pod/client condition met
+pod/backend condition met
+pod/trusted condition met
+pod/wrong-label condition met
+pod/trusted condition met
+networkpolicy.networking.k8s.io/setup-enforcement-check created
+networkpolicy.networking.k8s.io "setup-enforcement-check" deleted from book-cka-policy namespace
+Ready: cka-11-services-networkpolicy

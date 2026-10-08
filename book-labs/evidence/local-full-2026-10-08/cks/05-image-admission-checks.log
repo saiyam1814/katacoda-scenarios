@@ -1,0 +1,15 @@
+=== before1: exit 1; 0.11 seconds ===
+Error from server (NotFound): validatingadmissionpolicies.admissionregistration.k8s.io "book-images" not found
+FAIL: Policy must fail closed (missing or invalid JSON input)
+
+=== before2: exit 1; 0.36 seconds ===
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+AssertionError
+
+=== after1: exit 0; 1.17 seconds ===
+PASS: All checks passed for cks-05-image-admission
+PASS: Step 1: Require an approved registry and immutable image digest
+
+=== after2: exit 0; 0.33 seconds ===
+PASS: Step 2: Close the ephemeral-container admission gap

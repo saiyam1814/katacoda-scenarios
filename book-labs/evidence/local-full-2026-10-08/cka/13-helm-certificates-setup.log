@@ -1,0 +1,7 @@
+v4.1.4+g05fa379
+namespace/book-cka-certificates created
+"jetstack" has been added to your repositories
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "jetstack" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Ready: cka-13-helm-certificates

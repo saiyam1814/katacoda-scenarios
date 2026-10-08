@@ -1,0 +1,2 @@
+cat: <LOCAL_HOME>/book-labs/cka-13-helm-certificates/dnsnames-schema.json: No such file or directory
+FAIL: Inspect and save the DNS-name schema field (missing or invalid JSON input)

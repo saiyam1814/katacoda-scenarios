@@ -1,0 +1,24 @@
+namespace/book-cka-metrics created
+namespace/book-cka-hpa created
+subject=CN=cka-full-labs-control-plane@1791439099
+issuer=CN=cka-full-labs-control-plane-ca@1791439099
+serviceaccount/metrics-server created
+clusterrole.rbac.authorization.k8s.io/system:aggregated-metrics-reader created
+clusterrole.rbac.authorization.k8s.io/system:metrics-server created
+rolebinding.rbac.authorization.k8s.io/metrics-server-auth-reader created
+clusterrolebinding.rbac.authorization.k8s.io/metrics-server:system:auth-delegator created
+clusterrolebinding.rbac.authorization.k8s.io/system:metrics-server created
+configmap/book-cka-metrics-tls created
+service/metrics-server created
+deployment.apps/metrics-server created
+apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io created
+Waiting for deployment "metrics-server" rollout to finish: 0 of 1 updated replicas are available...
+deployment "metrics-server" successfully rolled out
+apiservice.apiregistration.k8s.io/v1beta1.metrics.k8s.io condition met
+NAME                          CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+cka-full-labs-control-plane   152m         1%       1650Mi          8%          
+pod/memory-user created
+pod/small created
+pod/memory-user condition met
+pod/small condition met
+Ready: cka-09-metrics-autoscaling

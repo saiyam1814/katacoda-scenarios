@@ -1,0 +1,2 @@
+Error from server (NotFound): rolebindings.rbac.authorization.k8s.io "demo-create" not found
+FAIL: Use a namespaced RoleBinding to the ClusterRole (missing or invalid JSON input)

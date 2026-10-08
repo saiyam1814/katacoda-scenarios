@@ -1,0 +1,45 @@
+=== before1: exit 1; 0.1 seconds ===
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/root/book-labs/cks-07-supply-chain/reports/image.json'
+
+=== before2: exit 1; 0.1 seconds ===
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AssertionError: Expected exactly one current Ready Pod
+
+=== before3: exit 1; 0.1 seconds ===
+
+=== before4: exit 1; 0.1 seconds ===
+cat: /root/book-labs/cks-07-supply-chain/kubectl.sha256: No such file or directory
+
+=== before5: exit 1; 0.1 seconds ===
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+FileNotFoundError: [Errno 2] No such file or directory: '/root/book-labs/cks-07-supply-chain/reports/sbom.cdx.json'
+
+=== before6: exit 1; 0.4 seconds ===
+Flag --offline has been deprecated, To verify in an airgapped environment, provide a --bundle with the signature and verification material, and a --trusted-root file with the service keys and certificates
+Error: loading verifier from key opts: loading public key: open /root/book-labs/cks-07-supply-chain/release/cosign.pub: no such file or directory
+error during command execution: loading verifier from key opts: loading public key: open /root/book-labs/cks-07-supply-chain/release/cosign.pub: no such file or directory
+
+=== after1: exit 0; 0.2 seconds ===
+PASS: Step 1: Scan an actual image and report exploitable priorities
+
+=== after2: exit 0; 0.5 seconds ===
+PASS: Step 2: Repair and build a minimal image
+
+=== after3: exit 0; 0.7 seconds ===
+PASS: Step 3: Use Kubesec findings to repair a manifest
+
+=== after4: exit 0; 0.8 seconds ===
+/root/book-labs/cks-07-supply-chain/bin/kubectl: OK
+PASS: Step 4: Verify the official kubectl binary before using it
+
+=== after5: exit 0; 0.1 seconds ===
+PASS: Step 5: Generate an SBOM and make an evidence-based release decision
+
+=== after6: exit 0; 2.8 seconds ===
+PASS: Step 6: Sign the release and reject changed content
+Flag --offline has been deprecated, To verify in an airgapped environment, provide a --bundle with the signature and verification material, and a --trusted-root file with the service keys and certificates
+Verified OK

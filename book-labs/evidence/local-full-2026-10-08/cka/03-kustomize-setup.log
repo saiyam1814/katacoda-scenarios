@@ -1,0 +1,4 @@
+namespace/book-cka-kustomize created
+subject=CN=cka-full-labs-control-plane@1791439099
+issuer=CN=cka-full-labs-control-plane-ca@1791439099
+Ready: cka-03-kustomize

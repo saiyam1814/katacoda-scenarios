@@ -1,0 +1,2 @@
+# Preserve terminal output exactly, including column-padding spaces in raw logs.
+evidence/**/*.log whitespace=-trailing-space

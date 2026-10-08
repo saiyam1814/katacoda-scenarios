@@ -1,0 +1,14 @@
+node/cka-policy-worker labeled
+pod "reporter" deleted from book-cka-scheduling namespace
+pod/reporter created
+pod/reporter condition met
+pod/direct created
+pod/direct condition met
+pod/anchor created
+pod/anchor condition met
+pod/near-anchor created
+pod/near-anchor condition met
+daemonset.apps/node-web created
+Waiting for daemon set "node-web" rollout to finish: 0 of 2 updated pods are available...
+Waiting for daemon set "node-web" rollout to finish: 1 of 2 updated pods are available...
+daemon set "node-web" successfully rolled out

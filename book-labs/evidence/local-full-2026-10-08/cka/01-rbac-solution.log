@@ -1,0 +1,12 @@
+serviceaccount/release-bot created
+role.rbac.authorization.k8s.io/release-manager created
+rolebinding.rbac.authorization.k8s.io/release-manager created
+serviceaccount/demo-sa created
+serviceaccount/demo2-sa created
+clusterrole.rbac.authorization.k8s.io/book-cka-creators created
+rolebinding.rbac.authorization.k8s.io/demo-create created
+role.rbac.authorization.k8s.io/deployments-only created
+rolebinding.rbac.authorization.k8s.io/demo2-create created
+serviceaccount/demo-sa unchanged
+pod/web-identity created
+pod/web-identity condition met

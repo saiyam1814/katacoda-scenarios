@@ -1,0 +1,2 @@
+Error from server (NotFound): ingresses.networking.k8s.io "web" not found
+FAIL: Require the requested standard Ingress and TLS Secret reference (missing or invalid JSON input)

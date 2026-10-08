@@ -1,0 +1,48 @@
+configmap/demo created
+secret/cka-demo created
+pod/demo-pod created
+pod/demo-pod condition met
+configmap/demo patched
+limitrange/container-limits created
+deployment.apps/web created
+service/web created
+Waiting for deployment "web" rollout to finish: 0 out of 2 new replicas have been updated...
+Waiting for deployment "web" rollout to finish: 0 of 2 updated replicas are available...
+Waiting for deployment "web" rollout to finish: 1 of 2 updated replicas are available...
+deployment "web" successfully rolled out
+pod/unready created
+service/unready created
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1
+command terminated with exit code 1

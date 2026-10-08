@@ -1,0 +1,1 @@
+PASS: Original object UID recovered, later data removed, restored etcd is healthy with a bumped revision

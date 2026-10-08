@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "near-anchor" not found
+FAIL: book-cka-scheduling/near-anchor must be Ready (missing or invalid JSON input)

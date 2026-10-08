@@ -1,0 +1,122 @@
+{
+  "lab": "cka/07-pod-lifecycle",
+  "events": [
+    {
+      "phase": "setup",
+      "exit": 0,
+      "seconds": 0.43
+    },
+    {
+      "phase": "before-1",
+      "exit": 1,
+      "seconds": 0.11
+    },
+    {
+      "phase": "before-2",
+      "exit": 1,
+      "seconds": 0.09
+    },
+    {
+      "phase": "before-3",
+      "exit": 1,
+      "seconds": 0.09
+    },
+    {
+      "phase": "before-4",
+      "exit": 1,
+      "seconds": 0.09
+    },
+    {
+      "phase": "before-5",
+      "exit": 1,
+      "seconds": 0.09
+    },
+    {
+      "phase": "solution",
+      "exit": 0,
+      "seconds": 11.78
+    },
+    {
+      "phase": "after-1",
+      "exit": 0,
+      "seconds": 0.15
+    },
+    {
+      "phase": "after-2",
+      "exit": 0,
+      "seconds": 0.25
+    },
+    {
+      "phase": "after-3",
+      "exit": 0,
+      "seconds": 0.26
+    },
+    {
+      "phase": "after-4",
+      "exit": 0,
+      "seconds": 0.21
+    },
+    {
+      "phase": "after-5",
+      "exit": 0,
+      "seconds": 0.15
+    },
+    {
+      "phase": "cleanup",
+      "exit": 0,
+      "seconds": 42.48
+    }
+  ],
+  "stepCount": 5,
+  "environment": "kind v1.35.0, one node",
+  "logs": [
+    "07-pod-lifecycle-setup.log",
+    "07-pod-lifecycle-before-1.log",
+    "07-pod-lifecycle-before-2.log",
+    "07-pod-lifecycle-before-3.log",
+    "07-pod-lifecycle-before-4.log",
+    "07-pod-lifecycle-before-5.log",
+    "07-pod-lifecycle-solution.log",
+    "07-pod-lifecycle-after-1.log",
+    "07-pod-lifecycle-after-2.log",
+    "07-pod-lifecycle-after-3.log",
+    "07-pod-lifecycle-after-4.log",
+    "07-pod-lifecycle-after-5.log",
+    "07-pod-lifecycle-cleanup.log"
+  ],
+  "sourceSha256": {
+    "assets/cleanup.sh": "773167ea7b99e74073ec17b31a60152069fee1ee3110bb1d7e43203c54764978",
+    "assets/lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+    "assets/setup.sh": "1455dad9c8dee7d4fd8053828345d629f29c92b2b0ed691b2d097aefb844744f",
+    "assets/solution-step-01.sh": "6a4decba8468d11046e64cd0feaa2d270eb71367d4fcaf935c9f967d6cec0215",
+    "assets/solution-step-02.sh": "fc4f222dc627934d465c9bd04c095f0439348a48d73e01ad4afe0a6846b3bed1",
+    "assets/solution-step-03.sh": "3d4c8fe62ee6d933a9d3f9d3a3b9758669c9f39d4db5769e5837410412485521",
+    "assets/solution-step-04.sh": "3ab960a2e72b451b294a9451eb59124bc572f274c98daca5cec003fc62cc7e0a",
+    "assets/solution-step-05.sh": "9298f579db7ce6b1eed56f6c7c33fdc39b472f7f37ab51c14698eb58786d641c",
+    "assets/solution.sh": "68cb027bb600112633dce8c511059c0149fae6d8b13f20cc77f7ea8d00d89ffd",
+    "assets/verify-step-01.sh": "ef652670d8c3a3d6de3474bc487316d58bf6e79b2f2086a5d7c5d7d244297ada",
+    "assets/verify-step-02.sh": "1e602a4fbe22ca4ce6c3aca1ce3fd5b5830c2ef3b90af60bf829cbd5b06a235d",
+    "assets/verify-step-03.sh": "c75312eb0baf22714fa9dfbe9f4c5cb5617c10f0845c669bd007aadb4985afd0",
+    "assets/verify-step-04.sh": "1c1ffecf755aede381500780eba1dd070ded8298a868c920dde3f5a4b325421a",
+    "assets/verify-step-05.sh": "8ab16fefa3dd2d37593767217db69395ab5e2a1c05f114cb285100d45d88b47a",
+    "assets/verify.sh": "2a8ac0fad638ded71f8fbdc9a055ec23e3e459981182d03cf59bf9e720486a69",
+    "cleanup.sh": "ca350ce40d63a10b48caa0b5c4ba0bab3df040461ef676adc77fc2972dc1fde8",
+    "finish.md": "4dcdb97102d01e0d43d726dede26c7da036f17cce4720eb7d819b1c236ed904e",
+    "index.json": "704cbb5ce919bfb2dd934b9eb57854f158f4f5a153f7e8de8cac4a7bfd75fcc7",
+    "intro.md": "e6168a4449c58dfa94f4ca7dad55be0b5423ab6e145a2c2af1e603906487816b",
+    "setup.sh": "eca7c2fd7eab23afe096ff4afe2a3ff655f1e8b59ed5f07afcfadc0bf76f947a",
+    "solution.sh": "eeb87a9ed4c5e6392758539bbd52be4f90354f1907f8b7df960f6a6c39466e90",
+    "step1.md": "678dcbc3a5c96d2042ebb93d46d14cd635c13b886354ce0e248faae78fdb84fe",
+    "step2.md": "b7f6a1a3761136e18dca9c9bc0ae64dc3a814ff0f3a87eba11b4ba2abd01cf1e",
+    "step3.md": "61089408f2a5f8d909b131c8131577098af230cb5086557ab5d44cb894af0e54",
+    "step4.md": "deb8181ee4972cdebd96fa575ed506767c828b9a7c20ce95ee827a93dc4868c8",
+    "step5.md": "791770dde8c238a2f354288413ac9f5beba892ffabfff2c7f4c87a16a2e8c5f8",
+    "verify-step-01.sh": "e64fecaf7606445f05557acc966ab36e2a58a4778bb801e3b1174c6bcb8317a7",
+    "verify-step-02.sh": "4398d544ca22799f68328b927cb2585784917cc15055952a0a7ed5171742b884",
+    "verify-step-03.sh": "0665819391c45b961d831579fa2943af8c14843c6cc9c6bc0a27eaf7fb3aa979",
+    "verify-step-04.sh": "852c4d9c82dbaa554026a8a24b21d09d36f556689d2de9eeac9086292c036760",
+    "verify-step-05.sh": "b752ccef39e9e6854f4bf8d3930b1f071199e4c46bf6fec00f3574081bee6e96",
+    "verify.sh": "392cd1808d42ab977de4c6835c09e09c2fe288d448f91a6dbc44fa43b8d132e7",
+    "wait.sh": "ca43ad3f09e813e6382136d649e375051cf8feb243acbed562ce33bd3dade5e9"
+  }
+}

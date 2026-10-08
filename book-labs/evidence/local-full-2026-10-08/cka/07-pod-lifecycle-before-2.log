@@ -1,0 +1,2 @@
+Error from server (NotFound): pods "init-web" not found
+FAIL: book-cka-pods/init-web must be Ready (missing or invalid JSON input)

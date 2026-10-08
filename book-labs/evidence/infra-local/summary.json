@@ -1,0 +1,148 @@
+{
+  "recorded_at": "2026-10-08T06:53:43.368579+00:00",
+  "scope": "Real local execution, not hosted Killercoda certification",
+  "environment": {
+    "Kubernetes": "v1.35.0",
+    "etcd": "3.6.6",
+    "node_image": "kindest/node:v1.35.0",
+    "node_OS": "Debian12",
+    "architecture": "arm64",
+    "runtime": "Docker with privileged systemd Kubernetes node containers",
+    "network": "kindnet",
+    "worker_transport": "actual SSH to a separately joined node01",
+    "ha": "3 actual stacked-etcd control-plane containers + kind TCP load balancer"
+  },
+  "current_state_verifier_runs": [
+    {
+      "lab": "infrastructure/03-etcd-recovery",
+      "step": 1,
+      "exit_code": 0,
+      "seconds": 0.245,
+      "log": "03-etcd-recovery-step1.log"
+    },
+    {
+      "lab": "infrastructure/03-etcd-recovery",
+      "step": 2,
+      "exit_code": 0,
+      "seconds": 0.597,
+      "log": "03-etcd-recovery-step2.log"
+    },
+    {
+      "lab": "infrastructure/04-worker-operations",
+      "step": 4,
+      "exit_code": 0,
+      "seconds": 1.088,
+      "log": "04-worker-operations-step4.log"
+    },
+    {
+      "lab": "infrastructure/06-api-repair",
+      "step": 1,
+      "exit_code": 0,
+      "seconds": 0.606,
+      "log": "06-api-repair-step1.log"
+    },
+    {
+      "lab": "infrastructure/07-apiserver-security",
+      "step": 1,
+      "exit_code": 0,
+      "seconds": 1.199,
+      "log": "07-apiserver-security-step1.log"
+    },
+    {
+      "lab": "infrastructure/07-apiserver-security",
+      "step": 2,
+      "exit_code": 0,
+      "seconds": 2.017,
+      "log": "07-apiserver-security-step2.log"
+    },
+    {
+      "lab": "infrastructure/08-secret-encryption",
+      "step": 1,
+      "exit_code": 0,
+      "seconds": 0.622,
+      "log": "08-secret-encryption-step1.log"
+    },
+    {
+      "lab": "infrastructure/09-host-hardening",
+      "step": 1,
+      "exit_code": 0,
+      "seconds": 0.136,
+      "log": "09-host-hardening-step1.log"
+    },
+    {
+      "lab": "infrastructure/05-ha-control-plane",
+      "step": 1,
+      "exit_code": 0,
+      "seconds": 0.936,
+      "log": "05-ha-control-plane-step1.log"
+    },
+    {
+      "lab": "infrastructure/05-ha-control-plane",
+      "step": 3,
+      "exit_code": 0,
+      "seconds": 1.011,
+      "log": "05-ha-control-plane-step3.log"
+    }
+  ],
+  "earlier_step_observations": [
+    {
+      "lab": "infrastructure/04-worker-operations",
+      "step": 1,
+      "result": "passed",
+      "observed_stdout": "PASS: Kubelet recovered; new scheduled Pod and authenticated exec work",
+      "initial_rejection": "FAIL: Worker kubelet is inactive"
+    },
+    {
+      "lab": "infrastructure/04-worker-operations",
+      "step": 2,
+      "result": "passed",
+      "observed_stdout": "PASS: Cordon blocks a new scheduled Pod while the existing workload remains running"
+    },
+    {
+      "lab": "infrastructure/04-worker-operations",
+      "step": 3,
+      "result": "passed",
+      "observed_stdout": "PASS: Drained workload recovered elsewhere; worker schedules a fresh Pod after uncordon"
+    },
+    {
+      "lab": "infrastructure/05-ha-control-plane",
+      "step": 2,
+      "result": "passed",
+      "observed_stdout": "PASS: Fresh API write and read succeeded through the load balancer with one member stopped"
+    }
+  ],
+  "earlier_observation_note": "Actual stdout excerpts observed during sequential execution. These earlier intermediate states are no longer present after later steps; excerpts are not complete raw transcripts.",
+  "mutations": [
+    {
+      "case": "Host capability bounding set retains CAP_NET_BIND_SERVICE while effective set is empty",
+      "result": "rejected; restored override passed"
+    },
+    {
+      "case": "Real existing database Secret rewritten into etcd as valid plaintext protobuf while API can read the marker",
+      "result": "rejected; API rewrite re-encrypted all Secrets and passed"
+    }
+  ],
+  "helper_tests": {
+    "count": 5,
+    "result": "passed in actual node environment with PyYAML",
+    "coverage": "query-string acceptance/denial, namespace scope, wrong URL, atomic manifest merge preservation/idempotence; not counted as live chapter coverage"
+  },
+  "not_executed_locally": [
+    "infrastructure/01-kubeadm-bootstrap",
+    "infrastructure/02-cluster-upgrade"
+  ],
+  "limitations": [
+    "Local node containers are not the hosted Ubuntu VM image. Parent performs actual Chrome/Killercoda validation separately.",
+    "HA nodes share one VM/load balancer; this tests real quorum/process failure, not independent physical host resilience."
+  ],
+  "cleanup": {
+    "completed_at": "2026-10-08T06:55:39.918748+00:00",
+    "removed": [
+      "kind/book-ha",
+      "kind/infra-full-labs",
+      "docker/infra-worker-node01",
+      "dedicated temporary kubeconfigs"
+    ],
+    "other_clusters": "untouched"
+  }
+}

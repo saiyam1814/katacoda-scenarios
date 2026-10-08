@@ -1,0 +1,2 @@
+Error from server (NotFound): networkpolicies.networking.k8s.io "frontend-only" not found
+FAIL: Put both selectors in the same peer so they are ANDed (missing or invalid JSON input)
