@@ -19,6 +19,11 @@ spec:
   template:
     metadata: {labels: {app: resident}}
     spec:
+      # Keep this fixture on the stopped worker even if a learner pauses.
+      # Explicit kubectl drain still evicts it in the maintenance task.
+      tolerations:
+      - {key: node.kubernetes.io/not-ready, operator: Exists, effect: NoExecute}
+      - {key: node.kubernetes.io/unreachable, operator: Exists, effect: NoExecute}
       affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
