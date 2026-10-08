@@ -1,0 +1,3434 @@
+[
+  {
+    "id": "cka-01-rbac",
+    "path": "cka/01-rbac",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/01-rbac",
+    "sourceCommit": "46e6c9b",
+    "setupReady": true,
+    "stepCount": 3,
+    "assetManifestSha256": "15cd7fddbcc1ef7a7b1f53ff4f1667b2c520a6088c3f6db7152514a867a3d669",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "cc3f54d7bc15c12a",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-01-rbac/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2,
+      3
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-01-rbac-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-01-rbac-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-01-rbac-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-01-rbac-solution.jpg",
+    "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "101782bb0392379a12063d13879724a23a658f409ab979bc9d30e221024ab9c3",
+      "verify-step-02.sh": "c6acf9266bc5e1b77c9534484a00b6abe0eb96134c855e8681dda3f141dd8fbf",
+      "verify-step-03.sh": "a32b8e7967fe71942e7393f0de7e03dafba19b056484ccf0b13ea14ff60f0f52"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "id": "cka-02-service-repair",
+    "path": "cka/02-service-repair",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/02-service-repair",
+    "sourceCommit": "b50149f",
+    "setupReady": true,
+    "stepCount": 2,
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1,
+      2
+    ],
+    "solutionCodeActions": [
+      1,
+      2
+    ],
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-02-service-repair-completed.jpg",
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "6583f0a1bc8dcb1b41699b3fedaedac92825a30e0a349d9cc832feeaa272280a",
+      "verify-step-02.sh": "1b9a803efc4fd9d35064b0fa6bd5781425c815c6df304e5558e8d4f0ab4fa07d"
+    },
+    "sourceVerification": "Current assets are byte-identical to the immutable source commit of this recorded browser run; independent delivered-file hashing was not recorded.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-root.json"
+  },
+  {
+    "path": "cka/03-kustomize",
+    "id": "cka-03-kustomize",
+    "title": "CKA \u2014 Kustomize application and component overlays",
+    "steps": [
+      {
+        "title": "Render and apply an application overlay",
+        "text": "step1.md",
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Patch and install a real metrics component",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      }
+    ],
+    "hashes": {
+      "verify-step-01.sh": "c477db797e90da9ed00aceebe7f73a4979e8a1fe4df8f91af16a7efa3cd3301f",
+      "verify-step-02.sh": "01f2a8b70f4b64ad11f54d5ea5b3918bcae5fc15644dfca776fb0f9fa1e2a2b9"
+    },
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/03-kustomize",
+    "sourceCommit": "6822ae6",
+    "stepCount": 2,
+    "setupReady": true,
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "executionMethod": "Chrome normal terminal supplied aggregate solution and actual CHECK buttons",
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-03-kustomize-completed.jpg",
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "c477db797e90da9ed00aceebe7f73a4979e8a1fe4df8f91af16a7efa3cd3301f",
+      "verify-step-02.sh": "01f2a8b70f4b64ad11f54d5ea5b3918bcae5fc15644dfca776fb0f9fa1e2a2b9"
+    },
+    "sourceVerification": "Current assets are byte-identical to the immutable source commit of this recorded browser run; independent delivered-file hashing was not recorded.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-root.json"
+  },
+  {
+    "id": "cka-04-persistent-volume",
+    "path": "cka/04-persistent-volume",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/04-persistent-volume",
+    "sourceCommit": "72c3b8b",
+    "setupReady": true,
+    "stepCount": 2,
+    "assetManifestSha256": "04becd698fcb0acff3849956310f9a1b1ecb44219746689776718f24b6afb739",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "96d0c91e5843ebda",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-04-persistent-volume/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-04-persistent-volume-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-04-persistent-volume-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-04-persistent-volume-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-04-persistent-volume-solution.jpg",
+    "notes": "Initial provider terminal stalled; exited and opened a fresh VM. All recorded test results are from the responsive fresh VM using the normal terminal.",
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "8fda8d5db98cca7aa4e6d23a9a34a15978ac8bbcf600be68482a96afde60780b",
+      "verify-step-02.sh": "e6b2d0d5ac6145d7bf0975b3fb682352ea491bbf6a06c0d615470fce716d40ff"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "id": "cka-05-scheduling",
+    "path": "cka/05-scheduling",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/05-scheduling",
+    "sourceCommit": "46e6c9b",
+    "observedAt": "2026-10-08T10:49:54.536Z",
+    "vmId": "2d7a8ca1757f4fa8",
+    "setupReady": true,
+    "stepCount": 4,
+    "browserStepsPassed": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "completed": true,
+    "allAssetsMatched": true,
+    "automaticAssetDelivery": true,
+    "assetManifest": {
+      "entries": {
+        "cleanup.sh": "3186bad6502fadfae870cf8ebe8c10b9d9b45c66a20c71d92ec8a8ac5a72b475",
+        "lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+        "setup.sh": "3ddcacfd8c46a79cacbe8c6a7a11cb22d8eaee288dd54e50e31308ae3ff944ab",
+        "solution-step-01.sh": "165bfd3785dbdfc46518111128951bd25fe5d4dd9b7c0d308bd8caeeeb590b0c",
+        "solution-step-02.sh": "704b6f683af29e285182d00c180dcc29268db1073b3ee01666fd4ae36dad8fda",
+        "solution-step-03.sh": "7aeb286794c66fe551bf42f687b522ca6f3dc14712e8e58694785ecddcd3d490",
+        "solution-step-04.sh": "5514affdeaf480609938f27aecf078be4a85c3114a4a6a89adfced0f7140acc8",
+        "solution.sh": "8eebdae450e380809d19c9b6b37684e69f9c5cafe67f0a878adfbd121c8c4836",
+        "verify-step-01.sh": "40accc3a5fef1254ef28dfc9ed2f059674ae417e73e28908affcbedb3d1e111a",
+        "verify-step-02.sh": "571a6795d05c40e189c7ca7ad185bd75c1906bfc7908d6e1754f2d19b933bf56",
+        "verify-step-03.sh": "ec9dd26bf8d01277a0872e40092d55e8c2b8e819c46e6c9ff8078a16168d35cc",
+        "verify-step-04.sh": "2417d07816e1f3476268a72f973680af66be3b4f5e001e6a567b86f87c2d5217",
+        "verify.sh": "5380ae35973c2b05e68a0bafbcadcff548c7a3acb18007fd02b4879d8b4dffa4"
+      },
+      "aggregateSha256": "a0c44e04a6d0785c7a16d6428ab76046d5f51d1c4f08a1b01cd9f241cebb5266"
+    },
+    "observedAllAssetAggregate": "a0c44e04a6d0785c7a16d6428ab76046d5f51d1c4f08a1b01cd9f241cebb5266",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-05-scheduling/solution.sh",
+    "solutionExitCode": 0,
+    "finalVerifierExitCodes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "hostedKubernetesVersion": "1.36.1",
+    "executionMethod": "Normal Chrome hosted terminal",
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-05-final-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-05-final-automatic-setup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-05-final-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-05-final-solution.jpg",
+    "notes": [
+      "Fresh automatic delivery of all13 assets independently matched the current source; no replacements.",
+      "All four unsolved checkers returned1; whole supplied solution returned0 and each final checker returned0.",
+      "Actual browser CHECKs advanced in order to direct binding, required affinity, DaemonSet and Scenario completed.",
+      "This fresh full replay replaces the earlier completion screenshot that was overwritten by the CKA recorder metadata bug. Original attempt and source records remain historical."
+    ],
+    "previousRuns": [
+      {
+        "id": "cka-05-scheduling",
+        "path": "cka/05-scheduling",
+        "url": "https://killercoda.com/saiyampathak/course/book-labs/05-scheduling",
+        "sourceCommit": "72c3b8b",
+        "setupReady": true,
+        "stepCount": 4,
+        "assetManifestSha256": "a0c44e04a6d0785c7a16d6428ab76046d5f51d1c4f08a1b01cd9f241cebb5266",
+        "assetsIndependentlyMatched": true,
+        "hostedKubernetesVersion": "v1.36.1",
+        "runtime": "4e3491446e2e73b1",
+        "unsolvedExitCodes": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "unsolvedBrowserChecksRejected": [
+          1
+        ],
+        "solutionCommand": "bash /opt/book-labs/cka-05-scheduling/solution.sh",
+        "solutionExitCode": 0,
+        "browserStepsPassed": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "completed": false,
+        "completionObservedInBrowser": true,
+        "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+        "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-05-scheduling-startup.jpg",
+        "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-05-scheduling-before.jpg",
+        "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-05-scheduling-solution.jpg",
+        "pendingRetest": "Actual completion observed in UI, but recorder reused an earlier image filename. Marked incomplete for final evidence until a fresh run restores its own completion screenshot."
+      }
+    ],
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "40accc3a5fef1254ef28dfc9ed2f059674ae417e73e28908affcbedb3d1e111a",
+      "verify-step-02.sh": "571a6795d05c40e189c7ca7ad185bd75c1906bfc7908d6e1754f2d19b933bf56",
+      "verify-step-03.sh": "ec9dd26bf8d01277a0872e40092d55e8c2b8e819c46e6c9ff8078a16168d35cc",
+      "verify-step-04.sh": "2417d07816e1f3476268a72f973680af66be3b4f5e001e6a567b86f87c2d5217"
+    },
+    "sourceVerification": "Independent normal-terminal script aggregate matches every current asset; see original record for automatic-delivery or pinned-helper replay scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-root.json"
+  },
+  {
+    "id": "cka-06-rollout-recovery",
+    "path": "cka/06-rollout-recovery",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/06-rollout-recovery",
+    "sourceCommit": "46e6c9b",
+    "setupReady": true,
+    "stepCount": 3,
+    "assetManifestSha256": "998b13fb7aa9af7c27e2d547ef25fba04a579b297adb6e4bba14add21155bf44",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "91efa53372d2b58d",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-06-rollout-recovery/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2,
+      3
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-solution.jpg",
+    "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+    "notes": [
+      "Fresh complete retake replaces initial browser pass whose completion image was overwritten by an evidence-recorder bug. Original startup/before/solution records retained separately."
+    ],
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "74518a9db72465858f224a8ff22a382fa7a33ada6d1653537e049a2155c16d66",
+      "verify-step-02.sh": "b0869d7b88450ad005ba8cdde3387aca3052f645b0f080bf503650b022b3d181",
+      "verify-step-03.sh": "b842d4896175208750a31e4d6dd362036ada04668951f4aa4bc44ba102f298d4"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "id": "cka-07-pod-lifecycle",
+    "path": "cka/07-pod-lifecycle",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/07-pod-lifecycle",
+    "sourceCommit": "46e6c9b",
+    "setupReady": true,
+    "stepCount": 5,
+    "assetManifestSha256": "a2a005eba310dcdeb1448de63fd079716bc284705e3e67357c6454da126581e5",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "576d5b77465b4658",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-07-pod-lifecycle/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-solution.jpg",
+    "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+    "notes": [
+      "Fresh complete retake replaces initial browser pass whose completion image was overwritten by an evidence-recorder bug. Original startup/before/solution records retained separately."
+    ],
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "ef652670d8c3a3d6de3474bc487316d58bf6e79b2f2086a5d7c5d7d244297ada",
+      "verify-step-02.sh": "1e602a4fbe22ca4ce6c3aca1ce3fd5b5830c2ef3b90af60bf829cbd5b06a235d",
+      "verify-step-03.sh": "c75312eb0baf22714fa9dfbe9f4c5cb5617c10f0845c669bd007aadb4985afd0",
+      "verify-step-04.sh": "1c1ffecf755aede381500780eba1dd070ded8298a868c920dde3f5a4b325421a",
+      "verify-step-05.sh": "8ab16fefa3dd2d37593767217db69395ab5e2a1c05f114cb285100d45d88b47a"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "id": "cka-08-static-pods-logs",
+    "path": "cka/08-static-pods-logs",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/08-static-pods-logs",
+    "sourceCommit": "72c3b8b",
+    "setupReady": true,
+    "stepCount": 3,
+    "assetManifestSha256": "8b1a63d2772899c5216c18dddd03f04436a5caaaf5ee27cec1547e8dee41a9e6",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "b2dc9e51a5174464",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-08-static-pods-logs/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2,
+      3
+    ],
+    "completed": true,
+    "completionObservedInBrowser": true,
+    "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-08-static-pods-logs-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-08-static-pods-logs-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-08-static-pods-logs-solution.jpg",
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-08-static-pods-logs-completed.jpg",
+    "notes": "Recovered correctly identified static-Pod completion image from wrongly named cka-05 file after visual inspection. Supplied solution rerun with logged exit after terminal reconnect; exit0 and all3 CHECKs observed.",
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "506bf3fdcdd7adc57be4527aac1a214bfaa259b6db813b465df617efb649daf5",
+      "verify-step-02.sh": "07c1f2776fcdcd8baac956b9a957578ce4ce9c03ead31c561465855e92b55476",
+      "verify-step-03.sh": "c0f7d436836526fd2fb73f7918b57f8c2faaf9034aff4e6259f9dbda6b1948c2"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "id": "cka-09-metrics-autoscaling",
+    "path": "cka/09-metrics-autoscaling",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/09-metrics-autoscaling",
+    "verifiedAt": "2026-10-08T10:44:19.848632+00:00",
+    "sourceCommit": "18bda73e8eaf646fa824ceec1a160deac30658cc",
+    "sourceEquivalentAtCommit": "46e6c9bc8e6117e77c5866354bdbfad3fc6739b1",
+    "setupReady": true,
+    "stepCount": 2,
+    "assetManifestSha256": "b41144af5bf7855427f32b980aa458501a6dee9d02fde6e3a38cd8343d650ef7",
+    "assetsIndependentlyMatched": true,
+    "assetCount": 10,
+    "actual_delivered_sha256": {
+      "cleanup.sh": "520d8ac35a0a179c7eee7e1319b92da0b73a59ba4744977f2f732c64fa149b8b",
+      "lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+      "metrics.sh": "03f6e181669312a0b57bb6986bf0c0423207de80a14861e1193c523faeeaf317",
+      "setup.sh": "1e042b235cb1f062b65f3d0bcd146350ffd6680950a00584f80fcfc9afe71777",
+      "solution-step-01.sh": "69be5263a8d822ec48f5dafa98ccb9be170b49271846f71b9913fffe06ce1af9",
+      "solution-step-02.sh": "8c9ec9b9170a11149703bb0b7ec6593c807f86d78fcf62e70a19cebb1de2276c",
+      "solution.sh": "8dea4e20b25fcb7609f1bbcbffe706565a581b10d71ff34bb20a12d5719bc770",
+      "verify-step-01.sh": "2b80917713db5c7f3e90d058d0bb3100e228dbf6ee60e22bafad7afbbc836b18",
+      "verify-step-02.sh": "95c789be048f8f63b7907001a6fbf4e1f229d555f3179aacda7a8b82ae1a4180",
+      "verify.sh": "89e9b48444e705a6d6ac8dcf7dcf7539f835e1ca3be284fafd20a933c044b553"
+    },
+    "expected_sha256": {
+      "cleanup.sh": "520d8ac35a0a179c7eee7e1319b92da0b73a59ba4744977f2f732c64fa149b8b",
+      "lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+      "metrics.sh": "03f6e181669312a0b57bb6986bf0c0423207de80a14861e1193c523faeeaf317",
+      "setup.sh": "1e042b235cb1f062b65f3d0bcd146350ffd6680950a00584f80fcfc9afe71777",
+      "solution-step-01.sh": "69be5263a8d822ec48f5dafa98ccb9be170b49271846f71b9913fffe06ce1af9",
+      "solution-step-02.sh": "8c9ec9b9170a11149703bb0b7ec6593c807f86d78fcf62e70a19cebb1de2276c",
+      "solution.sh": "8dea4e20b25fcb7609f1bbcbffe706565a581b10d71ff34bb20a12d5719bc770",
+      "verify-step-01.sh": "2b80917713db5c7f3e90d058d0bb3100e228dbf6ee60e22bafad7afbbc836b18",
+      "verify-step-02.sh": "95c789be048f8f63b7907001a6fbf4e1f229d555f3179aacda7a8b82ae1a4180",
+      "verify.sh": "89e9b48444e705a6d6ac8dcf7dcf7539f835e1ca3be284fafd20a933c044b553"
+    },
+    "sourceAttestationMethod": "Automatic Killercoda delivery; normal Chrome terminal printed sha256sum for all10 files and hash of the sorted output. All rows inspected in screenshot and aggregate independently matches final source. No files replaced or patched.",
+    "assetManifestFormat": "sha256sum * with lexical filename order; each line is <hex><two spaces><basename><newline>; SHA256 of these bytes.",
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": {
+      "terminalHost": "0766d209733d7c48-1-40200.spca.r.killercoda.com",
+      "containerd": "2.2.1",
+      "os": "Ubuntu24.04.5 LTS",
+      "kernel": "6.8.0-146-generic",
+      "browser": "Chrome extension through CUA",
+      "tabId": "323929508",
+      "vmReleased": true
+    },
+    "executionMethod": "Normal terminal only; exact supplied whole-lab solution; independent browser CHECK for steps1and2. No Scenario Brain used.",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": false,
+    "solutionCommand": "bash /opt/book-labs/cka-09-metrics-autoscaling/solution.sh",
+    "solutionExitCode": 0,
+    "finalVerifierExitCodes": [
+      0,
+      0
+    ],
+    "aggregateVerifierExitCode": 0,
+    "finalExitEvidence": "verify.sh executes both step verifiers with set-Eeuo-pipefail; terminal showed each PASS and aggregate exit0. Both independent browser CHECKs advanced to final completion.",
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
+    "completionScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
+    "completionDom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.txt",
+    "startupScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-delivered-assets.png",
+    "beforeScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-negative-checks.png",
+    "solutionScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-live-hpa.png",
+    "taskScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-50m-task.png",
+    "publicTaskCpuRequest": "50m",
+    "publicTaskExplainsBook200mAdaptation": true,
+    "observedHpa": {
+      "targetUtilizationPercent": 50,
+      "currentUtilizationPercent": 243,
+      "currentReplicas": 5,
+      "maxReplicas": 5,
+      "deploymentReady": "5/5",
+      "successfulRescaleEvents": [
+        4,
+        5
+      ],
+      "manualReplicaEdits": false
+    },
+    "evidenceFiles": [
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-delivered-assets.png",
+        "sha256": "dad0108d71db3786474c68c94c56a951b2eea72f28245402d0391a0692e787c6"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-startup-dom.txt",
+        "sha256": "a944ea6f8f2a59df81077fdcb439c73f8720c438dbc244f41d43cfb4d5a6fb04"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-negative-checks.png",
+        "sha256": "64901676b80b1ef05de5383c2853db4410b64b7cc1690d1516da4ff93fa19ec3"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-50m-task.png",
+        "sha256": "e6d712d343a474dfd12c4a966f05eac57d12c16a9b1fd1f055bee61f506b0998"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-step2-dom.txt",
+        "sha256": "1b7afd25ad93eebf3c18885bfe4cf8fbb90ebf3dad4449e6b3996cccac986187"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-live-hpa.png",
+        "sha256": "63359ee0503f3b473e1deacdd53448b21e8cb0cae2a24d60f6971f02fcdcfeb7"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
+        "sha256": "2cacf612254c23d8afe9f4d89d9d60d367cd7ae1f72a3bbda09b1fe682059db7"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.txt",
+        "sha256": "55ca98a9b35ec38fff49892b325dd413b1c3ff3bcbdc2f809a82b04456dfc488"
+      }
+    ],
+    "notes": [
+      "Extra fresh retake to verify updated public50m task wording and automatic final source delivery after the earlier held UI retained200m. Prior CKAagent results are preserved separately.",
+      "One normal page reload during initial terminal bootstrap; runtime host changed during provider allocation. The final host delivered and executed all assets automatically.",
+      "Initial negative checks were run in the terminal, not by browser CHECK. Browser CHECK was independently clicked and observed advancing for both solved steps.",
+      "After both CHECKs completed, an optional repeat command to print separate numeric final exit labels timed out in the terminal UI. It did not alter assets or outcomes; recorded0/0 derives from each PASS plus the fail-fast aggregate exit0 and independent browser completion.",
+      "Provider environment differs from the advertised exam baseline. The public task explicitly adapts book200m CPU requests to50m on this one-CPU hosted VM."
+    ],
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "2b80917713db5c7f3e90d058d0bb3100e228dbf6ee60e22bafad7afbbc836b18",
+      "verify-step-02.sh": "95c789be048f8f63b7907001a6fbf4e1f229d555f3179aacda7a8b82ae1a4180"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka09-final.json"
+  },
+  {
+    "id": "cka-10-probes-configuration",
+    "path": "cka/10-probes-configuration",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/10-probes-configuration",
+    "sourceCommit": "18bda73",
+    "setupReady": true,
+    "stepCount": 4,
+    "assetManifestSha256": "87cd38ef37d8eb19d5ef7ee09d658f156426c887453d0522abfd9125ba207258",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "f9f2684e1f367bf9",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-10-probes-configuration/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-10-probes-configuration-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-10-probes-configuration-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-10-probes-configuration-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-10-probes-configuration-solution.jpg",
+    "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "fd631633fda9f6c9bdddb0ef24241dda4c18e8923a8e3b1cafbe5669d43c1186",
+      "verify-step-02.sh": "cb732c3d3903095ed8deeab36fb22ce8960b86807818b7e98ba7525679840ecc",
+      "verify-step-03.sh": "e8dd7b5f69cb70fbf3aa762da2021bbb09ec360249ed1a238c413b98b93d0fe4",
+      "verify-step-04.sh": "15e6326335f2f6a98925a0e68f5685d4edf328be106819cbc367822bd2a60efa"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "id": "cka-11-services-networkpolicy",
+    "path": "cka/11-services-networkpolicy",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/11-services-networkpolicy",
+    "sourceCommit": "18bda73",
+    "setupReady": true,
+    "stepCount": 2,
+    "assetManifestSha256": "b0cc9424e9513ec559cf5402ec70cd752fdadf1f82b77c7df01e936d9c43e1d0",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "3a7c5519b89f105d",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-11-services-networkpolicy/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-11-services-networkpolicy-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-11-services-networkpolicy-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-11-services-networkpolicy-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-11-services-networkpolicy-solution.jpg",
+    "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "e36b445d076e7c56f8a859ab4cdf876a731c4ab5ad93d6248f9b544b64040220",
+      "verify-step-02.sh": "7dc2ccae71860eeccd9a46670f8d3e150c2c7e2581ca7d2eb41dc86beb68cb57"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "id": "cka-12-csi-volumes",
+    "path": "cka/12-csi-volumes",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/12-csi-volumes",
+    "sourceCommit": "18bda73",
+    "setupReady": true,
+    "stepCount": 2,
+    "assetManifestSha256": "9dae95ba5ff603f4db5dd25066767abe8b1d9cdd2e901cf7f7a15ed58740d669",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "30dcdc96cad51053",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-12-csi-volumes/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-12-csi-volumes-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-12-csi-volumes-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-12-csi-volumes-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-12-csi-volumes-solution.jpg",
+    "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "80f990cbd90a00d2c8d88349d6c5bab1123a0c72f52a5240439d367c59b6440d",
+      "verify-step-02.sh": "da60931400245b00784acbc46bd48f77a0ee8ad30908308e9a9c0d32c5a9ed60"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "id": "cka-13-helm-certificates",
+    "path": "cka/13-helm-certificates",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/13-helm-certificates",
+    "sourceCommit": "18bda73",
+    "setupReady": true,
+    "stepCount": 2,
+    "assetManifestSha256": "103f353d0ccf5c7d68555c1920c3d60840694756aa8af913a1dd9e67dce7ce18",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "632ab76493be92e8",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-13-helm-certificates/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-13-helm-certificates-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-13-helm-certificates-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-13-helm-certificates-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-13-helm-certificates-solution.jpg",
+    "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+    "notes": [
+      "Terminal reconnected after solution; actual saved solution exit0 and log read from the same VM before both CHECKs."
+    ],
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "ae2bb271bc7a81886f81384abdfc1657814e6c76bc0927503f68281bc5414911",
+      "verify-step-02.sh": "58bc091c165f5615c32e7bd0747e268966322e63ddd5f9e2fe4f5f5414d695b5"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "id": "cka-14-gateway-ingress",
+    "path": "cka/14-gateway-ingress",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/14-gateway-ingress",
+    "sourceCommit": "46e6c9b",
+    "setupReady": true,
+    "stepCount": 2,
+    "assetManifestSha256": "05305ac6336a080851cc7537a414574bcb50930033289437a801d228c366315c",
+    "assetsIndependentlyMatched": true,
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": "0f90bd524f1a668b",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-14-gateway-ingress/solution.sh",
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-14-gateway-ingress-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-14-gateway-ingress-startup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-14-gateway-ingress-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-14-gateway-ingress-solution.jpg",
+    "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+    "fixtureResetReplayed": true,
+    "assetUpdate": {
+      "path": "routing.sh",
+      "sourceCommit": "46e6c9b",
+      "sha256": "94fe7596e002c06d77310b8b450a9151a61171a523f8d1f7e17af197ed558c13",
+      "method": "Pinned public source downloaded through normal hosted terminal and independently hashed; whole asset manifest matched"
+    },
+    "notes": [
+      "Initial supplied solution and both CHECKs passed; initial missing HTTPRoute emitted traceback. Narrow diagnostic guard applied, supplied setup reset0, clean negatives1/1, supplied solution0 and both CHECKs replayed. Original before/solution/completion screenshots retained with initial filename prefix."
+    ],
+    "currentVerifierSha256": {
+      "verify-step-01.sh": "83b3970a5cbcee9172c64c603bede1f08b2f90a1107612e987d2a8e1d27c1f26",
+      "verify-step-02.sh": "0fd3b1c4f2ee2186856d91112225bdeeb2c6b2b32a91026b747ecabfac1e53e5"
+    },
+    "sourceVerification": "Independent normal-terminal aggregate of all asset files matches current source.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-cka.json"
+  },
+  {
+    "lab": "cks/01-networkpolicy",
+    "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "steps_passed": [
+      1,
+      2,
+      3
+    ],
+    "initial_verifiers_exit": [
+      1,
+      1,
+      1
+    ],
+    "final_verifiers_exit": [
+      0,
+      0,
+      0
+    ],
+    "setup": "ready",
+    "solution_exit": 0,
+    "delivered_assets": {
+      "lab": "cks/01-networkpolicy",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Combine namespace and Pod selectors",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Deny egress from a namespace",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Block metadata and preserve application access",
+          "verifier": "verify-step3.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "29a472325b6c2804fab33c8583a6f15680f81b96681738fcf62da521288cc6f7",
+        "verify-step2.sh": "0ff90d61dec8631af347c9a1f2babac98f668179a0551305a6be482e1e40f977",
+        "verify-step3.sh": "a863466f5c47a20d122ab6632e6be2fd0c4e7676a5cabfbd78cd4cb6190877fe",
+        "verify.sh": "278752668a5d0d28388dac737bf98b19901f906e53ae5d6b2c82f9f618eed110"
+      },
+      "setup_sha256": "e9962d45e121633c2caf4a0c0c92ff07cfdcbb5cb13e74bc5ac476d2c5db86bc",
+      "solution_sha256": "5056a885741d3f0a4b296afa2a2f9ef6eac4c249af64945a625e04e356ae5592",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "base-setup.sh": "d939ee96ebee8e7caf2e7c4167a1e8762e5b2e746d2e92e3fa73a4d73fc72d9c",
+        "base-solution.sh": "66e4ab69f1b686dc0820c2b237c70b39e7e400e7077d48bf3ba10eb3cab76e1a",
+        "base-task.md": "4269c1394e852fa9e0f4a52e461590134bdd8cc8aaf2a2fba089152926fcedb6",
+        "base-verify.sh": "ceb89ad09e339b14b72543d19443bfb0dedd4c20af6e4d0d5a66e7fc3b891aab",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+        "network_probe.py": "28edb289e150f8f07545047f52a6099f27b0f249d7551b652bfed469fcd4c9c0"
+      }
+    },
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None",
+    "observed_at": "2026-10-08T09:55:52.936Z",
+    "previous_runs": [
+      {
+        "lab": "cks/01-networkpolicy",
+        "steps_passed": [
+          1,
+          2,
+          3
+        ],
+        "initial_verifiers_exit": [
+          1,
+          1,
+          1
+        ],
+        "final_verifiers_exit": [
+          0,
+          0,
+          0
+        ],
+        "setup": "ready",
+        "source_hashes": "Matched cks-source-manifest.json at d2f0ef7",
+        "execution_method": "normal Terminal input through Chrome CUA",
+        "status": "CHECK completed after corrective policy patch; refreshed published-solution retest pending",
+        "fix": "Add namespaceSelector:{} peer so Cilium cluster Pod identities and DNS remain permitted",
+        "terminal_limitation": "None on this fresh VM",
+        "observed_at": "2026-10-08T07:25:49.349Z",
+        "delivered_assets": {
+          "lab": "cks/01-networkpolicy",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Combine namespace and Pod selectors",
+              "verifier": "verify-step1.sh"
+            },
+            {
+              "step": 2,
+              "title": "Deny egress from a namespace",
+              "verifier": "verify-step2.sh"
+            },
+            {
+              "step": 3,
+              "title": "Block metadata and preserve application access",
+              "verifier": "verify-step3.sh"
+            }
+          ],
+          "asset_verifier_sha256": {
+            "verify-step1.sh": "29a472325b6c2804fab33c8583a6f15680f81b96681738fcf62da521288cc6f7",
+            "verify-step2.sh": "0ff90d61dec8631af347c9a1f2babac98f668179a0551305a6be482e1e40f977",
+            "verify-step3.sh": "a863466f5c47a20d122ab6632e6be2fd0c4e7676a5cabfbd78cd4cb6190877fe",
+            "verify.sh": "278752668a5d0d28388dac737bf98b19901f906e53ae5d6b2c82f9f618eed110"
+          },
+          "setup_sha256": "e9962d45e121633c2caf4a0c0c92ff07cfdcbb5cb13e74bc5ac476d2c5db86bc",
+          "solution_sha256": "e8a183e1b443566fdcbbd5e7deb6e9a4a6d03b07b79fe48526c4babf8cb0636d"
+        },
+        "evidence_status": "Historical attempt only; excluded from final source and completion gate."
+      },
+      {
+        "lab": "cks/01-networkpolicy",
+        "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+        "source_equivalent_at": "a9977772deae2b28b56e2d73e68c43acd7c5407c (no CKS changes from6f02d49)",
+        "steps_passed": [
+          1,
+          2,
+          3
+        ],
+        "initial_verifiers_exit": [
+          1,
+          1,
+          1
+        ],
+        "final_verifiers_exit": [
+          0,
+          0,
+          0
+        ],
+        "setup": "ready",
+        "solution_exit": 0,
+        "delivered_assets": {
+          "lab": "cks/01-networkpolicy",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Combine namespace and Pod selectors",
+              "verifier": "verify-step1.sh"
+            },
+            {
+              "step": 2,
+              "title": "Deny egress from a namespace",
+              "verifier": "verify-step2.sh"
+            },
+            {
+              "step": 3,
+              "title": "Block metadata and preserve application access",
+              "verifier": "verify-step3.sh"
+            }
+          ],
+          "asset_verifier_sha256": {
+            "verify-step1.sh": "29a472325b6c2804fab33c8583a6f15680f81b96681738fcf62da521288cc6f7",
+            "verify-step2.sh": "0ff90d61dec8631af347c9a1f2babac98f668179a0551305a6be482e1e40f977",
+            "verify-step3.sh": "a863466f5c47a20d122ab6632e6be2fd0c4e7676a5cabfbd78cd4cb6190877fe",
+            "verify.sh": "278752668a5d0d28388dac737bf98b19901f906e53ae5d6b2c82f9f618eed110"
+          },
+          "setup_sha256": "e9962d45e121633c2caf4a0c0c92ff07cfdcbb5cb13e74bc5ac476d2c5db86bc",
+          "solution_sha256": "5056a885741d3f0a4b296afa2a2f9ef6eac4c249af64945a625e04e356ae5592",
+          "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+          "auxiliary_sha256": {
+            "base-setup.sh": "d939ee96ebee8e7caf2e7c4167a1e8762e5b2e746d2e92e3fa73a4d73fc72d9c",
+            "base-solution.sh": "66e4ab69f1b686dc0820c2b237c70b39e7e400e7077d48bf3ba10eb3cab76e1a",
+            "base-task.md": "4269c1394e852fa9e0f4a52e461590134bdd8cc8aaf2a2fba089152926fcedb6",
+            "base-verify.sh": "ceb89ad09e339b14b72543d19443bfb0dedd4c20af6e4d0d5a66e7fc3b891aab",
+            "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+            "network_probe.py": "28edb289e150f8f07545047f52a6099f27b0f249d7551b652bfed469fcd4c9c0"
+          }
+        },
+        "execution_method": "Scenario Brain Solution mode exact published scripts plus independent browser CHECK",
+        "status": "All current browser CHECK steps completed",
+        "terminal_limitation": "Normal terminal input timed out; exact scripts launched by Brain, completion independently established by actual website CHECK advancement",
+        "observed_at": "2026-10-08T09:13:52.031Z",
+        "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-fallback-completed.png",
+        "evidence_status": "Historical attempt only; excluded from final source and completion gate.",
+        "source_provenance_limit": "Brain-reported output and hashes are not independent terminal attestation; later normal-terminal retake supersedes this attempt."
+      }
+    ],
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-completed.png",
+    "step_count": 3,
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify-step1.sh": "29a472325b6c2804fab33c8583a6f15680f81b96681738fcf62da521288cc6f7",
+      "verify-step2.sh": "0ff90d61dec8631af347c9a1f2babac98f668179a0551305a6be482e1e40f977",
+      "verify-step3.sh": "a863466f5c47a20d122ab6632e6be2fd0c4e7676a5cabfbd78cd4cb6190877fe",
+      "verify.sh": "278752668a5d0d28388dac737bf98b19901f906e53ae5d6b2c82f9f618eed110",
+      "base-setup.sh": "d939ee96ebee8e7caf2e7c4167a1e8762e5b2e746d2e92e3fa73a4d73fc72d9c",
+      "base-solution.sh": "66e4ab69f1b686dc0820c2b237c70b39e7e400e7077d48bf3ba10eb3cab76e1a",
+      "base-task.md": "4269c1394e852fa9e0f4a52e461590134bdd8cc8aaf2a2fba089152926fcedb6",
+      "base-verify.sh": "ceb89ad09e339b14b72543d19443bfb0dedd4c20af6e4d0d5a66e7fc3b891aab",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "network_probe.py": "28edb289e150f8f07545047f52a6099f27b0f249d7551b652bfed469fcd4c9c0",
+      "setup.sh": "e9962d45e121633c2caf4a0c0c92ff07cfdcbb5cb13e74bc5ac476d2c5db86bc",
+      "solution.sh": "5056a885741d3f0a4b296afa2a2f9ef6eac4c249af64945a625e04e356ae5592"
+    },
+    "expected_sha256": {
+      "base-setup.sh": "d939ee96ebee8e7caf2e7c4167a1e8762e5b2e746d2e92e3fa73a4d73fc72d9c",
+      "base-solution.sh": "66e4ab69f1b686dc0820c2b237c70b39e7e400e7077d48bf3ba10eb3cab76e1a",
+      "base-task.md": "4269c1394e852fa9e0f4a52e461590134bdd8cc8aaf2a2fba089152926fcedb6",
+      "base-verify.sh": "ceb89ad09e339b14b72543d19443bfb0dedd4c20af6e4d0d5a66e7fc3b891aab",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "network_probe.py": "28edb289e150f8f07545047f52a6099f27b0f249d7551b652bfed469fcd4c9c0",
+      "setup.sh": "e9962d45e121633c2caf4a0c0c92ff07cfdcbb5cb13e74bc5ac476d2c5db86bc",
+      "solution.sh": "5056a885741d3f0a4b296afa2a2f9ef6eac4c249af64945a625e04e356ae5592",
+      "verify-step1.sh": "29a472325b6c2804fab33c8583a6f15680f81b96681738fcf62da521288cc6f7",
+      "verify-step2.sh": "0ff90d61dec8631af347c9a1f2babac98f668179a0551305a6be482e1e40f977",
+      "verify-step3.sh": "a863466f5c47a20d122ab6632e6be2fd0c4e7676a5cabfbd78cd4cb6190877fe",
+      "verify.sh": "278752668a5d0d28388dac737bf98b19901f906e53ae5d6b2c82f9f618eed110"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-terminal.png"
+    ],
+    "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
+    "id": "cks-01-networkpolicy",
+    "path": "cks/01-networkpolicy",
+    "stepCount": 3,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/01-networkpolicy",
+    "browserStepsPassed": [
+      1,
+      2,
+      3
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks01-final-completed.png",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "currentVerifierSha256": {
+      "verify-step1.sh": "29a472325b6c2804fab33c8583a6f15680f81b96681738fcf62da521288cc6f7",
+      "verify-step2.sh": "0ff90d61dec8631af347c9a1f2babac98f668179a0551305a6be482e1e40f977",
+      "verify-step3.sh": "a863466f5c47a20d122ab6632e6be2fd0c4e7676a5cabfbd78cd4cb6190877fe"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "lab": "cks/02-pod-security",
+    "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "steps_passed": [
+      1,
+      2
+    ],
+    "initial_verifiers_exit": [
+      1,
+      1
+    ],
+    "final_verifiers_exit": [
+      0,
+      0
+    ],
+    "setup": "ready",
+    "solution_exit": 0,
+    "delivered_assets": {
+      "lab": "cks/02-pod-security",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Enforce restricted Pod Security Admission",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Repair a privileged Deployment",
+          "verifier": "verify-step2.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "3b69ff85f74d0d459286fe49e083179a73a9ad03f29209f9a7ca1676476b3382",
+        "verify-step2.sh": "964222247bfcd7e9a3dd0435f901d5f059d0c7943fd70f36fd1503e79dd11abf",
+        "verify.sh": "e9fcc048ecc9ddd415e6a190c37c67a2d8eab47c1fe8c493afb1dd6b788d2789"
+      },
+      "setup_sha256": "af9e9a7be553e6432e5b7c2515727520249aeac5ca2919acbf67d4db7e099e70",
+      "solution_sha256": "2b4518b70ee01c17269b41caa552c82e891b1e7539b9c1248e875c922412e32f",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "base-setup.sh": "483723c6ba14a549dc106da8bf686f54eb76d23342ec4205b7f2b7be2912f3e0",
+        "base-solution.sh": "c8c65c1e6ff74b4d2113992d51db4bde90c49a99aa54e1e631bf3cfaabd06696",
+        "base-task.md": "b22413d0a92f1741dfa7f4b22424a9cd8d964289566612348951d109a5396f2a",
+        "base-verify.sh": "3aa94a22b0a8d85cd492861d3a7b739cbb34670b0d23c3ecbc1b7ce32e737dfe",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    },
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None",
+    "observed_at": "2026-10-08T09:16:07.181Z",
+    "previous_runs": [
+      {
+        "lab": "cks/02-pod-security",
+        "steps_passed": [
+          1,
+          2
+        ],
+        "initial_verifiers_exit": [
+          1,
+          1
+        ],
+        "final_verifiers_exit": [
+          0,
+          0
+        ],
+        "setup": "ready",
+        "source_hashes": "All checksums matched cks-source-manifest.json",
+        "execution_method": "normal Terminal input through Chrome CUA",
+        "status": "All browser CHECK steps completed for d2f0ef7; final strengthened verifier retest pending",
+        "terminal_limitation": "None on fresh VM",
+        "observed_at": "2026-10-08T07:27:52.903Z",
+        "delivered_assets": {
+          "lab": "cks/02-pod-security",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Enforce restricted Pod Security Admission",
+              "verifier": "verify-step1.sh"
+            },
+            {
+              "step": 2,
+              "title": "Repair a privileged Deployment",
+              "verifier": "verify-step2.sh"
+            }
+          ],
+          "asset_verifier_sha256": {
+            "verify-step1.sh": "3b69ff85f74d0d459286fe49e083179a73a9ad03f29209f9a7ca1676476b3382",
+            "verify-step2.sh": "8d2ac409310053765c61a2682d980cf5e4dc72df1e8a2b971266f6533ed32861",
+            "verify.sh": "e9fcc048ecc9ddd415e6a190c37c67a2d8eab47c1fe8c493afb1dd6b788d2789"
+          },
+          "setup_sha256": "af9e9a7be553e6432e5b7c2515727520249aeac5ca2919acbf67d4db7e099e70",
+          "solution_sha256": "2b4518b70ee01c17269b41caa552c82e891b1e7539b9c1248e875c922412e32f"
+        },
+        "evidence_status": "Historical attempt only; excluded from final source and completion gate."
+      }
+    ],
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks02-final-completed.png",
+    "step_count": 2,
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify-step1.sh": "3b69ff85f74d0d459286fe49e083179a73a9ad03f29209f9a7ca1676476b3382",
+      "verify-step2.sh": "964222247bfcd7e9a3dd0435f901d5f059d0c7943fd70f36fd1503e79dd11abf",
+      "verify.sh": "e9fcc048ecc9ddd415e6a190c37c67a2d8eab47c1fe8c493afb1dd6b788d2789",
+      "base-setup.sh": "483723c6ba14a549dc106da8bf686f54eb76d23342ec4205b7f2b7be2912f3e0",
+      "base-solution.sh": "c8c65c1e6ff74b4d2113992d51db4bde90c49a99aa54e1e631bf3cfaabd06696",
+      "base-task.md": "b22413d0a92f1741dfa7f4b22424a9cd8d964289566612348951d109a5396f2a",
+      "base-verify.sh": "3aa94a22b0a8d85cd492861d3a7b739cbb34670b0d23c3ecbc1b7ce32e737dfe",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "af9e9a7be553e6432e5b7c2515727520249aeac5ca2919acbf67d4db7e099e70",
+      "solution.sh": "2b4518b70ee01c17269b41caa552c82e891b1e7539b9c1248e875c922412e32f"
+    },
+    "expected_sha256": {
+      "base-setup.sh": "483723c6ba14a549dc106da8bf686f54eb76d23342ec4205b7f2b7be2912f3e0",
+      "base-solution.sh": "c8c65c1e6ff74b4d2113992d51db4bde90c49a99aa54e1e631bf3cfaabd06696",
+      "base-task.md": "b22413d0a92f1741dfa7f4b22424a9cd8d964289566612348951d109a5396f2a",
+      "base-verify.sh": "3aa94a22b0a8d85cd492861d3a7b739cbb34670b0d23c3ecbc1b7ce32e737dfe",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "af9e9a7be553e6432e5b7c2515727520249aeac5ca2919acbf67d4db7e099e70",
+      "solution.sh": "2b4518b70ee01c17269b41caa552c82e891b1e7539b9c1248e875c922412e32f",
+      "verify-step1.sh": "3b69ff85f74d0d459286fe49e083179a73a9ad03f29209f9a7ca1676476b3382",
+      "verify-step2.sh": "964222247bfcd7e9a3dd0435f901d5f059d0c7943fd70f36fd1503e79dd11abf",
+      "verify.sh": "e9fcc048ecc9ddd415e6a190c37c67a2d8eab47c1fe8c493afb1dd6b788d2789"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks02-final-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks02-final-terminal.png"
+    ],
+    "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
+    "id": "cks-02-pod-security",
+    "path": "cks/02-pod-security",
+    "stepCount": 2,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/02-pod-security",
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks02-final-completed.png",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "currentVerifierSha256": {
+      "verify-step1.sh": "3b69ff85f74d0d459286fe49e083179a73a9ad03f29209f9a7ca1676476b3382",
+      "verify-step2.sh": "964222247bfcd7e9a3dd0435f901d5f059d0c7943fd70f36fd1503e79dd11abf"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "lab": "cks/03-runtime-hardening",
+    "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "steps_passed": [
+      1,
+      2,
+      3
+    ],
+    "initial_verifiers_exit": [
+      1,
+      1,
+      1
+    ],
+    "final_verifiers_exit": [
+      0,
+      0,
+      0
+    ],
+    "setup": "ready",
+    "solution_exit": 0,
+    "delivered_assets": {
+      "lab": "cks/03-runtime-hardening",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Harden the live process",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Keep an HTTP server working with a read-only root",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Install and enforce a local seccomp profile",
+          "verifier": "verify-step3.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "93f2e0639268d5f9e0ecc7a149933e0df2a1303a556f09216a49a472a2a5d108",
+        "verify-step2.sh": "5bbf3a3918bcf0f0c4867bd11a65d412ba88ae7c81111f673177f1ecbbf0623c",
+        "verify-step3.sh": "da47e864c9b050269fe9e430de81cd3441dbb3b2fb0f44eca9e7c9a30d1e6d38",
+        "verify.sh": "d90ee7a9e65468c50593ba0a875453d4d0779164e370572f82df70da8afe0f4b"
+      },
+      "setup_sha256": "67edf2ec5ba1201f991e6f5afb82c1cff40a3d703815062a32befe637e860f57",
+      "solution_sha256": "3f86abd08b4eb2e843b1b3fd3a59ab49991bdfc81c383ab495915655e6dfc461",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "base-setup.sh": "441d5e247172b514365f2b0dcb79449fd34310f074104f912ab810117a96611f",
+        "base-solution.sh": "b9be01db8214bacd8cee9939854b85923969e409d64c4c93b63fb0e2bbecd290",
+        "base-task.md": "eeeec81580293bf93905e4e5855c494e420f18d6603ac626640b900c7a0ef442",
+        "base-verify.sh": "73ed07a25bd7dc4ed0e83bb8275792c3d0590bb12bb81603ea6aa6d3a3cd8528",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    },
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None",
+    "observed_at": "2026-10-08T09:30:13.081Z",
+    "previous_runs": [
+      {
+        "lab": "cks/03-runtime-hardening",
+        "steps_passed": [
+          1,
+          2,
+          3
+        ],
+        "initial_verifiers_exit": [
+          1,
+          1,
+          1
+        ],
+        "final_verifiers_exit": [
+          0,
+          0,
+          0
+        ],
+        "setup": "ready",
+        "source_hashes": "All checksums matched cks-source-manifest.json",
+        "execution_method": "normal Terminal input through Chrome CUA",
+        "status": "All browser CHECK steps completed for d2f0ef7; stronger step2 verifier retest pending",
+        "terminal_limitation": "None on fresh VM",
+        "observed_at": "2026-10-08T07:30:02.265Z",
+        "delivered_assets": {
+          "lab": "cks/03-runtime-hardening",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Harden the live process",
+              "verifier": "verify-step1.sh"
+            },
+            {
+              "step": 2,
+              "title": "Keep an HTTP server working with a read-only root",
+              "verifier": "verify-step2.sh"
+            },
+            {
+              "step": 3,
+              "title": "Install and enforce a local seccomp profile",
+              "verifier": "verify-step3.sh"
+            }
+          ],
+          "asset_verifier_sha256": {
+            "verify-step1.sh": "93f2e0639268d5f9e0ecc7a149933e0df2a1303a556f09216a49a472a2a5d108",
+            "verify-step2.sh": "52c304f95471ed7f526af14a9519564cf0c5556d321e5b96027c235d0302b262",
+            "verify-step3.sh": "da47e864c9b050269fe9e430de81cd3441dbb3b2fb0f44eca9e7c9a30d1e6d38",
+            "verify.sh": "d90ee7a9e65468c50593ba0a875453d4d0779164e370572f82df70da8afe0f4b"
+          },
+          "setup_sha256": "67edf2ec5ba1201f991e6f5afb82c1cff40a3d703815062a32befe637e860f57",
+          "solution_sha256": "3f86abd08b4eb2e843b1b3fd3a59ab49991bdfc81c383ab495915655e6dfc461"
+        },
+        "evidence_status": "Historical attempt only; excluded from final source and completion gate."
+      }
+    ],
+    "attempt_history": [
+      "Scenario Brain returned unreliable repetitive output; subsequent browser CHECK did not advance. Saved transcript is attempt history only. Reload plus Enter recovered terminal; .type delivered exact audit, all11 asset checks OK, all3 before1, supplied whole solution0, all3 after0, followed by each browser CHECK and completion."
+    ],
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-completed.png",
+    "step_count": 3,
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify-step1.sh": "93f2e0639268d5f9e0ecc7a149933e0df2a1303a556f09216a49a472a2a5d108",
+      "verify-step2.sh": "5bbf3a3918bcf0f0c4867bd11a65d412ba88ae7c81111f673177f1ecbbf0623c",
+      "verify-step3.sh": "da47e864c9b050269fe9e430de81cd3441dbb3b2fb0f44eca9e7c9a30d1e6d38",
+      "verify.sh": "d90ee7a9e65468c50593ba0a875453d4d0779164e370572f82df70da8afe0f4b",
+      "base-setup.sh": "441d5e247172b514365f2b0dcb79449fd34310f074104f912ab810117a96611f",
+      "base-solution.sh": "b9be01db8214bacd8cee9939854b85923969e409d64c4c93b63fb0e2bbecd290",
+      "base-task.md": "eeeec81580293bf93905e4e5855c494e420f18d6603ac626640b900c7a0ef442",
+      "base-verify.sh": "73ed07a25bd7dc4ed0e83bb8275792c3d0590bb12bb81603ea6aa6d3a3cd8528",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "67edf2ec5ba1201f991e6f5afb82c1cff40a3d703815062a32befe637e860f57",
+      "solution.sh": "3f86abd08b4eb2e843b1b3fd3a59ab49991bdfc81c383ab495915655e6dfc461"
+    },
+    "expected_sha256": {
+      "base-setup.sh": "441d5e247172b514365f2b0dcb79449fd34310f074104f912ab810117a96611f",
+      "base-solution.sh": "b9be01db8214bacd8cee9939854b85923969e409d64c4c93b63fb0e2bbecd290",
+      "base-task.md": "eeeec81580293bf93905e4e5855c494e420f18d6603ac626640b900c7a0ef442",
+      "base-verify.sh": "73ed07a25bd7dc4ed0e83bb8275792c3d0590bb12bb81603ea6aa6d3a3cd8528",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "67edf2ec5ba1201f991e6f5afb82c1cff40a3d703815062a32befe637e860f57",
+      "solution.sh": "3f86abd08b4eb2e843b1b3fd3a59ab49991bdfc81c383ab495915655e6dfc461",
+      "verify-step1.sh": "93f2e0639268d5f9e0ecc7a149933e0df2a1303a556f09216a49a472a2a5d108",
+      "verify-step2.sh": "5bbf3a3918bcf0f0c4867bd11a65d412ba88ae7c81111f673177f1ecbbf0623c",
+      "verify-step3.sh": "da47e864c9b050269fe9e430de81cd3441dbb3b2fb0f44eca9e7c9a30d1e6d38",
+      "verify.sh": "d90ee7a9e65468c50593ba0a875453d4d0779164e370572f82df70da8afe0f4b"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-terminal.png"
+    ],
+    "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
+    "id": "cks-03-runtime-hardening",
+    "path": "cks/03-runtime-hardening",
+    "stepCount": 3,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/03-runtime-hardening",
+    "browserStepsPassed": [
+      1,
+      2,
+      3
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks03-final-completed.png",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "currentVerifierSha256": {
+      "verify-step1.sh": "93f2e0639268d5f9e0ecc7a149933e0df2a1303a556f09216a49a472a2a5d108",
+      "verify-step2.sh": "5bbf3a3918bcf0f0c4867bd11a65d412ba88ae7c81111f673177f1ecbbf0623c",
+      "verify-step3.sh": "da47e864c9b050269fe9e430de81cd3441dbb3b2fb0f44eca9e7c9a30d1e6d38"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "lab": "cks/04-serviceaccount",
+    "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "steps_passed": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "initial_verifiers_exit": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "final_verifiers_exit": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "setup": "ready",
+    "solution_exit": 0,
+    "delivered_assets": {
+      "lab": "cks/04-serviceaccount",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Remove excess access and token mounts",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Give Sam only the required permissions",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Consume a Secret without mounting API credentials",
+          "verifier": "verify-step3.sh"
+        },
+        {
+          "step": 4,
+          "title": "Use a short-lived token with an isolated kubeconfig",
+          "verifier": "verify-step4.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "e41171c40aad785205de63222031d1df1f9a5a88d77aa5553be4045a4a55155d",
+        "verify-step2.sh": "a009abc2ec8795456c7b0890d21b678006d95d2c44917bea9e9902c0549540f0",
+        "verify-step3.sh": "58250522b0df4cff7bd10621f7a44584cf7ab0f9dd73203f9a72f67afd4aaf30",
+        "verify-step4.sh": "8c62b6ceada356b9ea6fb22ebe61edb8c552cf4fc626920c53a74802abad9901",
+        "verify.sh": "f8ff753deae9fd1760570d414d8c4c1c34828a851845cc28ab4c318da4df5e3d"
+      },
+      "setup_sha256": "e1caec2ca2cf97e3fd57e04475c606d85947821ffd0f8d3bbc95726676e614b7",
+      "solution_sha256": "584b1d18a6ccf4211df18c2203d2296cd6245d8c0b6ff8cfdff8143534582f39",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "base-setup.sh": "412c78b31528a9bcb74e078cf26e8bec614f1e904ac8f0d1f5ee811606c9a657",
+        "base-solution.sh": "80ce927ac58f3b2e1986236f2428fbfda93e789d0938465e601bf6c2541ca8c7",
+        "base-task.md": "b4a8f21633f3bba786015c1bf9ece78ba44e8bcfa90471dbc122f01621eb573a",
+        "base-verify.sh": "9ecaaf1a3697e240f5b002d067f18bb0de2008677f5f1b8672118119049207e4",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    },
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None",
+    "observed_at": "2026-10-08T09:51:17.739Z",
+    "previous_runs": [
+      {
+        "lab": "cks/04-serviceaccount",
+        "steps_passed": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "initial_verifiers_exit": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "final_verifiers_exit": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "setup": "ready",
+        "source_hashes": "All checksums matched cks-source-manifest.json",
+        "execution_method": "normal Terminal input through Chrome CUA",
+        "status": "All browser CHECK steps completed for d2f0ef7; final strengthened verifier retest pending",
+        "terminal_limitation": "None on fresh VM",
+        "observed_at": "2026-10-08T07:33:28.665Z",
+        "delivered_assets": {
+          "lab": "cks/04-serviceaccount",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Remove excess access and token mounts",
+              "verifier": "verify-step1.sh"
+            },
+            {
+              "step": 2,
+              "title": "Give Sam only the required permissions",
+              "verifier": "verify-step2.sh"
+            },
+            {
+              "step": 3,
+              "title": "Consume a Secret without mounting API credentials",
+              "verifier": "verify-step3.sh"
+            },
+            {
+              "step": 4,
+              "title": "Use a short-lived token with an isolated kubeconfig",
+              "verifier": "verify-step4.sh"
+            }
+          ],
+          "asset_verifier_sha256": {
+            "verify-step1.sh": "e41171c40aad785205de63222031d1df1f9a5a88d77aa5553be4045a4a55155d",
+            "verify-step2.sh": "5404d832ecc76e8fdee275c7f2da662a7fbb64c7bd9504414adbc36713a54f07",
+            "verify-step3.sh": "58250522b0df4cff7bd10621f7a44584cf7ab0f9dd73203f9a72f67afd4aaf30",
+            "verify-step4.sh": "8c62b6ceada356b9ea6fb22ebe61edb8c552cf4fc626920c53a74802abad9901",
+            "verify.sh": "f8ff753deae9fd1760570d414d8c4c1c34828a851845cc28ab4c318da4df5e3d"
+          },
+          "setup_sha256": "e1caec2ca2cf97e3fd57e04475c606d85947821ffd0f8d3bbc95726676e614b7",
+          "solution_sha256": "584b1d18a6ccf4211df18c2203d2296cd6245d8c0b6ff8cfdff8143534582f39"
+        },
+        "evidence_status": "Historical attempt only; excluded from final source and completion gate."
+      },
+      {
+        "lab": "cks/04-serviceaccount",
+        "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+        "source_equivalent_at": "a9977772deae2b28b56e2d73e68c43acd7c5407c (no CKS changes from6f02d49)",
+        "steps_passed": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "initial_verifiers_exit": [
+          1,
+          null,
+          null,
+          null
+        ],
+        "final_verifiers_exit": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "setup": "ready",
+        "solution_exit": null,
+        "execution_method": "Scenario Brain Solution mode exact published script plus independent browser CHECK",
+        "status": "All4 actual browser CHECK steps completed; exact delivered source provenance unverified",
+        "terminal_limitation": "Blank/spinner terminal; two reloads plus press/type attempts timed out. Published solution exec action did not advance checks. Short Brain launcher followed by actual CHECK advanced all4.",
+        "observed_at": "2026-10-08T09:39:56.053Z",
+        "initial_check_evidence": "Actual unsolved browser CHECK step1 stayed on step1; steps2\u20134 initial state not directly rechecked this retake.",
+        "reported_solution_exit": 0,
+        "source_provenance": "Current expected source hashes attached; delivered asset hashes could not be independently established. Brain returned inconsistent empty-file hashes and those are rejected as evidence.",
+        "expected_assets": {
+          "lab": "cks/04-serviceaccount",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Remove excess access and token mounts",
+              "verifier": "verify-step1.sh"
+            },
+            {
+              "step": 2,
+              "title": "Give Sam only the required permissions",
+              "verifier": "verify-step2.sh"
+            },
+            {
+              "step": 3,
+              "title": "Consume a Secret without mounting API credentials",
+              "verifier": "verify-step3.sh"
+            },
+            {
+              "step": 4,
+              "title": "Use a short-lived token with an isolated kubeconfig",
+              "verifier": "verify-step4.sh"
+            }
+          ],
+          "asset_verifier_sha256": {
+            "verify-step1.sh": "e41171c40aad785205de63222031d1df1f9a5a88d77aa5553be4045a4a55155d",
+            "verify-step2.sh": "a009abc2ec8795456c7b0890d21b678006d95d2c44917bea9e9902c0549540f0",
+            "verify-step3.sh": "58250522b0df4cff7bd10621f7a44584cf7ab0f9dd73203f9a72f67afd4aaf30",
+            "verify-step4.sh": "8c62b6ceada356b9ea6fb22ebe61edb8c552cf4fc626920c53a74802abad9901",
+            "verify.sh": "f8ff753deae9fd1760570d414d8c4c1c34828a851845cc28ab4c318da4df5e3d"
+          },
+          "setup_sha256": "e1caec2ca2cf97e3fd57e04475c606d85947821ffd0f8d3bbc95726676e614b7",
+          "solution_sha256": "584b1d18a6ccf4211df18c2203d2296cd6245d8c0b6ff8cfdff8143534582f39",
+          "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+          "auxiliary_sha256": {
+            "base-setup.sh": "412c78b31528a9bcb74e078cf26e8bec614f1e904ac8f0d1f5ee811606c9a657",
+            "base-solution.sh": "80ce927ac58f3b2e1986236f2428fbfda93e789d0938465e601bf6c2541ca8c7",
+            "base-task.md": "b4a8f21633f3bba786015c1bf9ece78ba44e8bcfa90471dbc122f01621eb573a",
+            "base-verify.sh": "9ecaaf1a3697e240f5b002d067f18bb0de2008677f5f1b8672118119049207e4",
+            "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+          }
+        },
+        "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-fallback-completed.png",
+        "evidence_status": "Historical attempt only; excluded from final source and completion gate.",
+        "source_provenance_limit": "Brain-reported output and hashes are not independent terminal attestation; later normal-terminal retake supersedes this attempt."
+      }
+    ],
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-completed.png",
+    "step_count": 4,
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify-step1.sh": "e41171c40aad785205de63222031d1df1f9a5a88d77aa5553be4045a4a55155d",
+      "verify-step2.sh": "a009abc2ec8795456c7b0890d21b678006d95d2c44917bea9e9902c0549540f0",
+      "verify-step3.sh": "58250522b0df4cff7bd10621f7a44584cf7ab0f9dd73203f9a72f67afd4aaf30",
+      "verify-step4.sh": "8c62b6ceada356b9ea6fb22ebe61edb8c552cf4fc626920c53a74802abad9901",
+      "verify.sh": "f8ff753deae9fd1760570d414d8c4c1c34828a851845cc28ab4c318da4df5e3d",
+      "base-setup.sh": "412c78b31528a9bcb74e078cf26e8bec614f1e904ac8f0d1f5ee811606c9a657",
+      "base-solution.sh": "80ce927ac58f3b2e1986236f2428fbfda93e789d0938465e601bf6c2541ca8c7",
+      "base-task.md": "b4a8f21633f3bba786015c1bf9ece78ba44e8bcfa90471dbc122f01621eb573a",
+      "base-verify.sh": "9ecaaf1a3697e240f5b002d067f18bb0de2008677f5f1b8672118119049207e4",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "e1caec2ca2cf97e3fd57e04475c606d85947821ffd0f8d3bbc95726676e614b7",
+      "solution.sh": "584b1d18a6ccf4211df18c2203d2296cd6245d8c0b6ff8cfdff8143534582f39"
+    },
+    "expected_sha256": {
+      "base-setup.sh": "412c78b31528a9bcb74e078cf26e8bec614f1e904ac8f0d1f5ee811606c9a657",
+      "base-solution.sh": "80ce927ac58f3b2e1986236f2428fbfda93e789d0938465e601bf6c2541ca8c7",
+      "base-task.md": "b4a8f21633f3bba786015c1bf9ece78ba44e8bcfa90471dbc122f01621eb573a",
+      "base-verify.sh": "9ecaaf1a3697e240f5b002d067f18bb0de2008677f5f1b8672118119049207e4",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "e1caec2ca2cf97e3fd57e04475c606d85947821ffd0f8d3bbc95726676e614b7",
+      "solution.sh": "584b1d18a6ccf4211df18c2203d2296cd6245d8c0b6ff8cfdff8143534582f39",
+      "verify-step1.sh": "e41171c40aad785205de63222031d1df1f9a5a88d77aa5553be4045a4a55155d",
+      "verify-step2.sh": "a009abc2ec8795456c7b0890d21b678006d95d2c44917bea9e9902c0549540f0",
+      "verify-step3.sh": "58250522b0df4cff7bd10621f7a44584cf7ab0f9dd73203f9a72f67afd4aaf30",
+      "verify-step4.sh": "8c62b6ceada356b9ea6fb22ebe61edb8c552cf4fc626920c53a74802abad9901",
+      "verify.sh": "f8ff753deae9fd1760570d414d8c4c1c34828a851845cc28ab4c318da4df5e3d"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-terminal.png"
+    ],
+    "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
+    "id": "cks-04-serviceaccount",
+    "path": "cks/04-serviceaccount",
+    "stepCount": 4,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/04-serviceaccount",
+    "browserStepsPassed": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks04-final-completed.png",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "currentVerifierSha256": {
+      "verify-step1.sh": "e41171c40aad785205de63222031d1df1f9a5a88d77aa5553be4045a4a55155d",
+      "verify-step2.sh": "a009abc2ec8795456c7b0890d21b678006d95d2c44917bea9e9902c0549540f0",
+      "verify-step3.sh": "58250522b0df4cff7bd10621f7a44584cf7ab0f9dd73203f9a72f67afd4aaf30",
+      "verify-step4.sh": "8c62b6ceada356b9ea6fb22ebe61edb8c552cf4fc626920c53a74802abad9901"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "lab": "cks/05-image-admission",
+    "steps_passed": [
+      1,
+      2
+    ],
+    "initial_verifiers_exit": [
+      1,
+      1
+    ],
+    "final_verifiers_exit": [
+      0,
+      0
+    ],
+    "setup": "ready",
+    "source_hashes": "All checksums matched cks-source-manifest.json",
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None on fresh VM",
+    "observed_at": "2026-10-08T07:37:15.028Z",
+    "delivered_assets": {
+      "lab": "cks/05-image-admission",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Require an approved registry and immutable image digest",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Close the ephemeral-container admission gap",
+          "verifier": "verify-step2.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "87a9f144d6c2f83569df9589f32701d44f2b89c2634e3d6fa856d7da2039b224",
+        "verify-step2.sh": "6f3cc3ffeef76f92aa62ca246678330bed76ca631061d5c2c22f69b1655dda88",
+        "verify.sh": "fc824fe2f13881618a09ee49ee051e2d6b0e38040581fec7a411bb72f6eb6853"
+      },
+      "setup_sha256": "50384c389bf539558df5fe5d3b298f54398adb0eec36dfd63f49ff836cc34db9",
+      "solution_sha256": "cfce5ab12f2c27105088346363275ceebceeb19e2f55f45909c5ad067fbd1ac7"
+    },
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks05-completed.png",
+    "step_count": 2,
+    "solution_exit": 0,
+    "source_commit": "d2f0ef7c361ff59a52810e9c106c9b9e83b77580",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify-step1.sh": "87a9f144d6c2f83569df9589f32701d44f2b89c2634e3d6fa856d7da2039b224",
+      "verify-step2.sh": "6f3cc3ffeef76f92aa62ca246678330bed76ca631061d5c2c22f69b1655dda88",
+      "verify.sh": "fc824fe2f13881618a09ee49ee051e2d6b0e38040581fec7a411bb72f6eb6853",
+      "setup.sh": "50384c389bf539558df5fe5d3b298f54398adb0eec36dfd63f49ff836cc34db9",
+      "solution.sh": "cfce5ab12f2c27105088346363275ceebceeb19e2f55f45909c5ad067fbd1ac7"
+    },
+    "expected_sha256": {
+      "base-setup.sh": "f2535e3a17b671895b5eff5a94fb3c3baa86d3ecbb14c340ece30d4ffa006ee6",
+      "base-solution.sh": "d19f60c05f42d57f75363de5a2a13cea1d203dfa1da9023b0a11dda8b55214a2",
+      "base-task.md": "41cbcedf38d4267c0445da1bf77a321513d6117ecc84443ad7dc04b29d12b4db",
+      "base-verify.sh": "0abf4eb6bc9220448cfee92f38c0ed2c97707008410715663fbd75c478dff4ba",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "50384c389bf539558df5fe5d3b298f54398adb0eec36dfd63f49ff836cc34db9",
+      "solution.sh": "cfce5ab12f2c27105088346363275ceebceeb19e2f55f45909c5ad067fbd1ac7",
+      "verify-step1.sh": "87a9f144d6c2f83569df9589f32701d44f2b89c2634e3d6fa856d7da2039b224",
+      "verify-step2.sh": "6f3cc3ffeef76f92aa62ca246678330bed76ca631061d5c2c22f69b1655dda88",
+      "verify.sh": "fc824fe2f13881618a09ee49ee051e2d6b0e38040581fec7a411bb72f6eb6853"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [
+      "base-setup.sh",
+      "base-solution.sh",
+      "base-task.md",
+      "base-verify.sh",
+      "lib.sh"
+    ],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks05-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks05-terminal.png"
+    ],
+    "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
+    "id": "cks-05-image-admission",
+    "path": "cks/05-image-admission",
+    "stepCount": 2,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/05-image-admission",
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks05-completed.png",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "d2f0ef7c361ff59a52810e9c106c9b9e83b77580",
+    "currentVerifierSha256": {
+      "verify-step1.sh": "87a9f144d6c2f83569df9589f32701d44f2b89c2634e3d6fa856d7da2039b224",
+      "verify-step2.sh": "6f3cc3ffeef76f92aa62ca246678330bed76ca631061d5c2c22f69b1655dda88"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "lab": "cks/06-audit-policy",
+    "steps_passed": [
+      1
+    ],
+    "initial_verifiers_exit": [
+      1
+    ],
+    "final_verifiers_exit": [
+      0
+    ],
+    "setup": "ready",
+    "source_hashes": "All checksums matched cks-source-manifest.json",
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None on fresh VM",
+    "observed_at": "2026-10-08T07:38:51.241Z",
+    "delivered_assets": {
+      "lab": "cks/06-audit-policy",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Order audit rules without logging Secret bodies",
+          "verifier": "verify.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify.sh": "4178449e4f676a721c80474057ee189df6be9a3f2fe905e2d847c949e828a81f"
+      },
+      "setup_sha256": "47261dcad28ad858aeca4e430489e949360569b774fd188700d6132f2ba0cb2a",
+      "solution_sha256": "ba2120ed16d845349679d5876309fbb6b9f08d89076a4ded375a900ff1bca2bf"
+    },
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks06-completed.png",
+    "step_count": 1,
+    "solution_exit": 0,
+    "source_commit": "d2f0ef7c361ff59a52810e9c106c9b9e83b77580",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify.sh": "4178449e4f676a721c80474057ee189df6be9a3f2fe905e2d847c949e828a81f",
+      "setup.sh": "47261dcad28ad858aeca4e430489e949360569b774fd188700d6132f2ba0cb2a",
+      "solution.sh": "ba2120ed16d845349679d5876309fbb6b9f08d89076a4ded375a900ff1bca2bf"
+    },
+    "expected_sha256": {
+      "audit_eval.py": "916c90aebab793ee03f20e0cd3a50952d50f18ce5c9c37d1d726d51f8e2f2da8",
+      "audit_verify.py": "b9950043d31e7e7b670c0acd950f631c8c23c73bd70499946513314b81bd6feb",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "47261dcad28ad858aeca4e430489e949360569b774fd188700d6132f2ba0cb2a",
+      "solution.sh": "ba2120ed16d845349679d5876309fbb6b9f08d89076a4ded375a900ff1bca2bf",
+      "verify.sh": "4178449e4f676a721c80474057ee189df6be9a3f2fe905e2d847c949e828a81f"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [
+      "audit_eval.py",
+      "audit_verify.py",
+      "lib.sh"
+    ],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks06-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks06-terminal.png"
+    ],
+    "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
+    "scope": "Offline audit-policy evaluator; actual live API audit configuration is separately covered by infrastructure/07-apiserver-security.",
+    "id": "cks-06-audit-policy",
+    "path": "cks/06-audit-policy",
+    "stepCount": 1,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/06-audit-policy",
+    "browserStepsPassed": [
+      1
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks06-completed.png",
+    "unsolvedExitCodes": [
+      1
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "d2f0ef7c361ff59a52810e9c106c9b9e83b77580",
+    "currentVerifierSha256": {
+      "verify.sh": "4178449e4f676a721c80474057ee189df6be9a3f2fe905e2d847c949e828a81f"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "lab": "cks/07-supply-chain",
+    "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "steps_passed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "initial_verifiers_exit": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "final_verifiers_exit": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "setup": "ready",
+    "solution_exit": 0,
+    "delivered_assets": {
+      "lab": "cks/07-supply-chain",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Scan an actual image and report exploitable priorities",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Repair and build a minimal image",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Use Kubesec findings to repair a manifest",
+          "verifier": "verify-step3.sh"
+        },
+        {
+          "step": 4,
+          "title": "Verify the official kubectl binary before using it",
+          "verifier": "verify-step4.sh"
+        },
+        {
+          "step": 5,
+          "title": "Generate an SBOM and make an evidence-based release decision",
+          "verifier": "verify-step5.sh"
+        },
+        {
+          "step": 6,
+          "title": "Sign the release and reject changed content",
+          "verifier": "verify-step6.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "030ccaa8d795157c714b4e0a73128a0d05fe3aec32c5514669e4b38774ac89cc",
+        "verify-step2.sh": "328b2e76eaf8db289d2b3f22e918e92b2721c56680214e7702b808ea7af2f2b3",
+        "verify-step3.sh": "7ced91c6769fc2040343dead3edc57fd23cc35b8a60f2d6b2f19a8cfb7e0cd1a",
+        "verify-step4.sh": "5af3a524cadeabe0dd7fe127d2f619b9be4a491cedd57bd0bb7850766a308d8c",
+        "verify-step5.sh": "36e20aa432f881266402c7a12b29527cf68b92eb9cbf0ca7b373d6623a03da53",
+        "verify-step6.sh": "1a961bdcd422f5d8524c578c1e494b876be78682b36493057935d7cf195a36f7",
+        "verify.sh": "d759226039cb1a4881c0b129f006d9a5884b822821ce0713f017c7177a9ec58b"
+      },
+      "setup_sha256": "35fc760a8510612c8701173d24606344d33fbbe256107fb130fdd5e5da09a360",
+      "solution_sha256": "cedc433111ca2ed6eaef1e07fffea8c7ea09cf6929b3259abc7852ef7be7e52f",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+        "scan-namespace.py": "f4ab0448500ef4cdddfe2facee8751c15f651588dfd11455f91cb407f12569e1"
+      }
+    },
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None",
+    "observed_at": "2026-10-08T09:47:45.281Z",
+    "previous_runs": [
+      {
+        "lab": "cks/07-supply-chain",
+        "steps_passed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "initial_verifiers_exit": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "final_verifiers_exit": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "setup": "ready",
+        "source_hashes": "All checksums matched cks-source-manifest.json",
+        "execution_method": "normal Terminal input through Chrome CUA",
+        "status": "All browser CHECK steps completed for d2f0ef7; stronger steps2/4/6 verifier retest pending",
+        "terminal_limitation": "None on fresh VM",
+        "observed_at": "2026-10-08T07:45:09.367Z",
+        "attempt_history": [
+          "Initial relative-path harness failed last scanner call; no source or VM data repair applied.",
+          "Reran complete documented absolute solution path; exit0, all6 direct verifiers0 and all6 browser CHECK tasks advanced."
+        ],
+        "delivered_assets": {
+          "lab": "cks/07-supply-chain",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Scan an actual image and report exploitable priorities",
+              "verifier": "verify-step1.sh"
+            },
+            {
+              "step": 2,
+              "title": "Repair and build a minimal image",
+              "verifier": "verify-step2.sh"
+            },
+            {
+              "step": 3,
+              "title": "Use Kubesec findings to repair a manifest",
+              "verifier": "verify-step3.sh"
+            },
+            {
+              "step": 4,
+              "title": "Verify the official kubectl binary before using it",
+              "verifier": "verify-step4.sh"
+            },
+            {
+              "step": 5,
+              "title": "Generate an SBOM and make an evidence-based release decision",
+              "verifier": "verify-step5.sh"
+            },
+            {
+              "step": 6,
+              "title": "Sign the release and reject changed content",
+              "verifier": "verify-step6.sh"
+            }
+          ],
+          "asset_verifier_sha256": {
+            "verify-step1.sh": "030ccaa8d795157c714b4e0a73128a0d05fe3aec32c5514669e4b38774ac89cc",
+            "verify-step2.sh": "dc503c46e6f3ca10e0b0416644dd813de80d31322987655e9e8db7e29816e481",
+            "verify-step3.sh": "f5f9d1f3be7ddd9878c19d62ab59dd10cf2f0bb14a055c084993006d8183b65a",
+            "verify-step4.sh": "424f1b52785921ff9eb048c38fb210487cd70760c9c06b8d78263a31658c5582",
+            "verify-step5.sh": "36e20aa432f881266402c7a12b29527cf68b92eb9cbf0ca7b373d6623a03da53",
+            "verify-step6.sh": "0c6a4ea96af2b39aa9a9eb0a9ffaf22b297c5e39b30c81cec67da8a302e4226d",
+            "verify.sh": "d759226039cb1a4881c0b129f006d9a5884b822821ce0713f017c7177a9ec58b"
+          },
+          "setup_sha256": "35fc760a8510612c8701173d24606344d33fbbe256107fb130fdd5e5da09a360",
+          "solution_sha256": "cedc433111ca2ed6eaef1e07fffea8c7ea09cf6929b3259abc7852ef7be7e52f"
+        },
+        "evidence_status": "Historical attempt only; excluded from final source and completion gate."
+      }
+    ],
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-completed.png",
+    "step_count": 6,
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify-step1.sh": "030ccaa8d795157c714b4e0a73128a0d05fe3aec32c5514669e4b38774ac89cc",
+      "verify-step2.sh": "328b2e76eaf8db289d2b3f22e918e92b2721c56680214e7702b808ea7af2f2b3",
+      "verify-step3.sh": "7ced91c6769fc2040343dead3edc57fd23cc35b8a60f2d6b2f19a8cfb7e0cd1a",
+      "verify-step4.sh": "5af3a524cadeabe0dd7fe127d2f619b9be4a491cedd57bd0bb7850766a308d8c",
+      "verify-step5.sh": "36e20aa432f881266402c7a12b29527cf68b92eb9cbf0ca7b373d6623a03da53",
+      "verify-step6.sh": "1a961bdcd422f5d8524c578c1e494b876be78682b36493057935d7cf195a36f7",
+      "verify.sh": "d759226039cb1a4881c0b129f006d9a5884b822821ce0713f017c7177a9ec58b",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "scan-namespace.py": "f4ab0448500ef4cdddfe2facee8751c15f651588dfd11455f91cb407f12569e1",
+      "setup.sh": "35fc760a8510612c8701173d24606344d33fbbe256107fb130fdd5e5da09a360",
+      "solution.sh": "cedc433111ca2ed6eaef1e07fffea8c7ea09cf6929b3259abc7852ef7be7e52f"
+    },
+    "expected_sha256": {
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "scan-namespace.py": "f4ab0448500ef4cdddfe2facee8751c15f651588dfd11455f91cb407f12569e1",
+      "setup.sh": "35fc760a8510612c8701173d24606344d33fbbe256107fb130fdd5e5da09a360",
+      "solution.sh": "cedc433111ca2ed6eaef1e07fffea8c7ea09cf6929b3259abc7852ef7be7e52f",
+      "verify-step1.sh": "030ccaa8d795157c714b4e0a73128a0d05fe3aec32c5514669e4b38774ac89cc",
+      "verify-step2.sh": "328b2e76eaf8db289d2b3f22e918e92b2721c56680214e7702b808ea7af2f2b3",
+      "verify-step3.sh": "7ced91c6769fc2040343dead3edc57fd23cc35b8a60f2d6b2f19a8cfb7e0cd1a",
+      "verify-step4.sh": "5af3a524cadeabe0dd7fe127d2f619b9be4a491cedd57bd0bb7850766a308d8c",
+      "verify-step5.sh": "36e20aa432f881266402c7a12b29527cf68b92eb9cbf0ca7b373d6623a03da53",
+      "verify-step6.sh": "1a961bdcd422f5d8524c578c1e494b876be78682b36493057935d7cf195a36f7",
+      "verify.sh": "d759226039cb1a4881c0b129f006d9a5884b822821ce0713f017c7177a9ec58b"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-terminal.png"
+    ],
+    "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
+    "id": "cks-07-supply-chain",
+    "path": "cks/07-supply-chain",
+    "stepCount": 6,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/07-supply-chain",
+    "browserStepsPassed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks07-final-completed.png",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "currentVerifierSha256": {
+      "verify-step1.sh": "030ccaa8d795157c714b4e0a73128a0d05fe3aec32c5514669e4b38774ac89cc",
+      "verify-step2.sh": "328b2e76eaf8db289d2b3f22e918e92b2721c56680214e7702b808ea7af2f2b3",
+      "verify-step3.sh": "7ced91c6769fc2040343dead3edc57fd23cc35b8a60f2d6b2f19a8cfb7e0cd1a",
+      "verify-step4.sh": "5af3a524cadeabe0dd7fe127d2f619b9be4a491cedd57bd0bb7850766a308d8c",
+      "verify-step5.sh": "36e20aa432f881266402c7a12b29527cf68b92eb9cbf0ca7b373d6623a03da53",
+      "verify-step6.sh": "1a961bdcd422f5d8524c578c1e494b876be78682b36493057935d7cf195a36f7"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "lab": "cks/08-host-security",
+    "steps_passed": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "initial_verifiers_exit": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "final_verifiers_exit": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "setup": "ready",
+    "source_hashes": "All checksums matched cks-source-manifest.json",
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None on fresh VM",
+    "observed_at": "2026-10-08T07:54:37.172Z",
+    "delivered_assets": {
+      "lab": "cks/08-host-security",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Remediate actual CIS benchmark findings",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Enforce a real AppArmor profile",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Run a workload inside gVisor",
+          "verifier": "verify-step3.sh"
+        },
+        {
+          "step": 4,
+          "title": "Detect an actual interactive container shell with Falco",
+          "verifier": "verify-step4.sh"
+        },
+        {
+          "step": 5,
+          "title": "Remove an unwanted host listener",
+          "verifier": "verify-step5.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "cdd89ecb291345fa414033648bb4555ff5f077205e64a1db4159c6f7b55c1187",
+        "verify-step2.sh": "9caa6b79cc3ec8047ef831a74aaac4bd9b12e8924f07de0ea86c73dd5b3567bc",
+        "verify-step3.sh": "1ecd0918fe51796524f546c6644b4db69aa0eb7ccb67f9aeafd6e73ea46794e3",
+        "verify-step4.sh": "3223e6f97420f36b27f99258af2c530efc34858c7a881ed4c8cf231125977d07",
+        "verify-step5.sh": "a3763c102032b9f9e41d82ad5040c15faa41ff28c43ca7e9c3ce3b20a4af9488",
+        "verify.sh": "af7633640a48ca223101b0d2535c42685cde20ad3cc23291ace9b8d20797b7e5"
+      },
+      "setup_sha256": "fec2c33305db0fa6d4ceb73384f547ec1daa072bdf756d31f23efb8102bf9f70",
+      "solution_sha256": "26acd5b5cbc70ec33a8c5324b0d46e0fddcc0ff6d27e6467918024c4254d7987",
+      "source_commit": "7e40de6"
+    },
+    "verifier_update": "Downloaded published step4 verifier from exact origin commit7e40de6 into held VM; SHA3223e6f97420f36b27f99258af2c530efc34858c7a881ed4c8cf231125977d07 verified. Same supplied solution passed strengthened non-TTY shell negative and real TTY positive checks. No outcome mutation.",
+    "attempt_history": [
+      "Initial mistyped GitHub owner URL returned404 and ran no verifier; corrected to git origin saiyam1814."
+    ],
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-completed.png",
+    "step_count": 5,
+    "solution_exit": 0,
+    "source_commit": "7e40de6cf1d59faaa51624348c87e99222a507ec",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify-step1.sh": "cdd89ecb291345fa414033648bb4555ff5f077205e64a1db4159c6f7b55c1187",
+      "verify-step2.sh": "9caa6b79cc3ec8047ef831a74aaac4bd9b12e8924f07de0ea86c73dd5b3567bc",
+      "verify-step3.sh": "1ecd0918fe51796524f546c6644b4db69aa0eb7ccb67f9aeafd6e73ea46794e3",
+      "verify-step4.sh": "3223e6f97420f36b27f99258af2c530efc34858c7a881ed4c8cf231125977d07",
+      "verify-step5.sh": "a3763c102032b9f9e41d82ad5040c15faa41ff28c43ca7e9c3ce3b20a4af9488",
+      "verify.sh": "af7633640a48ca223101b0d2535c42685cde20ad3cc23291ace9b8d20797b7e5",
+      "setup.sh": "fec2c33305db0fa6d4ceb73384f547ec1daa072bdf756d31f23efb8102bf9f70",
+      "solution.sh": "26acd5b5cbc70ec33a8c5324b0d46e0fddcc0ff6d27e6467918024c4254d7987"
+    },
+    "expected_sha256": {
+      "generate-shell.py": "6639740f942db5700d2897e52e2855c95b964ac700c108544e13bf071946c939",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "fec2c33305db0fa6d4ceb73384f547ec1daa072bdf756d31f23efb8102bf9f70",
+      "solution.sh": "26acd5b5cbc70ec33a8c5324b0d46e0fddcc0ff6d27e6467918024c4254d7987",
+      "verify-step1.sh": "cdd89ecb291345fa414033648bb4555ff5f077205e64a1db4159c6f7b55c1187",
+      "verify-step2.sh": "9caa6b79cc3ec8047ef831a74aaac4bd9b12e8924f07de0ea86c73dd5b3567bc",
+      "verify-step3.sh": "1ecd0918fe51796524f546c6644b4db69aa0eb7ccb67f9aeafd6e73ea46794e3",
+      "verify-step4.sh": "3223e6f97420f36b27f99258af2c530efc34858c7a881ed4c8cf231125977d07",
+      "verify-step5.sh": "a3763c102032b9f9e41d82ad5040c15faa41ff28c43ca7e9c3ce3b20a4af9488",
+      "verify.sh": "af7633640a48ca223101b0d2535c42685cde20ad3cc23291ace9b8d20797b7e5"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [
+      "generate-shell.py",
+      "lib.sh"
+    ],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-initial-terminal.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-strengthened-falco.png"
+    ],
+    "source_provenance": "SHA-256 comparison output was independently read from the actual normal terminal; indexed verifiers, setup and solution match the current source.",
+    "baseline_limit": "Initial step4 negative-state result used the preceding verifier. The current strengthened Falco verifier was fetched from exact published commit7e40de6, independently hashed, directly passed and then CHECK passed before completion; all other indexed verifiers were unchanged.",
+    "id": "cks-08-host-security",
+    "path": "cks/08-host-security",
+    "stepCount": 5,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/08-host-security",
+    "browserStepsPassed": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks08-completed.png",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "7e40de6cf1d59faaa51624348c87e99222a507ec",
+    "currentVerifierSha256": {
+      "verify-step1.sh": "cdd89ecb291345fa414033648bb4555ff5f077205e64a1db4159c6f7b55c1187",
+      "verify-step2.sh": "9caa6b79cc3ec8047ef831a74aaac4bd9b12e8924f07de0ea86c73dd5b3567bc",
+      "verify-step3.sh": "1ecd0918fe51796524f546c6644b4db69aa0eb7ccb67f9aeafd6e73ea46794e3",
+      "verify-step4.sh": "3223e6f97420f36b27f99258af2c530efc34858c7a881ed4c8cf231125977d07",
+      "verify-step5.sh": "a3763c102032b9f9e41d82ad5040c15faa41ff28c43ca7e9c3ce3b20a4af9488"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "lab": "cks/09-ingress-mtls",
+    "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "steps_passed": [
+      1,
+      2
+    ],
+    "initial_verifiers_exit": [
+      1,
+      1
+    ],
+    "final_verifiers_exit": [
+      0,
+      0
+    ],
+    "setup": "ready",
+    "solution_exit": 0,
+    "delivered_assets": {
+      "lab": "cks/09-ingress-mtls",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Serve an Ingress with a trusted TLS hostname",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Require mTLS and authorize a service identity",
+          "verifier": "verify-step2.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "59bfd8d45f7d9bb50132b511bc6d1cb7ccc73c7c09a16242b3ee4446a5d90c64",
+        "verify-step2.sh": "83a2a487037977af522189972e4dc686bc705d37980265622e4ee64dbf3e18b3",
+        "verify.sh": "f8dbf0f79d28ed9f77f7cb269da6b0b8a7669a9ffc12cb3d430e6d7640d31730"
+      },
+      "setup_sha256": "c7205f41eb0727d28cda4f1890b76f62ada63aded9f23cef3f00be321ea38b59",
+      "solution_sha256": "994b4a4e78a7f2a3f24a3feaacc415087805b8ca48c0213fa37a3f196a516937",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    },
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None",
+    "observed_at": "2026-10-08T10:01:01.640Z",
+    "previous_runs": [
+      {
+        "lab": "cks/09-ingress-mtls",
+        "steps_passed": [
+          1,
+          2
+        ],
+        "initial_verifiers_exit": [
+          1,
+          1
+        ],
+        "final_verifiers_exit": [
+          0,
+          0
+        ],
+        "setup": "ready",
+        "source_hashes": "All checksums matched cks-source-manifest.json",
+        "execution_method": "Scenario Brain Solution mode launched exact supplied scripts; independent actual browser CHECK advancement confirmed both steps",
+        "status": "All browser CHECK steps completed",
+        "terminal_limitation": "Normal terminal iframe stayed blank/reconnecting and fill timed out despite accessible textarea; fallback required",
+        "observed_at": "2026-10-08T07:59:51.853Z",
+        "evidence_scope": "Raw execution log and checksum outcomes were returned through Brain; independently observed site CHECKs, not Brain text, establish final exercise completion.",
+        "delivered_assets": {
+          "lab": "cks/09-ingress-mtls",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Serve an Ingress with a trusted TLS hostname",
+              "verifier": "verify-step1.sh"
+            },
+            {
+              "step": 2,
+              "title": "Require mTLS and authorize a service identity",
+              "verifier": "verify-step2.sh"
+            }
+          ],
+          "asset_verifier_sha256": {
+            "verify-step1.sh": "59bfd8d45f7d9bb50132b511bc6d1cb7ccc73c7c09a16242b3ee4446a5d90c64",
+            "verify-step2.sh": "83a2a487037977af522189972e4dc686bc705d37980265622e4ee64dbf3e18b3",
+            "verify.sh": "f8dbf0f79d28ed9f77f7cb269da6b0b8a7669a9ffc12cb3d430e6d7640d31730"
+          },
+          "setup_sha256": "c7205f41eb0727d28cda4f1890b76f62ada63aded9f23cef3f00be321ea38b59",
+          "solution_sha256": "994b4a4e78a7f2a3f24a3feaacc415087805b8ca48c0213fa37a3f196a516937"
+        },
+        "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-completed.png",
+        "evidence_status": "Historical attempt only; excluded from final source and completion gate.",
+        "source_provenance_limit": "Brain-reported output and hashes are not independent terminal attestation; later normal-terminal retake supersedes this attempt."
+      }
+    ],
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-completed.png",
+    "source_provenance": "Five main-file checksums matched in direct terminal before execution; lib.sh actual raw SHA independently matched after execution. Screenshots capture both.",
+    "runtime": {
+      "kubernetes": "v1.36.1",
+      "containerd": "2.2.1",
+      "os": "Ubuntu24.04.5LTS",
+      "kernel": "6.8.0-146-generic"
+    },
+    "step_count": 2,
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify-step1.sh": "59bfd8d45f7d9bb50132b511bc6d1cb7ccc73c7c09a16242b3ee4446a5d90c64",
+      "verify-step2.sh": "83a2a487037977af522189972e4dc686bc705d37980265622e4ee64dbf3e18b3",
+      "verify.sh": "f8dbf0f79d28ed9f77f7cb269da6b0b8a7669a9ffc12cb3d430e6d7640d31730",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "c7205f41eb0727d28cda4f1890b76f62ada63aded9f23cef3f00be321ea38b59",
+      "solution.sh": "994b4a4e78a7f2a3f24a3feaacc415087805b8ca48c0213fa37a3f196a516937"
+    },
+    "expected_sha256": {
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "c7205f41eb0727d28cda4f1890b76f62ada63aded9f23cef3f00be321ea38b59",
+      "solution.sh": "994b4a4e78a7f2a3f24a3feaacc415087805b8ca48c0213fa37a3f196a516937",
+      "verify-step1.sh": "59bfd8d45f7d9bb50132b511bc6d1cb7ccc73c7c09a16242b3ee4446a5d90c64",
+      "verify-step2.sh": "83a2a487037977af522189972e4dc686bc705d37980265622e4ee64dbf3e18b3",
+      "verify.sh": "f8dbf0f79d28ed9f77f7cb269da6b0b8a7669a9ffc12cb3d430e6d7640d31730"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-terminal-pre.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-terminal.png",
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-helper-runtime.png"
+    ],
+    "id": "cks-09-ingress-mtls",
+    "path": "cks/09-ingress-mtls",
+    "stepCount": 2,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/09-ingress-mtls",
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks09-final-completed.png",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "currentVerifierSha256": {
+      "verify-step1.sh": "59bfd8d45f7d9bb50132b511bc6d1cb7ccc73c7c09a16242b3ee4446a5d90c64",
+      "verify-step2.sh": "83a2a487037977af522189972e4dc686bc705d37980265622e4ee64dbf3e18b3"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "lab": "cks/10-incident-investigation",
+    "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "source_equivalent_at": "626415001d4f43309429d44c072068f5a4f3765b",
+    "steps_passed": [
+      1,
+      2
+    ],
+    "initial_verifiers_exit": [
+      1,
+      1
+    ],
+    "final_verifiers_exit": [
+      0,
+      0
+    ],
+    "setup": "ready",
+    "solution_exit": 0,
+    "delivered_assets": {
+      "lab": "cks/10-incident-investigation",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Investigate the actual audit trail",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Revoke access and isolate the affected workload",
+          "verifier": "verify-step2.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "ca9d564775287d7463e8460816cacf408e4f091810a3aaee6f6d729969bf2fe1",
+        "verify-step2.sh": "38c126373c6d6dfb76e1032ed15b615fe0b7488971fd149ce2975897a0c69d4b",
+        "verify.sh": "4196eded5653f7d20273d39218adb626b55487cc8dd4296e5862f378fa277a78"
+      },
+      "setup_sha256": "e04d260bf454ee884428be33cf871593ede8d4a08f7e048f6190b7dfa2f45064",
+      "solution_sha256": "4476dc7b34efff21deaa883b2b1816b56578bd88b816a76b5685e31f9b50eb72",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "capture-audit.py": "d2ea1d6da964cb427c80fe629044317ddfe1e3c041f77b6455107117a74d35ec",
+        "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    },
+    "execution_method": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "status": "All current browser CHECK steps completed",
+    "terminal_limitation": "None",
+    "observed_at": "2026-10-08T10:05:14.455Z",
+    "previous_runs": [
+      {
+        "lab": "cks/10-incident-investigation",
+        "steps_passed": [
+          1,
+          2
+        ],
+        "initial_verifiers_exit": [
+          1,
+          1
+        ],
+        "final_verifiers_exit": [
+          0,
+          0
+        ],
+        "setup": "ready",
+        "source_hashes": "All checksums matched cks-source-manifest.json",
+        "execution_method": "Scenario Brain Solution mode launched exact supplied scripts; independent actual browser CHECK advancement confirmed both steps",
+        "status": "All browser CHECK steps completed",
+        "terminal_limitation": "Normal terminal iframe remained blank and fill timed out despite accessible textarea; fallback required",
+        "observed_at": "2026-10-08T08:04:13.915Z",
+        "evidence_scope": "Raw execution log and checksum outcomes were returned through Brain; independently observed site CHECKs establish final exercise completion.",
+        "delivered_assets": {
+          "lab": "cks/10-incident-investigation",
+          "steps": [
+            {
+              "step": 1,
+              "title": "Investigate the actual audit trail",
+              "verifier": "verify-step1.sh"
+            },
+            {
+              "step": 2,
+              "title": "Revoke access and isolate the affected workload",
+              "verifier": "verify-step2.sh"
+            }
+          ],
+          "asset_verifier_sha256": {
+            "verify-step1.sh": "ca9d564775287d7463e8460816cacf408e4f091810a3aaee6f6d729969bf2fe1",
+            "verify-step2.sh": "38c126373c6d6dfb76e1032ed15b615fe0b7488971fd149ce2975897a0c69d4b",
+            "verify.sh": "4196eded5653f7d20273d39218adb626b55487cc8dd4296e5862f378fa277a78"
+          },
+          "setup_sha256": "e04d260bf454ee884428be33cf871593ede8d4a08f7e048f6190b7dfa2f45064",
+          "solution_sha256": "4476dc7b34efff21deaa883b2b1816b56578bd88b816a76b5685e31f9b50eb72"
+        },
+        "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-completed.png",
+        "evidence_status": "Historical attempt only; excluded from final source and completion gate.",
+        "source_provenance_limit": "Brain-reported output and hashes are not independent terminal attestation; later normal-terminal retake supersedes this attempt."
+      }
+    ],
+    "completion_screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-final-completed.png",
+    "source_provenance": "All8 delivered asset hashes independently matched via direct terminal, including capture-audit.py, controlplane.py and lib.sh, before the whole supplied solution.",
+    "step_count": 2,
+    "source_equivalence_basis": "Every independently observed delivered hash equals the current tracked asset; no CKS file changes between final audit commit6f02d49 and current source.",
+    "actual_delivered_sha256": {
+      "verify-step1.sh": "ca9d564775287d7463e8460816cacf408e4f091810a3aaee6f6d729969bf2fe1",
+      "verify-step2.sh": "38c126373c6d6dfb76e1032ed15b615fe0b7488971fd149ce2975897a0c69d4b",
+      "verify.sh": "4196eded5653f7d20273d39218adb626b55487cc8dd4296e5862f378fa277a78",
+      "capture-audit.py": "d2ea1d6da964cb427c80fe629044317ddfe1e3c041f77b6455107117a74d35ec",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "e04d260bf454ee884428be33cf871593ede8d4a08f7e048f6190b7dfa2f45064",
+      "solution.sh": "4476dc7b34efff21deaa883b2b1816b56578bd88b816a76b5685e31f9b50eb72"
+    },
+    "expected_sha256": {
+      "capture-audit.py": "d2ea1d6da964cb427c80fe629044317ddfe1e3c041f77b6455107117a74d35ec",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+      "setup.sh": "e04d260bf454ee884428be33cf871593ede8d4a08f7e048f6190b7dfa2f45064",
+      "solution.sh": "4476dc7b34efff21deaa883b2b1816b56578bd88b816a76b5685e31f9b50eb72",
+      "verify-step1.sh": "ca9d564775287d7463e8460816cacf408e4f091810a3aaee6f6d729969bf2fe1",
+      "verify-step2.sh": "38c126373c6d6dfb76e1032ed15b615fe0b7488971fd149ce2975897a0c69d4b",
+      "verify.sh": "4196eded5653f7d20273d39218adb626b55487cc8dd4296e5862f378fa277a78"
+    },
+    "all_indexed_verifiers_attested": true,
+    "not_directly_hashed_auxiliary_assets": [],
+    "source_hash_scope": "Observed files only; expected-only auxiliary entries are not represented as independent hash attestations.",
+    "completion_dom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-final-completed.txt",
+    "terminal_evidence": [
+      "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-final-terminal.png"
+    ],
+    "id": "cks-10-incident-investigation",
+    "path": "cks/10-incident-investigation",
+    "stepCount": 2,
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/10-incident-investigation",
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "setupReady": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cks10-final-completed.png",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "executionMethod": "normal terminal via Chrome extension CUA; exact supplied whole solution; independent CHECK for each step",
+    "sourceCommit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+    "currentVerifierSha256": {
+      "verify-step1.sh": "ca9d564775287d7463e8460816cacf408e4f091810a3aaee6f6d729969bf2fe1",
+      "verify-step2.sh": "38c126373c6d6dfb76e1032ed15b615fe0b7488971fd149ce2975897a0c69d4b"
+    },
+    "sourceVerification": "Recorded delivered asset fingerprints match current source; see original record for execution and auxiliary-asset scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "completed": true,
+    "recordSource": "results-cks.json"
+  },
+  {
+    "path": "infrastructure/01-kubeadm-bootstrap",
+    "id": "infra-01-kubeadm-bootstrap",
+    "title": "CKA 01 \u2014 Initialize and join a kubeadm cluster",
+    "steps": [
+      {
+        "title": "Build a functioning two-VM cluster",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      }
+    ],
+    "hashes": {
+      "verify1.sh": "7b897053cc6feae0dbf328e0eb93c0f9656a6e0fc1c29a6bddd260e246c67171"
+    },
+    "assetManifest": {
+      "entries": {
+        "build-cluster.sh": "267948c480a4ae9d30b98008631cc1172925438f7b31ea76b687184d548c4201",
+        "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+        "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+        "setup.sh": "946d466c776d60bc26634b1e77aff74608430d689c73e8ed4ce145106ef1081f",
+        "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+        "solution1.sh": "0386dafe05016d7477e6797bb26dbadc7ccff76d887e0bcf909550eadba5577b",
+        "verify1.sh": "7b897053cc6feae0dbf328e0eb93c0f9656a6e0fc1c29a6bddd260e246c67171",
+        "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f"
+      },
+      "aggregateSha256": "263b16b6ddc4a59916caa97be10355000fcda2467b3435e73df33199c542d61a"
+    },
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/01-kubeadm-bootstrap",
+    "sourceCommit": "72c3b8b",
+    "stepCount": 1,
+    "setupReady": true,
+    "browserStepsPassed": [
+      1
+    ],
+    "completed": true,
+    "solutionExitCode": 0,
+    "observedAllAssetAggregate": "263b16b6ddc4a59916caa97be10355000fcda2467b3435e73df33199c542d61a",
+    "allAssetsMatched": true,
+    "executionMethod": "Chrome normal terminal full supplied reset and solution replay, followed by actual CHECK",
+    "sourceVerification": "Independent normal-terminal script aggregate matches every current asset; see original record for automatic-delivery or pinned-helper replay scope.",
+    "notes": [
+      "Original provider default8472 blocked cross-nodeDNS; confirmed UDP4789 passes; finalhelperfix includesMTU1400 and rollout waits.",
+      "Full finalreset replay uses previouslyinstalled matching packages and cached images in same disposableVM; no intermediate diagnostic result counted as completion."
+    ],
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-01-kubeadm-bootstrap-completed.jpg",
+    "currentVerifierSha256": {
+      "verify1.sh": "7b897053cc6feae0dbf328e0eb93c0f9656a6e0fc1c29a6bddd260e246c67171"
+    },
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-root.json"
+  },
+  {
+    "id": "infra-02-cluster-upgrade",
+    "path": "infrastructure/02-cluster-upgrade",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade",
+    "sourceCommit": "18bda73",
+    "sourceEquivalentAt": "46e6c9b",
+    "observedAt": "2026-10-08T10:42:44.820Z",
+    "vmId": "b52c6b116d45b31c",
+    "setupReady": true,
+    "stepCount": 2,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "allAssetsMatched": true,
+    "automaticAssetDelivery": true,
+    "assetManifest": {
+      "entries": {
+        "build-cluster.sh": "267948c480a4ae9d30b98008631cc1172925438f7b31ea76b687184d548c4201",
+        "check-application.sh": "3db30dbf6b71a1587323606ed0134ff88f31e137886d48b01edd623db2c3320f",
+        "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+        "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+        "setup.sh": "67d48eda02aea7fdccd6a2028d967cb37b8052a8cb7cd33d08536e07dcedf2c4",
+        "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+        "solution1.sh": "dbe7a4699086b69cabd4a20db4d3480460b6e9fd8c0b1770eea84137283ec4b6",
+        "solution2.sh": "8e1e873aa82854745529c414e10a0b04f44321a95173d4e1833c4c1dc9cd09f0",
+        "verify1.sh": "03e70009318e9ebc6e91bf2fcff9724967392d385fe8b25913a44a53deb0a300",
+        "verify2.sh": "22f822350d357417400b0a3ecb245eec69ff376df0b3a54eb7cb295f3b6f4216",
+        "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f"
+      },
+      "aggregateSha256": "8aa530a8f265d4d3563547653bcf7edc0135ece85299b0db6af6b98827b398e6"
+    },
+    "observedAllAssetAggregate": "8aa530a8f265d4d3563547653bcf7edc0135ece85299b0db6af6b98827b398e6",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1,
+      2
+    ],
+    "solutionCommands": [
+      "bash /opt/book-labs/infra-02-cluster-upgrade/solution1.sh",
+      "bash /opt/book-labs/infra-02-cluster-upgrade/solution2.sh"
+    ],
+    "solutionExitCodes": [
+      0,
+      0
+    ],
+    "finalVerifierExitCodes": [
+      0,
+      0
+    ],
+    "initialKubernetesVersion": "1.34.12",
+    "finalKubernetesVersion": "1.35.9",
+    "application": "upgrade-check/web 2/2 Ready; actual HTTP check passes; PDB permits one disruption",
+    "executionMethod": "Normal Chrome hosted terminal",
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-02-final-cluster-upgrade-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/infra-02-final-automatic-setup.jpg",
+    "sourceScreenshot": "evidence/hosted-full-2026-10-08/infra-02-final-automatic-assets.jpg",
+    "intermediateScreenshots": [
+      "infra-02-final-before-step1.jpg",
+      "infra-02-final-step1-pass.jpg",
+      "infra-02-final-before-step2.jpg",
+      "infra-02-final-step2-pass.jpg"
+    ],
+    "notes": [
+      "Fresh session automatically delivered every final asset, including Cilium tunnelPort4789 and MTU1400; no files were replaced.",
+      "The control-plane CHECK advanced while the worker remained1.34.12. Only then was the worker upgraded and the second CHECK completed.",
+      "A terminal tab switch remounted the first terminal after the initial successful control-plane upgrade. The supplied control-plane solution was replayed at the same version with its exit status saved durably and observed0, before CHECK1.",
+      "Earlier cached-source and package/helper failures are retained as previous history, not current validation."
+    ],
+    "previousRuns": [
+      {
+        "id": "infra-02-cluster-upgrade",
+        "path": "infrastructure/02-cluster-upgrade",
+        "url": "https://killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade",
+        "sourceCommit": "a997777",
+        "stepCount": 2,
+        "status": "passed-with-published-fix-replay",
+        "setupReady": true,
+        "browserStepsPassed": [
+          1,
+          2
+        ],
+        "completed": true,
+        "localSourceSha256": {
+          "build-cluster.sh": "956c967fafbba9772034c89b133161f724a98a103ab1f79089f76483085d4347",
+          "check-application.sh": "3db30dbf6b71a1587323606ed0134ff88f31e137886d48b01edd623db2c3320f",
+          "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+          "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+          "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+          "setup.sh": "67d48eda02aea7fdccd6a2028d967cb37b8052a8cb7cd33d08536e07dcedf2c4",
+          "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+          "solution1.sh": "dbe7a4699086b69cabd4a20db4d3480460b6e9fd8c0b1770eea84137283ec4b6",
+          "solution2.sh": "8e1e873aa82854745529c414e10a0b04f44321a95173d4e1833c4c1dc9cd09f0",
+          "verify1.sh": "03e70009318e9ebc6e91bf2fcff9724967392d385fe8b25913a44a53deb0a300",
+          "verify2.sh": "22f822350d357417400b0a3ecb245eec69ff376df0b3a54eb7cb295f3b6f4216"
+        },
+        "attempts": [
+          {
+            "sourceMatched": false,
+            "asset": "node-packages.sh",
+            "hostedSha256": "7537f15ed1b046c1f6324aeb1bbee92bf5338d9c9b1f8d08df05ba3734b48673",
+            "expectedSha256": "bcbc2a8a5401c6956227ab2def51f6d2a9e5247a65102a667220e240697f2306",
+            "released": true,
+            "evidence": "infra-02-stale-asset.txt"
+          },
+          {
+            "sourceCommit": "6822ae6",
+            "nodePackagesMatched": true,
+            "setupReady": false,
+            "failure": "kubeadm init: NumCPU1 is less than required2 on supportedtwo-node backend",
+            "evidence": "infra-02-cpu-sizing-failure.txt"
+          }
+        ],
+        "expectedAssetsManifestSha256": "465ebfb88bd1da6efcb399c388f57ec525faf1fb0b970f68fe312c402851d465",
+        "assetDeliveryNote": "Full setup replayed after replacing only build-cluster.sh/node-packages.sh from immutablepublishedGitHubrefs2629777 then634b852, to repair discoveredTTY/CPU/staleCiliumpidissues. Allsh/pyaggregate comparedafterreplay. Initialautomaticassetdeliverywasstale; freshdeliveryfollowuprequired. Beforeworkerupgrade,bothsolutionfileswereupdatedfrompublisheda997777andallscriptassetsmatchedthecompletepublishedmanifest.",
+        "hostedAssetsManifestSha256": "465ebfb88bd1da6efcb399c388f57ec525faf1fb0b970f68fe312c402851d465",
+        "allScriptAssetsMatched": true,
+        "unsolvedExitCodes": [
+          1,
+          1
+        ],
+        "unsolvedBrowserChecksRejected": [
+          1,
+          2
+        ],
+        "executionMethod": "Normal Chrome hosted terminal with supplied solutions; independent browser CHECKs at each intermediate state",
+        "notes": [
+          "FirstsolutioncompletedupgradebutitsimmediateapplicationcheckracedAPIrecovery. Unchangedverify1passedaftersettling, thenbrowserCHECKadvancedbeforeworkerupgrade. Publishedsolutionnowwaitsactualnodeversionandbehaviorconvergence."
+        ],
+        "solutionCodeActions": [
+          1,
+          2
+        ],
+        "screenshot": "evidence/hosted-full-2026-10-08/infra-02-cluster-upgrade-completed.png",
+        "transcript": "evidence/hosted-full-2026-10-08/infra-02-cluster-upgrade-completed.txt",
+        "versions": {
+          "start": "v1.34.12",
+          "final": "v1.35.9",
+          "cilium": "1.20.2"
+        },
+        "allAssetSha256": {
+          "build-cluster.sh": "956c967fafbba9772034c89b133161f724a98a103ab1f79089f76483085d4347",
+          "check-application.sh": "3db30dbf6b71a1587323606ed0134ff88f31e137886d48b01edd623db2c3320f",
+          "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+          "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+          "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+          "setup.sh": "67d48eda02aea7fdccd6a2028d967cb37b8052a8cb7cd33d08536e07dcedf2c4",
+          "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+          "solution1.sh": "dbe7a4699086b69cabd4a20db4d3480460b6e9fd8c0b1770eea84137283ec4b6",
+          "solution2.sh": "8e1e873aa82854745529c414e10a0b04f44321a95173d4e1833c4c1dc9cd09f0",
+          "verify1.sh": "03e70009318e9ebc6e91bf2fcff9724967392d385fe8b25913a44a53deb0a300",
+          "verify2.sh": "22f822350d357417400b0a3ecb245eec69ff376df0b3a54eb7cb295f3b6f4216"
+        },
+        "expectedAllAssetsManifestSha256": "0b95f2a2c4edb6d674a72795c0bd09805ab6e2c49190e812e4c322fd3c45b8bf",
+        "finalNativeCniRetakeOwner": "root",
+        "historicalRunNote": "This record retains the earlier a997777 complete hosted test. Root owns a separate final retake after the native CNI port4789/MTU1400 correction; merge the root retake as the final current-source record."
+      }
+    ],
+    "currentVerifierSha256": {
+      "verify1.sh": "03e70009318e9ebc6e91bf2fcff9724967392d385fe8b25913a44a53deb0a300",
+      "verify2.sh": "22f822350d357417400b0a3ecb245eec69ff376df0b3a54eb7cb295f3b6f4216"
+    },
+    "sourceVerification": "Independent normal-terminal script aggregate matches every current asset; see original record for automatic-delivery or pinned-helper replay scope.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-root.json"
+  },
+  {
+    "id": "infra-03-etcd-recovery",
+    "path": "infrastructure/03-etcd-recovery",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/03-etcd-recovery",
+    "sourceCommit": "6822ae6",
+    "stepCount": 2,
+    "status": "passed",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "prepare2.sh": "e5d3dabdce694ae4fa9aced0560c7ee7df145c2d170a087a181107e73439cf79",
+      "setup.sh": "188e22d38e2149a5d0bfe7377844db6d9e5799dfa128769e31ef8427d8c4c5c7",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "8ca58222eeb168eabbf786adb65bcd225c764159e6f5ef770891ee460f0d1a2d",
+      "solution2.sh": "07edebf29b6f5fc8223d5f93b02909c46e824ebf5ec384a04d83d50dcd0bc379",
+      "verify1.sh": "3cc1c53c05dcf439b1cb1cbe4b0ed4f49b7b51e76b52675a92fdda3db49bf0f5",
+      "verify2.sh": "7e0387c5bd9d7af2bae62f65a81a664a1512d888568c2a7208aca718c757c27a"
+    },
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "executionMethod": "Normal hosted terminal through Chrome; supplied script code actions and independent browser CHECKs",
+    "hostedVerifierSha256": {
+      "verify1.sh": "3cc1c53c05dcf439b1cb1cbe4b0ed4f49b7b51e76b52675a92fdda3db49bf0f5",
+      "verify2.sh": "7e0387c5bd9d7af2bae62f65a81a664a1512d888568c2a7208aca718c757c27a"
+    },
+    "versions": {
+      "etcdctl": "3.6.8",
+      "apiMinor": "1.36",
+      "etcdServer": "3.6.0",
+      "kubernetes": "v1.36.1"
+    },
+    "expectedAssetsManifestSha256": "fbea1e3ac8de449e5e5851028a924e4cf55249e2ee74677d75816c3f73d04a97",
+    "solutionCodeActions": [
+      1,
+      2
+    ],
+    "hostedAssetsManifestSha256": "fbea1e3ac8de449e5e5851028a924e4cf55249e2ee74677d75816c3f73d04a97",
+    "allScriptAssetsMatched": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-03-etcd-recovery-completed.png",
+    "transcript": "evidence/hosted-full-2026-10-08/infra-03-etcd-recovery-completed.txt",
+    "allAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "prepare2.sh": "e5d3dabdce694ae4fa9aced0560c7ee7df145c2d170a087a181107e73439cf79",
+      "setup.sh": "188e22d38e2149a5d0bfe7377844db6d9e5799dfa128769e31ef8427d8c4c5c7",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "8ca58222eeb168eabbf786adb65bcd225c764159e6f5ef770891ee460f0d1a2d",
+      "solution2.sh": "07edebf29b6f5fc8223d5f93b02909c46e824ebf5ec384a04d83d50dcd0bc379",
+      "verify1.sh": "3cc1c53c05dcf439b1cb1cbe4b0ed4f49b7b51e76b52675a92fdda3db49bf0f5",
+      "verify2.sh": "7e0387c5bd9d7af2bae62f65a81a664a1512d888568c2a7208aca718c757c27a"
+    },
+    "expectedAllAssetsManifestSha256": "fbea1e3ac8de449e5e5851028a924e4cf55249e2ee74677d75816c3f73d04a97",
+    "hostedAllAssetsManifestSha256": "fbea1e3ac8de449e5e5851028a924e4cf55249e2ee74677d75816c3f73d04a97",
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "assetManifestCommand": "sha256sum *.sh *.py | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "00977ee46866f2313aeb24e34f0ecfcf72c79211759af029c0e2726c32d08a56",
+    "finishedScreenshot": "infra-03-etcd-recovery-completed.png",
+    "finishedDom": "infra-03-etcd-recovery-completed.txt",
+    "released": true,
+    "assetManifestNote": "All nine delivered assets are shell/Python files. The observed aggregate uses shell files first, then Python files; its different aggregate from lexically sorted * is an ordering difference, not source drift. Both reproduce the exact individual hashes.",
+    "currentVerifierSha256": {
+      "verify1.sh": "3cc1c53c05dcf439b1cb1cbe4b0ed4f49b7b51e76b52675a92fdda3db49bf0f5",
+      "verify2.sh": "7e0387c5bd9d7af2bae62f65a81a664a1512d888568c2a7208aca718c757c27a"
+    },
+    "sourceVerification": "Captured independent full-asset aggregate matches current source; recorded manifest ordering and delivery/replay scope retained.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-infrastructure.json"
+  },
+  {
+    "id": "infra-04-worker-operations",
+    "path": "infrastructure/04-worker-operations",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/04-worker-operations",
+    "sourceCommit": "6998c50",
+    "stepCount": 4,
+    "status": "passed-fresh-automatic-assets",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "patch-kubelet.py": "72fcef4af81b9b869fdfc3f398410ac38a36f708ce54044e774350a603cdb608",
+      "prepare4.sh": "c3158b5332b2dcf6406c243ce31649fc66a3a03959b176b5f571f6532a2a24f9",
+      "setup.sh": "5f6dfc155fccbe3ebaff39a8a2377afaf7260a48472dc4b0c4c839348a32988f",
+      "solution.sh": "a0ab6749c5f5661fce105e709c8ce58b7e450a13fc4327554d98f4c76884c085",
+      "solution1.sh": "ef9e0dffa2fc8eaf821da985c641d01d8909de3526b0f44a5b2568011baea802",
+      "solution2.sh": "45433ce4026d13e6d950f823a027458f8af7b4ef27d4cc07fca38dbbe92c44af",
+      "solution3.sh": "61c8875aebe04b5b6bd5c42fb4d0239011de0eddb7fa7508c52696ccd3f5863a",
+      "solution4.sh": "98b295134c14a91d18917aa3f25704c406e29cb129f8b3dbe30b7b08d2bf1c71",
+      "verify1.sh": "0699bfce7ad1bff9aa336bc82af824cb0c782569eccea9959a189cdd1c9373d4",
+      "verify2.sh": "8789af246e6a09c30b99740bf44e8b18e93c53a2669f3fde00e860cfb7ea67ab",
+      "verify3.sh": "79395f38039ca43954825db733aa94a9671ef740314574a7d341092b69a56522",
+      "verify4.sh": "0f9242d88730a996047390ea945caac45542fd4f8b443ed68843c29926ecf013"
+    },
+    "expectedAssetsManifestSha256": "1b43f4e6227cadf27383740b871e83979e18e4fd0296f37330ed0b1817c3aca2",
+    "allAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "patch-kubelet.py": "72fcef4af81b9b869fdfc3f398410ac38a36f708ce54044e774350a603cdb608",
+      "prepare4.sh": "c3158b5332b2dcf6406c243ce31649fc66a3a03959b176b5f571f6532a2a24f9",
+      "setup.sh": "5adf759608433536819cd978a741dc8914fb163a793358860e74ecb6f6af8b8a",
+      "solution.sh": "a0ab6749c5f5661fce105e709c8ce58b7e450a13fc4327554d98f4c76884c085",
+      "solution1.sh": "ef9e0dffa2fc8eaf821da985c641d01d8909de3526b0f44a5b2568011baea802",
+      "solution2.sh": "45433ce4026d13e6d950f823a027458f8af7b4ef27d4cc07fca38dbbe92c44af",
+      "solution3.sh": "61c8875aebe04b5b6bd5c42fb4d0239011de0eddb7fa7508c52696ccd3f5863a",
+      "solution4.sh": "98b295134c14a91d18917aa3f25704c406e29cb129f8b3dbe30b7b08d2bf1c71",
+      "verify1.sh": "0699bfce7ad1bff9aa336bc82af824cb0c782569eccea9959a189cdd1c9373d4",
+      "verify2.sh": "d28506d5fea80ba537742ded73e854ed5aae3d10424f9c5c493b2f594d8f8ecd",
+      "verify3.sh": "79395f38039ca43954825db733aa94a9671ef740314574a7d341092b69a56522",
+      "verify4.sh": "0f9242d88730a996047390ea945caac45542fd4f8b443ed68843c29926ecf013"
+    },
+    "expectedAllAssetsManifestSha256": "d0ee299b606615c6128f5317530d034f99dcaa72f3a6528893fc1cf9ed32805f",
+    "initialVerifyExitCode": 1,
+    "notes": [
+      "Fresh automatic asset delivery includes pause-tolerant resident Pod fixture and rejection of terminating Pods.",
+      "Step1 passed a newly scheduled worker Pod and authenticated exec after real kubelet service recovery.",
+      "CHECK2 ran while the worker was cordoned, a new Pod remained Pending with its own scheduler event, and resident workload kept running.",
+      "CHECK3 ran after actual drain evicted resident, replacement became healthy elsewhere, and a fresh Pod ran on the uncordoned worker.",
+      "prepare4 observed actual anonymous kubelet200/open read-only port; initial security check failed. Solution4 verified anonymous401, unprivileged token403, read-only portclosed, API anonymous rejection, and authenticated logs/exec."
+    ],
+    "providerNetwork": {
+      "routingMode": "tunnel",
+      "tunnelProtocol": "vxlan",
+      "tunnelPort": 4789,
+      "kubeProxyReplacement": true,
+      "MTU": 1400,
+      "podCIDR": "192.168.0.0/16",
+      "perNodeMask": 24
+    },
+    "candidateAllAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "patch-kubelet.py": "72fcef4af81b9b869fdfc3f398410ac38a36f708ce54044e774350a603cdb608",
+      "prepare4.sh": "c3158b5332b2dcf6406c243ce31649fc66a3a03959b176b5f571f6532a2a24f9",
+      "setup.sh": "5adf759608433536819cd978a741dc8914fb163a793358860e74ecb6f6af8b8a",
+      "solution.sh": "a0ab6749c5f5661fce105e709c8ce58b7e450a13fc4327554d98f4c76884c085",
+      "solution1.sh": "ef9e0dffa2fc8eaf821da985c641d01d8909de3526b0f44a5b2568011baea802",
+      "solution2.sh": "45433ce4026d13e6d950f823a027458f8af7b4ef27d4cc07fca38dbbe92c44af",
+      "solution3.sh": "61c8875aebe04b5b6bd5c42fb4d0239011de0eddb7fa7508c52696ccd3f5863a",
+      "solution4.sh": "98b295134c14a91d18917aa3f25704c406e29cb129f8b3dbe30b7b08d2bf1c71",
+      "verify1.sh": "0699bfce7ad1bff9aa336bc82af824cb0c782569eccea9959a189cdd1c9373d4",
+      "verify2.sh": "d28506d5fea80ba537742ded73e854ed5aae3d10424f9c5c493b2f594d8f8ecd",
+      "verify3.sh": "79395f38039ca43954825db733aa94a9671ef740314574a7d341092b69a56522",
+      "verify4.sh": "0f9242d88730a996047390ea945caac45542fd4f8b443ed68843c29926ecf013"
+    },
+    "candidateAllAssetsManifestSha256": "d0ee299b606615c6128f5317530d034f99dcaa72f3a6528893fc1cf9ed32805f",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "d0ee299b606615c6128f5317530d034f99dcaa72f3a6528893fc1cf9ed32805f",
+    "finishedScreenshot": "infra-04-worker-operations-completed.png",
+    "finishedDom": "infra-04-worker-operations-completed.txt",
+    "released": true,
+    "currentVm": "ef7d4a2704f4c537",
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "d0ee299b606615c6128f5317530d034f99dcaa72f3a6528893fc1cf9ed32805f",
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-04-worker-operations-completed.png",
+    "currentVerifierSha256": {
+      "verify1.sh": "0699bfce7ad1bff9aa336bc82af824cb0c782569eccea9959a189cdd1c9373d4",
+      "verify2.sh": "d28506d5fea80ba537742ded73e854ed5aae3d10424f9c5c493b2f594d8f8ecd",
+      "verify3.sh": "79395f38039ca43954825db733aa94a9671ef740314574a7d341092b69a56522",
+      "verify4.sh": "0f9242d88730a996047390ea945caac45542fd4f8b443ed68843c29926ecf013"
+    },
+    "sourceVerification": "Captured independent full-asset aggregate matches current source; recorded manifest ordering and delivery/replay scope retained.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-infrastructure.json"
+  },
+  {
+    "id": "infra-05-ha-control-plane",
+    "path": "infrastructure/05-ha-control-plane",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/05-ha-control-plane",
+    "sourceCommit": "6998c50",
+    "stepCount": 3,
+    "status": "passed-with-published-fix-replay",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1,
+      2,
+      3
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "1f8c671508ec32672bce663c25b92fcc562ff5346e432baf7bdea4be54b9501d",
+      "solution.sh": "042ef8bef90e8b2cf343227ab39f73679d33f6911f9ae3a95dd94660e5a45daf",
+      "solution1.sh": "6300a975f05e8660c52d9bc0489db1881ff81414146e86c397eb3997ee341e8c",
+      "solution2.sh": "b0482a39b7203b84e8593080d6c962af64ae9cacc6d75e5b521d9b2df7ca3b45",
+      "solution3.sh": "2b639a98cc86b9bdff66bb18561900e5793375981c60849271ed5fc06553a747",
+      "verify1.sh": "037b1a17d9b3c53821f2a3235b57627fa34cd7a610aed7d032e09e2e96fa779b",
+      "verify2.sh": "be1c9940dadda3588fd71cbe945f4ce2c87d58d0f64963e4aae21cb39519568a",
+      "verify3.sh": "f601ece1f21b1369f7364066a38499458b8f902aa55d6a7a5115cbbcc555f1dc"
+    },
+    "expectedAssetsManifestSha256": "9b70bd3c5d8e3f25950df1f50cedffae181aac0e7ea746082bf8e0c5e5bf95f9",
+    "allAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "ha.yaml": "8f49da6e308cd58abdf5732dae75df7a0b171d43504c7a70a52b1f2714ac54ca",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "1f8c671508ec32672bce663c25b92fcc562ff5346e432baf7bdea4be54b9501d",
+      "solution.sh": "042ef8bef90e8b2cf343227ab39f73679d33f6911f9ae3a95dd94660e5a45daf",
+      "solution1.sh": "6300a975f05e8660c52d9bc0489db1881ff81414146e86c397eb3997ee341e8c",
+      "solution2.sh": "b0482a39b7203b84e8593080d6c962af64ae9cacc6d75e5b521d9b2df7ca3b45",
+      "solution3.sh": "2b639a98cc86b9bdff66bb18561900e5793375981c60849271ed5fc06553a747",
+      "verify1.sh": "037b1a17d9b3c53821f2a3235b57627fa34cd7a610aed7d032e09e2e96fa779b",
+      "verify2.sh": "be1c9940dadda3588fd71cbe945f4ce2c87d58d0f64963e4aae21cb39519568a",
+      "verify3.sh": "f601ece1f21b1369f7364066a38499458b8f902aa55d6a7a5115cbbcc555f1dc"
+    },
+    "expectedAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+    "attempts": [
+      {
+        "allAssetsMatched": true,
+        "allAssetsManifestSha256": "e8d9200cf68f8283db7df177c0ab7d964d2cc12ee0c3a78884af7b75d769a288",
+        "failure": "Transient API EOF after resetting and deleting both join targets; subsequent actual query showed the intended one Ready original control plane.",
+        "evidence": "infra-05-setup-convergence-race.png"
+      },
+      {
+        "vm": "330be9be10c6c94e",
+        "sourceCommit": "72c3b8b",
+        "outcome": "inconclusive-provider-terminal-disconnection-during-replay",
+        "completed": false
+      },
+      {
+        "vm": "1640a0f6ea262404",
+        "sourceCommit": "72c3b8b",
+        "automaticAllAssetsMatched": true,
+        "outcome": "setup-failed-transient-EOF-deleting-reset-node",
+        "evidence": "infra-05-delete-reset-node-eof.png",
+        "completed": false
+      },
+      {
+        "sourceCommit": "de839dc",
+        "setupReady": true,
+        "fullSetupExitCode": 0,
+        "outcome": "solution1-preflight-SystemVerification-missing-kernel-configs-module",
+        "evidence": "infra-05-join-kernel-config-failure.png",
+        "completed": false
+      },
+      {
+        "sourceCommit": "bed2b6b",
+        "outcome": "solution1-preflight-NumCPU-one-shared-host-CPU",
+        "evidence": "infra-05-join-one-cpu-failure.png",
+        "completed": false
+      },
+      {
+        "sourceCommit": "167308c",
+        "outcome": "solution3-containerd-socket-not-yet-created-aborts-retry-loop",
+        "evidence": "infra-05-containerd-restart-race.png",
+        "completed": false
+      }
+    ],
+    "candidateAllAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "ha.yaml": "8f49da6e308cd58abdf5732dae75df7a0b171d43504c7a70a52b1f2714ac54ca",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "1f8c671508ec32672bce663c25b92fcc562ff5346e432baf7bdea4be54b9501d",
+      "solution.sh": "042ef8bef90e8b2cf343227ab39f73679d33f6911f9ae3a95dd94660e5a45daf",
+      "solution1.sh": "6300a975f05e8660c52d9bc0489db1881ff81414146e86c397eb3997ee341e8c",
+      "solution2.sh": "b0482a39b7203b84e8593080d6c962af64ae9cacc6d75e5b521d9b2df7ca3b45",
+      "solution3.sh": "2b639a98cc86b9bdff66bb18561900e5793375981c60849271ed5fc06553a747",
+      "verify1.sh": "037b1a17d9b3c53821f2a3235b57627fa34cd7a610aed7d032e09e2e96fa779b",
+      "verify2.sh": "be1c9940dadda3588fd71cbe945f4ce2c87d58d0f64963e4aae21cb39519568a",
+      "verify3.sh": "f601ece1f21b1369f7364066a38499458b8f902aa55d6a7a5115cbbcc555f1dc"
+    },
+    "candidateAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+    "assetDeliveryNote": "Fresh automatic72c3b8b delivery matched all assets but revealed reset-node deletion EOF. Replaced only setup.sh from publishedde839dc, removed the disposable book-ha cluster and replayed setup from scratch to exit0. Replaced only solution1 from publishedbed2b6b then167308c for confirmed nested kernel-config and one-CPU preflights. Replaced only solution3 from published6998c50 after containerd startup race. Final complete asset manifest matched currentsource; a second actual cold stop/start passed solution3 exit0 before browserCHECK3. A subsequent fresh VM331d673037b725f4 automatically delivered all final6998c50 files with the same final fingerprint; this delivery-only check made no file replacements and did not repeat the completed three-step health tests.",
+    "currentVm": "1640a0f6ea262404",
+    "automaticAllAssetsMatched": true,
+    "automaticAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+    "setupExitCode": 0,
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionExitCodes": [
+      0,
+      0,
+      0
+    ],
+    "allAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+    "finishedScreenshot": "infra-05-ha-control-plane-completed.png",
+    "finishedDom": "infra-05-ha-control-plane-completed.txt",
+    "released": true,
+    "versions": {
+      "Kubernetes": "v1.35.0",
+      "nodes": 3,
+      "backend": "ubuntu-4GB",
+      "hostMemoryMiB": 3916,
+      "sharedHostCPUs": 1
+    },
+    "notes": [
+      "Normal hosted Chrome terminal execution; each browser CHECK ran at its required intermediate state.",
+      "Step2 CHECK performed a fresh API write/read while the first control-plane container was actually stopped.",
+      "Recovery verified three voting etcd members, every endpoint healthy, and preservation of the outage write.",
+      "Three nested control-plane containers share one hosted VM and one external load balancer; not independent physical failure domains.",
+      "Fresh final automatic delivery was verified independently after the full hosted scenario passed with published fix replay; earlier failed attempts are retained."
+    ],
+    "freshAutomaticDelivery": {
+      "vm": "331d673037b725f4",
+      "sourceCommit": "6998c50",
+      "allAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+      "files": 11,
+      "filesReplaced": false,
+      "scope": "delivery-only; full health tests not repeated",
+      "screenshot": "infra-05-fresh-final-auto-assets.png",
+      "dom": "infra-05-fresh-final-auto-assets.txt",
+      "released": true
+    },
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-05-ha-control-plane-completed.png",
+    "currentVerifierSha256": {
+      "verify1.sh": "037b1a17d9b3c53821f2a3235b57627fa34cd7a610aed7d032e09e2e96fa779b",
+      "verify2.sh": "be1c9940dadda3588fd71cbe945f4ce2c87d58d0f64963e4aae21cb39519568a",
+      "verify3.sh": "f601ece1f21b1369f7364066a38499458b8f902aa55d6a7a5115cbbcc555f1dc"
+    },
+    "sourceVerification": "Captured independent full-asset aggregate matches current source; recorded manifest ordering and delivery/replay scope retained.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-infrastructure.json"
+  },
+  {
+    "id": "infra-06-api-repair",
+    "path": "infrastructure/06-api-repair",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/06-api-repair",
+    "sourceCommit": "6998c50",
+    "stepCount": 1,
+    "status": "passed-fresh-automatic-assets",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "2357708f00ff3cb72e38b5b7892f2dfe77ed09fef70102096c68296119c9ad8f",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "d5e382b6bce8ef113e8b403c7255983af09a338c4a0c5f0f15a81c47089be6bf",
+      "verify1.sh": "7a787fbf4021a3da4b53bc352f73dc42afe83ee3b9d39c921ea45e62889a9912"
+    },
+    "expectedAssetsManifestSha256": "eef0efd846bda9a8b80ee2d72fc50e8301440b0486c861ad9586d814c526ac40",
+    "allAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "2357708f00ff3cb72e38b5b7892f2dfe77ed09fef70102096c68296119c9ad8f",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "d5e382b6bce8ef113e8b403c7255983af09a338c4a0c5f0f15a81c47089be6bf",
+      "verify1.sh": "7a787fbf4021a3da4b53bc352f73dc42afe83ee3b9d39c921ea45e62889a9912"
+    },
+    "expectedAllAssetsManifestSha256": "b4468e5b9e5faa78328f3929aed064699ca0eafd36bb2e11f310e619e910d2cf",
+    "candidateAllAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "2357708f00ff3cb72e38b5b7892f2dfe77ed09fef70102096c68296119c9ad8f",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "d5e382b6bce8ef113e8b403c7255983af09a338c4a0c5f0f15a81c47089be6bf",
+      "verify1.sh": "7a787fbf4021a3da4b53bc352f73dc42afe83ee3b9d39c921ea45e62889a9912"
+    },
+    "candidateAllAssetsManifestSha256": "b4468e5b9e5faa78328f3929aed064699ca0eafd36bb2e11f310e619e910d2cf",
+    "unsolvedExitCodes": [
+      1
+    ],
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "b4468e5b9e5faa78328f3929aed064699ca0eafd36bb2e11f310e619e910d2cf",
+    "finishedScreenshot": "infra-06-api-repair-completed.png",
+    "finishedDom": "infra-06-api-repair-completed.txt",
+    "released": true,
+    "currentVm": "09f36d4d91e29762",
+    "notes": [
+      "Initial API connection refused; supplied solution restored only the incorrect client-CA path, preserving original manifest semantics.",
+      "Fresh busybox Pod DNS resolves kubernetes.default.svc.cluster.local. Interface JSON matches actual containerd2.2.1, Cilium configuration files and no installed CSIDrivers.",
+      "Normal terminal canvas briefly reset; read-only actual verifier and interface evidence passed afterwards. Independent browser CHECK reached finish."
+    ],
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "b4468e5b9e5faa78328f3929aed064699ca0eafd36bb2e11f310e619e910d2cf",
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-06-api-repair-completed.png",
+    "currentVerifierSha256": {
+      "verify1.sh": "7a787fbf4021a3da4b53bc352f73dc42afe83ee3b9d39c921ea45e62889a9912"
+    },
+    "sourceVerification": "Captured independent full-asset aggregate matches current source; recorded manifest ordering and delivery/replay scope retained.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-infrastructure.json"
+  },
+  {
+    "id": "infra-07-apiserver-security",
+    "path": "infrastructure/07-apiserver-security",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/07-apiserver-security",
+    "sourceCommit": "6998c50",
+    "stepCount": 2,
+    "status": "passed-fresh-automatic-assets",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "check-audit.py": "ca7412af9e9effc4c458afdfbeba9595104b9f19c44cb3154f7d4aa6eacf5019",
+      "check-webhook.py": "0bf54048c571968d5010744fad5dd5a70d6642b1dc1e89cb487aca8a5db397f7",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "imagepolicy-webhook.py": "52ebdb0eaf20938f6553747862dc342c336c9ddb55399bd9d4cdacfaaa0444b1",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "5548c32bc3daca1107246f514376e25fec6d7800e847efd6eeaf0989d5c4eb1e",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "a1295e52ad2d353585b38196d43c1dec431421730f741954250df8763f198451",
+      "solution2.sh": "60cfb10b5641c664502e52897686b731f857dd8b3a00aaaa3e462cd8db8497ea",
+      "verify1.sh": "9705d13e9641820bfbf2981e1635fb7e47169a2f2985334d13d058d19f71d2ce",
+      "verify2.sh": "15544ebdea3fc6dd8556a24bfab19cb8773c3881cdbe8ca7945b0f39a84b7d9a"
+    },
+    "expectedAssetsManifestSha256": "e094bfe30172f9136fd6e0e686c61f81e0f0575fad9da5be5870c69aa8489c58",
+    "allAssetSha256": {
+      "audit-policy.yaml": "dcc9bb5ac232dc526d2448935ae955d79576519c4658b5aa26f63a3c7d5f04a1",
+      "check-audit.py": "ca7412af9e9effc4c458afdfbeba9595104b9f19c44cb3154f7d4aa6eacf5019",
+      "check-webhook.py": "0bf54048c571968d5010744fad5dd5a70d6642b1dc1e89cb487aca8a5db397f7",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "imagepolicy-webhook.py": "52ebdb0eaf20938f6553747862dc342c336c9ddb55399bd9d4cdacfaaa0444b1",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "5548c32bc3daca1107246f514376e25fec6d7800e847efd6eeaf0989d5c4eb1e",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "a1295e52ad2d353585b38196d43c1dec431421730f741954250df8763f198451",
+      "solution2.sh": "60cfb10b5641c664502e52897686b731f857dd8b3a00aaaa3e462cd8db8497ea",
+      "verify1.sh": "9705d13e9641820bfbf2981e1635fb7e47169a2f2985334d13d058d19f71d2ce",
+      "verify2.sh": "15544ebdea3fc6dd8556a24bfab19cb8773c3881cdbe8ca7945b0f39a84b7d9a",
+      "webhook-admission.yaml": "440c24bdfaf1a23e4faba2a056cf45e9f1488fc0a4f9d1853cdedee4dec64a0c",
+      "webhook-kubeconfig": "c6d7d02dd9a49ab7dc0b120a04127a1f879b319828deec7b1e7303388b7d95b3"
+    },
+    "expectedAllAssetsManifestSha256": "3c4d42f6cba97feac346ee530e9ad83d247d242a11f97613a140714682079c53",
+    "candidateAllAssetSha256": {
+      "audit-policy.yaml": "dcc9bb5ac232dc526d2448935ae955d79576519c4658b5aa26f63a3c7d5f04a1",
+      "check-audit.py": "ca7412af9e9effc4c458afdfbeba9595104b9f19c44cb3154f7d4aa6eacf5019",
+      "check-webhook.py": "0bf54048c571968d5010744fad5dd5a70d6642b1dc1e89cb487aca8a5db397f7",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "imagepolicy-webhook.py": "52ebdb0eaf20938f6553747862dc342c336c9ddb55399bd9d4cdacfaaa0444b1",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "5548c32bc3daca1107246f514376e25fec6d7800e847efd6eeaf0989d5c4eb1e",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "a1295e52ad2d353585b38196d43c1dec431421730f741954250df8763f198451",
+      "solution2.sh": "60cfb10b5641c664502e52897686b731f857dd8b3a00aaaa3e462cd8db8497ea",
+      "verify1.sh": "9705d13e9641820bfbf2981e1635fb7e47169a2f2985334d13d058d19f71d2ce",
+      "verify2.sh": "15544ebdea3fc6dd8556a24bfab19cb8773c3881cdbe8ca7945b0f39a84b7d9a",
+      "webhook-admission.yaml": "440c24bdfaf1a23e4faba2a056cf45e9f1488fc0a4f9d1853cdedee4dec64a0c",
+      "webhook-kubeconfig": "c6d7d02dd9a49ab7dc0b120a04127a1f879b319828deec7b1e7303388b7d95b3"
+    },
+    "candidateAllAssetsManifestSha256": "3c4d42f6cba97feac346ee530e9ad83d247d242a11f97613a140714682079c53",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "3c4d42f6cba97feac346ee530e9ad83d247d242a11f97613a140714682079c53",
+    "finishedScreenshot": "infra-07-apiserver-security-completed.png",
+    "finishedDom": "infra-07-apiserver-security-completed.txt",
+    "released": true,
+    "currentVm": "64c04045393eac80",
+    "notes": [
+      "Complete asset fingerprint includes check-webhook.py with existing-Pod exec proof during the stopped-service outage.",
+      "Audit verifier generates actual create/update/patch/delete Deployment requests and fresh Secret requests, reads real blocking audit records, requires Deployment bodies and forbids Secret bodies.",
+      "ImagePolicyWebhook uses the real TLS service: approved image allowed, unapproved image denied, new admission denied while policy service is actually stopped, existing Pod exec succeeds during outage, admission recovers after service restart.",
+      "Both independent browser CHECKs reached finish without source changes or patches in this fresh VM."
+    ],
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "3c4d42f6cba97feac346ee530e9ad83d247d242a11f97613a140714682079c53",
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-07-apiserver-security-completed.png",
+    "currentVerifierSha256": {
+      "verify1.sh": "9705d13e9641820bfbf2981e1635fb7e47169a2f2985334d13d058d19f71d2ce",
+      "verify2.sh": "15544ebdea3fc6dd8556a24bfab19cb8773c3881cdbe8ca7945b0f39a84b7d9a"
+    },
+    "sourceVerification": "Captured independent full-asset aggregate matches current source; recorded manifest ordering and delivery/replay scope retained.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-infrastructure.json"
+  },
+  {
+    "id": "infra-08-secret-encryption",
+    "path": "infrastructure/08-secret-encryption",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/08-secret-encryption",
+    "sourceCommit": "6998c50",
+    "stepCount": 1,
+    "status": "passed-fresh-automatic-assets",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "check-encryption.py": "c41f2f97393cb6f4ae2e0ab8b12b86168f70f053b1a35fc472cfe61b804da3eb",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "489adcecf05498806a689bfbf2e66dce0aff7d3cd7ef841cbfec0c2f2c0f9561",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "c9c247a8c7bb2bcdf3c76707940d98d0b4225e6c139cfa6715a1c6a203a1aa5a",
+      "verify1.sh": "724592b1c3ebe35af5ce7126cc2e0b8f58a27f407ba5700559cc02aa8e117559"
+    },
+    "expectedAssetsManifestSha256": "0f585ed980c24f0ac0c44c92573efb4200bde0b9c3073c5ee0e0033a380558f5",
+    "allAssetSha256": {
+      "check-encryption.py": "c41f2f97393cb6f4ae2e0ab8b12b86168f70f053b1a35fc472cfe61b804da3eb",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "489adcecf05498806a689bfbf2e66dce0aff7d3cd7ef841cbfec0c2f2c0f9561",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "c9c247a8c7bb2bcdf3c76707940d98d0b4225e6c139cfa6715a1c6a203a1aa5a",
+      "verify1.sh": "724592b1c3ebe35af5ce7126cc2e0b8f58a27f407ba5700559cc02aa8e117559"
+    },
+    "expectedAllAssetsManifestSha256": "04f67a31a387a58528bdbb583811646b445e65b1217505acd713a3d77929fee0",
+    "candidateAllAssetSha256": {
+      "check-encryption.py": "c41f2f97393cb6f4ae2e0ab8b12b86168f70f053b1a35fc472cfe61b804da3eb",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "489adcecf05498806a689bfbf2e66dce0aff7d3cd7ef841cbfec0c2f2c0f9561",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "c9c247a8c7bb2bcdf3c76707940d98d0b4225e6c139cfa6715a1c6a203a1aa5a",
+      "verify1.sh": "724592b1c3ebe35af5ce7126cc2e0b8f58a27f407ba5700559cc02aa8e117559"
+    },
+    "candidateAllAssetsManifestSha256": "04f67a31a387a58528bdbb583811646b445e65b1217505acd713a3d77929fee0",
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "04f67a31a387a58528bdbb583811646b445e65b1217505acd713a3d77929fee0",
+    "finishedScreenshot": "infra-08-secret-encryption-completed.png",
+    "finishedDom": "infra-08-secret-encryption-completed.txt",
+    "released": true,
+    "currentVm": "3386a1008b02057a",
+    "notes": [
+      "Fresh automatic asset delivery matched all seven published files without replacement.",
+      "Ready sentinel present; initial verifier exited 1 because encryption configuration was missing.",
+      "Only supplied solution1.sh ran. It enabled AES-CBC, restarted the real API server, rewrote existing Secrets, and exited 0.",
+      "Actual etcd values for all pre-existing Secrets and a fresh write had the encryption prefix; original and fresh API reads decrypted correctly.",
+      "Actual browser CHECK reached the completion page; encryption remained enabled until the disposable VM was released. No key material was printed or saved."
+    ],
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "04f67a31a387a58528bdbb583811646b445e65b1217505acd713a3d77929fee0",
+    "unsolvedExitCodes": [
+      1
+    ],
+    "solutionExitCodes": [
+      0
+    ],
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-08-secret-encryption-completed.png",
+    "currentVerifierSha256": {
+      "verify1.sh": "724592b1c3ebe35af5ce7126cc2e0b8f58a27f407ba5700559cc02aa8e117559"
+    },
+    "sourceVerification": "Captured independent full-asset aggregate matches current source; recorded manifest ordering and delivery/replay scope retained.",
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-infrastructure.json"
+  },
+  {
+    "path": "infrastructure/09-host-hardening",
+    "id": "infra-09-host-hardening",
+    "title": "CKS 31 \u2014 Harden a real host service",
+    "steps": [
+      {
+        "title": "Keep the reporting service useful and contained",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      }
+    ],
+    "hashes": {
+      "verify1.sh": "83b016bb1685fa486e49d621ede255e15af58c8269d75d95ef4c13468a59bca6"
+    },
+    "assetManifest": {
+      "entries": {
+        "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+        "setup.sh": "1964ec6fddcb9213f3060d5dc296e05dd017f62b66cc83f45bd5fdf235d34664",
+        "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+        "solution1.sh": "6eca9509d861cc1dee54c6c0a0ca01b30245388042a4d9e15f813b7be4535d11",
+        "verify1.sh": "83b016bb1685fa486e49d621ede255e15af58c8269d75d95ef4c13468a59bca6",
+        "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f"
+      },
+      "aggregateSha256": "37c982646e96e3205c8a18857e5a15548ba6aa6333f76d84b2413441462777a2"
+    },
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/09-host-hardening",
+    "sourceCommit": "18bda73",
+    "stepCount": 1,
+    "setupReady": true,
+    "unsolvedExitCodes": [
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionExitCode": 0,
+    "finalExitCodes": [
+      0
+    ],
+    "browserStepsPassed": [
+      1
+    ],
+    "completed": true,
+    "allAssetsMatched": true,
+    "observedAllAssetAggregate": "37c982646e96e3205c8a18857e5a15548ba6aa6333f76d84b2413441462777a2",
+    "executionMethod": "Normal Chrome terminal supplied solution and independent actual CHECK",
+    "sourceVerification": "Independent normal-terminal script aggregate matches every current asset; see original record for automatic-delivery or pinned-helper replay scope.",
+    "previousRuns": [
+      {
+        "id": "infra-09-host-hardening",
+        "path": "infrastructure/09-host-hardening",
+        "sourceCommit": "074c0b6",
+        "stepCount": 1,
+        "setupReady": true,
+        "unsolvedExitCodes": [
+          1
+        ],
+        "browserStepsPassed": [
+          1
+        ],
+        "completed": true,
+        "executionMethod": "Killercoda Brain command executor through Chrome; normal terminal display remained on a connection spinner",
+        "verifierSha256": "83b016bb1685fa486e49d621ede255e15af58c8269d75d95ef4c13468a59bca6",
+        "solutionExitCode": 0,
+        "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/infra-09-host-hardening-completed.jpg"
+      }
+    ],
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-09-direct-completed.jpg",
+    "observedAt": "2026-10-08T10:13:10.430Z",
+    "currentVerifierSha256": {
+      "verify1.sh": "83b016bb1685fa486e49d621ede255e15af58c8269d75d95ef4c13468a59bca6"
+    },
+    "currentSourceValidated": true,
+    "historicalBrowserCompletion": true,
+    "recordSource": "results-root.json"
+  }
+]

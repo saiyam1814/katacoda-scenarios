@@ -1,0 +1,128 @@
+- navigation:
+  - navigation:
+    - link "logo":
+      - /url: "#"
+      - link "logo":
+        - /url: /
+        - img "logo"
+    - list:
+      - listitem: Editor
+      - listitem: Tab 1
+      - generic: +
+    - generic "Time till environment expires": 116m
+    - generic "Scenario Brain":
+      - img "Scenario Brain"
+    - generic "Exit Scenario":
+    - list:
+      - button "☰"
+- heading "CKS - RBAC, Secrets and service-account credentials" [level=1]
+- heading "Remove excess access and token mounts" [level=2]
+- separator
+- heading "Remove excess access and token mounts" [level=1]
+- heading "Scenario" [level=1]
+- paragraph:
+  - text: ServiceAccount
+  - code: reader
+  - text: and Deployment
+  - code: worker
+  - text: in namespace
+  - code: book-cks-identity
+  - text: have more API access than required.
+- paragraph:
+  - text: Replace Role
+  - code: reader
+  - text: rules so the account can only
+  - code: get
+  - text: ConfigMap
+  - code: settings
+  - text: . It must not list ConfigMaps, read ConfigMap
+  - code: other
+  - text: ", read Secrets or access ConfigMaps in"
+  - code: default
+  - text: . Keep the RoleBinding. Disable automatic token mounting on both the ServiceAccount and the Deployment Pod template, then roll out the change. The application does not call the Kubernetes API.
+- heading "Validate" [level=2]
+- paragraph:
+  - text: Use the
+  - strong: CHECK
+  - text: "button when you are done. You can also run:"
+- code: bash /opt/book-labs/cks-04-serviceaccount/verify.sh
+- button "copy":
+- paragraph
+- paragraph: Read the failed check and inspect the object before changing anything else.
+- generic "Worked solution"
+- paragraph: "The complete group solution is readable and runnable in the terminal:"
+- code: cat /opt/book-labs/cks-04-serviceaccount/solution.sh bash /opt/book-labs/cks-04-serviceaccount/solution.sh
+- button "copy":
+- paragraph
+- paragraph: It solves all steps in this group. Use CHECK for each step to verify its own result.
+- button "BACK"
+- button "CHECK"
+- generic: hint
+- generic: skip
+- iframe [active] [id="iframe"]:
+  - textbox "Terminal input" [active]
+- img "Brain"
+- generic: BETA
+- generic: Hint
+- generic: Solution
+- generic "Info": "?"
+- generic "Move to top":
+- generic "Close": ×
+- generic: Please don't enter sensitive data or data of other people.
+- generic: How may I help ya?
+- generic: Solution mode active
+- generic: "Run only this read-only command on the actual VM and return its exact stdout: hostname; date -u; test -f /tmp/book-labs/cks-04-serviceaccount/ready && echo READY; tail -n 8 /tmp/book-labs/cks-04-serviceaccount/setup.log"
+- code: "controlplane Thu Oct 8 09:34:13 UTC 2026 READY deployment \"worker\" successfully rolled out namespace/book-cks-secrets created serviceaccount/sam created secret/database created secret/other created role.rbac.authorization.k8s.io/excess created rolebinding.rbac.authorization.k8s.io/excess created Ready: cks-04-serviceaccount"
+- button "copy":
+- text: "The environment is ready. You're on Step 1: Remove excess access and token mounts for ServiceAccount"
+- code: reader
+- text: and Deployment
+- code: worker
+- text: in namespace
+- code: book-cks-identity
+- text: .
+- generic "Good response":
+- generic "Bad response":
+- generic: "Run only this read-only command and return exact stdout, no explanations: sha256sum /opt/book-labs/cks-04-serviceaccount/*"
+- code: 649039c2c2b9d52dc4dca5aa868b8fd5e4be7fa59480c23c4666b17a6f67e92d /opt/book-labs/cks-04-serviceaccount/solution.sh ad7e98b7e125e648ad59fea35e97562f255a1fe79da25e2f1d6178e2e39312de /opt/book-labs/cks-04-serviceaccount/verify.sh e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 /opt/book-labs/cks-04-serviceaccount/verify-step1.sh e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 /opt/book-labs/cks-04-serviceaccount/verify-step2.sh e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 /opt/book-labs/cks-04-serviceaccount/verify-step3.sh e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 /opt/book-labs/cks-04-serviceaccount/verify-step4.sh
+- button "copy":
+- generic "Good response":
+- generic "Bad response":
+- generic: "Execute ONLY the supplied author script on the VM: bash /opt/book-labs/cks-04-serviceaccount/solution.sh . Do not modify any verifier or invent alternative commands. Return its actual exit code."
+- text: The solution script executed successfully with
+- strong: exit code 0
+- text: ". All steps completed:"
+- list:
+  - text: "Step 1:"
+  - code: reader
+  - text: role patched,
+  - code: reader
+  - text: ServiceAccount patched,
+  - code: worker
+  - text: deployment patched and rolled out
+  - text: "Step 2: Excess rolebinding deleted, new"
+  - code: database-reader
+  - text: and
+  - code: deploy-creator
+  - text: roles and bindings created for
+  - code: sam
+  - text: "Step 3: Secret"
+  - code: database
+  - text: configured, Pod
+  - code: consumer
+  - text: created
+  - text: "Step 4:"
+  - code: reader.kubeconfig
+  - text: created, access tested (can get
+  - code: settings
+  - text: ", cannot list Secrets),"
+  - code: default
+  - text: ServiceAccount patched, Pod
+  - code: default-probe
+  - text: created
+- generic "Good response":
+- generic "Bad response":
+- textbox "Type your question..."
+- button [disabled]:
+- generic: Fast ▾
+- status: 1Password menu is available. Press down arrow to select.

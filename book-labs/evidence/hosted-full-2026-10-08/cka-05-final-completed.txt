@@ -1,0 +1,39 @@
+Browser tab: 323929429, Title: "CKA — Selectors, direct binding, affinity and DaemonSets | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs/05-scheduling".
+1 AXWebArea CKA — Selectors, direct binding, affinity and DaemonSets | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs/05-scheduling
+	2 container page-container
+		3 container
+			4 link Description: logo, Value: killercoda.com/saiyampathak/course/book-labs/05-scheduling#
+			5 content list
+				6 text Editor
+				7 text Tab 1
+				8 text +
+			9 container Time till environment expires
+				10 text 115 m
+			11 image Scenario Brain
+			12 content list
+				13 pop up button (collapsed) ☰, ID: runtime-menu-dropdown, Secondary Actions: Expand
+					45 text ☰
+		15 container content-wrap
+			16 container
+				17 heading CKA — Selectors, direct binding, affinity and DaemonSets, Value: 1
+					18 text CKA — Selectors, direct binding, affinity and DaemonSets
+				46 heading Scenario completed, Value: 1
+					47 text Scenario completed
+				48 text You completed CKA — Selectors, direct binding, affinity and DaemonSets. Repeat the tasks without the solution and explain what each verification proves.
+				49 text Clean up only this lab's resources when you are finished:
+				50 container
+					51 text bash /opt/book-labs/cka-05-scheduling/cleanup.sh
+
+					52 button copy
+						53 image
+				54 text These are original practice exercises, not recalled examination questions.
+				55 button BACK
+				56 button ASK / HELP
+				57 button SCENARIOS
+			40 AXWebArea Terminal, URL: 2d7a8ca1757f4fa8-1-40200.spca.r.killercoda.com/
+				41 container
+					42 text field (settable) Terminal input
+					43 image
+					44 image
+
+The focused UI element is 42 text field (settable) Terminal input

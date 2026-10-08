@@ -1,0 +1,48 @@
+Browser tab: 323929429, Title: "CKA — Selectors, direct binding, affinity and DaemonSets | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs/05-scheduling".
+1 AXWebArea CKA — Selectors, direct binding, affinity and DaemonSets | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs/05-scheduling
+	2 container page-container
+		3 container
+			4 link Description: logo, Value: killercoda.com/saiyampathak/course/book-labs/05-scheduling#
+			5 content list
+				6 text Editor
+				7 text Tab 1
+				8 text +
+			9 container Time till environment expires
+				10 text 115 m
+			11 image Scenario Brain
+			12 content list
+				13 pop up button (collapsed) ☰, ID: runtime-menu-dropdown, Secondary Actions: Expand
+					45 text ☰
+		15 container content-wrap
+			16 container
+				17 heading CKA — Selectors, direct binding, affinity and DaemonSets, Value: 1
+					18 text CKA — Selectors, direct binding, affinity and DaemonSets
+				19 heading Co-locate using required Pod affinity, Value: 2
+					46 text Co-locate using required Pod affinity
+				47 heading Scenario — Co-locate using required Pod affinity, Value: 1
+					48 text Scenario — Co-locate using required Pod affinity
+				49 text Book scenario(s): 9.
+				50 container
+					51 text Create Ready Pod anchor using nginx:1.28.0 and label role=anchor. Create Ready Pod  near-anchor in  book-cka-scheduling , image  redis:7.4.5 , with required Pod affinity to  role=anchor on topology key  kubernetes.io/hostname . Do not set nodeName or a nodeSelector. Keep the anchor Pod.
+				52 heading Verify your work, Value: 2
+					53 text Verify your work
+				54 container
+					55 text Use  CHECK . The verifier examines the real objects and the stated result; a manifest existing on disk is not enough.
+				56 container
+					57 text bash /opt/book-labs/cka-05-scheduling/verify-step-03.sh
+
+					58 button copy
+						59 image
+				60 button (collapsed) Solution, Secondary Actions: Expand
+					61 text Solution
+				62 container
+					63 text To run every worked solution in this grouped lab, use  bash /opt/book-labs/cka-05-scheduling/solution.sh . Every step remains independently verifiable after all solutions finish.
+				38 button BACK
+				64 button CHECK
+			40 AXWebArea Terminal, URL: 2d7a8ca1757f4fa8-1-40200.spca.r.killercoda.com/
+				41 container
+					42 text field (settable) Terminal input
+					43 image
+					44 image
+
+The focused UI element is 1 AXWebArea CKA — Selectors, direct binding, affinity and DaemonSets | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs/05-scheduling

@@ -1,2 +1,7 @@
+UTC: 2026-10-08T10:41:16.103969+00:00
+Source: 46e6c9bc8e6117e77c5866354bdbfad3fc6739b1
+Command: /Users/saiyam/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 book-labs/validate.py --require-coverage
 PASS: 33 lab definitions, supported backends, step checks, local references, course paths, asset delivery and script syntax
 PASS: all 69 book scenarios map to published steps and their actual verification scripts
+
+Exit: 0

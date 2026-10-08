@@ -1,0 +1,56 @@
+Browser tab: 323929429, Title: "CKA 10 + CKS 07 — Upgrade both kubeadm nodes | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade".
+1 AXWebArea CKA 10 + CKS 07 — Upgrade both kubeadm nodes | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade
+	2 container
+		3 container page-container
+			4 container
+				5 link Description: logo, Value: killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade#
+				73 content list
+					74 text Editor
+					75 text Tab 1
+					119 text Tab 2
+					76 text +
+				77 container Time till environment expires
+					78 text 99 m
+				79 image Scenario Brain
+				80 content list
+					81 pop up button (collapsed) ☰, ID: runtime-menu-dropdown, Secondary Actions: Expand
+						82 text ☰
+			83 container content-wrap
+				84 container
+					85 heading CKA 10 + CKS 07 — Upgrade both kubeadm nodes, Value: 1
+						86 text CKA 10 + CKS 07 — Upgrade both kubeadm nodes
+					87 heading Upgrade the worker and check the application, Value: 2
+						125 text Upgrade the worker and check the application
+					126 heading Upgrade the worker and check the application, Value: 1
+						127 text Upgrade the worker and check the application
+					128 container
+						129 text Drain  node01 , upgrade its kubeadm package to v1.35.9, run  kubeadm upgrade node on that worker, then upgrade its kubelet/kubectl, restart kubelet, and uncordon. Save final node versions to  /tmp/cka10-versions.txt . Both nodes, the API server and the pre-existing application must remain healthy.
+					130 text Try the task yourself first. Read the worked solution only when you need it:
+					131 container
+						132 text cat /opt/book-labs/infra-02-cluster-upgrade/solution2.sh
+
+						133 button copy
+							134 image
+					135 text Run the solution:
+					136 container
+						137 text bash /opt/book-labs/infra-02-cluster-upgrade/solution2.sh
+
+						138 button copy
+							139 image
+					140 container
+						141 text Check the actual result, then use  CHECK :
+					142 container
+						143 text bash /opt/book-labs/infra-02-cluster-upgrade/verify2.sh
+
+						144 button copy
+							145 image
+					111 button BACK
+					146 button CHECK
+				120 AXWebArea Terminal, URL: b52c6b116d45b31c-1-40200.spca.r.killercoda.com/
+					121 container
+						122 text field (settable) Terminal input
+						123 image
+						124 image
+		72 text 1Password menu is available. Press down arrow to select.
+
+The focused UI element is 1 AXWebArea CKA 10 + CKS 07 — Upgrade both kubeadm nodes | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade

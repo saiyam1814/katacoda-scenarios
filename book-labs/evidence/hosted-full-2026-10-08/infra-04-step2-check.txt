@@ -1,0 +1,3 @@
+Browser tab: 323929455, Title: "CKA + CKS — Recover, drain and protect a worker | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs/04-worker-operations".
+There has been no change in the accessibility tree.
+The focused UI element is 1 AXWebArea CKA + CKS — Recover, drain and protect a worker | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs/04-worker-operations

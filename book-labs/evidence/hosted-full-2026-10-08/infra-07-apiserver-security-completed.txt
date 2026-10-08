@@ -1,0 +1,3 @@
+Browser tab: 323929455, Title: "CKS 06 + 16 — Audit and image admission | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs/07-apiserver-security".
+There has been no change in the accessibility tree.
+The focused UI element is 1 AXWebArea CKS 06 + 16 — Audit and image admission | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs/07-apiserver-security

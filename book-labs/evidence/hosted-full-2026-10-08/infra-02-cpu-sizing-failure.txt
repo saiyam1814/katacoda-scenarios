@@ -1,0 +1,6 @@
+Browser tab: 323929455, Title: "CKA 10 + CKS 07 — Upgrade both kubeadm nodes | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 15
+~					11 text 116 m
++						76 text ☰
+The focused UI element is 46 text entry area (settable)

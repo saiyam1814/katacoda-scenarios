@@ -1,0 +1,132 @@
+[
+  {
+    "id": "cka-09-metrics-autoscaling",
+    "path": "cka/09-metrics-autoscaling",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/09-metrics-autoscaling",
+    "verifiedAt": "2026-10-08T10:44:19.848632+00:00",
+    "sourceCommit": "18bda73e8eaf646fa824ceec1a160deac30658cc",
+    "sourceEquivalentAtCommit": "46e6c9bc8e6117e77c5866354bdbfad3fc6739b1",
+    "setupReady": true,
+    "stepCount": 2,
+    "assetManifestSha256": "b41144af5bf7855427f32b980aa458501a6dee9d02fde6e3a38cd8343d650ef7",
+    "assetsIndependentlyMatched": true,
+    "assetCount": 10,
+    "actual_delivered_sha256": {
+      "cleanup.sh": "520d8ac35a0a179c7eee7e1319b92da0b73a59ba4744977f2f732c64fa149b8b",
+      "lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+      "metrics.sh": "03f6e181669312a0b57bb6986bf0c0423207de80a14861e1193c523faeeaf317",
+      "setup.sh": "1e042b235cb1f062b65f3d0bcd146350ffd6680950a00584f80fcfc9afe71777",
+      "solution-step-01.sh": "69be5263a8d822ec48f5dafa98ccb9be170b49271846f71b9913fffe06ce1af9",
+      "solution-step-02.sh": "8c9ec9b9170a11149703bb0b7ec6593c807f86d78fcf62e70a19cebb1de2276c",
+      "solution.sh": "8dea4e20b25fcb7609f1bbcbffe706565a581b10d71ff34bb20a12d5719bc770",
+      "verify-step-01.sh": "2b80917713db5c7f3e90d058d0bb3100e228dbf6ee60e22bafad7afbbc836b18",
+      "verify-step-02.sh": "95c789be048f8f63b7907001a6fbf4e1f229d555f3179aacda7a8b82ae1a4180",
+      "verify.sh": "89e9b48444e705a6d6ac8dcf7dcf7539f835e1ca3be284fafd20a933c044b553"
+    },
+    "expected_sha256": {
+      "cleanup.sh": "520d8ac35a0a179c7eee7e1319b92da0b73a59ba4744977f2f732c64fa149b8b",
+      "lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+      "metrics.sh": "03f6e181669312a0b57bb6986bf0c0423207de80a14861e1193c523faeeaf317",
+      "setup.sh": "1e042b235cb1f062b65f3d0bcd146350ffd6680950a00584f80fcfc9afe71777",
+      "solution-step-01.sh": "69be5263a8d822ec48f5dafa98ccb9be170b49271846f71b9913fffe06ce1af9",
+      "solution-step-02.sh": "8c9ec9b9170a11149703bb0b7ec6593c807f86d78fcf62e70a19cebb1de2276c",
+      "solution.sh": "8dea4e20b25fcb7609f1bbcbffe706565a581b10d71ff34bb20a12d5719bc770",
+      "verify-step-01.sh": "2b80917713db5c7f3e90d058d0bb3100e228dbf6ee60e22bafad7afbbc836b18",
+      "verify-step-02.sh": "95c789be048f8f63b7907001a6fbf4e1f229d555f3179aacda7a8b82ae1a4180",
+      "verify.sh": "89e9b48444e705a6d6ac8dcf7dcf7539f835e1ca3be284fafd20a933c044b553"
+    },
+    "sourceAttestationMethod": "Automatic Killercoda delivery; normal Chrome terminal printed sha256sum for all10 files and hash of the sorted output. All rows inspected in screenshot and aggregate independently matches final source. No files replaced or patched.",
+    "assetManifestFormat": "sha256sum * with lexical filename order; each line is <hex><two spaces><basename><newline>; SHA256 of these bytes.",
+    "hostedKubernetesVersion": "v1.36.1",
+    "runtime": {
+      "terminalHost": "0766d209733d7c48-1-40200.spca.r.killercoda.com",
+      "containerd": "2.2.1",
+      "os": "Ubuntu24.04.5 LTS",
+      "kernel": "6.8.0-146-generic",
+      "browser": "Chrome extension through CUA",
+      "tabId": "323929508",
+      "vmReleased": true
+    },
+    "executionMethod": "Normal terminal only; exact supplied whole-lab solution; independent browser CHECK for steps1and2. No Scenario Brain used.",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": false,
+    "solutionCommand": "bash /opt/book-labs/cka-09-metrics-autoscaling/solution.sh",
+    "solutionExitCode": 0,
+    "finalVerifierExitCodes": [
+      0,
+      0
+    ],
+    "aggregateVerifierExitCode": 0,
+    "finalExitEvidence": "verify.sh executes both step verifiers with set-Eeuo-pipefail; terminal showed each PASS and aggregate exit0. Both independent browser CHECKs advanced to final completion.",
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
+    "completionScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
+    "completionDom": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.txt",
+    "startupScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-delivered-assets.png",
+    "beforeScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-negative-checks.png",
+    "solutionScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-live-hpa.png",
+    "taskScreenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-50m-task.png",
+    "publicTaskCpuRequest": "50m",
+    "publicTaskExplainsBook200mAdaptation": true,
+    "observedHpa": {
+      "targetUtilizationPercent": 50,
+      "currentUtilizationPercent": 243,
+      "currentReplicas": 5,
+      "maxReplicas": 5,
+      "deploymentReady": "5/5",
+      "successfulRescaleEvents": [
+        4,
+        5
+      ],
+      "manualReplicaEdits": false
+    },
+    "evidenceFiles": [
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-delivered-assets.png",
+        "sha256": "dad0108d71db3786474c68c94c56a951b2eea72f28245402d0391a0692e787c6"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-startup-dom.txt",
+        "sha256": "a944ea6f8f2a59df81077fdcb439c73f8720c438dbc244f41d43cfb4d5a6fb04"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-negative-checks.png",
+        "sha256": "64901676b80b1ef05de5383c2853db4410b64b7cc1690d1516da4ff93fa19ec3"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-50m-task.png",
+        "sha256": "e6d712d343a474dfd12c4a966f05eac57d12c16a9b1fd1f055bee61f506b0998"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-step2-dom.txt",
+        "sha256": "1b7afd25ad93eebf3c18885bfe4cf8fbb90ebf3dad4449e6b3996cccac986187"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-live-hpa.png",
+        "sha256": "63359ee0503f3b473e1deacdd53448b21e8cb0cae2a24d60f6971f02fcdcfeb7"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.png",
+        "sha256": "2cacf612254c23d8afe9f4d89d9d60d367cd7ae1f72a3bbda09b1fe682059db7"
+      },
+      {
+        "path": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/cka09-final-completed.txt",
+        "sha256": "55ca98a9b35ec38fff49892b325dd413b1c3ff3bcbdc2f809a82b04456dfc488"
+      }
+    ],
+    "notes": [
+      "Extra fresh retake to verify updated public50m task wording and automatic final source delivery after the earlier held UI retained200m. Prior CKAagent results are preserved separately.",
+      "One normal page reload during initial terminal bootstrap; runtime host changed during provider allocation. The final host delivered and executed all assets automatically.",
+      "Initial negative checks were run in the terminal, not by browser CHECK. Browser CHECK was independently clicked and observed advancing for both solved steps.",
+      "After both CHECKs completed, an optional repeat command to print separate numeric final exit labels timed out in the terminal UI. It did not alter assets or outcomes; recorded0/0 derives from each PASS plus the fail-fast aggregate exit0 and independent browser completion.",
+      "Provider environment differs from the advertised exam baseline. The public task explicitly adapts book200m CPU requests to50m on this one-CPU hosted VM."
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+- navigation:
+  - navigation:
+    - link "logo":
+      - /url: "#"
+      - link "logo":
+        - /url: /
+        - img "logo"
+    - list:
+      - listitem: Editor
+      - listitem: Tab 1
+      - generic: +
+    - generic "Time till environment expires": 116m
+    - generic "Scenario Brain":
+      - img "Scenario Brain"
+    - generic "Exit Scenario":
+    - list:
+      - button "☰"
+- heading "CKA — Metrics and CPU autoscaling" [level=1]
+- separator
+- heading "Scenario completed" [level=1]
+- paragraph: You completed CKA — Metrics and CPU autoscaling. Repeat the tasks without the solution and explain what each verification proves.
+- paragraph: "Clean up only this lab's resources when you are finished:"
+- code: bash /opt/book-labs/cka-09-metrics-autoscaling/cleanup.sh
+- button "copy":
+- paragraph
+- paragraph: These are original practice exercises, not recalled examination questions.
+- button "BACK"
+- button "ASK / HELP"
+- button "SCENARIOS"
+- iframe [id="iframe"]:
+  - textbox "Terminal input"

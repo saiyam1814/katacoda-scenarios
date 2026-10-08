@@ -1,0 +1,26 @@
+- navigation:
+  - navigation:
+    - link "logo":
+      - /url: "#"
+      - link "logo":
+        - /url: /
+        - img "logo"
+    - list:
+      - listitem: Editor
+      - listitem: Tab 1
+      - generic: +
+    - generic "Time till environment expires": 115m
+    - generic "Scenario Brain":
+      - img "Scenario Brain"
+    - generic "Exit Scenario":
+    - list:
+      - button "☰"
+- heading "CKS - Running security controls and seccomp" [level=1]
+- separator
+- heading "Practice complete" [level=1]
+- paragraph: Each step has checked its actual outcome. Reset and repeat without the solution. These are original book exercises, not recalled examination questions.
+- button "BACK"
+- button "ASK / HELP"
+- button "SCENARIOS"
+- iframe [id="iframe"]:
+  - textbox "Terminal input"

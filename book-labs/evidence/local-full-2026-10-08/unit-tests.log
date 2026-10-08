@@ -1,3 +1,6 @@
+UTC: 2026-10-08T10:41:33.156338+00:00
+Source: 46e6c9bc8e6117e77c5866354bdbfad3fc6739b1
+Command: /Users/saiyam/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 -m unittest discover -s book-labs/tests -v
 test_first_match_protects_secret_bodies (test_audit_policy.AuditPolicyTests.test_first_match_protects_secret_bodies) ... ok
 test_health_path_boundary (test_audit_policy.AuditPolicyTests.test_health_path_boundary) ... ok
 test_resource_rule_cannot_swallow_nonresource_request (test_audit_policy.AuditPolicyTests.test_resource_rule_cannot_swallow_nonresource_request) ... ok
@@ -29,6 +32,8 @@ test_previous_pod_scheduled_event_does_not_pass_current_pod (test_readiness_and_
 test_ready_api_completes_and_marks_ready (test_readiness_and_scheduling.LabRegressionTests.test_ready_api_completes_and_marks_ready) ... ok
 
 ----------------------------------------------------------------------
-Ran 29 tests in 22.406s
+Ran 29 tests in 23.717s
 
 OK
+
+Exit: 0

@@ -1,0 +1,75 @@
+- navigation:
+  - navigation:
+    - link "logo":
+      - /url: "#"
+      - link "logo":
+        - /url: /
+        - img "logo"
+    - list:
+      - listitem: Editor
+      - listitem: Tab 1
+      - generic: +
+    - generic "Time till environment expires": 75m
+    - generic "Scenario Brain":
+      - img "Scenario Brain"
+    - generic "Exit Scenario":
+    - list:
+      - button "☰"
+- heading "CKA 01 — Initialize and join a kubeadm cluster" [level=1]
+- separator
+- heading "CKA 01 — Initialize and join a kubeadm cluster" [level=1]
+- paragraph: CKA chapter 1. This is a disposable infrastructure lab. Use the root terminal on controlplane unless the step names another machine. The scenario makes real host and cluster changes.
+- paragraph: "Setup: 1–3 minutes to reset. Build: approximately 10–20 minutes including package/image downloads; allow 30 minutes practice. Wait for the Ready message before starting."
+- paragraph: "If you see a prompt without the Ready message, check setup:"
+- code: if test -f /tmp/book-labs/infra-01-kubeadm-bootstrap/error; then cat /tmp/book-labs/infra-01-kubeadm-bootstrap/error elif test -f /tmp/book-labs/infra-01-kubeadm-bootstrap/ready; then printf 'Ready. Start the scenario.\n' else printf 'Setup is still running. Wait, then check again.\n' fi
+- button "copy":
+- paragraph
+- paragraph: The book uses Kubernetes 1.35 as its training baseline. Host exercises use the supported Killercoda image version unless this task explicitly creates a pinned cluster. These are original practice tasks based on public documentation.
+- button "START"
+- iframe [id="iframe"]
+- img "Brain"
+- generic: BETA
+- generic: Hint
+- generic: Solution
+- generic "Info": "?"
+- generic "Move to top":
+- generic "Close": ×
+- generic: Please don't enter sensitive data or data of other people.
+- generic: Waiting for your brilliant question...
+- generic: Solution mode active
+- generic: "Author validation of the supplied scripts only. Check /tmp/book-labs/infra-01-kubeadm-bootstrap/ready and error first; if not ready, report the actual setup log and stop. Show sha256sum /opt/book-labs/infra-01-kubeadm-bootstrap/verify1.sh. Run that verifier before solving and report its exact exit code. Then start this background command so downloads may finish without a chat timeout: nohup bash -c 'bash /opt/book-labs/infra-01-kubeadm-bootstrap/solution.sh; result=$?; printf \"%s\\n\" \"$result\" > /tmp/book-labs/infra-01-kubeadm-bootstrap/author-solution.exit' > /tmp/book-labs/infra-01-kubeadm-bootstrap/author-solution.log 2>&1 < /dev/null &. Do not invent or replace the solution. Report only observed results."
+- text: The environment is ready (ready file exists, no error file). The verify1.sh sha256sum is
+- code: 7b897053cc6feae0dbf328e0eb93c0f9656a6e0fc1c29a6bddd260e246c67171
+- text: ". Running the verifier shows exit code 1 with error \"The connection to the server localhost:8080 was refused\" and \"FAIL: Both nodes must be Ready on v1.35.9\" — the kubeadm cluster has not been initialized yet. The background solution command has been started."
+- generic "Good response":
+- generic "Bad response":
+- generic: Read the actual status of /tmp/book-labs/infra-01-kubeadm-bootstrap/author-solution.exit and the last 25 lines of author-solution.log. If it is finished, also run the supplied verify1.sh and show its exact exit and kubectl get nodes output. Do not change anything.
+- text: "The solution script exited with code 141 (SIGPIPE). The log file is empty, suggesting the script may have failed early. Let me check the setup log and run the verify script to see the current state:"
+- strong: "Observed Results:"
+- strong: "Ready/Error Check:"
+- list:
+  - code: /tmp/book-labs/infra-01-kubeadm-bootstrap/ready
+  - text: exists
+  - code: /tmp/book-labs/infra-01-kubeadm-bootstrap/error
+  - text: does not exist
+  - strong: "verify1.sh Checksum:"
+  - code: 7b897053cc6feae0dbf328e0eb93c0f9656a6e0fc1c29a6bddd260e246c67171 /opt/book-labs/infra-01-kubeadm-bootstrap/verify1.sh
+  - button "copy":
+  - strong: "Initial Verifier Run:"
+  - listitem: "Exit code: 1"
+  - listitem: "Error: \"The connection to the server localhost:8080 was refused\" and \"FAIL: Both nodes must be Ready on v1.35.9\""
+  - strong: "Background Solution Script Status:"
+  - code: /tmp/book-labs/infra-01-kubeadm-bootstrap/author-solution.exit
+  - text: ": Contains"
+  - code: "141"
+  - text: (SIGPIPE signal)
+  - code: /tmp/book-labs/infra-01-kubeadm-bootstrap/author-solution.log
+  - text: ": Empty (0 bytes)"
+- strong: "Conclusion:"
+- text: The solution script terminated abnormally with exit code 141 (SIGPIPE - broken pipe). The empty log file indicates it failed very early, likely during initial setup. The cluster remains uninitialized (no kubectl connectivity). The setup.log shows kubeadm reset operations with container runtime timeout errors during the environment preparation phase.
+- generic "Good response":
+- generic "Bad response":
+- textbox "Type your question..." [active]
+- button [disabled]:
+- generic: Fast ▾
+- status: 1Password menu is available. Press down arrow to select.

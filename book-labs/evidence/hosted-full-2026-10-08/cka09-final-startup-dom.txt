@@ -1,0 +1,37 @@
+- navigation:
+  - navigation:
+    - link "logo":
+      - /url: "#"
+      - link "logo":
+        - /url: /
+        - img "logo"
+    - list:
+      - listitem: Editor
+      - listitem: Tab 1
+      - generic: +
+    - generic "Time till environment expires": 119m
+    - generic "Scenario Brain":
+      - img "Scenario Brain"
+    - generic "Exit Scenario":
+    - list:
+      - button "☰"
+- heading "CKA — Metrics and CPU autoscaling" [level=1]
+- separator
+- heading "CKA — Metrics and CPU autoscaling" [level=1]
+- paragraph: We will work through 2 related tasks. Each has a separate CHECK and solution. The resources belong to this lab; setup resets them so you can practise again.
+- paragraph:
+  - strong: "Environment:"
+  - text: A fresh one-node 4GB kubeadm VM. Setup installs a pinned Metrics Server with verified kubelet TLS and waits for live samples.
+- paragraph: "Wait for Ready before starting. Check setup without leaving the terminal:"
+- code: if test -f /tmp/book-labs/cka-09-metrics-autoscaling/error; then cat /tmp/book-labs/cka-09-metrics-autoscaling/error elif test -f /tmp/book-labs/cka-09-metrics-autoscaling/ready; then printf 'Ready. Start the scenario.\n' else printf 'Setup is still running; inspect /tmp/book-labs/cka-09-metrics-autoscaling/setup.log.\n' fi
+- button "copy":
+- paragraph
+- paragraph:
+  - text: Files and answer evidence are under
+  - code: ~/book-labs/cka-09-metrics-autoscaling
+  - text: . Only use this lab in its disposable environment. Read
+  - code: cleanup.sh
+  - text: before using it on a shared local test cluster.
+- button "START"
+- iframe [active] [id="iframe"]:
+  - textbox "Terminal input" [active]

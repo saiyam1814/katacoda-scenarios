@@ -1,0 +1,33 @@
+Browser tab: 323929429, Title: "CKA 10 + CKS 07 — Upgrade both kubeadm nodes | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade".
+1 AXWebArea CKA 10 + CKS 07 — Upgrade both kubeadm nodes | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade
+	2 container
+		3 container page-container
+			4 container
+				5 link Description: logo, Value: killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade#
+				73 content list
+					74 text Editor
+					75 text Tab 1
+					119 text Tab 2
+					76 text +
+				77 container Time till environment expires
+					78 text 95 m
+				79 image Scenario Brain
+				80 content list
+					81 pop up button (collapsed) ☰, ID: runtime-menu-dropdown, Secondary Actions: Expand
+						82 text ☰
+			83 container content-wrap
+				84 container
+					85 heading CKA 10 + CKS 07 — Upgrade both kubeadm nodes, Value: 1
+						86 text CKA 10 + CKS 07 — Upgrade both kubeadm nodes
+					125 text You have checked the live behavior. Reset with a fresh Killercoda session to repeat the exercise. Keep backup files until verification passes. Infrastructure changes belong only in this disposable environment.
+					126 button BACK
+					127 button ASK / HELP
+					128 button SCENARIOS
+				120 AXWebArea Terminal, URL: b52c6b116d45b31c-1-40200.spca.r.killercoda.com/
+					121 container
+						122 text field (settable) Terminal input
+						123 image
+						124 image
+		72 text 1Password menu is available. Press down arrow to select.
+
+The focused UI element is 122 text field (settable) Terminal input

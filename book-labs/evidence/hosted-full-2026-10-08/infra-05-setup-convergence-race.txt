@@ -1,0 +1,4 @@
+Browser tab: 323929455, Title: "CKA 27 — Join and fail over three control planes | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs/05-ha-control-plane".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~				10 text 114 m
+The focused UI element is 35 text field (settable) Terminal input

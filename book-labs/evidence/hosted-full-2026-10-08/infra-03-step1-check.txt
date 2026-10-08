@@ -1,0 +1,4 @@
+Browser tab: 323929455, Title: "CKA 11 — Restore a real etcd snapshot | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs/03-etcd-recovery".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~				29 text 119 m
+The focused UI element is 1 AXWebArea CKA 11 — Restore a real etcd snapshot | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs/03-etcd-recovery

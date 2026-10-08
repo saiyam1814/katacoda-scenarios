@@ -1,0 +1,58 @@
+- navigation:
+  - navigation:
+    - link "logo":
+      - /url: "#"
+      - link "logo":
+        - /url: /
+        - img "logo"
+    - list:
+      - listitem: Editor
+      - listitem: Tab 1
+      - generic: +
+    - generic "Time till environment expires": 119m
+    - generic "Scenario Brain":
+      - img "Scenario Brain"
+    - generic "Exit Scenario":
+    - list:
+      - button "☰"
+- heading "CKS - Network isolation and metadata protection" [level=1]
+- separator
+- heading "CKS - Network isolation and metadata protection" [level=1]
+- paragraph: These 3 steps use real components and keep their own verification. Setup prepares intentionally incomplete starting states. Wait for Ready before beginning. Installation failures are setup failures, not solved tasks.
+- code:
+  - text: state=/tmp/book-labs/cks-01-networkpolicy if test -f
+  - generic: "\"$state/ready\""
+  - text: ; then echo 'Ready'; elif test -f
+  - generic: "\"$state/error\""
+  - text: ; then cat
+  - generic: "\"$state/error\""
+  - text: ; else tail -n 15
+  - generic: "\"$state/setup.log\""
+  - text: ; fi
+- button "copy":
+- paragraph
+- paragraph: The complete solution is available in each step. The shared solution solves every step; CHECK still evaluates one step at a time. Reset the scenario to repeat from the original conditions.
+- button "START"
+- iframe [active] [id="iframe"]:
+  - textbox "Terminal input" [active]
+- img "Brain"
+- generic: BETA
+- generic: Hint
+- generic: Solution
+- generic "Info": "?"
+- generic "Move to top":
+- generic "Close": ×
+- generic: Please don't enter sensitive data or data of other people.
+- generic: At your service!
+- generic: Solution mode active
+- generic: "Execute ONLY these exact supplied author scripts on the actual VM. Never change/invent resources, results or verifiers. If setup still running, wait for ready; if error exists report error and stop. Then run command below ONCE and return complete raw stdout in one fenced code block (not summary). All checksums must pass before solution; each BEFORE should fail. Command: ( test -f /tmp/book-labs/cks-01-networkpolicy/ready || { cat /tmp/book-labs/cks-01-networkpolicy/error; tail -n 20 /tmp/book-labs/cks-01-networkpolicy/setup.log; exit 1; }; cd /opt/book-labs/cks-01-networkpolicy; printf '%s\\n' '29a472325b6c2804fab33c8583a6f15680f81b96681738fcf62da521288cc6f7 verify-step1.sh' '0ff90d61dec8631af347c9a1f2babac98f668179a0551305a6be482e1e40f977 verify-step2.sh' 'a863466f5c47a20d122ab6632e6be2fd0c4e7676a5cabfbd78cd4cb6190877fe verify-step3.sh' '278752668a5d0d28388dac737bf98b19901f906e53ae5d6b2c82f9f618eed110 verify.sh' 'd939ee96ebee8e7caf2e7c4167a1e8762e5b2e746d2e92e3fa73a4d73fc72d9c base-setup.sh' '66e4ab69f1b686dc0820c2b237c70b39e7e400e7077d48bf3ba10eb3cab76e1a base-solution.sh' '4269c1394e852fa9e0f4a52e461590134bdd8cc8aaf2a2fba089152926fcedb6 base-task.md' 'ceb89ad09e339b14b72543d19443bfb0dedd4c20af6e4d0d5a66e7fc3b891aab base-verify.sh' 'b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d lib.sh' '28edb289e150f8f07545047f52a6099f27b0f249d7551b652bfed469fcd4c9c0 network_probe.py' 'e9962d45e121633c2caf4a0c0c92ff07cfdcbb5cb13e74bc5ac476d2c5db86bc setup.sh' '5056a885741d3f0a4b296afa2a2f9ef6eac4c249af64945a625e04e356ae5592 solution.sh' | sha256sum -c || exit 1; for f in verify-step1.sh verify-step2.sh verify-step3.sh; do bash \"$f\" >/tmp/cks-pre.log 2>&1; echo BEFORE-$f=$?; done; bash \"$PWD/solution.sh\" >/tmp/cks-solution.log 2>&1; echo SOLUTION=$?; tail -n 8 /tmp/cks-solution.log; for f in verify-step1.sh verify-step2.sh verify-step3.sh; do bash \"$f\" >/tmp/cks-after.log 2>&1; echo AFTER-$f=$?; cat /tmp/cks-after.log; done ) 2>&1 | tee /tmp/cks-hosted-audit.log"
+- text: "The audit completed successfully. All checksums passed, all BEFORE checks failed (exit code 1), the solution applied successfully, and all AFTER checks passed (exit code 0):"
+- code: "verify-step1.sh: OK verify-step2.sh: OK verify-step3.sh: OK verify.sh: OK base-setup.sh: OK base-solution.sh: OK base-task.md: OK base-verify.sh: OK lib.sh: OK network_probe.py: OK setup.sh: OK solution.sh: OK BEFORE-verify-step1.sh=1 BEFORE-verify-step2.sh=1 BEFORE-verify-step3.sh=1 SOLUTION=0 networkpolicy.networking.k8s.io/default-deny-ingress created networkpolicy.networking.k8s.io/allow-green-trusted created networkpolicy.networking.k8s.io/deny-client-egress created networkpolicy.networking.k8s.io/block-metadata created AFTER-verify-step1.sh=0 PASS: both allowed API peers and all twelve denied connection attempts PASS: All checks passed for cks-01-networkpolicy PASS: Step 1: Combine namespace and Pod selectors AFTER-verify-step2.sh=0 PASS: Step 2: Deny egress from a namespace AFTER-verify-step3.sh=0 PASS: Step 3: Block metadata and preserve application access"
+- button "copy":
+- text: All three steps passed verification after applying the solution.
+- generic "Good response":
+- generic "Bad response":
+- textbox "Type your question..."
+- button [disabled]:
+- generic: Fast ▾
+- status: 1Password menu is available. Press down arrow to select.

@@ -1,0 +1,3 @@
+Browser tab: 323929455, Title: "CKA and CKS book companion labs | Saiyam Pathak | Killercoda", URL: "https://killercoda.com/saiyampathak/course/book-labs".
+There has been no change in the accessibility tree.
+The focused UI element is 0 AXWebArea CKA and CKS book companion labs | Saiyam Pathak | Killercoda, URL: killercoda.com/saiyampathak/course/book-labs

@@ -1,0 +1,113 @@
+{
+  "reason": "Completion screenshot recorder captured earlier metadata; full fresh retakes restore separately named evidence. Initial observed browser passes were not counted as final saved proof.",
+  "initialRuns": [
+    {
+      "id": "cka-05-scheduling",
+      "path": "cka/05-scheduling",
+      "url": "https://killercoda.com/saiyampathak/course/book-labs/05-scheduling",
+      "sourceCommit": "72c3b8b",
+      "setupReady": true,
+      "stepCount": 4,
+      "assetManifestSha256": "a0c44e04a6d0785c7a16d6428ab76046d5f51d1c4f08a1b01cd9f241cebb5266",
+      "assetsIndependentlyMatched": true,
+      "hostedKubernetesVersion": "v1.36.1",
+      "runtime": "4e3491446e2e73b1",
+      "unsolvedExitCodes": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "unsolvedBrowserChecksRejected": [
+        1
+      ],
+      "solutionCommand": "bash /opt/book-labs/cka-05-scheduling/solution.sh",
+      "solutionExitCode": 0,
+      "browserStepsPassed": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "completed": false,
+      "completionObservedInBrowser": true,
+      "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+      "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-05-scheduling-startup.jpg",
+      "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-05-scheduling-before.jpg",
+      "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-05-scheduling-solution.jpg",
+      "pendingRetest": "Actual completion observed in UI, but recorder reused an earlier image filename. Marked incomplete for final evidence until a fresh run restores its own completion screenshot."
+    },
+    {
+      "id": "cka-06-rollout-recovery",
+      "path": "cka/06-rollout-recovery",
+      "url": "https://killercoda.com/saiyampathak/course/book-labs/06-rollout-recovery",
+      "sourceCommit": "72c3b8b",
+      "setupReady": true,
+      "stepCount": 3,
+      "assetManifestSha256": "998b13fb7aa9af7c27e2d547ef25fba04a579b297adb6e4bba14add21155bf44",
+      "assetsIndependentlyMatched": true,
+      "hostedKubernetesVersion": "v1.36.1",
+      "runtime": "5d53913f6a9d695a",
+      "unsolvedExitCodes": [
+        1,
+        1,
+        1
+      ],
+      "unsolvedBrowserChecksRejected": [
+        1
+      ],
+      "solutionCommand": "bash /opt/book-labs/cka-06-rollout-recovery/solution.sh",
+      "solutionExitCode": 0,
+      "browserStepsPassed": [
+        1,
+        2,
+        3
+      ],
+      "completed": false,
+      "completionObservedInBrowser": true,
+      "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+      "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-startup.jpg",
+      "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-before.jpg",
+      "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-solution.jpg",
+      "pendingRetest": "Actual completion observed in UI, but recorder reused an earlier image filename. Marked incomplete for final evidence until a fresh run restores its own completion screenshot."
+    },
+    {
+      "id": "cka-07-pod-lifecycle",
+      "path": "cka/07-pod-lifecycle",
+      "url": "https://killercoda.com/saiyampathak/course/book-labs/07-pod-lifecycle",
+      "sourceCommit": "72c3b8b",
+      "setupReady": true,
+      "stepCount": 5,
+      "assetManifestSha256": "a2a005eba310dcdeb1448de63fd079716bc284705e3e67357c6454da126581e5",
+      "assetsIndependentlyMatched": true,
+      "hostedKubernetesVersion": "v1.36.1",
+      "runtime": "989b7267204fc31e",
+      "unsolvedExitCodes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "unsolvedBrowserChecksRejected": [
+        1
+      ],
+      "solutionCommand": "bash /opt/book-labs/cka-07-pod-lifecycle/solution.sh",
+      "solutionExitCode": 0,
+      "browserStepsPassed": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "completed": false,
+      "completionObservedInBrowser": true,
+      "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+      "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-startup.jpg",
+      "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-before.jpg",
+      "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-solution.jpg",
+      "pendingRetest": "Actual completion observed in UI, but recorder reused an earlier image filename. Marked incomplete for final evidence until a fresh run restores its own completion screenshot."
+    }
+  ]
+}

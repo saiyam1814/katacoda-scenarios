@@ -1,0 +1,150 @@
+- navigation:
+  - navigation:
+    - link "logo":
+      - /url: "#"
+      - link "logo":
+        - /url: /
+        - img "logo"
+    - paragraph:
+      - link:
+        - /url: https://x.com/killercoda
+    - paragraph:
+      - link:
+        - /url: https://www.linkedin.com/company/killercoda
+    - paragraph:
+      - link:
+        - /url: /discord
+    - list:
+      - link:
+        - /url: "#"
+      - link "Areas":
+        - /url: "#"
+        - link "Areas":
+          - /url: /
+      - link "Account":
+        - /url: "#"
+        - link "Account":
+          - /url: /account/membership
+      - link "Profile":
+        - /url: "#"
+        - link "Profile":
+          - /url: /saiyampathak
+      - link "Creator":
+        - /url: "#"
+        - link "Creator":
+          - /url: /creator/scenarios
+      - link "Logout":
+        - /url: "#"
+        - link "Logout":
+          - /url: /logout
+- heading "Creator |" [level=1]
+- heading "Debug for saiyampathak" [level=2]
+- link "Profiles":
+  - /url: /creator/profiles
+- link "My Scenarios":
+  - /url: /creator/scenarios/saiyampathak
+- link "Debug":
+  - /url: /creator/debug/saiyampathak
+- link "Activity":
+  - /url: /creator/activity/saiyampathak
+- link "Rating":
+  - /url: /creator/ratings/saiyampathak
+- link "Profile":
+  - /url: /creator/profile/saiyampathak
+- link "Repository":
+  - /url: /creator/repository/saiyampathak
+- link "Docs":
+  - /url: /creators
+- paragraph: Complete your profile by adding a Title and Description
+- paragraph: "Here are your last scenario runs listed with debug data:"
+- button "Reload"
+- 'tab "2026-10-08 06:46:45 05-scheduling status: delete"':
+  - generic: 2026-10-08 06:46:45
+  - generic: 05-scheduling
+  - generic: "status: delete"
+- paragraph:
+  - generic: "# BACKGROUND SCRIPT STDOUT in /var/log/killercoda/background0_stdout.log # BACKGROUND SCRIPT STDERR in /var/log/killercoda/background0_stderr.log"
+- 'tab "2026-10-08 06:46:45 09-host-hardening status: active"':
+  - generic: 2026-10-08 06:46:45
+  - generic: 09-host-hardening
+  - generic: "status: active"
+- paragraph:
+  - generic: "# BACKGROUND SCRIPT STDOUT in /var/log/killercoda/background0_stdout.log # BACKGROUND SCRIPT STDERR in /var/log/killercoda/background0_stderr.log"
+- 'tab "2026-10-08 06:46:15 01-kubeadm-bootstrap status: active"':
+  - generic: 2026-10-08 06:46:15
+  - generic: 01-kubeadm-bootstrap
+  - generic: "status: active"
+- paragraph:
+  - generic: "# BACKGROUND SCRIPT STDOUT in /var/log/killercoda/background0_stdout.log # BACKGROUND SCRIPT STDERR in /var/log/killercoda/background0_stderr.log"
+- contentinfo:
+  - link "logo":
+    - /url: /
+    - img "logo"
+  - link "About":
+    - /url: /about
+    - paragraph: About
+  - link "Explore":
+    - /url: /explore
+    - paragraph: Explore
+  - link "Creators":
+    - /url: /creators
+    - paragraph: Creators
+  - link "Students":
+    - /url: /learn
+    - paragraph: Students
+  - link "Contribute":
+    - /url: /creators/contribute
+    - paragraph: Contribute
+  - link "Legal Notice / Impressum":
+    - /url: /impressum.html
+    - paragraph: Legal Notice / Impressum
+  - link "Privacy Policy / Datenschutz":
+    - /url: /datenschutz.html
+    - paragraph: Privacy Policy / Datenschutz
+  - link "Terms / AGB":
+    - /url: /agb.html
+    - paragraph: Terms / AGB
+  - paragraph: CONTENT
+  - link "PLUS":
+    - /url: /account/membership
+    - paragraph: PLUS
+  - link "FAQ":
+    - /url: /faq
+    - paragraph: FAQ
+  - link "Pricing":
+    - /url: /pricing
+    - paragraph: Pricing
+  - link "Teams":
+    - /url: /teams
+    - paragraph: Teams
+  - link "Media / Press":
+    - /url: /media
+    - paragraph: Media / Press
+  - link "Bug Bounty":
+    - /url: /bug-bounty
+    - paragraph: Bug Bounty
+  - link "Support / Feedback":
+    - /url: /support
+    - paragraph: Support / Feedback
+  - link "Cancel Membership":
+    - /url: /account/membership
+    - paragraph: Cancel Membership
+  - paragraph: LINKS
+  - paragraph:
+    - link "Killer Shell":
+      - /url: https://killer.sh
+  - link "We vs Killer Shell":
+    - /url: /killer-shell
+    - paragraph: We vs Killer Shell
+  - paragraph:
+    - link "Kim Wuestkamp":
+      - /url: https://www.linkedin.com/in/kimwuestkamp
+  - paragraph:
+    - link:
+      - /url: https://x.com/killercoda
+  - paragraph:
+    - link:
+      - /url: https://www.linkedin.com/company/killercoda
+  - paragraph:
+    - link:
+      - /url: /discord

@@ -1,0 +1,342 @@
+{
+  "source_commit": "626415001d4f43309429d44c072068f5a4f3765b",
+  "labs": [
+    {
+      "lab": "cks/01-networkpolicy",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Combine namespace and Pod selectors",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Deny egress from a namespace",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Block metadata and preserve application access",
+          "verifier": "verify-step3.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "29a472325b6c2804fab33c8583a6f15680f81b96681738fcf62da521288cc6f7",
+        "verify-step2.sh": "0ff90d61dec8631af347c9a1f2babac98f668179a0551305a6be482e1e40f977",
+        "verify-step3.sh": "a863466f5c47a20d122ab6632e6be2fd0c4e7676a5cabfbd78cd4cb6190877fe",
+        "verify.sh": "278752668a5d0d28388dac737bf98b19901f906e53ae5d6b2c82f9f618eed110"
+      },
+      "setup_sha256": "e9962d45e121633c2caf4a0c0c92ff07cfdcbb5cb13e74bc5ac476d2c5db86bc",
+      "solution_sha256": "5056a885741d3f0a4b296afa2a2f9ef6eac4c249af64945a625e04e356ae5592",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "base-setup.sh": "d939ee96ebee8e7caf2e7c4167a1e8762e5b2e746d2e92e3fa73a4d73fc72d9c",
+        "base-solution.sh": "66e4ab69f1b686dc0820c2b237c70b39e7e400e7077d48bf3ba10eb3cab76e1a",
+        "base-task.md": "4269c1394e852fa9e0f4a52e461590134bdd8cc8aaf2a2fba089152926fcedb6",
+        "base-verify.sh": "ceb89ad09e339b14b72543d19443bfb0dedd4c20af6e4d0d5a66e7fc3b891aab",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+        "network_probe.py": "28edb289e150f8f07545047f52a6099f27b0f249d7551b652bfed469fcd4c9c0"
+      }
+    },
+    {
+      "lab": "cks/02-pod-security",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Enforce restricted Pod Security Admission",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Repair a privileged Deployment",
+          "verifier": "verify-step2.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "3b69ff85f74d0d459286fe49e083179a73a9ad03f29209f9a7ca1676476b3382",
+        "verify-step2.sh": "964222247bfcd7e9a3dd0435f901d5f059d0c7943fd70f36fd1503e79dd11abf",
+        "verify.sh": "e9fcc048ecc9ddd415e6a190c37c67a2d8eab47c1fe8c493afb1dd6b788d2789"
+      },
+      "setup_sha256": "af9e9a7be553e6432e5b7c2515727520249aeac5ca2919acbf67d4db7e099e70",
+      "solution_sha256": "2b4518b70ee01c17269b41caa552c82e891b1e7539b9c1248e875c922412e32f",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "base-setup.sh": "483723c6ba14a549dc106da8bf686f54eb76d23342ec4205b7f2b7be2912f3e0",
+        "base-solution.sh": "c8c65c1e6ff74b4d2113992d51db4bde90c49a99aa54e1e631bf3cfaabd06696",
+        "base-task.md": "b22413d0a92f1741dfa7f4b22424a9cd8d964289566612348951d109a5396f2a",
+        "base-verify.sh": "3aa94a22b0a8d85cd492861d3a7b739cbb34670b0d23c3ecbc1b7ce32e737dfe",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    },
+    {
+      "lab": "cks/03-runtime-hardening",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Harden the live process",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Keep an HTTP server working with a read-only root",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Install and enforce a local seccomp profile",
+          "verifier": "verify-step3.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "93f2e0639268d5f9e0ecc7a149933e0df2a1303a556f09216a49a472a2a5d108",
+        "verify-step2.sh": "5bbf3a3918bcf0f0c4867bd11a65d412ba88ae7c81111f673177f1ecbbf0623c",
+        "verify-step3.sh": "da47e864c9b050269fe9e430de81cd3441dbb3b2fb0f44eca9e7c9a30d1e6d38",
+        "verify.sh": "d90ee7a9e65468c50593ba0a875453d4d0779164e370572f82df70da8afe0f4b"
+      },
+      "setup_sha256": "67edf2ec5ba1201f991e6f5afb82c1cff40a3d703815062a32befe637e860f57",
+      "solution_sha256": "3f86abd08b4eb2e843b1b3fd3a59ab49991bdfc81c383ab495915655e6dfc461",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "base-setup.sh": "441d5e247172b514365f2b0dcb79449fd34310f074104f912ab810117a96611f",
+        "base-solution.sh": "b9be01db8214bacd8cee9939854b85923969e409d64c4c93b63fb0e2bbecd290",
+        "base-task.md": "eeeec81580293bf93905e4e5855c494e420f18d6603ac626640b900c7a0ef442",
+        "base-verify.sh": "73ed07a25bd7dc4ed0e83bb8275792c3d0590bb12bb81603ea6aa6d3a3cd8528",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    },
+    {
+      "lab": "cks/04-serviceaccount",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Remove excess access and token mounts",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Give Sam only the required permissions",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Consume a Secret without mounting API credentials",
+          "verifier": "verify-step3.sh"
+        },
+        {
+          "step": 4,
+          "title": "Use a short-lived token with an isolated kubeconfig",
+          "verifier": "verify-step4.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "e41171c40aad785205de63222031d1df1f9a5a88d77aa5553be4045a4a55155d",
+        "verify-step2.sh": "a009abc2ec8795456c7b0890d21b678006d95d2c44917bea9e9902c0549540f0",
+        "verify-step3.sh": "58250522b0df4cff7bd10621f7a44584cf7ab0f9dd73203f9a72f67afd4aaf30",
+        "verify-step4.sh": "8c62b6ceada356b9ea6fb22ebe61edb8c552cf4fc626920c53a74802abad9901",
+        "verify.sh": "f8ff753deae9fd1760570d414d8c4c1c34828a851845cc28ab4c318da4df5e3d"
+      },
+      "setup_sha256": "e1caec2ca2cf97e3fd57e04475c606d85947821ffd0f8d3bbc95726676e614b7",
+      "solution_sha256": "584b1d18a6ccf4211df18c2203d2296cd6245d8c0b6ff8cfdff8143534582f39",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "base-setup.sh": "412c78b31528a9bcb74e078cf26e8bec614f1e904ac8f0d1f5ee811606c9a657",
+        "base-solution.sh": "80ce927ac58f3b2e1986236f2428fbfda93e789d0938465e601bf6c2541ca8c7",
+        "base-task.md": "b4a8f21633f3bba786015c1bf9ece78ba44e8bcfa90471dbc122f01621eb573a",
+        "base-verify.sh": "9ecaaf1a3697e240f5b002d067f18bb0de2008677f5f1b8672118119049207e4",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    },
+    {
+      "lab": "cks/05-image-admission",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Require an approved registry and immutable image digest",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Close the ephemeral-container admission gap",
+          "verifier": "verify-step2.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "87a9f144d6c2f83569df9589f32701d44f2b89c2634e3d6fa856d7da2039b224",
+        "verify-step2.sh": "6f3cc3ffeef76f92aa62ca246678330bed76ca631061d5c2c22f69b1655dda88",
+        "verify.sh": "fc824fe2f13881618a09ee49ee051e2d6b0e38040581fec7a411bb72f6eb6853"
+      },
+      "setup_sha256": "50384c389bf539558df5fe5d3b298f54398adb0eec36dfd63f49ff836cc34db9",
+      "solution_sha256": "cfce5ab12f2c27105088346363275ceebceeb19e2f55f45909c5ad067fbd1ac7"
+    },
+    {
+      "lab": "cks/06-audit-policy",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Order audit rules without logging Secret bodies",
+          "verifier": "verify.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify.sh": "4178449e4f676a721c80474057ee189df6be9a3f2fe905e2d847c949e828a81f"
+      },
+      "setup_sha256": "47261dcad28ad858aeca4e430489e949360569b774fd188700d6132f2ba0cb2a",
+      "solution_sha256": "ba2120ed16d845349679d5876309fbb6b9f08d89076a4ded375a900ff1bca2bf"
+    },
+    {
+      "lab": "cks/07-supply-chain",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Scan an actual image and report exploitable priorities",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Repair and build a minimal image",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Use Kubesec findings to repair a manifest",
+          "verifier": "verify-step3.sh"
+        },
+        {
+          "step": 4,
+          "title": "Verify the official kubectl binary before using it",
+          "verifier": "verify-step4.sh"
+        },
+        {
+          "step": 5,
+          "title": "Generate an SBOM and make an evidence-based release decision",
+          "verifier": "verify-step5.sh"
+        },
+        {
+          "step": 6,
+          "title": "Sign the release and reject changed content",
+          "verifier": "verify-step6.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "030ccaa8d795157c714b4e0a73128a0d05fe3aec32c5514669e4b38774ac89cc",
+        "verify-step2.sh": "328b2e76eaf8db289d2b3f22e918e92b2721c56680214e7702b808ea7af2f2b3",
+        "verify-step3.sh": "7ced91c6769fc2040343dead3edc57fd23cc35b8a60f2d6b2f19a8cfb7e0cd1a",
+        "verify-step4.sh": "5af3a524cadeabe0dd7fe127d2f619b9be4a491cedd57bd0bb7850766a308d8c",
+        "verify-step5.sh": "36e20aa432f881266402c7a12b29527cf68b92eb9cbf0ca7b373d6623a03da53",
+        "verify-step6.sh": "1a961bdcd422f5d8524c578c1e494b876be78682b36493057935d7cf195a36f7",
+        "verify.sh": "d759226039cb1a4881c0b129f006d9a5884b822821ce0713f017c7177a9ec58b"
+      },
+      "setup_sha256": "35fc760a8510612c8701173d24606344d33fbbe256107fb130fdd5e5da09a360",
+      "solution_sha256": "cedc433111ca2ed6eaef1e07fffea8c7ea09cf6929b3259abc7852ef7be7e52f",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d",
+        "scan-namespace.py": "f4ab0448500ef4cdddfe2facee8751c15f651588dfd11455f91cb407f12569e1"
+      }
+    },
+    {
+      "lab": "cks/08-host-security",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Remediate actual CIS benchmark findings",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Enforce a real AppArmor profile",
+          "verifier": "verify-step2.sh"
+        },
+        {
+          "step": 3,
+          "title": "Run a workload inside gVisor",
+          "verifier": "verify-step3.sh"
+        },
+        {
+          "step": 4,
+          "title": "Detect an actual interactive container shell with Falco",
+          "verifier": "verify-step4.sh"
+        },
+        {
+          "step": 5,
+          "title": "Remove an unwanted host listener",
+          "verifier": "verify-step5.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "cdd89ecb291345fa414033648bb4555ff5f077205e64a1db4159c6f7b55c1187",
+        "verify-step2.sh": "9caa6b79cc3ec8047ef831a74aaac4bd9b12e8924f07de0ea86c73dd5b3567bc",
+        "verify-step3.sh": "1ecd0918fe51796524f546c6644b4db69aa0eb7ccb67f9aeafd6e73ea46794e3",
+        "verify-step4.sh": "3223e6f97420f36b27f99258af2c530efc34858c7a881ed4c8cf231125977d07",
+        "verify-step5.sh": "a3763c102032b9f9e41d82ad5040c15faa41ff28c43ca7e9c3ce3b20a4af9488",
+        "verify.sh": "af7633640a48ca223101b0d2535c42685cde20ad3cc23291ace9b8d20797b7e5"
+      },
+      "setup_sha256": "fec2c33305db0fa6d4ceb73384f547ec1daa072bdf756d31f23efb8102bf9f70",
+      "solution_sha256": "26acd5b5cbc70ec33a8c5324b0d46e0fddcc0ff6d27e6467918024c4254d7987",
+      "source_commit": "7e40de6"
+    },
+    {
+      "lab": "cks/09-ingress-mtls",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Serve an Ingress with a trusted TLS hostname",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Require mTLS and authorize a service identity",
+          "verifier": "verify-step2.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "59bfd8d45f7d9bb50132b511bc6d1cb7ccc73c7c09a16242b3ee4446a5d90c64",
+        "verify-step2.sh": "83a2a487037977af522189972e4dc686bc705d37980265622e4ee64dbf3e18b3",
+        "verify.sh": "f8dbf0f79d28ed9f77f7cb269da6b0b8a7669a9ffc12cb3d430e6d7640d31730"
+      },
+      "setup_sha256": "c7205f41eb0727d28cda4f1890b76f62ada63aded9f23cef3f00be321ea38b59",
+      "solution_sha256": "994b4a4e78a7f2a3f24a3feaacc415087805b8ca48c0213fa37a3f196a516937",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    },
+    {
+      "lab": "cks/10-incident-investigation",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Investigate the actual audit trail",
+          "verifier": "verify-step1.sh"
+        },
+        {
+          "step": 2,
+          "title": "Revoke access and isolate the affected workload",
+          "verifier": "verify-step2.sh"
+        }
+      ],
+      "asset_verifier_sha256": {
+        "verify-step1.sh": "ca9d564775287d7463e8460816cacf408e4f091810a3aaee6f6d729969bf2fe1",
+        "verify-step2.sh": "38c126373c6d6dfb76e1032ed15b615fe0b7488971fd149ce2975897a0c69d4b",
+        "verify.sh": "4196eded5653f7d20273d39218adb626b55487cc8dd4296e5862f378fa277a78"
+      },
+      "setup_sha256": "e04d260bf454ee884428be33cf871593ede8d4a08f7e048f6190b7dfa2f45064",
+      "solution_sha256": "4476dc7b34efff21deaa883b2b1816b56578bd88b816a76b5685e31f9b50eb72",
+      "source_commit": "6f02d490823d082d16b068e96bf9ad954c89a967",
+      "auxiliary_sha256": {
+        "capture-audit.py": "d2ea1d6da964cb427c80fe629044317ddfe1e3c041f77b6455107117a74d35ec",
+        "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+        "lib.sh": "b30bb7d30885348a4ba10dd7bf9398438600d390602867bd8aff9820d821226d"
+      }
+    }
+  ],
+  "final_retest_labs": [
+    "cks/01-networkpolicy",
+    "cks/02-pod-security",
+    "cks/03-runtime-hardening",
+    "cks/04-serviceaccount",
+    "cks/07-supply-chain"
+  ],
+  "initial_source_commit": "d2f0ef7",
+  "note": "Expected local source hashes; results-cks.json separately records actual delivered hashes and their independently observed scope."
+}

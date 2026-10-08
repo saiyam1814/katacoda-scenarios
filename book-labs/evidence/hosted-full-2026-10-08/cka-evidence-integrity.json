@@ -1,0 +1,333 @@
+{
+  "date": "2026-10-08",
+  "status": "passed-for-11-owned-final-records",
+  "completedGroups": 11,
+  "completedSteps": 30,
+  "excludedPendingRootRetake": [
+    "cka/05-scheduling"
+  ],
+  "checks": [
+    {
+      "id": "cka-04-persistent-volume",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 2,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-04-persistent-volume-startup.jpg",
+          "sha256": "c1c68984efa5c42b010977d914cf534e3f045f06f5a1c2ab1934aac6b2d66252"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-04-persistent-volume-before.jpg",
+          "sha256": "ff5010c25d7201a9433f6fe2231dac744875328ba336253a8bd0fc3232f21bb6"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-04-persistent-volume-solution.jpg",
+          "sha256": "92f234c857d6478e3f0b386a65f4f091100014020d0e3911c5c1eb0fe9f32e9a"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-04-persistent-volume-completed.jpg",
+          "sha256": "852724bf792151c79cd1637c9db08ee3d49e6f85709bf7e0ee8b0befa15411bd"
+        }
+      ]
+    },
+    {
+      "id": "cka-08-static-pods-logs",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 3,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-08-static-pods-logs-startup.jpg",
+          "sha256": "f02fc7b65c54f1a2cb9980b14e77e34b873ae3bb0344654b51b72b45ee29f4b9"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-08-static-pods-logs-before.jpg",
+          "sha256": "2ae3d700434fe9130ff34badbedbd7707feb7c16bc665ff40c8de69d3d667fe2"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-08-static-pods-logs-solution.jpg",
+          "sha256": "744afc50e577a348390606b83fb4686f6c688099b42fcb26a318e2b055de14eb"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-08-static-pods-logs-completed.jpg",
+          "sha256": "d672b99ceda60f267a7c66c3c3e2258d1baaa30a611921c176cc681069d7ba28"
+        }
+      ]
+    },
+    {
+      "id": "cka-09-metrics-autoscaling",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 2,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-09-metrics-autoscaling-startup.jpg",
+          "sha256": "132e01187e62228da0e4c04b48b8ffcabba6e29e19a13b48ef99eed7468a366c"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-09-metrics-autoscaling-before.jpg",
+          "sha256": "40c037bd22183c5caf15aa49c3bfb4ee75acfc77bc0c576b3c4de4355e6bd5eb"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-09-metrics-autoscaling-solution.jpg",
+          "sha256": "2ca4f7502411fbc2d72ae7b542c43303c6d0de047ebf7ad48266b648260d0e47"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-09-metrics-autoscaling-completed.jpg",
+          "sha256": "9c9e5051ed55aa5a538f852ddeda2a38a0dae21e0ced14d855a0fa1561565da2"
+        }
+      ]
+    },
+    {
+      "id": "cka-10-probes-configuration",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 4,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-10-probes-configuration-startup.jpg",
+          "sha256": "8d9b256f84ec80a717959ed637657e927a32f514684d83ea1e5ebb9c6c038e9b"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-10-probes-configuration-before.jpg",
+          "sha256": "6205cc7187d3bedb533114ddbb7db49f12d5d373599bba26a376c9dcf6d9b3f9"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-10-probes-configuration-solution.jpg",
+          "sha256": "33137baf3799c1d5111171f54b3e5dfcd02fc414a8d7052070f15d4d7e2407c2"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-10-probes-configuration-completed.jpg",
+          "sha256": "20f476d6cbf3d48dcdc41ac5bc15ccce7d734dbfb73124788ffdef98af0f3658"
+        }
+      ]
+    },
+    {
+      "id": "cka-11-services-networkpolicy",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 2,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-11-services-networkpolicy-startup.jpg",
+          "sha256": "6d438d45f40c5aff7e29e98965d508d9296969eec3dea0a94d610e77b2e1d961"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-11-services-networkpolicy-before.jpg",
+          "sha256": "e8b18f9a1d6df1f317c1a86e270f45e6e42068a52097bbdb38cc22b6420fdb20"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-11-services-networkpolicy-solution.jpg",
+          "sha256": "3246179b13624a4ef0d331d3a73863b76ade3ec40e5d534a1f20f13d48f90a0d"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-11-services-networkpolicy-completed.jpg",
+          "sha256": "416a32d26b9424d3716c3d4ef184a65158684aa69a75262a5ae7b875787e4a87"
+        }
+      ]
+    },
+    {
+      "id": "cka-12-csi-volumes",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 2,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-12-csi-volumes-startup.jpg",
+          "sha256": "6ed654ddd2a4df77a90b204101170f37fe3ba2466620a7ab130d840eba420e31"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-12-csi-volumes-before.jpg",
+          "sha256": "f74ad9e779ff9caff538c2717cc668eea78b80322713546d6c901d0805796f02"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-12-csi-volumes-solution.jpg",
+          "sha256": "17baa52ee00aebd1100ccc653166171ad103680044b6caede10e3f56f54e96a8"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-12-csi-volumes-completed.jpg",
+          "sha256": "b1bb2fbc1c062f14a7aeec374090e599f71c0098cd651b0e06c5d2ce54c455fa"
+        }
+      ]
+    },
+    {
+      "id": "cka-13-helm-certificates",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 2,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-13-helm-certificates-startup.jpg",
+          "sha256": "25eb9ade74c41a5a4a4052350bbca8ea264864fc5b9b26195f0e013ff35ea567"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-13-helm-certificates-before.jpg",
+          "sha256": "fb6b7c31dbb777bfe167c4fa4cbb55ec9b026d1a37455a89b42e0c99bfac3e4f"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-13-helm-certificates-solution.jpg",
+          "sha256": "0bbc543d6d4ddde966e70c55b96511764a147beb1d905d449399025d49682abb"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-13-helm-certificates-completed.jpg",
+          "sha256": "0c88c41f8cea248ff2ac2bf0c3ee9de1a358caff44b612e4bfa875f12637699b"
+        }
+      ]
+    },
+    {
+      "id": "cka-14-gateway-ingress",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 2,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-14-gateway-ingress-startup.jpg",
+          "sha256": "615a5a109a9aaec45b672b20fc618cb406809d49d0a46417fa464041d8660909"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-14-gateway-ingress-before.jpg",
+          "sha256": "00622754da3e56e1d838ba84f9920de9adfe394ceb7950c1d5ca048c266d7424"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-14-gateway-ingress-solution.jpg",
+          "sha256": "ed0e69beb463aea67a2593003b57b620d262918df49b41ce938f8af10d4b7f32"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-14-gateway-ingress-completed.jpg",
+          "sha256": "17f0a00a7413f3059cfd9c5381b28e31df3c3698ab5b71d28cc0ad5fbaad035e"
+        }
+      ]
+    },
+    {
+      "id": "cka-01-rbac",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 3,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-01-rbac-startup.jpg",
+          "sha256": "2ca368d96be3afe13b1319977300c5bddd2de26dc17ce2b8d681b932b7203c24"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-01-rbac-before.jpg",
+          "sha256": "19b9d84e1e4e3a4a43e9c8bbac075966611477c475381a301a6214a1e5ad7fc6"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-01-rbac-solution.jpg",
+          "sha256": "79ffa6a52a5fe6200b585c3dee2a40696639d55809c61a5cd1eceddead57ed0f"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-01-rbac-completed.jpg",
+          "sha256": "8fddb7d6086d1d85680ad90d5772998b74fb85c4661097a8ddc301baf6633406"
+        }
+      ]
+    },
+    {
+      "id": "cka-06-rollout-recovery",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 3,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-startup.jpg",
+          "sha256": "5a9f74dca6538a2810f51e599de9818d1c0844d6b96461b5b14816cbed1eba1c"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-before.jpg",
+          "sha256": "c082a63efb300fae0003ca668f41631c47313fee927f2e9fcab2f6ae023c900a"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-solution.jpg",
+          "sha256": "711a70117a935b91248c937c595e90e23dfbd047cde3e83c189546f1d4fbaad2"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-06-rollout-recovery-completed.jpg",
+          "sha256": "05f3d2d32374a13b7cd43ebef57d045aaaefd903702c02d262e71231813632ec"
+        }
+      ]
+    },
+    {
+      "id": "cka-07-pod-lifecycle",
+      "sourceAssetsMatchCurrentFiles": true,
+      "steps": 5,
+      "images": [
+        {
+          "field": "startupScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-startup.jpg",
+          "sha256": "9f1588f85cb2b9fa6c3f1c8be5dc059749753116b7b6c8303e212468ca906436"
+        },
+        {
+          "field": "beforeScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-before.jpg",
+          "sha256": "134b65c8f9a3326575fb3867803458e47a13cd8d072507aa34dbab90543b68bf"
+        },
+        {
+          "field": "solutionScreenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-solution.jpg",
+          "sha256": "4f15cd4fb861a45744ea2c8e594aa5821561ba4b858e809a8ff41e70fb5d22b7"
+        },
+        {
+          "field": "screenshot",
+          "path": "evidence/hosted-full-2026-10-08/cka-07-pod-lifecycle-completed.jpg",
+          "sha256": "5af45ffd7b78b6f040e814a9e5ca543b91e3557d55a7e5e0192e871fe18f4450"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Checks compare saved independently observed hosted fingerprints with current source and verify evidence file integrity; visual inspection of completion content recorded separately.",
+    "CKA09 and14 held environments received pinned public updated assets and fixture replays as documented in their records."
+  ],
+  "visualCompletionReview": {
+    "status": "passed",
+    "inspectedLabIds": [
+      "cka-04-persistent-volume",
+      "cka-08-static-pods-logs",
+      "cka-09-metrics-autoscaling",
+      "cka-10-probes-configuration",
+      "cka-11-services-networkpolicy",
+      "cka-12-csi-volumes",
+      "cka-13-helm-certificates",
+      "cka-14-gateway-ingress",
+      "cka-01-rbac",
+      "cka-06-rollout-recovery",
+      "cka-07-pod-lifecycle"
+    ],
+    "method": "Actual browser completion screenshots inspected during the run; final all-11 contact-sheet review confirmed each title matches its saved lab and shows Scenario completed.",
+    "findings": [],
+    "limitations": [
+      "Terminal text is not readable in the overview; separate original-resolution startup, before and solution screenshots preserve those observations."
+    ]
+  }
+}

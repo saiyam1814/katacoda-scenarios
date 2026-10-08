@@ -1,0 +1,612 @@
+[
+  {
+    "id": "infra-02-cluster-upgrade",
+    "path": "infrastructure/02-cluster-upgrade",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade",
+    "sourceCommit": "a997777",
+    "stepCount": 2,
+    "status": "passed-with-published-fix-replay",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "build-cluster.sh": "956c967fafbba9772034c89b133161f724a98a103ab1f79089f76483085d4347",
+      "check-application.sh": "3db30dbf6b71a1587323606ed0134ff88f31e137886d48b01edd623db2c3320f",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+      "setup.sh": "67d48eda02aea7fdccd6a2028d967cb37b8052a8cb7cd33d08536e07dcedf2c4",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "dbe7a4699086b69cabd4a20db4d3480460b6e9fd8c0b1770eea84137283ec4b6",
+      "solution2.sh": "8e1e873aa82854745529c414e10a0b04f44321a95173d4e1833c4c1dc9cd09f0",
+      "verify1.sh": "03e70009318e9ebc6e91bf2fcff9724967392d385fe8b25913a44a53deb0a300",
+      "verify2.sh": "22f822350d357417400b0a3ecb245eec69ff376df0b3a54eb7cb295f3b6f4216"
+    },
+    "attempts": [
+      {
+        "sourceMatched": false,
+        "asset": "node-packages.sh",
+        "hostedSha256": "7537f15ed1b046c1f6324aeb1bbee92bf5338d9c9b1f8d08df05ba3734b48673",
+        "expectedSha256": "bcbc2a8a5401c6956227ab2def51f6d2a9e5247a65102a667220e240697f2306",
+        "released": true,
+        "evidence": "infra-02-stale-asset.txt"
+      },
+      {
+        "sourceCommit": "6822ae6",
+        "nodePackagesMatched": true,
+        "setupReady": false,
+        "failure": "kubeadm init: NumCPU1 is less than required2 on supportedtwo-node backend",
+        "evidence": "infra-02-cpu-sizing-failure.txt"
+      }
+    ],
+    "expectedAssetsManifestSha256": "465ebfb88bd1da6efcb399c388f57ec525faf1fb0b970f68fe312c402851d465",
+    "assetDeliveryNote": "Full setup replayed after replacing only build-cluster.sh/node-packages.sh from immutablepublishedGitHubrefs2629777 then634b852, to repair discoveredTTY/CPU/staleCiliumpidissues. Allsh/pyaggregate comparedafterreplay. Initialautomaticassetdeliverywasstale; freshdeliveryfollowuprequired. Beforeworkerupgrade,bothsolutionfileswereupdatedfrompublisheda997777andallscriptassetsmatchedthecompletepublishedmanifest.",
+    "hostedAssetsManifestSha256": "465ebfb88bd1da6efcb399c388f57ec525faf1fb0b970f68fe312c402851d465",
+    "allScriptAssetsMatched": true,
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1,
+      2
+    ],
+    "executionMethod": "Normal Chrome hosted terminal with supplied solutions; independent browser CHECKs at each intermediate state",
+    "notes": [
+      "FirstsolutioncompletedupgradebutitsimmediateapplicationcheckracedAPIrecovery. Unchangedverify1passedaftersettling, thenbrowserCHECKadvancedbeforeworkerupgrade. Publishedsolutionnowwaitsactualnodeversionandbehaviorconvergence."
+    ],
+    "solutionCodeActions": [
+      1,
+      2
+    ],
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-02-cluster-upgrade-completed.png",
+    "transcript": "evidence/hosted-full-2026-10-08/infra-02-cluster-upgrade-completed.txt",
+    "versions": {
+      "start": "v1.34.12",
+      "final": "v1.35.9",
+      "cilium": "1.20.2"
+    },
+    "allAssetSha256": {
+      "build-cluster.sh": "956c967fafbba9772034c89b133161f724a98a103ab1f79089f76483085d4347",
+      "check-application.sh": "3db30dbf6b71a1587323606ed0134ff88f31e137886d48b01edd623db2c3320f",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+      "setup.sh": "67d48eda02aea7fdccd6a2028d967cb37b8052a8cb7cd33d08536e07dcedf2c4",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "dbe7a4699086b69cabd4a20db4d3480460b6e9fd8c0b1770eea84137283ec4b6",
+      "solution2.sh": "8e1e873aa82854745529c414e10a0b04f44321a95173d4e1833c4c1dc9cd09f0",
+      "verify1.sh": "03e70009318e9ebc6e91bf2fcff9724967392d385fe8b25913a44a53deb0a300",
+      "verify2.sh": "22f822350d357417400b0a3ecb245eec69ff376df0b3a54eb7cb295f3b6f4216"
+    },
+    "expectedAllAssetsManifestSha256": "0b95f2a2c4edb6d674a72795c0bd09805ab6e2c49190e812e4c322fd3c45b8bf",
+    "finalNativeCniRetakeOwner": "root",
+    "historicalRunNote": "This record retains the earlier a997777 complete hosted test. Root owns a separate final retake after the native CNI port4789/MTU1400 correction; merge the root retake as the final current-source record."
+  },
+  {
+    "id": "infra-03-etcd-recovery",
+    "path": "infrastructure/03-etcd-recovery",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/03-etcd-recovery",
+    "sourceCommit": "6822ae6",
+    "stepCount": 2,
+    "status": "passed",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "prepare2.sh": "e5d3dabdce694ae4fa9aced0560c7ee7df145c2d170a087a181107e73439cf79",
+      "setup.sh": "188e22d38e2149a5d0bfe7377844db6d9e5799dfa128769e31ef8427d8c4c5c7",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "8ca58222eeb168eabbf786adb65bcd225c764159e6f5ef770891ee460f0d1a2d",
+      "solution2.sh": "07edebf29b6f5fc8223d5f93b02909c46e824ebf5ec384a04d83d50dcd0bc379",
+      "verify1.sh": "3cc1c53c05dcf439b1cb1cbe4b0ed4f49b7b51e76b52675a92fdda3db49bf0f5",
+      "verify2.sh": "7e0387c5bd9d7af2bae62f65a81a664a1512d888568c2a7208aca718c757c27a"
+    },
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "executionMethod": "Normal hosted terminal through Chrome; supplied script code actions and independent browser CHECKs",
+    "hostedVerifierSha256": {
+      "verify1.sh": "3cc1c53c05dcf439b1cb1cbe4b0ed4f49b7b51e76b52675a92fdda3db49bf0f5",
+      "verify2.sh": "7e0387c5bd9d7af2bae62f65a81a664a1512d888568c2a7208aca718c757c27a"
+    },
+    "versions": {
+      "etcdctl": "3.6.8",
+      "apiMinor": "1.36",
+      "etcdServer": "3.6.0",
+      "kubernetes": "v1.36.1"
+    },
+    "expectedAssetsManifestSha256": "fbea1e3ac8de449e5e5851028a924e4cf55249e2ee74677d75816c3f73d04a97",
+    "solutionCodeActions": [
+      1,
+      2
+    ],
+    "hostedAssetsManifestSha256": "fbea1e3ac8de449e5e5851028a924e4cf55249e2ee74677d75816c3f73d04a97",
+    "allScriptAssetsMatched": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-03-etcd-recovery-completed.png",
+    "transcript": "evidence/hosted-full-2026-10-08/infra-03-etcd-recovery-completed.txt",
+    "allAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "prepare2.sh": "e5d3dabdce694ae4fa9aced0560c7ee7df145c2d170a087a181107e73439cf79",
+      "setup.sh": "188e22d38e2149a5d0bfe7377844db6d9e5799dfa128769e31ef8427d8c4c5c7",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "8ca58222eeb168eabbf786adb65bcd225c764159e6f5ef770891ee460f0d1a2d",
+      "solution2.sh": "07edebf29b6f5fc8223d5f93b02909c46e824ebf5ec384a04d83d50dcd0bc379",
+      "verify1.sh": "3cc1c53c05dcf439b1cb1cbe4b0ed4f49b7b51e76b52675a92fdda3db49bf0f5",
+      "verify2.sh": "7e0387c5bd9d7af2bae62f65a81a664a1512d888568c2a7208aca718c757c27a"
+    },
+    "expectedAllAssetsManifestSha256": "fbea1e3ac8de449e5e5851028a924e4cf55249e2ee74677d75816c3f73d04a97",
+    "hostedAllAssetsManifestSha256": "fbea1e3ac8de449e5e5851028a924e4cf55249e2ee74677d75816c3f73d04a97",
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "assetManifestCommand": "sha256sum *.sh *.py | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "00977ee46866f2313aeb24e34f0ecfcf72c79211759af029c0e2726c32d08a56",
+    "finishedScreenshot": "infra-03-etcd-recovery-completed.png",
+    "finishedDom": "infra-03-etcd-recovery-completed.txt",
+    "released": true,
+    "assetManifestNote": "All nine delivered assets are shell/Python files. The observed aggregate uses shell files first, then Python files; its different aggregate from lexically sorted * is an ordering difference, not source drift. Both reproduce the exact individual hashes."
+  },
+  {
+    "id": "infra-04-worker-operations",
+    "path": "infrastructure/04-worker-operations",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/04-worker-operations",
+    "sourceCommit": "6998c50",
+    "stepCount": 4,
+    "status": "passed-fresh-automatic-assets",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "patch-kubelet.py": "72fcef4af81b9b869fdfc3f398410ac38a36f708ce54044e774350a603cdb608",
+      "prepare4.sh": "c3158b5332b2dcf6406c243ce31649fc66a3a03959b176b5f571f6532a2a24f9",
+      "setup.sh": "5f6dfc155fccbe3ebaff39a8a2377afaf7260a48472dc4b0c4c839348a32988f",
+      "solution.sh": "a0ab6749c5f5661fce105e709c8ce58b7e450a13fc4327554d98f4c76884c085",
+      "solution1.sh": "ef9e0dffa2fc8eaf821da985c641d01d8909de3526b0f44a5b2568011baea802",
+      "solution2.sh": "45433ce4026d13e6d950f823a027458f8af7b4ef27d4cc07fca38dbbe92c44af",
+      "solution3.sh": "61c8875aebe04b5b6bd5c42fb4d0239011de0eddb7fa7508c52696ccd3f5863a",
+      "solution4.sh": "98b295134c14a91d18917aa3f25704c406e29cb129f8b3dbe30b7b08d2bf1c71",
+      "verify1.sh": "0699bfce7ad1bff9aa336bc82af824cb0c782569eccea9959a189cdd1c9373d4",
+      "verify2.sh": "8789af246e6a09c30b99740bf44e8b18e93c53a2669f3fde00e860cfb7ea67ab",
+      "verify3.sh": "79395f38039ca43954825db733aa94a9671ef740314574a7d341092b69a56522",
+      "verify4.sh": "0f9242d88730a996047390ea945caac45542fd4f8b443ed68843c29926ecf013"
+    },
+    "expectedAssetsManifestSha256": "1b43f4e6227cadf27383740b871e83979e18e4fd0296f37330ed0b1817c3aca2",
+    "allAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "patch-kubelet.py": "72fcef4af81b9b869fdfc3f398410ac38a36f708ce54044e774350a603cdb608",
+      "prepare4.sh": "c3158b5332b2dcf6406c243ce31649fc66a3a03959b176b5f571f6532a2a24f9",
+      "setup.sh": "5adf759608433536819cd978a741dc8914fb163a793358860e74ecb6f6af8b8a",
+      "solution.sh": "a0ab6749c5f5661fce105e709c8ce58b7e450a13fc4327554d98f4c76884c085",
+      "solution1.sh": "ef9e0dffa2fc8eaf821da985c641d01d8909de3526b0f44a5b2568011baea802",
+      "solution2.sh": "45433ce4026d13e6d950f823a027458f8af7b4ef27d4cc07fca38dbbe92c44af",
+      "solution3.sh": "61c8875aebe04b5b6bd5c42fb4d0239011de0eddb7fa7508c52696ccd3f5863a",
+      "solution4.sh": "98b295134c14a91d18917aa3f25704c406e29cb129f8b3dbe30b7b08d2bf1c71",
+      "verify1.sh": "0699bfce7ad1bff9aa336bc82af824cb0c782569eccea9959a189cdd1c9373d4",
+      "verify2.sh": "d28506d5fea80ba537742ded73e854ed5aae3d10424f9c5c493b2f594d8f8ecd",
+      "verify3.sh": "79395f38039ca43954825db733aa94a9671ef740314574a7d341092b69a56522",
+      "verify4.sh": "0f9242d88730a996047390ea945caac45542fd4f8b443ed68843c29926ecf013"
+    },
+    "expectedAllAssetsManifestSha256": "d0ee299b606615c6128f5317530d034f99dcaa72f3a6528893fc1cf9ed32805f",
+    "initialVerifyExitCode": 1,
+    "notes": [
+      "Fresh automatic asset delivery includes pause-tolerant resident Pod fixture and rejection of terminating Pods.",
+      "Step1 passed a newly scheduled worker Pod and authenticated exec after real kubelet service recovery.",
+      "CHECK2 ran while the worker was cordoned, a new Pod remained Pending with its own scheduler event, and resident workload kept running.",
+      "CHECK3 ran after actual drain evicted resident, replacement became healthy elsewhere, and a fresh Pod ran on the uncordoned worker.",
+      "prepare4 observed actual anonymous kubelet200/open read-only port; initial security check failed. Solution4 verified anonymous401, unprivileged token403, read-only portclosed, API anonymous rejection, and authenticated logs/exec."
+    ],
+    "providerNetwork": {
+      "routingMode": "tunnel",
+      "tunnelProtocol": "vxlan",
+      "tunnelPort": 4789,
+      "kubeProxyReplacement": true,
+      "MTU": 1400,
+      "podCIDR": "192.168.0.0/16",
+      "perNodeMask": 24
+    },
+    "candidateAllAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "patch-kubelet.py": "72fcef4af81b9b869fdfc3f398410ac38a36f708ce54044e774350a603cdb608",
+      "prepare4.sh": "c3158b5332b2dcf6406c243ce31649fc66a3a03959b176b5f571f6532a2a24f9",
+      "setup.sh": "5adf759608433536819cd978a741dc8914fb163a793358860e74ecb6f6af8b8a",
+      "solution.sh": "a0ab6749c5f5661fce105e709c8ce58b7e450a13fc4327554d98f4c76884c085",
+      "solution1.sh": "ef9e0dffa2fc8eaf821da985c641d01d8909de3526b0f44a5b2568011baea802",
+      "solution2.sh": "45433ce4026d13e6d950f823a027458f8af7b4ef27d4cc07fca38dbbe92c44af",
+      "solution3.sh": "61c8875aebe04b5b6bd5c42fb4d0239011de0eddb7fa7508c52696ccd3f5863a",
+      "solution4.sh": "98b295134c14a91d18917aa3f25704c406e29cb129f8b3dbe30b7b08d2bf1c71",
+      "verify1.sh": "0699bfce7ad1bff9aa336bc82af824cb0c782569eccea9959a189cdd1c9373d4",
+      "verify2.sh": "d28506d5fea80ba537742ded73e854ed5aae3d10424f9c5c493b2f594d8f8ecd",
+      "verify3.sh": "79395f38039ca43954825db733aa94a9671ef740314574a7d341092b69a56522",
+      "verify4.sh": "0f9242d88730a996047390ea945caac45542fd4f8b443ed68843c29926ecf013"
+    },
+    "candidateAllAssetsManifestSha256": "d0ee299b606615c6128f5317530d034f99dcaa72f3a6528893fc1cf9ed32805f",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "d0ee299b606615c6128f5317530d034f99dcaa72f3a6528893fc1cf9ed32805f",
+    "finishedScreenshot": "infra-04-worker-operations-completed.png",
+    "finishedDom": "infra-04-worker-operations-completed.txt",
+    "released": true,
+    "currentVm": "ef7d4a2704f4c537",
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "d0ee299b606615c6128f5317530d034f99dcaa72f3a6528893fc1cf9ed32805f"
+  },
+  {
+    "id": "infra-05-ha-control-plane",
+    "path": "infrastructure/05-ha-control-plane",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/05-ha-control-plane",
+    "sourceCommit": "6998c50",
+    "stepCount": 3,
+    "status": "passed-with-published-fix-replay",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1,
+      2,
+      3
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "1f8c671508ec32672bce663c25b92fcc562ff5346e432baf7bdea4be54b9501d",
+      "solution.sh": "042ef8bef90e8b2cf343227ab39f73679d33f6911f9ae3a95dd94660e5a45daf",
+      "solution1.sh": "6300a975f05e8660c52d9bc0489db1881ff81414146e86c397eb3997ee341e8c",
+      "solution2.sh": "b0482a39b7203b84e8593080d6c962af64ae9cacc6d75e5b521d9b2df7ca3b45",
+      "solution3.sh": "2b639a98cc86b9bdff66bb18561900e5793375981c60849271ed5fc06553a747",
+      "verify1.sh": "037b1a17d9b3c53821f2a3235b57627fa34cd7a610aed7d032e09e2e96fa779b",
+      "verify2.sh": "be1c9940dadda3588fd71cbe945f4ce2c87d58d0f64963e4aae21cb39519568a",
+      "verify3.sh": "f601ece1f21b1369f7364066a38499458b8f902aa55d6a7a5115cbbcc555f1dc"
+    },
+    "expectedAssetsManifestSha256": "9b70bd3c5d8e3f25950df1f50cedffae181aac0e7ea746082bf8e0c5e5bf95f9",
+    "allAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "ha.yaml": "8f49da6e308cd58abdf5732dae75df7a0b171d43504c7a70a52b1f2714ac54ca",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "1f8c671508ec32672bce663c25b92fcc562ff5346e432baf7bdea4be54b9501d",
+      "solution.sh": "042ef8bef90e8b2cf343227ab39f73679d33f6911f9ae3a95dd94660e5a45daf",
+      "solution1.sh": "6300a975f05e8660c52d9bc0489db1881ff81414146e86c397eb3997ee341e8c",
+      "solution2.sh": "b0482a39b7203b84e8593080d6c962af64ae9cacc6d75e5b521d9b2df7ca3b45",
+      "solution3.sh": "2b639a98cc86b9bdff66bb18561900e5793375981c60849271ed5fc06553a747",
+      "verify1.sh": "037b1a17d9b3c53821f2a3235b57627fa34cd7a610aed7d032e09e2e96fa779b",
+      "verify2.sh": "be1c9940dadda3588fd71cbe945f4ce2c87d58d0f64963e4aae21cb39519568a",
+      "verify3.sh": "f601ece1f21b1369f7364066a38499458b8f902aa55d6a7a5115cbbcc555f1dc"
+    },
+    "expectedAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+    "attempts": [
+      {
+        "allAssetsMatched": true,
+        "allAssetsManifestSha256": "e8d9200cf68f8283db7df177c0ab7d964d2cc12ee0c3a78884af7b75d769a288",
+        "failure": "Transient API EOF after resetting and deleting both join targets; subsequent actual query showed the intended one Ready original control plane.",
+        "evidence": "infra-05-setup-convergence-race.png"
+      },
+      {
+        "vm": "330be9be10c6c94e",
+        "sourceCommit": "72c3b8b",
+        "outcome": "inconclusive-provider-terminal-disconnection-during-replay",
+        "completed": false
+      },
+      {
+        "vm": "1640a0f6ea262404",
+        "sourceCommit": "72c3b8b",
+        "automaticAllAssetsMatched": true,
+        "outcome": "setup-failed-transient-EOF-deleting-reset-node",
+        "evidence": "infra-05-delete-reset-node-eof.png",
+        "completed": false
+      },
+      {
+        "sourceCommit": "de839dc",
+        "setupReady": true,
+        "fullSetupExitCode": 0,
+        "outcome": "solution1-preflight-SystemVerification-missing-kernel-configs-module",
+        "evidence": "infra-05-join-kernel-config-failure.png",
+        "completed": false
+      },
+      {
+        "sourceCommit": "bed2b6b",
+        "outcome": "solution1-preflight-NumCPU-one-shared-host-CPU",
+        "evidence": "infra-05-join-one-cpu-failure.png",
+        "completed": false
+      },
+      {
+        "sourceCommit": "167308c",
+        "outcome": "solution3-containerd-socket-not-yet-created-aborts-retry-loop",
+        "evidence": "infra-05-containerd-restart-race.png",
+        "completed": false
+      }
+    ],
+    "candidateAllAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "ha.yaml": "8f49da6e308cd58abdf5732dae75df7a0b171d43504c7a70a52b1f2714ac54ca",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "1f8c671508ec32672bce663c25b92fcc562ff5346e432baf7bdea4be54b9501d",
+      "solution.sh": "042ef8bef90e8b2cf343227ab39f73679d33f6911f9ae3a95dd94660e5a45daf",
+      "solution1.sh": "6300a975f05e8660c52d9bc0489db1881ff81414146e86c397eb3997ee341e8c",
+      "solution2.sh": "b0482a39b7203b84e8593080d6c962af64ae9cacc6d75e5b521d9b2df7ca3b45",
+      "solution3.sh": "2b639a98cc86b9bdff66bb18561900e5793375981c60849271ed5fc06553a747",
+      "verify1.sh": "037b1a17d9b3c53821f2a3235b57627fa34cd7a610aed7d032e09e2e96fa779b",
+      "verify2.sh": "be1c9940dadda3588fd71cbe945f4ce2c87d58d0f64963e4aae21cb39519568a",
+      "verify3.sh": "f601ece1f21b1369f7364066a38499458b8f902aa55d6a7a5115cbbcc555f1dc"
+    },
+    "candidateAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+    "assetDeliveryNote": "Fresh automatic72c3b8b delivery matched all assets but revealed reset-node deletion EOF. Replaced only setup.sh from publishedde839dc, removed the disposable book-ha cluster and replayed setup from scratch to exit0. Replaced only solution1 from publishedbed2b6b then167308c for confirmed nested kernel-config and one-CPU preflights. Replaced only solution3 from published6998c50 after containerd startup race. Final complete asset manifest matched currentsource; a second actual cold stop/start passed solution3 exit0 before browserCHECK3. A subsequent fresh VM331d673037b725f4 automatically delivered all final6998c50 files with the same final fingerprint; this delivery-only check made no file replacements and did not repeat the completed three-step health tests.",
+    "currentVm": "1640a0f6ea262404",
+    "automaticAllAssetsMatched": true,
+    "automaticAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+    "setupExitCode": 0,
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionExitCodes": [
+      0,
+      0,
+      0
+    ],
+    "allAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+    "finishedScreenshot": "infra-05-ha-control-plane-completed.png",
+    "finishedDom": "infra-05-ha-control-plane-completed.txt",
+    "released": true,
+    "versions": {
+      "Kubernetes": "v1.35.0",
+      "nodes": 3,
+      "backend": "ubuntu-4GB",
+      "hostMemoryMiB": 3916,
+      "sharedHostCPUs": 1
+    },
+    "notes": [
+      "Normal hosted Chrome terminal execution; each browser CHECK ran at its required intermediate state.",
+      "Step2 CHECK performed a fresh API write/read while the first control-plane container was actually stopped.",
+      "Recovery verified three voting etcd members, every endpoint healthy, and preservation of the outage write.",
+      "Three nested control-plane containers share one hosted VM and one external load balancer; not independent physical failure domains.",
+      "Fresh final automatic delivery was verified independently after the full hosted scenario passed with published fix replay; earlier failed attempts are retained."
+    ],
+    "freshAutomaticDelivery": {
+      "vm": "331d673037b725f4",
+      "sourceCommit": "6998c50",
+      "allAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535",
+      "files": 11,
+      "filesReplaced": false,
+      "scope": "delivery-only; full health tests not repeated",
+      "screenshot": "infra-05-fresh-final-auto-assets.png",
+      "dom": "infra-05-fresh-final-auto-assets.txt",
+      "released": true
+    },
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "eb72ee4470f7cef3758c4901cfe69a81d71ec96e101f8161c704837aea5a8535"
+  },
+  {
+    "id": "infra-06-api-repair",
+    "path": "infrastructure/06-api-repair",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/06-api-repair",
+    "sourceCommit": "6998c50",
+    "stepCount": 1,
+    "status": "passed-fresh-automatic-assets",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "2357708f00ff3cb72e38b5b7892f2dfe77ed09fef70102096c68296119c9ad8f",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "d5e382b6bce8ef113e8b403c7255983af09a338c4a0c5f0f15a81c47089be6bf",
+      "verify1.sh": "7a787fbf4021a3da4b53bc352f73dc42afe83ee3b9d39c921ea45e62889a9912"
+    },
+    "expectedAssetsManifestSha256": "eef0efd846bda9a8b80ee2d72fc50e8301440b0486c861ad9586d814c526ac40",
+    "allAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "2357708f00ff3cb72e38b5b7892f2dfe77ed09fef70102096c68296119c9ad8f",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "d5e382b6bce8ef113e8b403c7255983af09a338c4a0c5f0f15a81c47089be6bf",
+      "verify1.sh": "7a787fbf4021a3da4b53bc352f73dc42afe83ee3b9d39c921ea45e62889a9912"
+    },
+    "expectedAllAssetsManifestSha256": "b4468e5b9e5faa78328f3929aed064699ca0eafd36bb2e11f310e619e910d2cf",
+    "candidateAllAssetSha256": {
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "2357708f00ff3cb72e38b5b7892f2dfe77ed09fef70102096c68296119c9ad8f",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "d5e382b6bce8ef113e8b403c7255983af09a338c4a0c5f0f15a81c47089be6bf",
+      "verify1.sh": "7a787fbf4021a3da4b53bc352f73dc42afe83ee3b9d39c921ea45e62889a9912"
+    },
+    "candidateAllAssetsManifestSha256": "b4468e5b9e5faa78328f3929aed064699ca0eafd36bb2e11f310e619e910d2cf",
+    "unsolvedExitCodes": [
+      1
+    ],
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "b4468e5b9e5faa78328f3929aed064699ca0eafd36bb2e11f310e619e910d2cf",
+    "finishedScreenshot": "infra-06-api-repair-completed.png",
+    "finishedDom": "infra-06-api-repair-completed.txt",
+    "released": true,
+    "currentVm": "09f36d4d91e29762",
+    "notes": [
+      "Initial API connection refused; supplied solution restored only the incorrect client-CA path, preserving original manifest semantics.",
+      "Fresh busybox Pod DNS resolves kubernetes.default.svc.cluster.local. Interface JSON matches actual containerd2.2.1, Cilium configuration files and no installed CSIDrivers.",
+      "Normal terminal canvas briefly reset; read-only actual verifier and interface evidence passed afterwards. Independent browser CHECK reached finish."
+    ],
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "b4468e5b9e5faa78328f3929aed064699ca0eafd36bb2e11f310e619e910d2cf"
+  },
+  {
+    "id": "infra-07-apiserver-security",
+    "path": "infrastructure/07-apiserver-security",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/07-apiserver-security",
+    "sourceCommit": "6998c50",
+    "stepCount": 2,
+    "status": "passed-fresh-automatic-assets",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "check-audit.py": "ca7412af9e9effc4c458afdfbeba9595104b9f19c44cb3154f7d4aa6eacf5019",
+      "check-webhook.py": "0bf54048c571968d5010744fad5dd5a70d6642b1dc1e89cb487aca8a5db397f7",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "imagepolicy-webhook.py": "52ebdb0eaf20938f6553747862dc342c336c9ddb55399bd9d4cdacfaaa0444b1",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "5548c32bc3daca1107246f514376e25fec6d7800e847efd6eeaf0989d5c4eb1e",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "a1295e52ad2d353585b38196d43c1dec431421730f741954250df8763f198451",
+      "solution2.sh": "60cfb10b5641c664502e52897686b731f857dd8b3a00aaaa3e462cd8db8497ea",
+      "verify1.sh": "9705d13e9641820bfbf2981e1635fb7e47169a2f2985334d13d058d19f71d2ce",
+      "verify2.sh": "15544ebdea3fc6dd8556a24bfab19cb8773c3881cdbe8ca7945b0f39a84b7d9a"
+    },
+    "expectedAssetsManifestSha256": "e094bfe30172f9136fd6e0e686c61f81e0f0575fad9da5be5870c69aa8489c58",
+    "allAssetSha256": {
+      "audit-policy.yaml": "dcc9bb5ac232dc526d2448935ae955d79576519c4658b5aa26f63a3c7d5f04a1",
+      "check-audit.py": "ca7412af9e9effc4c458afdfbeba9595104b9f19c44cb3154f7d4aa6eacf5019",
+      "check-webhook.py": "0bf54048c571968d5010744fad5dd5a70d6642b1dc1e89cb487aca8a5db397f7",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "imagepolicy-webhook.py": "52ebdb0eaf20938f6553747862dc342c336c9ddb55399bd9d4cdacfaaa0444b1",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "5548c32bc3daca1107246f514376e25fec6d7800e847efd6eeaf0989d5c4eb1e",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "a1295e52ad2d353585b38196d43c1dec431421730f741954250df8763f198451",
+      "solution2.sh": "60cfb10b5641c664502e52897686b731f857dd8b3a00aaaa3e462cd8db8497ea",
+      "verify1.sh": "9705d13e9641820bfbf2981e1635fb7e47169a2f2985334d13d058d19f71d2ce",
+      "verify2.sh": "15544ebdea3fc6dd8556a24bfab19cb8773c3881cdbe8ca7945b0f39a84b7d9a",
+      "webhook-admission.yaml": "440c24bdfaf1a23e4faba2a056cf45e9f1488fc0a4f9d1853cdedee4dec64a0c",
+      "webhook-kubeconfig": "c6d7d02dd9a49ab7dc0b120a04127a1f879b319828deec7b1e7303388b7d95b3"
+    },
+    "expectedAllAssetsManifestSha256": "3c4d42f6cba97feac346ee530e9ad83d247d242a11f97613a140714682079c53",
+    "candidateAllAssetSha256": {
+      "audit-policy.yaml": "dcc9bb5ac232dc526d2448935ae955d79576519c4658b5aa26f63a3c7d5f04a1",
+      "check-audit.py": "ca7412af9e9effc4c458afdfbeba9595104b9f19c44cb3154f7d4aa6eacf5019",
+      "check-webhook.py": "0bf54048c571968d5010744fad5dd5a70d6642b1dc1e89cb487aca8a5db397f7",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "imagepolicy-webhook.py": "52ebdb0eaf20938f6553747862dc342c336c9ddb55399bd9d4cdacfaaa0444b1",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "5548c32bc3daca1107246f514376e25fec6d7800e847efd6eeaf0989d5c4eb1e",
+      "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+      "solution1.sh": "a1295e52ad2d353585b38196d43c1dec431421730f741954250df8763f198451",
+      "solution2.sh": "60cfb10b5641c664502e52897686b731f857dd8b3a00aaaa3e462cd8db8497ea",
+      "verify1.sh": "9705d13e9641820bfbf2981e1635fb7e47169a2f2985334d13d058d19f71d2ce",
+      "verify2.sh": "15544ebdea3fc6dd8556a24bfab19cb8773c3881cdbe8ca7945b0f39a84b7d9a",
+      "webhook-admission.yaml": "440c24bdfaf1a23e4faba2a056cf45e9f1488fc0a4f9d1853cdedee4dec64a0c",
+      "webhook-kubeconfig": "c6d7d02dd9a49ab7dc0b120a04127a1f879b319828deec7b1e7303388b7d95b3"
+    },
+    "candidateAllAssetsManifestSha256": "3c4d42f6cba97feac346ee530e9ad83d247d242a11f97613a140714682079c53",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "3c4d42f6cba97feac346ee530e9ad83d247d242a11f97613a140714682079c53",
+    "finishedScreenshot": "infra-07-apiserver-security-completed.png",
+    "finishedDom": "infra-07-apiserver-security-completed.txt",
+    "released": true,
+    "currentVm": "64c04045393eac80",
+    "notes": [
+      "Complete asset fingerprint includes check-webhook.py with existing-Pod exec proof during the stopped-service outage.",
+      "Audit verifier generates actual create/update/patch/delete Deployment requests and fresh Secret requests, reads real blocking audit records, requires Deployment bodies and forbids Secret bodies.",
+      "ImagePolicyWebhook uses the real TLS service: approved image allowed, unapproved image denied, new admission denied while policy service is actually stopped, existing Pod exec succeeds during outage, admission recovers after service restart.",
+      "Both independent browser CHECKs reached finish without source changes or patches in this fresh VM."
+    ],
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "3c4d42f6cba97feac346ee530e9ad83d247d242a11f97613a140714682079c53"
+  },
+  {
+    "id": "infra-08-secret-encryption",
+    "path": "infrastructure/08-secret-encryption",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/08-secret-encryption",
+    "sourceCommit": "6998c50",
+    "stepCount": 1,
+    "status": "passed-fresh-automatic-assets",
+    "setupReady": true,
+    "browserStepsPassed": [
+      1
+    ],
+    "completed": true,
+    "localSourceSha256": {
+      "check-encryption.py": "c41f2f97393cb6f4ae2e0ab8b12b86168f70f053b1a35fc472cfe61b804da3eb",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "489adcecf05498806a689bfbf2e66dce0aff7d3cd7ef841cbfec0c2f2c0f9561",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "c9c247a8c7bb2bcdf3c76707940d98d0b4225e6c139cfa6715a1c6a203a1aa5a",
+      "verify1.sh": "724592b1c3ebe35af5ce7126cc2e0b8f58a27f407ba5700559cc02aa8e117559"
+    },
+    "expectedAssetsManifestSha256": "0f585ed980c24f0ac0c44c92573efb4200bde0b9c3073c5ee0e0033a380558f5",
+    "allAssetSha256": {
+      "check-encryption.py": "c41f2f97393cb6f4ae2e0ab8b12b86168f70f053b1a35fc472cfe61b804da3eb",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "489adcecf05498806a689bfbf2e66dce0aff7d3cd7ef841cbfec0c2f2c0f9561",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "c9c247a8c7bb2bcdf3c76707940d98d0b4225e6c139cfa6715a1c6a203a1aa5a",
+      "verify1.sh": "724592b1c3ebe35af5ce7126cc2e0b8f58a27f407ba5700559cc02aa8e117559"
+    },
+    "expectedAllAssetsManifestSha256": "04f67a31a387a58528bdbb583811646b445e65b1217505acd713a3d77929fee0",
+    "candidateAllAssetSha256": {
+      "check-encryption.py": "c41f2f97393cb6f4ae2e0ab8b12b86168f70f053b1a35fc472cfe61b804da3eb",
+      "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+      "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+      "setup.sh": "489adcecf05498806a689bfbf2e66dce0aff7d3cd7ef841cbfec0c2f2c0f9561",
+      "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+      "solution1.sh": "c9c247a8c7bb2bcdf3c76707940d98d0b4225e6c139cfa6715a1c6a203a1aa5a",
+      "verify1.sh": "724592b1c3ebe35af5ce7126cc2e0b8f58a27f407ba5700559cc02aa8e117559"
+    },
+    "candidateAllAssetsManifestSha256": "04f67a31a387a58528bdbb583811646b445e65b1217505acd713a3d77929fee0",
+    "allAssetsMatched": true,
+    "automaticAllAssetsMatched": true,
+    "hostedAllAssetsManifestSha256": "04f67a31a387a58528bdbb583811646b445e65b1217505acd713a3d77929fee0",
+    "finishedScreenshot": "infra-08-secret-encryption-completed.png",
+    "finishedDom": "infra-08-secret-encryption-completed.txt",
+    "released": true,
+    "currentVm": "3386a1008b02057a",
+    "notes": [
+      "Fresh automatic asset delivery matched all seven published files without replacement.",
+      "Ready sentinel present; initial verifier exited 1 because encryption configuration was missing.",
+      "Only supplied solution1.sh ran. It enabled AES-CBC, restarted the real API server, rewrote existing Secrets, and exited 0.",
+      "Actual etcd values for all pre-existing Secrets and a fresh write had the encryption prefix; original and fresh API reads decrypted correctly.",
+      "Actual browser CHECK reached the completion page; encryption remained enabled until the disposable VM was released. No key material was printed or saved."
+    ],
+    "assetManifestCommand": "LC_ALL=C sha256sum * | sha256sum",
+    "canonicalLexicalAllAssetsManifestSha256": "04f67a31a387a58528bdbb583811646b445e65b1217505acd713a3d77929fee0",
+    "unsolvedExitCodes": [
+      1
+    ],
+    "solutionExitCodes": [
+      0
+    ]
+  }
+]

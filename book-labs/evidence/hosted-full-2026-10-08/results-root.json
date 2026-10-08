@@ -1,0 +1,487 @@
+[
+  {
+    "id": "cka-02-service-repair",
+    "path": "cka/02-service-repair",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/02-service-repair",
+    "sourceCommit": "b50149f",
+    "setupReady": true,
+    "stepCount": 2,
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1,
+      2
+    ],
+    "solutionCodeActions": [
+      1,
+      2
+    ],
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-02-service-repair-completed.jpg"
+  },
+  {
+    "id": "cka-01-rbac",
+    "path": "cka/01-rbac",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/01-rbac",
+    "sourceCommit": "b50149f",
+    "setupReady": true,
+    "stepCount": 3,
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1,
+      2,
+      3
+    ],
+    "solutionCodeActions": [
+      1,
+      2,
+      3
+    ],
+    "browserStepsPassed": [
+      1,
+      2,
+      3
+    ],
+    "completed": false,
+    "notes": [
+      "Initial terminal spinner required a page reload; fresh terminal then reached Ready."
+    ],
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-01-rbac-completed.jpg",
+    "historicalCompletion": true,
+    "pendingRetest": "Step2 checker strengthened at6f02d49; fresh final run required"
+  },
+  {
+    "path": "cka/03-kustomize",
+    "id": "cka-03-kustomize",
+    "title": "CKA — Kustomize application and component overlays",
+    "steps": [
+      {
+        "title": "Render and apply an application overlay",
+        "text": "step1.md",
+        "verify": "verify-step-01.sh"
+      },
+      {
+        "title": "Patch and install a real metrics component",
+        "text": "step2.md",
+        "verify": "verify-step-02.sh"
+      }
+    ],
+    "hashes": {
+      "verify-step-01.sh": "c477db797e90da9ed00aceebe7f73a4979e8a1fe4df8f91af16a7efa3cd3301f",
+      "verify-step-02.sh": "01f2a8b70f4b64ad11f54d5ea5b3918bcae5fc15644dfca776fb0f9fa1e2a2b9"
+    },
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/03-kustomize",
+    "sourceCommit": "6822ae6",
+    "stepCount": 2,
+    "setupReady": true,
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionExitCode": 0,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "executionMethod": "Chrome normal terminal supplied aggregate solution and actual CHECK buttons",
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-03-kustomize-completed.jpg"
+  },
+  {
+    "path": "infrastructure/01-kubeadm-bootstrap",
+    "id": "infra-01-kubeadm-bootstrap",
+    "title": "CKA 01 — Initialize and join a kubeadm cluster",
+    "steps": [
+      {
+        "title": "Build a functioning two-VM cluster",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      }
+    ],
+    "hashes": {
+      "verify1.sh": "7b897053cc6feae0dbf328e0eb93c0f9656a6e0fc1c29a6bddd260e246c67171"
+    },
+    "assetManifest": {
+      "entries": {
+        "build-cluster.sh": "267948c480a4ae9d30b98008631cc1172925438f7b31ea76b687184d548c4201",
+        "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+        "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+        "setup.sh": "946d466c776d60bc26634b1e77aff74608430d689c73e8ed4ce145106ef1081f",
+        "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+        "solution1.sh": "0386dafe05016d7477e6797bb26dbadc7ccff76d887e0bcf909550eadba5577b",
+        "verify1.sh": "7b897053cc6feae0dbf328e0eb93c0f9656a6e0fc1c29a6bddd260e246c67171",
+        "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f"
+      },
+      "aggregateSha256": "263b16b6ddc4a59916caa97be10355000fcda2467b3435e73df33199c542d61a"
+    },
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/01-kubeadm-bootstrap",
+    "sourceCommit": "72c3b8b",
+    "stepCount": 1,
+    "setupReady": true,
+    "browserStepsPassed": [
+      1
+    ],
+    "completed": true,
+    "solutionExitCode": 0,
+    "observedAllAssetAggregate": "263b16b6ddc4a59916caa97be10355000fcda2467b3435e73df33199c542d61a",
+    "allAssetsMatched": true,
+    "executionMethod": "Chrome normal terminal full supplied reset and solution replay, followed by actual CHECK",
+    "sourceVerification": "All8 assets aggregate matched final source263b16b6; build-cluster.sh downloaded from pinned public72c3b8b before full reset/replay",
+    "notes": [
+      "Original provider default8472 blocked cross-nodeDNS; confirmed UDP4789 passes; finalhelperfix includesMTU1400 and rollout waits.",
+      "Full finalreset replay uses previouslyinstalled matching packages and cached images in same disposableVM; no intermediate diagnostic result counted as completion."
+    ],
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-01-kubeadm-bootstrap-completed.jpg"
+  },
+  {
+    "path": "infrastructure/09-host-hardening",
+    "id": "infra-09-host-hardening",
+    "title": "CKS 31 — Harden a real host service",
+    "steps": [
+      {
+        "title": "Keep the reporting service useful and contained",
+        "text": "step1.md",
+        "verify": "verify1.sh"
+      }
+    ],
+    "hashes": {
+      "verify1.sh": "83b016bb1685fa486e49d621ede255e15af58c8269d75d95ef4c13468a59bca6"
+    },
+    "assetManifest": {
+      "entries": {
+        "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+        "setup.sh": "1964ec6fddcb9213f3060d5dc296e05dd017f62b66cc83f45bd5fdf235d34664",
+        "solution.sh": "1ee4dbda63203f18076dc96ed55884cace321a5fb364f9172ff56d95461f06df",
+        "solution1.sh": "6eca9509d861cc1dee54c6c0a0ca01b30245388042a4d9e15f813b7be4535d11",
+        "verify1.sh": "83b016bb1685fa486e49d621ede255e15af58c8269d75d95ef4c13468a59bca6",
+        "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f"
+      },
+      "aggregateSha256": "37c982646e96e3205c8a18857e5a15548ba6aa6333f76d84b2413441462777a2"
+    },
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/09-host-hardening",
+    "sourceCommit": "18bda73",
+    "stepCount": 1,
+    "setupReady": true,
+    "unsolvedExitCodes": [
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionExitCode": 0,
+    "finalExitCodes": [
+      0
+    ],
+    "browserStepsPassed": [
+      1
+    ],
+    "completed": true,
+    "allAssetsMatched": true,
+    "observedAllAssetAggregate": "37c982646e96e3205c8a18857e5a15548ba6aa6333f76d84b2413441462777a2",
+    "executionMethod": "Normal Chrome terminal supplied solution and independent actual CHECK",
+    "sourceVerification": "Independent normal terminal all6asset aggregate37c982... matched current source before negative/solution/positive/CHECK",
+    "previousRuns": [
+      {
+        "id": "infra-09-host-hardening",
+        "path": "infrastructure/09-host-hardening",
+        "sourceCommit": "074c0b6",
+        "stepCount": 1,
+        "setupReady": true,
+        "unsolvedExitCodes": [
+          1
+        ],
+        "browserStepsPassed": [
+          1
+        ],
+        "completed": true,
+        "executionMethod": "Killercoda Brain command executor through Chrome; normal terminal display remained on a connection spinner",
+        "verifierSha256": "83b016bb1685fa486e49d621ede255e15af58c8269d75d95ef4c13468a59bca6",
+        "solutionExitCode": 0,
+        "screenshot": "/Users/saiyam/git/katacoda-scenarios/book-labs/evidence/hosted-full-2026-10-08/infra-09-host-hardening-completed.jpg"
+      }
+    ],
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-09-direct-completed.jpg",
+    "observedAt": "2026-10-08T10:13:10.430Z"
+  },
+  {
+    "id": "infra-02-cluster-upgrade",
+    "path": "infrastructure/02-cluster-upgrade",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade",
+    "sourceCommit": "18bda73",
+    "sourceEquivalentAt": "46e6c9b",
+    "observedAt": "2026-10-08T10:42:44.820Z",
+    "vmId": "b52c6b116d45b31c",
+    "setupReady": true,
+    "stepCount": 2,
+    "browserStepsPassed": [
+      1,
+      2
+    ],
+    "completed": true,
+    "allAssetsMatched": true,
+    "automaticAssetDelivery": true,
+    "assetManifest": {
+      "entries": {
+        "build-cluster.sh": "267948c480a4ae9d30b98008631cc1172925438f7b31ea76b687184d548c4201",
+        "check-application.sh": "3db30dbf6b71a1587323606ed0134ff88f31e137886d48b01edd623db2c3320f",
+        "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+        "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+        "setup.sh": "67d48eda02aea7fdccd6a2028d967cb37b8052a8cb7cd33d08536e07dcedf2c4",
+        "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+        "solution1.sh": "dbe7a4699086b69cabd4a20db4d3480460b6e9fd8c0b1770eea84137283ec4b6",
+        "solution2.sh": "8e1e873aa82854745529c414e10a0b04f44321a95173d4e1833c4c1dc9cd09f0",
+        "verify1.sh": "03e70009318e9ebc6e91bf2fcff9724967392d385fe8b25913a44a53deb0a300",
+        "verify2.sh": "22f822350d357417400b0a3ecb245eec69ff376df0b3a54eb7cb295f3b6f4216",
+        "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f"
+      },
+      "aggregateSha256": "8aa530a8f265d4d3563547653bcf7edc0135ece85299b0db6af6b98827b398e6"
+    },
+    "observedAllAssetAggregate": "8aa530a8f265d4d3563547653bcf7edc0135ece85299b0db6af6b98827b398e6",
+    "unsolvedExitCodes": [
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1,
+      2
+    ],
+    "solutionCommands": [
+      "bash /opt/book-labs/infra-02-cluster-upgrade/solution1.sh",
+      "bash /opt/book-labs/infra-02-cluster-upgrade/solution2.sh"
+    ],
+    "solutionExitCodes": [
+      0,
+      0
+    ],
+    "finalVerifierExitCodes": [
+      0,
+      0
+    ],
+    "initialKubernetesVersion": "1.34.12",
+    "finalKubernetesVersion": "1.35.9",
+    "application": "upgrade-check/web 2/2 Ready; actual HTTP check passes; PDB permits one disruption",
+    "executionMethod": "Normal Chrome hosted terminal",
+    "screenshot": "evidence/hosted-full-2026-10-08/infra-02-final-cluster-upgrade-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/infra-02-final-automatic-setup.jpg",
+    "sourceScreenshot": "evidence/hosted-full-2026-10-08/infra-02-final-automatic-assets.jpg",
+    "intermediateScreenshots": [
+      "infra-02-final-before-step1.jpg",
+      "infra-02-final-step1-pass.jpg",
+      "infra-02-final-before-step2.jpg",
+      "infra-02-final-step2-pass.jpg"
+    ],
+    "notes": [
+      "Fresh session automatically delivered every final asset, including Cilium tunnelPort4789 and MTU1400; no files were replaced.",
+      "The control-plane CHECK advanced while the worker remained1.34.12. Only then was the worker upgraded and the second CHECK completed.",
+      "A terminal tab switch remounted the first terminal after the initial successful control-plane upgrade. The supplied control-plane solution was replayed at the same version with its exit status saved durably and observed0, before CHECK1.",
+      "Earlier cached-source and package/helper failures are retained as previous history, not current validation."
+    ],
+    "previousRuns": [
+      {
+        "id": "infra-02-cluster-upgrade",
+        "path": "infrastructure/02-cluster-upgrade",
+        "url": "https://killercoda.com/saiyampathak/course/book-labs/02-cluster-upgrade",
+        "sourceCommit": "a997777",
+        "stepCount": 2,
+        "status": "passed-with-published-fix-replay",
+        "setupReady": true,
+        "browserStepsPassed": [
+          1,
+          2
+        ],
+        "completed": true,
+        "localSourceSha256": {
+          "build-cluster.sh": "956c967fafbba9772034c89b133161f724a98a103ab1f79089f76483085d4347",
+          "check-application.sh": "3db30dbf6b71a1587323606ed0134ff88f31e137886d48b01edd623db2c3320f",
+          "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+          "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+          "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+          "setup.sh": "67d48eda02aea7fdccd6a2028d967cb37b8052a8cb7cd33d08536e07dcedf2c4",
+          "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+          "solution1.sh": "dbe7a4699086b69cabd4a20db4d3480460b6e9fd8c0b1770eea84137283ec4b6",
+          "solution2.sh": "8e1e873aa82854745529c414e10a0b04f44321a95173d4e1833c4c1dc9cd09f0",
+          "verify1.sh": "03e70009318e9ebc6e91bf2fcff9724967392d385fe8b25913a44a53deb0a300",
+          "verify2.sh": "22f822350d357417400b0a3ecb245eec69ff376df0b3a54eb7cb295f3b6f4216"
+        },
+        "attempts": [
+          {
+            "sourceMatched": false,
+            "asset": "node-packages.sh",
+            "hostedSha256": "7537f15ed1b046c1f6324aeb1bbee92bf5338d9c9b1f8d08df05ba3734b48673",
+            "expectedSha256": "bcbc2a8a5401c6956227ab2def51f6d2a9e5247a65102a667220e240697f2306",
+            "released": true,
+            "evidence": "infra-02-stale-asset.txt"
+          },
+          {
+            "sourceCommit": "6822ae6",
+            "nodePackagesMatched": true,
+            "setupReady": false,
+            "failure": "kubeadm init: NumCPU1 is less than required2 on supportedtwo-node backend",
+            "evidence": "infra-02-cpu-sizing-failure.txt"
+          }
+        ],
+        "expectedAssetsManifestSha256": "465ebfb88bd1da6efcb399c388f57ec525faf1fb0b970f68fe312c402851d465",
+        "assetDeliveryNote": "Full setup replayed after replacing only build-cluster.sh/node-packages.sh from immutablepublishedGitHubrefs2629777 then634b852, to repair discoveredTTY/CPU/staleCiliumpidissues. Allsh/pyaggregate comparedafterreplay. Initialautomaticassetdeliverywasstale; freshdeliveryfollowuprequired. Beforeworkerupgrade,bothsolutionfileswereupdatedfrompublisheda997777andallscriptassetsmatchedthecompletepublishedmanifest.",
+        "hostedAssetsManifestSha256": "465ebfb88bd1da6efcb399c388f57ec525faf1fb0b970f68fe312c402851d465",
+        "allScriptAssetsMatched": true,
+        "unsolvedExitCodes": [
+          1,
+          1
+        ],
+        "unsolvedBrowserChecksRejected": [
+          1,
+          2
+        ],
+        "executionMethod": "Normal Chrome hosted terminal with supplied solutions; independent browser CHECKs at each intermediate state",
+        "notes": [
+          "FirstsolutioncompletedupgradebutitsimmediateapplicationcheckracedAPIrecovery. Unchangedverify1passedaftersettling, thenbrowserCHECKadvancedbeforeworkerupgrade. Publishedsolutionnowwaitsactualnodeversionandbehaviorconvergence."
+        ],
+        "solutionCodeActions": [
+          1,
+          2
+        ],
+        "screenshot": "evidence/hosted-full-2026-10-08/infra-02-cluster-upgrade-completed.png",
+        "transcript": "evidence/hosted-full-2026-10-08/infra-02-cluster-upgrade-completed.txt",
+        "versions": {
+          "start": "v1.34.12",
+          "final": "v1.35.9",
+          "cilium": "1.20.2"
+        },
+        "allAssetSha256": {
+          "build-cluster.sh": "956c967fafbba9772034c89b133161f724a98a103ab1f79089f76483085d4347",
+          "check-application.sh": "3db30dbf6b71a1587323606ed0134ff88f31e137886d48b01edd623db2c3320f",
+          "controlplane.py": "066df1072801a3698a149b6fad24427d4ddcb136ac3d8be7057f084288f8af6f",
+          "infra.sh": "7cc7738192c75399d48ac84fbcd6b5be1de80e021f9b00234185a1d5e6c64b07",
+          "node-packages.sh": "5c28b293ce0a82ce9b1068ddd812ea1d932916c81e57a3e5501f97a6562572dd",
+          "setup.sh": "67d48eda02aea7fdccd6a2028d967cb37b8052a8cb7cd33d08536e07dcedf2c4",
+          "solution.sh": "7792e618a6ba22d4586dd958cf89add9c9000efd21a13405ed55fe02c8e247fa",
+          "solution1.sh": "dbe7a4699086b69cabd4a20db4d3480460b6e9fd8c0b1770eea84137283ec4b6",
+          "solution2.sh": "8e1e873aa82854745529c414e10a0b04f44321a95173d4e1833c4c1dc9cd09f0",
+          "verify1.sh": "03e70009318e9ebc6e91bf2fcff9724967392d385fe8b25913a44a53deb0a300",
+          "verify2.sh": "22f822350d357417400b0a3ecb245eec69ff376df0b3a54eb7cb295f3b6f4216"
+        },
+        "expectedAllAssetsManifestSha256": "0b95f2a2c4edb6d674a72795c0bd09805ab6e2c49190e812e4c322fd3c45b8bf",
+        "finalNativeCniRetakeOwner": "root",
+        "historicalRunNote": "This record retains the earlier a997777 complete hosted test. Root owns a separate final retake after the native CNI port4789/MTU1400 correction; merge the root retake as the final current-source record."
+      }
+    ]
+  },
+  {
+    "id": "cka-05-scheduling",
+    "path": "cka/05-scheduling",
+    "url": "https://killercoda.com/saiyampathak/course/book-labs/05-scheduling",
+    "sourceCommit": "46e6c9b",
+    "observedAt": "2026-10-08T10:49:54.536Z",
+    "vmId": "2d7a8ca1757f4fa8",
+    "setupReady": true,
+    "stepCount": 4,
+    "browserStepsPassed": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "completed": true,
+    "allAssetsMatched": true,
+    "automaticAssetDelivery": true,
+    "assetManifest": {
+      "entries": {
+        "cleanup.sh": "3186bad6502fadfae870cf8ebe8c10b9d9b45c66a20c71d92ec8a8ac5a72b475",
+        "lib.sh": "f5439e1d5835a208599dc0074b1c70e2f4c01641a5083b06f59d29a8196dd1dc",
+        "setup.sh": "3ddcacfd8c46a79cacbe8c6a7a11cb22d8eaee288dd54e50e31308ae3ff944ab",
+        "solution-step-01.sh": "165bfd3785dbdfc46518111128951bd25fe5d4dd9b7c0d308bd8caeeeb590b0c",
+        "solution-step-02.sh": "704b6f683af29e285182d00c180dcc29268db1073b3ee01666fd4ae36dad8fda",
+        "solution-step-03.sh": "7aeb286794c66fe551bf42f687b522ca6f3dc14712e8e58694785ecddcd3d490",
+        "solution-step-04.sh": "5514affdeaf480609938f27aecf078be4a85c3114a4a6a89adfced0f7140acc8",
+        "solution.sh": "8eebdae450e380809d19c9b6b37684e69f9c5cafe67f0a878adfbd121c8c4836",
+        "verify-step-01.sh": "40accc3a5fef1254ef28dfc9ed2f059674ae417e73e28908affcbedb3d1e111a",
+        "verify-step-02.sh": "571a6795d05c40e189c7ca7ad185bd75c1906bfc7908d6e1754f2d19b933bf56",
+        "verify-step-03.sh": "ec9dd26bf8d01277a0872e40092d55e8c2b8e819c46e6c9ff8078a16168d35cc",
+        "verify-step-04.sh": "2417d07816e1f3476268a72f973680af66be3b4f5e001e6a567b86f87c2d5217",
+        "verify.sh": "5380ae35973c2b05e68a0bafbcadcff548c7a3acb18007fd02b4879d8b4dffa4"
+      },
+      "aggregateSha256": "a0c44e04a6d0785c7a16d6428ab76046d5f51d1c4f08a1b01cd9f241cebb5266"
+    },
+    "observedAllAssetAggregate": "a0c44e04a6d0785c7a16d6428ab76046d5f51d1c4f08a1b01cd9f241cebb5266",
+    "unsolvedExitCodes": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "unsolvedBrowserChecksRejected": [
+      1
+    ],
+    "solutionCommand": "bash /opt/book-labs/cka-05-scheduling/solution.sh",
+    "solutionExitCode": 0,
+    "finalVerifierExitCodes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "hostedKubernetesVersion": "1.36.1",
+    "executionMethod": "Normal Chrome hosted terminal",
+    "screenshot": "evidence/hosted-full-2026-10-08/cka-05-final-completed.jpg",
+    "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-05-final-automatic-setup.jpg",
+    "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-05-final-before.jpg",
+    "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-05-final-solution.jpg",
+    "notes": [
+      "Fresh automatic delivery of all13 assets independently matched the current source; no replacements.",
+      "All four unsolved checkers returned1; whole supplied solution returned0 and each final checker returned0.",
+      "Actual browser CHECKs advanced in order to direct binding, required affinity, DaemonSet and Scenario completed.",
+      "This fresh full replay replaces the earlier completion screenshot that was overwritten by the CKA recorder metadata bug. Original attempt and source records remain historical."
+    ],
+    "previousRuns": [
+      {
+        "id": "cka-05-scheduling",
+        "path": "cka/05-scheduling",
+        "url": "https://killercoda.com/saiyampathak/course/book-labs/05-scheduling",
+        "sourceCommit": "72c3b8b",
+        "setupReady": true,
+        "stepCount": 4,
+        "assetManifestSha256": "a0c44e04a6d0785c7a16d6428ab76046d5f51d1c4f08a1b01cd9f241cebb5266",
+        "assetsIndependentlyMatched": true,
+        "hostedKubernetesVersion": "v1.36.1",
+        "runtime": "4e3491446e2e73b1",
+        "unsolvedExitCodes": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "unsolvedBrowserChecksRejected": [
+          1
+        ],
+        "solutionCommand": "bash /opt/book-labs/cka-05-scheduling/solution.sh",
+        "solutionExitCode": 0,
+        "browserStepsPassed": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "completed": false,
+        "completionObservedInBrowser": true,
+        "executionRoute": "normal hosted terminal; every CHECK clicked in browser",
+        "startupScreenshot": "evidence/hosted-full-2026-10-08/cka-05-scheduling-startup.jpg",
+        "beforeScreenshot": "evidence/hosted-full-2026-10-08/cka-05-scheduling-before.jpg",
+        "solutionScreenshot": "evidence/hosted-full-2026-10-08/cka-05-scheduling-solution.jpg",
+        "pendingRetest": "Actual completion observed in UI, but recorder reused an earlier image filename. Marked incomplete for final evidence until a fresh run restores its own completion screenshot."
+      }
+    ]
+  }
+]

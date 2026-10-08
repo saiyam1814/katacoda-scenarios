@@ -1,0 +1,45 @@
+{
+  "lab": "cka/09-metrics-autoscaling",
+  "runtime": "a2233a67947f2334",
+  "status": "final-source-reset-replay-passed",
+  "initialSource": "72c3b8b",
+  "initialAssetsMatched": true,
+  "initialUnsolvedExitCodes": [
+    1,
+    1
+  ],
+  "findings": [
+    {
+      "kind": "diagnostic",
+      "detail": "Missing highest-memory.txt emitted FileNotFoundError/apport traceback; published guard6264150 then independently matched SHA256 and clean negative exit1 proved by moving/restoring answer.",
+      "checkerSha256": "2b80917713db5c7f3e90d058d0bb3100e228dbf6ee60e22bafad7afbbc836b18",
+      "evidence": "cka-09-metrics-autoscaling-clean-negative.jpg"
+    },
+    {
+      "kind": "hosted-capacity",
+      "detail": "HPA reached five desired/current replicas; only two Ready and three Pending with FailedScheduling Insufficient cpu at200m request on one-CPU VM. Supplied solution wait failed; stopped/resumed its job for diagnosis and observed exit1. No pass claimed for this attempt.",
+      "evidence": "cka-09-metrics-autoscaling-capacity-failure.jpg",
+      "plannedFix": "Initial workload request50m; preserve min1/max5, CPU target50%, actual rescale events and full Deployment readiness."
+    }
+  ],
+  "finalSource": "18bda73",
+  "finalAssetManifestSha256": "b41144af5bf7855427f32b980aa458501a6dee9d02fde6e3a38cd8343d650ef7",
+  "finalAssetsIndependentlyMatched": true,
+  "fixtureResetExitCode": 0,
+  "finalUnsolvedExitCodes": [
+    1,
+    1
+  ],
+  "finalSolutionExitCode": 0,
+  "browserStepsPassed": [
+    1,
+    2
+  ],
+  "readyReplicas": 5,
+  "finalEvidence": [
+    "cka-09-metrics-autoscaling-final-assets.jpg",
+    "cka-09-metrics-autoscaling-solution.jpg",
+    "cka-09-metrics-autoscaling-completed.jpg",
+    "cka-09-metrics-autoscaling-capacity-fixed.jpg"
+  ]
+}

@@ -1,0 +1,41 @@
+- navigation:
+  - navigation:
+    - link "logo":
+      - /url: "#"
+      - link "logo":
+        - /url: /
+        - img "logo"
+    - list:
+      - listitem: Editor
+      - listitem: Tab 1
+      - generic: +
+    - generic "Time till environment expires": 118m
+    - generic "Scenario Brain":
+      - img "Scenario Brain"
+    - generic "Exit Scenario":
+    - list:
+      - button "☰"
+- heading "CKA — Metrics and CPU autoscaling" [level=1]
+- heading "Drive a real HPA scale-out" [level=2]
+- separator
+- heading "Scenario — Drive a real HPA scale-out" [level=1]
+- paragraph: "Book scenario(s): 31."
+- paragraph: In book-cka-hpa create cpu-app Deployment using registry.k8s.io/hpa-example, initially one replica, each container requesting 50m CPU. Expose HTTP as Service cpu-app. Create an autoscaling/v2 CPU HPA with minimum1, maximum5 and 50% utilization target. Generate sustained HTTP load, wait for at least two replicas and healthy current CPU metrics, then save the live HPA JSON to hpa-scaled.json. Keep the load running for CHECK.
+- paragraph: The book uses a 200m CPU request. This hosted VM has one CPU, so use 50m here to leave enough scheduling capacity for all five replicas alongside the system components. The HPA still scales from measured CPU utilization relative to each container’s request.
+- heading "Verify your work" [level=2]
+- paragraph:
+  - text: Use
+  - strong: CHECK
+  - text: . The verifier examines the real objects and the stated result; a manifest existing on disk is not enough.
+- code: bash /opt/book-labs/cka-09-metrics-autoscaling/verify-step-02.sh
+- button "copy":
+- paragraph
+- generic "Solution"
+- paragraph:
+  - text: To run every worked solution in this grouped lab, use
+  - code: bash /opt/book-labs/cka-09-metrics-autoscaling/solution.sh
+  - text: . Every step remains independently verifiable after all solutions finish.
+- button "BACK"
+- button "CHECK"
+- iframe [id="iframe"]:
+  - textbox "Terminal input"
