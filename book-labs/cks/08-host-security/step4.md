@@ -1,6 +1,6 @@
 # Detect an actual interactive container shell with Falco
 
-Add local Falco rule `Book Interactive Container Shell` in `/etc/falco/rules.d/book-shell.yaml`. Detect execve/execveat exits for sh/bash/ash in containers with a nonzero TTY. Preserve vendor rules and metadata plugins. Enable JSON output to `/var/log/falco/book-shell.jsonl`, with all-rule matching. Restart `book-falco`. Generate a real TTY shell using the provided `generate-shell.py` helper, then a non-interactive cat. Extract matching actual timestamp, container ID and container name to `falcologs.json`. CHECK generates new positive and negative events and requires valid container metadata.
+Add local Falco rule `Book Interactive Container Shell` in `/etc/falco/rules.d/book-shell.yaml`. Detect execve/execveat exits for sh/bash/ash in containers with a nonzero TTY. Preserve vendor rules and metadata plugins. Enable JSON output to `/var/log/falco/book-shell.jsonl`, with all-rule matching. Restart `book-falco`. Generate a real TTY shell using the provided `generate-shell.py` helper, then both a non-TTY shell and a non-interactive cat. Neither negative control should trigger this interactive-shell rule. Extract matching actual timestamp, container ID and container name to `falcologs.json`. CHECK generates new positive and negative events and requires valid container metadata.
 
 <details><summary>Worked solution</summary>
 

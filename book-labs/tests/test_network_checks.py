@@ -27,7 +27,8 @@ name=args[args.index('get')+2]
 if resource=='namespace':
     result={'items':[{'metadata':{'name':'book-cks-'+team,'labels':{'team':team}}} for team in ['green','blue']]}
 elif resource=='pod':
-    result={'metadata':{'labels':{'access':'trusted' if name=='trusted' else 'untrusted'}},'status':{'conditions':[{'type':'Ready','status':'False' if mode=='not_ready' else 'True'}]}}
+    labels=({'demo':'test' if name=='local-approved' else 'other'} if name.startswith('local-') else {'access':'trusted' if name=='trusted' else 'untrusted'})
+    result={'metadata':{'labels':labels},'status':{'conditions':[{'type':'Ready','status':'False' if mode=='not_ready' else 'True'}]}}
 elif resource=='deployment':
     result={'metadata':{'generation':1},'spec':{'replicas':1,'template':{'spec':{'containers':[{'image':'nginx:1.28.0'}]}}},'status':{'observedGeneration':1,'availableReplicas':1,'updatedReplicas':1}}
 elif resource=='service':
@@ -40,7 +41,10 @@ import json,os,sys,time
 namespace=os.environ['FAKE_NS'];pod=os.environ['FAKE_POD'];url=sys.argv[-1];mode=os.environ['FAKE_NETWORK_MODE']
 record={'namespace':namespace,'pod':pod,'url':url,'args':sys.argv[1:]}
 with open(os.environ['FAKE_WGET_LOG'],'a') as log: log.write(json.dumps(record)+'\n')
-allowed=namespace=='book-cks-green' and pod=='trusted' and url=='http://10.0.0.1'
+allowed=((namespace=='book-cks-green' and pod=='trusted') or (namespace=='book-cks-network' and pod=='local-approved')) and url=='http://10.0.0.1'
+if mode=='local_missing' and namespace=='book-cks-network' and pod=='local-approved': allowed=False
+if mode=='local_wrong_namespace' and namespace=='book-cks-blue' and pod=='local-approved': allowed=True
+if mode=='local_wrong_label' and namespace=='book-cks-network' and pod=='local-unapproved': allowed=True
 if mode=='wrong_peer' and namespace=='book-cks-green' and pod=='untrusted': allowed=True
 if mode=='allow_broken' and allowed: allowed=False
 if allowed:
@@ -66,7 +70,7 @@ class NetworkCheckTests(unittest.TestCase):
         env=self.env.copy();env.update(FAKE_NETWORK_MODE=mode,FAKE_DROP_DELAY=delay)
         return subprocess.run(['bash',str(ROOT/'cks/01-networkpolicy/verify-step1.sh')],env=env,text=True,capture_output=True,timeout=12)
 
-    def test_six_denials_and_allowed_path_run_in_parallel_under_ten_seconds(self):
+    def test_twelve_denials_and_both_allowed_paths_run_in_parallel_under_ten_seconds(self):
         start=time.monotonic();result=self.verify('correct','2');elapsed=time.monotonic()-start
         self.assertEqual(result.returncode,0,result.stdout+result.stderr)
         self.assertLess(elapsed,9, f'Expected parallel probes, took {elapsed:.2f}s')
@@ -74,18 +78,38 @@ class NetworkCheckTests(unittest.TestCase):
         counts=collections.Counter((x['namespace'],x['pod'],x['url']) for x in requests)
         self.assertEqual(counts,{
             ('book-cks-green','trusted','http://10.0.0.1'):1,
+            ('book-cks-network','local-approved','http://10.0.0.1'):1,
             ('book-cks-green','untrusted','http://10.0.0.1'):2,
             ('book-cks-blue','trusted','http://10.0.0.1'):2,
             ('book-cks-green','trusted','http://10.0.0.2'):2,
+            ('book-cks-network','local-unapproved','http://10.0.0.1'):2,
+            ('book-cks-blue','local-approved','http://10.0.0.1'):2,
+            ('book-cks-network','local-approved','http://10.0.0.2'):2,
         })
         self.assertTrue(all(x['args'][:3]==['-T','2','-qO-'] for x in requests))
-        self.assertIn('all six denied connection attempts',result.stdout)
+        self.assertIn('all twelve denied connection attempts',result.stdout)
 
     def test_wrong_peer_is_rejected(self):
         result=self.verify('wrong_peer')
         self.assertNotEqual(result.returncode,0)
         self.assertIn('book-cks-green/untrusted',result.stderr)
         self.assertIn('Connection succeeded but must be denied',result.stderr)
+
+    def test_same_namespace_allowed_peer_is_required(self):
+        result=self.verify('local_missing')
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('book-cks-network/local-approved',result.stderr)
+        self.assertIn('Expected HTTP request failed',result.stderr)
+
+    def test_same_label_in_another_namespace_is_denied(self):
+        result=self.verify('local_wrong_namespace')
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('book-cks-blue/local-approved',result.stderr)
+
+    def test_wrong_local_label_is_denied(self):
+        result=self.verify('local_wrong_label')
+        self.assertNotEqual(result.returncode,0)
+        self.assertIn('book-cks-network/local-unapproved',result.stderr)
 
     def test_allowed_path_must_really_work(self):
         result=self.verify('allow_broken')
