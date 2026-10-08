@@ -4,6 +4,8 @@ This 4 GB lab uses three actual Kubernetes node containers on one VM. `book-ha-c
 
 Generate a fresh token and certificate upload key on the first control plane. Run `kubeadm join --control-plane` inside the other two node containers, one at a time, using their own container IP as the advertised address. Use `/root/book-labs/infra-05-ha-control-plane/kubeconfig` with kubectl. Prove all three nodes and all three stacked etcd members are healthy.
 
+For this nested-container lab, include `--ignore-preflight-errors=SystemVerification` on the join command. The provider kernel does not expose its kernel configuration module inside the node containers. The initial kind bootstrap has already run Kubernetes on that kernel; all other kubeadm preflight checks remain enabled. On independent production hosts, resolve system verification errors instead of applying this lab exception.
+
 Try the task yourself first. Read the worked solution only when you need it:
 
 ```bash
