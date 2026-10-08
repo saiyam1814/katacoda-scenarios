@@ -31,7 +31,7 @@ kubectl apply -f - <<'YAML'
             "image": "registry.k8s.io/hpa-example",
             "resources": {
               "requests": {
-                "cpu": "200m",
+                "cpu": "50m",
                 "memory": "32Mi"
               },
               "limits": {

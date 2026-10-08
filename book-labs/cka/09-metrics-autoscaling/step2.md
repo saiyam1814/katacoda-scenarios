@@ -2,7 +2,9 @@
 
 Book scenario(s): 31.
 
-In book-cka-hpa create cpu-app Deployment using registry.k8s.io/hpa-example, initially one replica, each container requesting 200m CPU. Expose HTTP as Service cpu-app. Create an autoscaling/v2 CPU HPA with minimum1, maximum5 and 50% utilization target. Generate sustained HTTP load, wait for at least two replicas and healthy current CPU metrics, then save the live HPA JSON to hpa-scaled.json. Keep the load running for CHECK.
+In book-cka-hpa create cpu-app Deployment using registry.k8s.io/hpa-example, initially one replica, each container requesting 50m CPU. Expose HTTP as Service cpu-app. Create an autoscaling/v2 CPU HPA with minimum1, maximum5 and 50% utilization target. Generate sustained HTTP load, wait for at least two replicas and healthy current CPU metrics, then save the live HPA JSON to hpa-scaled.json. Keep the load running for CHECK.
+
+The book uses a 200m CPU request. This hosted VM has one CPU, so use 50m here to leave enough scheduling capacity for all five replicas alongside the system components. The HPA still scales from measured CPU utilization relative to each container’s request.
 
 ## Verify your work
 
