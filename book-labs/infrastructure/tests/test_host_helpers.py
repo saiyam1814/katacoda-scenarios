@@ -3,12 +3,33 @@
 import importlib.util
 import io
 import json
+import re
+import subprocess
+import sys
 from pathlib import Path
 import tempfile
 import unittest
 from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
+
+class PackageSelectionTests(unittest.TestCase):
+    def test_reads_large_package_index_without_sigpipe(self):
+        # Exercise the exact command substitutions from both shipped scripts.
+        # An early awk exit makes this large upstream producer fail under pipefail.
+        for lab in ('01-kubeadm-bootstrap', '02-cluster-upgrade'):
+            source = (ROOT / lab / 'assets/node-packages.sh').read_text()
+            assignments = re.findall(r'^ pkg=\$\(apt-cache madison kubeadm.*$', source, re.M)
+            self.assertEqual(len(assignments), 2)
+            for assignment in assignments:
+                with self.subTest(lab=lab, assignment=assignment):
+                    with tempfile.TemporaryDirectory() as directory:
+                        producer = Path(directory) / 'producer.py'
+                        producer.write_text("import sys\nsys.stdout.write('kubeadm | 1.35.9-1.1 | repo\\n')\nsys.stdout.write('kubeadm | 1.34.12-1.1 | repo\\n' * 200000)\nsys.stdout.write('kubeadm | 1.35.9-1.2 | repo\\n')\n")
+                        command = assignment.replace('apt-cache madison kubeadm', f'"{sys.executable}" "{producer}"')
+                        result = subprocess.run(['bash', '-o', 'pipefail', '-ec', 'version=1.35.9\n' + command + '\nprintf "%s" "$pkg"'], capture_output=True, text=True)
+                        self.assertEqual(result.returncode, 0, result.stderr)
+                        self.assertEqual(result.stdout, '1.35.9-1.1')
 
 class ImagePolicyURLTests(unittest.TestCase):
     @classmethod

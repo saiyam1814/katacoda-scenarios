@@ -15,7 +15,7 @@ packages)
  curl -fLsS --max-time 30 "https://pkgs.k8s.io/core:/stable:/v$minor/deb/Release.key" | gpg --dearmor --yes -o /etc/apt/keyrings/book-kubernetes.gpg
  printf 'deb [signed-by=/etc/apt/keyrings/book-kubernetes.gpg] https://pkgs.k8s.io/core:/stable:/v%s/deb/ /\n' "$minor" > /etc/apt/sources.list.d/kubernetes.list
  apt-get update -qq
- pkg=$(apt-cache madison kubeadm | awk -v wanted="$version-" 'index($3,wanted)==1{print $3;exit}')
+ pkg=$(apt-cache madison kubeadm | awk -v wanted="$version-" '!found && index($3,wanted)==1{print $3;found=1}')
  test -n "$pkg" || { printf 'Requested package %s is unavailable.\n' "$version" >&2; exit 1; }
  apt-mark unhold kubeadm kubelet kubectl || true
  DEBIAN_FRONTEND=noninteractive apt-get install -y --allow-downgrades kubeadm="$pkg" kubelet="$pkg" kubectl="$pkg"
@@ -29,7 +29,7 @@ upgrade-kubeadm)
  curl -fLsS --max-time 30 "https://pkgs.k8s.io/core:/stable:/v$minor/deb/Release.key" | gpg --dearmor --yes -o /etc/apt/keyrings/book-kubernetes.gpg
  printf 'deb [signed-by=/etc/apt/keyrings/book-kubernetes.gpg] https://pkgs.k8s.io/core:/stable:/v%s/deb/ /\n' "$minor" > /etc/apt/sources.list.d/kubernetes.list
  apt-get update -qq
- pkg=$(apt-cache madison kubeadm | awk -v wanted="$version-" 'index($3,wanted)==1{print $3;exit}')
+ pkg=$(apt-cache madison kubeadm | awk -v wanted="$version-" '!found && index($3,wanted)==1{print $3;found=1}')
  test -n "$pkg"
  apt-mark unhold kubeadm
  DEBIAN_FRONTEND=noninteractive apt-get install -y kubeadm="$pkg"
